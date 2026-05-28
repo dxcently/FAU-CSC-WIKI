@@ -41,8 +41,8 @@ var relearn_searchindex = [
   },
   {
     "breadcrumb": "",
-    "content": "👋 Welcome to the FAU Cyber Security Club Wiki! This wiki is currently underconstruction. If you would like to help me with it, contact me @solitude_freak or @shaamad on the Discord.\nResources im using:\nhugo docs\nhugo relearn theme docs\nmd cheetsheet",
-    "description": "👋 Welcome to the FAU Cyber Security Club Wiki! This wiki is currently underconstruction. If you would like to help me with it, contact me @solitude_freak or @shaamad on the Discord.\nResources im using:\nhugo docs\nhugo relearn theme docs\nmd cheetsheet",
+    "content": "👋 Welcome to the FAU Cyber Security Club Wiki! Meeting information Weekly Meetings: Thursdays 5 PM - 7 PM\nLocation: CM22\nContact Email: csc@fau.edu\nThis wiki is currently underconstruction. If you would like to help me with it, contact me @solitude_freak or @shaamad on the Discord.\nResources im using:\nhugo docs\nhugo relearn theme docs\nmd cheetsheet",
+    "description": "👋 Welcome to the FAU Cyber Security Club Wiki! Meeting information Weekly Meetings: Thursdays 5 PM - 7 PM\nLocation: CM22\nContact Email: csc@fau.edu\nThis wiki is currently underconstruction. If you would like to help me with it, contact me @solitude_freak or @shaamad on the Discord.",
     "tags": [],
     "title": "FAU Cyber Security Club",
     "uri": "/index.html"

@@ -3,7 +3,7 @@
   <channel>
     <title>FAU Cyber Security Club</title>
     <link>http://localhost:1313/index.html</link>
-    <description>👋 Welcome to the FAU Cyber Security Club Wiki! Meeting information Weekly Meetings on Thursdays 5 PM - 7 PM&#xA;Contact Email: csc@fau.edu&#xA;This wiki is currently underconstruction. If you would like to help me with it, contact me @solitude_freak or @shaamad on the Discord.</description>
+    <description>👋 Welcome to the FAU Cyber Security Club Wiki! Meeting information Weekly Meetings: Thursdays 5 PM - 7 PM&#xA;Location: CM22&#xA;Contact Email: csc@fau.edu&#xA;This wiki is currently underconstruction. If you would like to help me with it, contact me @solitude_freak or @shaamad on the Discord.</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />

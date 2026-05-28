@@ -7,19 +7,22 @@
     <loc>http://localhost:1313/introduction/index.html</loc>
   </url>
   <url>
+    <loc>http://localhost:1313/resources/index.html</loc>
+  </url>
+  <url>
     <loc>http://localhost:1313/resources/links/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/todo/index.html</loc>
+    <loc>http://localhost:1313/authoring/index.html</loc>
+  </url>
+  <url>
+    <loc>http://localhost:1313/authoring/todo/index.html</loc>
   </url>
   <url>
     <loc>http://localhost:1313/categories/index.html</loc>
   </url>
   <url>
     <loc>http://localhost:1313/index.html</loc>
-  </url>
-  <url>
-    <loc>http://localhost:1313/resources/index.html</loc>
   </url>
   <url>
     <loc>http://localhost:1313/tags/index.html</loc>

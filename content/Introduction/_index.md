@@ -15,12 +15,13 @@ learning. And the best way to learn is to fail!
 
 ![The GIF didn't load lol](https://github.com/dxcently/fau-cyber-security-club-wiki/blob/main/assets/error_220.gif?raw=true)
 
-" _It is hard to write a simple definition of something as varied as hacking,
-but I think what these activities have in common is playfulness, cleverness, and
+_It is hard to write a simple definition of something as varied as hacking, but
+I think what these activities have in common is playfulness, cleverness, and
 exploration. Thus, hacking means exploring the limits of what is possible, in a
 spirit of playful cleverness. Activities that display playful cleverness have
-'hack value.' "_ - Richard Stallman
+"hack value."_
 
-### Some things we reccommend you checking out:
+_-- Richard Stallman_
 
-- Getting Started with the club
+[Continue reading and to get onboarded with the club so you can be prepared for
+the next meeting!](./getting-started/)

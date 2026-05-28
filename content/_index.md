@@ -9,7 +9,9 @@ type = "home"
 
 ## Meeting information
 
-Weekly Meetings on Thursdays 5 PM - 7 PM
+Weekly Meetings: Thursdays 5 PM - 7 PM
+
+Location: CM22
 
 ## Contact
 
