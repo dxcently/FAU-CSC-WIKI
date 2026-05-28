@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>TODO :: FAU Cyber Security Club</title>
+    <link>http://localhost:1313/todo/index.html</link>
+    <description>TODO Setting up VM guide setup club server to hack server hacking guide Club env (have a standard “club environment” for hacking) Glossary page Have an permanent CTF environment running (that can regenerate itself) for newcomers Contacts page career path map Have this wiki/one page be hackable Wiki layout&#xA;Home Introduction Getting Started Roadmap CTF blue teaming red teaming Infrastructure networking setting up a VM Club Server environment documentation Hacking the club server Resources Links tools linkdins connections</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/todo/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

@@ -8,6 +8,13 @@
     <language>en-us</language>
     <atom:link href="http://localhost:1313/resources/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Links</title>
+      <link>http://localhost:1313/resources/links/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/resources/links/index.html</guid>
+      <description>USEFUL LINKS Guide on all things Cyber&#xA;https://github.com/Berkanktk/CyberSecurity?tab=readme-ov-file#links ACTIVE CLUB REPOS Repo for this wiki&#xA;https://github.com/dxcently/fau-cyber-security-club-wiki ARCHIVED CLUB REPOS 2026 Cyber Patriot&#xA;https://github.com/caol777/findnfix 2026 CCDC&#xA;https://github.com/caol777/CCDC-scripts 2026 eMERGE Project Scalpel Hackathon - Cowrie Honeypot with Hybrid Edge AI</description>
+    </item>
+    <item>
       <title>🛡️ Cybersecurity Intern Training Resource Guide (2025)</title>
       <link>http://localhost:1313/resources/%EF%B8%8F-cybersecurity-intern-training-r-2/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

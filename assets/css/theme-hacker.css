@@ -1,0 +1,118 @@
+:root {
+  /* Hacker Terminal Theme
+   * Based on terminal color palette:
+   * Background: #001100 (dark green/black)
+   * Foreground: #00BB00 (bright green)
+   * Highlight:  #00FF00 (full green)
+   * Medium:     #007700, #009900
+   * Dark:       #005500
+   */
+
+  /* Brand colors */
+  --PRIMARY-color: rgba( 0, 187, 0, 1 ); /* #00BB00 - main green */
+  --PRIMARY-HOVER-color: rgba( 0, 255, 0, 1 ); /* #00FF00 - bright green */
+  --SECONDARY-color: rgba( 0, 153, 0, 1 ); /* #009900 - secondary green */
+  --SECONDARY-HOVER-color: rgba( 0, 187, 0, 1 ); /* #00BB00 */
+  --ACCENT-color: rgba( 0, 255, 0, 1 ); /* #00FF00 - accent/highlight */
+  --ACCENT-HOVER-color: rgba( 0, 255, 0, 1 ); /* #00FF00 */
+
+  /* Menu header */
+  --MENU-HEADER-color: rgba( 0, 187, 0, 1 ); /* #00BB00 */
+  --MENU-HEADER-BG-color: rgba( 0, 17, 0, 1 ); /* #001100 */
+
+  /* Search box */
+  --MENU-SEARCH-color: rgba( 0, 187, 0, 1 ); /* #00BB00 */
+  --MENU-SEARCH-BG-color: rgba( 0, 34, 0, 1 ); /* slightly lighter than bg */
+  --MENU-SEARCH-BORDER-color: rgba( 0, 119, 0, 1 ); /* #007700 */
+
+  /* Home link */
+  --MENU-HOME-LINK-color: rgba( 0, 187, 0, 1 ); /* #00BB00 */
+  --MENU-HOME-LINK-HOVER-color: rgba( 0, 255, 0, 1 ); /* #00FF00 */
+
+  /* Sidebar menu */
+  --MENU-SECTIONS-BG-color: rgba( 0, 17, 0, 1 ); /* #001100 - background */
+  --MENU-SECTIONS-ACTIVE-BG-color: rgba( 0, 34, 0, 1 ); /* slightly lighter */
+  --MENU-SECTIONS-LINK-color: rgba( 0, 187, 0, 1 ); /* #00BB00 */
+  --MENU-SECTIONS-LINK-HOVER-color: rgba( 0, 255, 0, 1 ); /* #00FF00 */
+  --MENU-SECTION-ACTIVE-CATEGORY-color: rgba( 0, 255, 0, 1 ); /* #00FF00 */
+  --MENU-SECTION-SEPARATOR-color: rgba( 0, 85, 0, 1 ); /* #005500 */
+  --MENU-VISITED-color: rgba( 0, 119, 0, 1 ); /* #007700 */
+
+  /* Main content area */
+  --MAIN-BG-color: rgba( 0, 17, 0, 1 ); /* #001100 - background */
+  --MAIN-TEXT-color: rgba( 0, 187, 0, 1 ); /* #00BB00 - text */
+  --MAIN-TITLES-TEXT-color: rgba( 0, 255, 0, 1 ); /* #00FF00 - titles */
+  --MAIN-TITLES-H1-TEXT-color: rgba( 0, 255, 0, 1 ); /* #00FF00 */
+  --MAIN-TITLES-H2-TEXT-color: rgba( 0, 255, 0, 1 ); /* #00FF00 */
+  --MAIN-TITLES-H3-TEXT-color: rgba( 0, 187, 0, 1 ); /* #00BB00 */
+  --MAIN-TITLES-H4-TEXT-color: rgba( 0, 187, 0, 1 ); /* #00BB00 */
+  --MAIN-TITLES-H5-TEXT-color: rgba( 0, 153, 0, 1 ); /* #009900 */
+  --MAIN-TITLES-H6-TEXT-color: rgba( 0, 153, 0, 1 ); /* #009900 */
+
+  /* Links - brighter cyan-green to stand out from regular text */
+  --MAIN-LINK-color: rgba( 0, 255, 136, 1 ); /* #00FF88 - cyan-green for links */
+  --MAIN-LINK-HOVER-color: rgba( 0, 255, 200, 1 ); /* #00FFC8 - brighter cyan on hover */
+
+  /* Code blocks */
+  --CODE-theme: relearn-dark; /* use dark chroma theme */
+  --CODE-BLOCK-color: rgba( 0, 187, 0, 1 ); /* #00BB00 */
+  --CODE-BLOCK-BG-color: rgba( 0, 34, 0, 1 ); /* slightly lighter than main bg */
+  --CODE-BLOCK-BORDER-color: rgba( 0, 85, 0, 1 ); /* #005500 */
+  --CODE-INLINE-color: rgba( 0, 255, 0, 1 ); /* #00FF00 */
+  --CODE-INLINE-BG-color: rgba( 0, 34, 0, 1 );
+  --CODE-INLINE-BORDER-color: rgba( 0, 85, 0, 1 ); /* #005500 */
+
+  /* Browser/system */
+  --BROWSER-theme: dark;
+  --MERMAID-theme: dark;
+  --OPENAPI-theme: dark;
+  --OPENAPI-CODE-theme: obsidian;
+
+  /* Boxes (notices, cards, etc.) */
+  --BOX-CAPTION-color: rgba( 0, 255, 0, 1 ); /* #00FF00 */
+  --BOX-BG-color: rgba( 0, 34, 0, 1 ); /* slightly lighter than main bg */
+  --BOX-TEXT-color: rgba( 0, 187, 0, 1 ); /* #00BB00 */
+
+  /* Box colors - all green variants for hacker theme */
+  --BOX-BLUE-color: rgba( 0, 153, 0, 1 ); /* #009900 */
+  --BOX-BLUE-TEXT-color: var( --BOX-BLUE-color );
+  --BOX-CYAN-color: rgba( 0, 85, 0, 1 ); /* #005500 */
+  --BOX-CYAN-TEXT-color: var( --BOX-CYAN-color );
+  --BOX-GREEN-color: rgba( 0, 187, 0, 1 ); /* #00BB00 */
+  --BOX-GREEN-TEXT-color: var( --BOX-GREEN-color );
+  --BOX-GREY-color: rgba( 0, 119, 0, 1 ); /* #007700 */
+  --BOX-GREY-TEXT-color: var( --BOX-GREY-color );
+  --BOX-MAGENTA-color: rgba( 0, 187, 0, 1 ); /* #00BB00 */
+  --BOX-MAGENTA-TEXT-color: var( --BOX-MAGENTA-color );
+  --BOX-ORANGE-color: rgba( 0, 119, 0, 1 ); /* #007700 */
+  --BOX-ORANGE-TEXT-color: var( --BOX-ORANGE-color );
+  --BOX-RED-color: rgba( 0, 119, 0, 1 ); /* #007700 */
+  --BOX-RED-TEXT-color: var( --BOX-RED-color );
+}
+
+/* Scrollbar styling */
+#R-content-wrapper {
+  --ps-thumb-color: rgba( 0, 119, 0, 1 ); /* #007700 */
+  --ps-thumb-hover-color: rgba( 0, 187, 0, 1 ); /* #00BB00 */
+}
+
+/* Additional terminal-style enhancements */
+body {
+  font-family: monospace, "Courier New", Courier;
+}
+
+/* Make links more visible - always underlined */
+body #R-body-inner a:not(.btn):not(.anchor) {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+body #R-body-inner a:not(.btn):not(.anchor):hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+/* Terminal cursor blink effect for active menu item */
+body #R-sidebar li.active > :is(a, span)::before {
+  content: "> ";
+}

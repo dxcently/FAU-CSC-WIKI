@@ -7,6 +7,14 @@ type = "home"
 
 #### 👋 Welcome to the FAU Cyber Security Club Wiki!
 
+## Meeting information
+
+Weekly Meetings on Thursdays 5 PM - 7 PM
+
+## Contact
+
+Email: csc@fau.edu
+
 This wiki is currently underconstruction. If you would like to help me with it,
 contact me @solitude_freak or @shaamad on the
 [Discord](https://discord.gg/7beJgGF9tK).

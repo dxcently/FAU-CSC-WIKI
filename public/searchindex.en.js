@@ -1,27 +1,35 @@
 var relearn_searchindex = [
   {
     "breadcrumb": "FAU Cyber Security Club \u003e Introduction",
-    "content": "",
-    "description": "",
+    "content": "Welcome to the FAU Cyber Security Club!\nWe are so glad to have you here and taking the time to sit down to read this! For those who are looking into or is already interested in all things cyber security. This is the place for you!\nThe main goal of this club is to create a fun and engaging environment to help students engage not only in learning more about cyber security and tech, but also to create a space of driven and passsionate people who are looking for community and connections.\nWhat the club does and provides:\nWeekly demos and lessons on things related to cyber security and hacking. Hackathons and competitions. We are often joining in competition and it is HIGHLY reccomended to attend even if you aren’t participating because they will be the best way to learn. Real hands on experience with hacking in Networking oportunities with real high network professionals. It’ll look good on the resume",
+    "description": "Welcome to the FAU Cyber Security Club!\nWe are so glad to have you here and taking the time to sit down to read this! For those who are looking into or is already interested in all things cyber security. This is the place for you!\nThe main goal of this club is to create a fun and engaging environment to help students engage not only in learning more about cyber security and tech, but also to create a space of driven and passsionate people who are looking for community and connections.",
     "tags": [],
     "title": "Getting Started With the Club",
-    "uri": "/introduction/getting-started-with-the-club/index.html"
+    "uri": "/introduction/getting-started/index.html"
   },
   {
     "breadcrumb": "FAU Cyber Security Club",
-    "content": "This Wiki is where you can find quick information about the club and current events, as well as helpful resources and guides to help you get initalized.\nThe main goal of this club is to create a fun and engaging environment to help students engage not only in learning more about cyber security and tech, but also to create a space of driven and passsionate people who are looking for community and connections.\nWe strongly encourage an open environment of learning, so NEVER be afraid to ask questions. It is ok if you don’t know something, remember that we are all learning. And the best way to learn is to fail!\nIt is hard to write a simple definition of something as varied as hacking, but I think what these activities have in common is playfulness, cleverness, and exploration. Thus, hacking means exploring the limits of what is possible, in a spirit of playful cleverness. Activities that display playful cleverness have “hack value.” - Richard Stallman\nSome things we reccommend you checking out: Getting Started with the club Window systems Introduction to Linux",
-    "description": "This Wiki is where you can find quick information about the club and current events, as well as helpful resources and guides to help you get initalized.\nThe main goal of this club is to create a fun and engaging environment to help students engage not only in learning more about cyber security and tech, but also to create a space of driven and passsionate people who are looking for community and connections.",
+    "content": "This Wiki is where you can find quick information about the club and current events, as well as helpful resources and guides to help you get initalized.\nWe strongly encourage an open environment of learning, so NEVER be afraid to ask questions. It is ok if you don’t know something, remember that we are all learning. And the best way to learn is to fail!\n\" It is hard to write a simple definition of something as varied as hacking, but I think what these activities have in common is playfulness, cleverness, and exploration. Thus, hacking means exploring the limits of what is possible, in a spirit of playful cleverness. Activities that display playful cleverness have ‘hack value.’ “ - Richard Stallman\nSome things we reccommend you checking out: Getting Started with the club",
+    "description": "This Wiki is where you can find quick information about the club and current events, as well as helpful resources and guides to help you get initalized.\nWe strongly encourage an open environment of learning, so NEVER be afraid to ask questions. It is ok if you don’t know something, remember that we are all learning. And the best way to learn is to fail!",
     "tags": [],
     "title": "Introduction",
     "uri": "/introduction/index.html"
   },
   {
-    "breadcrumb": "FAU Cyber Security Club",
-    "content": "",
-    "description": "",
+    "breadcrumb": "FAU Cyber Security Club \u003e Resources",
+    "content": "USEFUL LINKS Guide on all things Cyber\nhttps://github.com/Berkanktk/CyberSecurity?tab=readme-ov-file#links ACTIVE CLUB REPOS Repo for this wiki\nhttps://github.com/dxcently/fau-cyber-security-club-wiki ARCHIVED CLUB REPOS 2026 Cyber Patriot\nhttps://github.com/caol777/findnfix 2026 CCDC\nhttps://github.com/caol777/CCDC-scripts 2026 eMERGE Project Scalpel Hackathon - Cowrie Honeypot with Hybrid Edge AI\nhttps://github.com/RohanDS2024/Emirge https://github.com/caol777/Cowrie-honeypot",
+    "description": "USEFUL LINKS Guide on all things Cyber\nhttps://github.com/Berkanktk/CyberSecurity?tab=readme-ov-file#links ACTIVE CLUB REPOS Repo for this wiki\nhttps://github.com/dxcently/fau-cyber-security-club-wiki ARCHIVED CLUB REPOS 2026 Cyber Patriot\nhttps://github.com/caol777/findnfix 2026 CCDC\nhttps://github.com/caol777/CCDC-scripts 2026 eMERGE Project Scalpel Hackathon - Cowrie Honeypot with Hybrid Edge AI",
     "tags": [],
-    "title": "Windows Systems",
-    "uri": "/windows-systems/index.html"
+    "title": "Links",
+    "uri": "/resources/links/index.html"
+  },
+  {
+    "breadcrumb": "FAU Cyber Security Club",
+    "content": "TODO Setting up VM guide setup club server to hack server hacking guide Club env (have a standard “club environment” for hacking) Glossary page Have an permanent CTF environment running (that can regenerate itself) for newcomers Contacts page career path map Have this wiki/one page be hackable Wiki layout\nHome Introduction Getting Started Roadmap CTF blue teaming red teaming Infrastructure networking setting up a VM Club Server environment documentation Hacking the club server Resources Links tools linkdins connections",
+    "description": "TODO Setting up VM guide setup club server to hack server hacking guide Club env (have a standard “club environment” for hacking) Glossary page Have an permanent CTF environment running (that can regenerate itself) for newcomers Contacts page career path map Have this wiki/one page be hackable Wiki layout\nHome Introduction Getting Started Roadmap CTF blue teaming red teaming Infrastructure networking setting up a VM Club Server environment documentation Hacking the club server Resources Links tools linkdins connections",
+    "tags": [],
+    "title": "TODO",
+    "uri": "/todo/index.html"
   },
   {
     "breadcrumb": "FAU Cyber Security Club",

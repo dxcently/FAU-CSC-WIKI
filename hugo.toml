@@ -2,3 +2,47 @@ baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'FAU Cyber Security Club'
 theme = 'relearn'
+
+# Social links menu
+[menus]
+  [[menus.shortcuts]]
+    name = "<i class='fab fa-fw fa-discord'></i> Discord"
+    identifier = "discord"
+    url = "https://discord.gg/kHvmg3AFhN"
+    weight = 10
+
+  [[menus.shortcuts]]
+    name = "<i class='fab fa-fw fa-github'></i> GitHub"
+    identifier = "github"
+    url = "https://github.com/dxcently/fau-cyber-security-club-wiki"
+    weight = 20
+
+  [[menus.shortcuts]]
+    name = "<i class='fa-solid fa-school-flag'></i> Owl Central"
+    identifier = "owl_central"
+    url = "https://github.com/dxcently/fau-cyber-security-club-wiki"
+    weight = 30
+
+[params]
+  # Use the custom hacker terminal theme
+  themeVariant = 'hacker'
+
+  # Show the shortcuts menu title
+  disableShortcutsTitle = false
+
+  # Configure sidebar menus
+  # Header: search and home button (default)
+  # Main: page menu (default)
+  # Footer: shortcuts menu with Discord/GitHub links
+  [[params.sidebarmenus]]
+    type = 'page'
+    identifier = 'home'
+    main = true
+    disableTitle = true
+    pageRef = ''
+
+  [[params.sidebarmenus]]
+    type = 'menu'
+    identifier = 'shortcuts'
+    main = false
+    disableTitle = false

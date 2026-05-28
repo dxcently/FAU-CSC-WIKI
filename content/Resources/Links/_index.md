@@ -18,8 +18,15 @@ Repo for this wiki
 
 # ARCHIVED CLUB REPOS
 
+2026 Cyber Patriot
+
+- https://github.com/caol777/findnfix
+
+2026 CCDC
+
+- https://github.com/caol777/CCDC-scripts
+
 2026 eMERGE Project Scalpel Hackathon - Cowrie Honeypot with Hybrid Edge AI
 
 - https://github.com/RohanDS2024/Emirge
-- https://github.com/caol777/CCDC-scripts
 - https://github.com/caol777/Cowrie-honeypot

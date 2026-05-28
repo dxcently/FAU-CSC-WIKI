@@ -3,7 +3,7 @@
   <channel>
     <title>FAU Cyber Security Club</title>
     <link>http://localhost:1313/index.html</link>
-    <description>👋 Welcome to the FAU Cyber Security Club Wiki! This wiki is currently underconstruction. If you would like to help me with it, contact me @solitude_freak or @shaamad on the Discord.&#xA;Resources im using:&#xA;hugo docs&#xA;hugo relearn theme docs&#xA;md cheetsheet</description>
+    <description>👋 Welcome to the FAU Cyber Security Club Wiki! Meeting information Weekly Meetings on Thursdays 5 PM - 7 PM&#xA;Contact Email: csc@fau.edu&#xA;This wiki is currently underconstruction. If you would like to help me with it, contact me @solitude_freak or @shaamad on the Discord.</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
@@ -15,25 +15,11 @@
       <description>This Wiki is where you can find quick information about the club and current events, as well as helpful resources and guides to help you get initalized.&#xA;We strongly encourage an open environment of learning, so NEVER be afraid to ask questions. It is ok if you don’t know something, remember that we are all learning. And the best way to learn is to fail!</description>
     </item>
     <item>
-      <title>Windows Systems</title>
-      <link>http://localhost:1313/windows-systems/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/windows-systems/index.html</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Links</title>
-      <link>http://localhost:1313/links/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/links/index.html</guid>
-      <description>USEFUL LINKS Guide on all things Cyber&#xA;https://github.com/Berkanktk/CyberSecurity?tab=readme-ov-file#links ACTIVE CLUB REPOS Repo for this wiki&#xA;https://github.com/dxcently/fau-cyber-security-club-wiki ARCHIVED CLUB REPOS 2026 eMERGE Project Scalpel Hackathon - Cowrie Honeypot with Hybrid Edge AI</description>
-    </item>
-    <item>
       <title>TODO</title>
-      <link>http://localhost:1313/for-writers/index.html</link>
+      <link>http://localhost:1313/todo/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/for-writers/index.html</guid>
-      <description>TODO Setting up VM guide Club env (have a standard “club environment” for hacking) Glossary page Have an permanent CTF environment running (that can regenerate itself) for newcomers (nix) Contacts page career path map Have this wiki/one page be hackable Wiki layout&#xA;Home Introduction Getting Started Roadmap Setting up a VM Hacking the club server Club Tools CTF blue teaming red teaming Connections Links</description>
+      <guid>http://localhost:1313/todo/index.html</guid>
+      <description>TODO Setting up VM guide setup club server to hack server hacking guide Club env (have a standard “club environment” for hacking) Glossary page Have an permanent CTF environment running (that can regenerate itself) for newcomers Contacts page career path map Have this wiki/one page be hackable Wiki layout&#xA;Home Introduction Getting Started Roadmap CTF blue teaming red teaming Infrastructure networking setting up a VM Club Server environment documentation Hacking the club server Resources Links tools linkdins connections</description>
     </item>
     <item>
       <title>Resources</title>
