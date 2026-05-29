@@ -62,3 +62,12 @@ what it takes" — not "you are stupid for asking."
 - No excessive hedging or hand-holding
 - Respect the reader's intelligence — they can figure things out if pointed in the right direction
 - It is okay to be warm, just never be soft or vague
+
+## ECC Onboarding Notes
+
+- Stack: Hugo static site, Relearn theme — no app code
+- No test suite, no build pipeline beyond `hugo`
+- ECC rules in scope: `web/coding-style` (CSS), `web/design-quality`, `web/security` (CSP for headers)
+- Language-specific ECC rules (TS, Python, Go, Rust) do not apply here
+- Before adding shortcodes or front matter: read `content/authoring/_index.md`
+- `baseURL` in `hugo.toml` is a placeholder (`https://example.org/`) — update before any real deploy
