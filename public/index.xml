@@ -15,25 +15,67 @@
       <description>This Wiki is where you can find quick information about the club and current events, as well as helpful resources and guides to help you get initalized.&#xA;We strongly encourage an open environment of learning, so NEVER be afraid to ask questions. It is ok if you don’t know something, remember that we are all learning. And the best way to learn is to fail!</description>
     </item>
     <item>
-      <title>Resources</title>
-      <link>http://localhost:1313/resources/index.html</link>
+      <title>Virtual Machines</title>
+      <link>http://localhost:1313/virtual-machines/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/resources/index.html</guid>
-      <description>This is where you come to find things. Tools, learning material, reference guides — the good stuff that actually helps when you sit down and try to do something real.&#xA;Here is the honest truth though: nobody is going to hand it to you, and that is fine. The resources here exist to point you in a direction, but whether you actually go anywhere is entirely up to you and what you do with your own time. The people who really get good at this are the ones who go home and keep going. Meetings are a starting point, not the whole picture.</description>
+      <guid>http://localhost:1313/virtual-machines/index.html</guid>
+      <description>A virtual machine is your lab. All practice happens here — not on your host.&#xA;Break it. Reset it. Repeat. That is the whole point.&#xA;This section covers why VMs matter, how to get one running, and what tools to use.</description>
     </item>
     <item>
-      <title>Past Competitions</title>
-      <link>http://localhost:1313/past-competitions/index.html</link>
+      <title>Linux</title>
+      <link>http://localhost:1313/linux/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/past-competitions/index.html</guid>
-      <description>A record of competitions and events the club has participated in, along with the repos and write-ups from each one.&#xA;These are worth browsing. Seeing how past members approached a challenge — what they built, how they structured it, what worked — is genuinely useful if you are gearing up for your own run.</description>
+      <guid>http://localhost:1313/linux/index.html</guid>
+      <description>Security tooling runs on Linux. You don’t need to master it — you need to stop being afraid of it.&#xA;This section covers the filesystem, permissions, and processes. That is the floor everything else builds on.</description>
     </item>
     <item>
-      <title>Authoring</title>
-      <link>http://localhost:1313/authoring/index.html</link>
+      <title>Networking</title>
+      <link>http://localhost:1313/networking/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/authoring/index.html</guid>
-      <description>So You Want to Help Write the Wiki? This wiki is a community effort. Every page someone writes makes it more useful for the next person who joins. You do not need to be a developer to contribute — if you can write Markdown and use GitHub, you can add pages.&#xA;This guide covers two paths:</description>
+      <guid>http://localhost:1313/networking/index.html</guid>
+      <description>You cannot hack or defend something you do not understand. Networking is load-bearing knowledge.&#xA;This section covers IP, protocols, and the tools used to inspect traffic.</description>
+    </item>
+    <item>
+      <title>CLI &amp; Scripting</title>
+      <link>http://localhost:1313/cli-scripting/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/cli-scripting/index.html</guid>
+      <description>The terminal is where real work happens. Scripting is the difference between doing something once and automating it forever.&#xA;This section covers Bash fundamentals and enough Python to be dangerous.</description>
+    </item>
+    <item>
+      <title>Web &amp; System Fundamentals</title>
+      <link>http://localhost:1313/web-fundamentals/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/web-fundamentals/index.html</guid>
+      <description>Most real-world vulnerabilities live at the intersection of web requests and system privileges.&#xA;This section covers HTTP, how a browser-to-server conversation actually works, and the system-level concepts that make or break security.</description>
+    </item>
+    <item>
+      <title>CTF</title>
+      <link>http://localhost:1313/ctf/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ctf/index.html</guid>
+      <description>CTFs (Capture the Flag) are structured hacking challenges. You find a hidden string called a flag by exploiting a vulnerability or solving a puzzle.&#xA;They are the best low-stakes way to practice. This section covers where to start, how to approach challenges, and what categories exist.</description>
+    </item>
+    <item>
+      <title>Specializations</title>
+      <link>http://localhost:1313/specializations/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/specializations/index.html</guid>
+      <description>Once you have the basics, it is time to go deep. Security branches out into distinct disciplines. Pick one that interests you and start going down the rabbit hole.&#xA;This section introduces web exploitation, binary exploitation, forensics, and network defense.</description>
+    </item>
+    <item>
+      <title>AI &amp; Agents for Security</title>
+      <link>http://localhost:1313/ai-security/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ai-security/index.html</guid>
+      <description>AI is not a shortcut. It is a force multiplier — and in 2024–2025, it became a genuine competitive advantage in security work.&#xA;By the end of 2024, LLM agents were solving 95%+ of beginner CTF challenges autonomously. In 2025, one AI system placed first at a live competition and took a $50,000 prize. An autonomous pen-testing AI reached #1 on HackerOne’s US leaderboard.&#xA;This section covers what AI can actually do, which models to use, how to set them up, and how to build workflows and agents for security work.</description>
+    </item>
+    <item>
+      <title>Contributing to the Club</title>
+      <link>http://localhost:1313/contributing/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/contributing/index.html</guid>
+      <description>This is where learning turns into doing. Competing, writing writeups, helping newer members, building tools — this is where skills compound fast.&#xA;You do not need to be an expert to contribute. You just need to show up and try.&#xA;Ways to Contribute Compete Show up to competitions even if you do not know what you are doing. Watching how others solve problems is worth more than a week of tutorials.</description>
     </item>
   </channel>
 </rss>

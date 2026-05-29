@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux :: FAU Cyber Security Club</title>
+    <link>https://example.org/linux/index.html</link>
+    <description>Security tooling runs on Linux. You don’t need to master it — you need to stop being afraid of it.&#xA;This section covers the filesystem, permissions, and processes. That is the floor everything else builds on.</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://example.org/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Filesystem</title>
+      <link>https://example.org/linux/filesystem/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/linux/filesystem/index.html</guid>
+      <description>In Linux, everything is a file. Devices, sockets, processes — all represented as files somewhere in the tree. Understanding the layout is step one.&#xA;Key Directories Path What lives there / Root of the entire filesystem /home/username Your personal files /etc System configuration files /var Logs, databases, runtime data /tmp Temporary files — cleared on reboot /usr/bin User-installed executables /bin, /sbin Core system executables /proc Virtual filesystem exposing kernel/process info /dev Device files When you are looking for a config file, start in /etc. When you are looking for a binary, check /usr/bin. When you are debugging a process, look in /proc.</description>
+    </item>
+    <item>
+      <title>Permissions &amp; Users</title>
+      <link>https://example.org/linux/permissions/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/linux/permissions/index.html</guid>
+      <description>Linux permissions are how the OS decides who can read, write, or execute a file. Misconfigurations here are a leading cause of privilege escalation.&#xA;The Permission Model Every file has three permission sets: owner, group, others.&#xA;-rwxr-xr-- 1 alice staff 4096 may 29 file.sh ^^^ owner group ^^^ group permissions ^^^ everyone else Each set has three bits: r (read), w (write), x (execute).</description>
+    </item>
+    <item>
+      <title>Processes &amp; Services</title>
+      <link>https://example.org/linux/processes/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/linux/processes/index.html</guid>
+      <description>A process is a running program. Understanding what is running, as whom, and why is essential for both offense and defense.&#xA;Viewing Processes ps aux # all running processes with details ps aux | grep nginx # find a specific process top # interactive real-time process viewer htop # better version of top (install separately) pgrep processname # get PID of a named process Key columns in ps aux: USER (who is running it), PID (process ID), %CPU, %MEM, COMMAND (what it is).</description>
+    </item>
+  </channel>
+</rss>

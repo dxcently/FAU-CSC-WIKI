@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web &amp; System Fundamentals :: FAU Cyber Security Club</title>
+    <link>http://localhost:1313/web-fundamentals/index.html</link>
+    <description>Most real-world vulnerabilities live at the intersection of web requests and system privileges.&#xA;This section covers HTTP, how a browser-to-server conversation actually works, and the system-level concepts that make or break security.</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/web-fundamentals/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HTTP</title>
+      <link>http://localhost:1313/web-fundamentals/http/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/web-fundamentals/http/index.html</guid>
+      <description>HTTP is the protocol browsers and servers use to communicate. Understanding it is non-negotiable for web security — every web vulnerability lives in an HTTP request or response.&#xA;The Request-Response Model Every HTTP interaction is a request from a client and a response from a server. Both have a structure.&#xA;Request:&#xA;GET /login HTTP/1.1 Host: example.com Cookie: session=abc123 User-Agent: Mozilla/5.0 Response:</description>
+    </item>
+    <item>
+      <title>System Concepts</title>
+      <link>http://localhost:1313/web-fundamentals/system-concepts/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/web-fundamentals/system-concepts/index.html</guid>
+      <description>Security vulnerabilities on the system level come down to a few recurring patterns: privilege misconfigurations, trusted environments running untrusted data, and processes with more access than they need.&#xA;This page covers the concepts that underpin most of those patterns.&#xA;Users and Groups Every process runs as a user. Every file is owned by a user and a group. Access is controlled by matching those identities.</description>
+    </item>
+  </channel>
+</rss>

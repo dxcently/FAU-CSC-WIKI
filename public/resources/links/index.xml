@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Links :: FAU Cyber Security Club</title>
-    <link>http://localhost:1313/resources/links/index.html</link>
+    <link>https://example.org/resources/links/index.html</link>
     <description>USEFUL LINKS Comphrensive guide on all things cyber security related&#xA;https://github.com/Berkanktk/CyberSecurity?tab=readme-ov-file#links ACTIVE CLUB REPOS Repo for this wiki&#xA;https://github.com/dxcently/fau-cyber-security-club-wiki</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/resources/links/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://example.org/resources/links/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

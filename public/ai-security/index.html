@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html id="R-html" lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.160.1">
+    <meta name="generator" content="Relearn 9.0.3+dd4f8457f5143e91eae3954813494d2b0cc6741c">
+    <meta name="description" content="AI is not a shortcut. It is a force multiplier — and in 2024–2025, it became a genuine competitive advantage in security work.
+By the end of 2024, LLM agents were solving 95%&#43; of beginner CTF challenges autonomously. In 2025, one AI system placed first at a live competition and took a $50,000 prize. An autonomous pen-testing AI reached #1 on HackerOne’s US leaderboard.
+This section covers what AI can actually do, which models to use, how to set them up, and how to build workflows and agents for security work.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="AI &amp; Agents for Security :: FAU Cyber Security Club">
+    <meta name="twitter:description" content="AI is not a shortcut. It is a force multiplier — and in 2024–2025, it became a genuine competitive advantage in security work.
+By the end of 2024, LLM agents were solving 95%&#43; of beginner CTF challenges autonomously. In 2025, one AI system placed first at a live competition and took a $50,000 prize. An autonomous pen-testing AI reached #1 on HackerOne’s US leaderboard.
+This section covers what AI can actually do, which models to use, how to set them up, and how to build workflows and agents for security work.">
+    <meta property="og:url" content="https://example.org/ai-security/index.html">
+    <meta property="og:site_name" content="FAU Cyber Security Club">
+    <meta property="og:title" content="AI &amp; Agents for Security :: FAU Cyber Security Club">
+    <meta property="og:description" content="AI is not a shortcut. It is a force multiplier — and in 2024–2025, it became a genuine competitive advantage in security work.
+By the end of 2024, LLM agents were solving 95%&#43; of beginner CTF challenges autonomously. In 2025, one AI system placed first at a live competition and took a $50,000 prize. An autonomous pen-testing AI reached #1 on HackerOne’s US leaderboard.
+This section covers what AI can actually do, which models to use, how to set them up, and how to build workflows and agents for security work.">
+    <meta property="og:locale" content="en_us">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="AI &amp; Agents for Security :: FAU Cyber Security Club">
+    <meta itemprop="description" content="AI is not a shortcut. It is a force multiplier — and in 2024–2025, it became a genuine competitive advantage in security work.
+By the end of 2024, LLM agents were solving 95%&#43; of beginner CTF challenges autonomously. In 2025, one AI system placed first at a live competition and took a $50,000 prize. An autonomous pen-testing AI reached #1 on HackerOne’s US leaderboard.
+This section covers what AI can actually do, which models to use, how to set them up, and how to build workflows and agents for security work.">
+    <meta itemprop="wordCount" content="117">
+    <title>AI &amp; Agents for Security :: FAU Cyber Security Club</title>
+    <link href="/ai-security/index.xml" rel="alternate" type="application/rss+xml" title="AI &amp; Agents for Security :: FAU Cyber Security Club">
+    <link href="/css/auto-complete/auto-complete.min.css?1780078471" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1780078471" defer></script>
+    <script src="/js/search-lunr.min.js?1780078471" defer></script>
+    <script src="/js/search.min.js?1780078471" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.en.js?1780078471";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1780078471" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1780078471" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1780078471" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1780078471" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="/fonts/fontawesome/css/all.min.css?1780078471" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/all.min.css?1780078471" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1780078471" rel="stylesheet">
+    <link href="/css/theme.min.css?1780078471" rel="stylesheet">
+    <link href="/css/format-html.min.css?1780078471" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/ai-security\/index.html';
+      window.relearn.relBasePath='..';
+      window.relearn.relBaseUri='..';
+      window.relearn.absBaseUri='https:\/\/example.org';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'hacker' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+  </head>
+  <body class="mobile-support html" data-origin="/ai-security/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper"> 
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">FAU Cyber Security Club</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">AI &amp; Agents for Security</span><meta itemprop="position" content="2"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/specializations/network-defense/index.html" title="Network Defense (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/ai-security/state-of-ai/index.html" title="What AI Can Actually Do (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable ai-security" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="ai--agents-for-security">AI &amp; Agents for Security</h1>
+
+<p>AI is not a shortcut. It is a force multiplier — and in 2024–2025, it became a genuine competitive advantage in security work.</p>
+<p>By the end of 2024, LLM agents were solving 95%+ of beginner CTF challenges autonomously. In 2025, one AI system placed first at a live competition and took a $50,000 prize. An autonomous pen-testing AI reached #1 on HackerOne&rsquo;s US leaderboard.</p>
+<p>This section covers what AI can actually do, which models to use, how to set them up, and how to build workflows and agents for security work.</p>
+<hr>
+<pre class="mermaid actionbar-wrapper align-center ">
+flowchart LR
+    A([You]) --&gt; B[Pick a model]
+    B --&gt; C[Set up tooling]
+    C --&gt; D[Build a workflow]
+    D --&gt; E[Automate with agents]
+    E --&gt; F([Compound results])
+</pre>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <a id="R-logo" class="R-default direction-row" href="/index.html">
+          <span class="logo-title default-animation">FAU Cyber Security Club</span>
+        </a>
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-home default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/introduction/index.html"><a class="padding default-animation" href="/introduction/index.html">Introduction</a><ul id="R-subsections-e1ed3a04f1f57a27be4a8d0eb274be18" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/virtual-machines/index.html"><a class="padding default-animation" href="/virtual-machines/index.html">Virtual Machines</a><ul id="R-subsections-874cad8e32e27d3815c2fbe38c2c4129" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/linux/index.html"><a class="padding default-animation" href="/linux/index.html">Linux</a><ul id="R-subsections-e2509333b88222aa06f1b5fc60b020b2" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/networking/index.html"><a class="padding default-animation" href="/networking/index.html">Networking</a><ul id="R-subsections-d7c3359b808d40df139a3bb9f9073483" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/cli-scripting/index.html"><a class="padding default-animation" href="/cli-scripting/index.html">CLI &amp; Scripting</a><ul id="R-subsections-c73e482835d9355e5f1e382f2ae56552" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/web-fundamentals/index.html"><a class="padding default-animation" href="/web-fundamentals/index.html">Web &amp; System Fundamentals</a><ul id="R-subsections-a148b684aeed8492b8c3e70b6f24edc4" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/ctf/index.html"><a class="padding default-animation" href="/ctf/index.html">CTF</a><ul id="R-subsections-b7de208e1dbb9555f350027fc09192d1" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/specializations/index.html"><a class="padding default-animation" href="/specializations/index.html">Specializations</a><ul id="R-subsections-df6b5100c51808a0b68da3e53f945bbc" class="collapsible-menu"></ul></li>
+            <li class="active parent " data-nav-id="/ai-security/index.html"><a class="padding default-animation" href="/ai-security/index.html">AI &amp; Agents for Security</a><ul id="R-subsections-76c8f223c8f20ea8d87d51384f1f5997" class="collapsible-menu">
+            <li class="" data-nav-id="/ai-security/state-of-ai/index.html"><a class="padding" href="/ai-security/state-of-ai/index.html">What AI Can Actually Do</a></li>
+            <li class="" data-nav-id="/ai-security/models/index.html"><a class="padding" href="/ai-security/models/index.html">Models &amp; When to Use Them</a></li>
+            <li class="" data-nav-id="/ai-security/setup/index.html"><a class="padding" href="/ai-security/setup/index.html">Setting Up Your AI Toolkit</a></li>
+            <li class="" data-nav-id="/ai-security/workflows/index.html"><a class="padding" href="/ai-security/workflows/index.html">Practical Workflows</a></li>
+            <li class="" data-nav-id="/ai-security/agents/index.html"><a class="padding" href="/ai-security/agents/index.html">Building Agents</a></li></ul></li>
+            <li class="" data-nav-id="/contributing/index.html"><a class="padding default-animation" href="/contributing/index.html">Contributing to the Club</a><ul id="R-subsections-0d02badb7422c7536b9ac4528048a4b1" class="collapsible-menu"></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <div class="nav-title padding">Quick Links</div>
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="https://discord.gg/kHvmg3AFhN"><a class="padding" href="https://discord.gg/kHvmg3AFhN" rel="external"><i class='fab fa-fw fa-discord'></i> Discord</a></li>
+            <li class="" data-nav-id="https://github.com/dxcently/fau-cyber-security-club-wiki"><a class="padding" href="https://github.com/dxcently/fau-cyber-security-club-wiki" rel="external"><i class='fab fa-fw fa-github'></i> GitHub</a></li>
+            <li class="" data-nav-id="https://github.com/dxcently/fau-cyber-security-club-wiki"><a class="padding" href="https://github.com/dxcently/fau-cyber-security-club-wiki" rel="external"><i class='fa-solid fa-school-flag'></i> Owl Central</a></li>
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/js/js-yaml/js-yaml.min.js?1780078471" defer></script>
+    <script src="/js/d3/d3-color.min.js?1780078471" defer></script>
+    <script src="/js/d3/d3-dispatch.min.js?1780078471" defer></script>
+    <script src="/js/d3/d3-drag.min.js?1780078471" defer></script>
+    <script src="/js/d3/d3-ease.min.js?1780078471" defer></script>
+    <script src="/js/d3/d3-interpolate.min.js?1780078471" defer></script>
+    <script src="/js/d3/d3-selection.min.js?1780078471" defer></script>
+    <script src="/js/d3/d3-timer.min.js?1780078471" defer></script>
+    <script src="/js/d3/d3-transition.min.js?1780078471" defer></script>
+    <script src="/js/d3/d3-zoom.min.js?1780078471" defer></script>
+    <script src="/js/mermaid/mermaid.min.js?1780078471" defer></script>
+    <script>
+      window.relearn.themeUseMermaid = JSON.parse("{}");
+    </script>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1780078471" defer></script>
+    <script src="/js/theme.min.js?1780078471" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

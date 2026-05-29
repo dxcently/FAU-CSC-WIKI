@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html id="R-html" lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.160.1">
+    <meta name="generator" content="Relearn 9.0.3+dd4f8457f5143e91eae3954813494d2b0cc6741c">
+    <meta name="description" content="A process is a running program. Understanding what is running, as whom, and why is essential for both offense and defense.
+Viewing Processes ps aux # all running processes with details ps aux | grep nginx # find a specific process top # interactive real-time process viewer htop # better version of top (install separately) pgrep processname # get PID of a named process Key columns in ps aux: USER (who is running it), PID (process ID), %CPU, %MEM, COMMAND (what it is).">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Processes &amp; Services :: FAU Cyber Security Club">
+    <meta name="twitter:description" content="A process is a running program. Understanding what is running, as whom, and why is essential for both offense and defense.
+Viewing Processes ps aux # all running processes with details ps aux | grep nginx # find a specific process top # interactive real-time process viewer htop # better version of top (install separately) pgrep processname # get PID of a named process Key columns in ps aux: USER (who is running it), PID (process ID), %CPU, %MEM, COMMAND (what it is).">
+    <meta property="og:url" content="https://example.org/linux/processes/index.html">
+    <meta property="og:site_name" content="FAU Cyber Security Club">
+    <meta property="og:title" content="Processes &amp; Services :: FAU Cyber Security Club">
+    <meta property="og:description" content="A process is a running program. Understanding what is running, as whom, and why is essential for both offense and defense.
+Viewing Processes ps aux # all running processes with details ps aux | grep nginx # find a specific process top # interactive real-time process viewer htop # better version of top (install separately) pgrep processname # get PID of a named process Key columns in ps aux: USER (who is running it), PID (process ID), %CPU, %MEM, COMMAND (what it is).">
+    <meta property="og:locale" content="en_us">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Linux">
+    <meta itemprop="name" content="Processes &amp; Services :: FAU Cyber Security Club">
+    <meta itemprop="description" content="A process is a running program. Understanding what is running, as whom, and why is essential for both offense and defense.
+Viewing Processes ps aux # all running processes with details ps aux | grep nginx # find a specific process top # interactive real-time process viewer htop # better version of top (install separately) pgrep processname # get PID of a named process Key columns in ps aux: USER (who is running it), PID (process ID), %CPU, %MEM, COMMAND (what it is).">
+    <meta itemprop="wordCount" content="624">
+    <title>Processes &amp; Services :: FAU Cyber Security Club</title>
+    <link href="/css/auto-complete/auto-complete.min.css?1780078471" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1780078471" defer></script>
+    <script src="/js/search-lunr.min.js?1780078471" defer></script>
+    <script src="/js/search.min.js?1780078471" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.en.js?1780078471";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1780078471" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1780078471" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1780078471" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1780078471" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="/fonts/fontawesome/css/all.min.css?1780078471" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/all.min.css?1780078471" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1780078471" rel="stylesheet">
+    <link href="/css/theme.min.css?1780078471" rel="stylesheet">
+    <link href="/css/format-html.min.css?1780078471" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/linux\/processes\/index.html';
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='https:\/\/example.org';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'hacker' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+  </head>
+  <body class="mobile-support html" data-origin="/linux/processes/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#viewing-processes">Viewing Processes</a></li>
+    <li><a href="#killing-processes">Killing Processes</a></li>
+    <li><a href="#background-jobs">Background Jobs</a></li>
+    <li><a href="#services-systemd">Services (systemd)</a></li>
+    <li><a href="#checking-open-connections">Checking Open Connections</a></li>
+    <li><a href="#in-ctf-environments">In CTF Environments</a></li>
+    <li><a href="#using-ai">Using AI</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">FAU Cyber Security Club</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/linux/index.html"><span itemprop="name">Linux</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Processes &amp; Services</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/linux/permissions/index.html" title="Permissions & Users (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/networking/index.html" title="Networking (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable linux" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="processes--services">Processes &amp; Services</h1>
+
+<p>A process is a running program. Understanding what is running, as whom, and why is essential for both offense and defense.</p>
+<hr>
+<h2 id="viewing-processes">Viewing Processes<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ps aux                    <span style="color:#75715e"># all running processes with details</span>
+</span></span><span style="display:flex;"><span>ps aux | grep nginx       <span style="color:#75715e"># find a specific process</span>
+</span></span><span style="display:flex;"><span>top                       <span style="color:#75715e"># interactive real-time process viewer</span>
+</span></span><span style="display:flex;"><span>htop                      <span style="color:#75715e"># better version of top (install separately)</span>
+</span></span><span style="display:flex;"><span>pgrep processname         <span style="color:#75715e"># get PID of a named process</span></span></span></code></pre></div>
+<p>Key columns in <code>ps aux</code>: <code>USER</code> (who is running it), <code>PID</code> (process ID), <code>%CPU</code>, <code>%MEM</code>, <code>COMMAND</code> (what it is).</p>
+<hr>
+<h2 id="killing-processes">Killing Processes<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kill PID              <span style="color:#75715e"># send SIGTERM (polite stop)</span>
+</span></span><span style="display:flex;"><span>kill -9 PID           <span style="color:#75715e"># send SIGKILL (force kill, no cleanup)</span>
+</span></span><span style="display:flex;"><span>killall processname   <span style="color:#75715e"># kill all processes with that name</span>
+</span></span><span style="display:flex;"><span>pkill pattern         <span style="color:#75715e"># kill by pattern match</span></span></span></code></pre></div>
+<p>Use <code>kill -9</code> only when a process won&rsquo;t respond to a normal kill. It skips any cleanup the process would normally do.</p>
+<hr>
+<h2 id="background-jobs">Background Jobs<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>command &amp;             <span style="color:#75715e"># run in background</span>
+</span></span><span style="display:flex;"><span>jobs                  <span style="color:#75715e"># list background jobs</span>
+</span></span><span style="display:flex;"><span>fg %1                 <span style="color:#75715e"># bring job 1 to foreground</span>
+</span></span><span style="display:flex;"><span>bg %1                 <span style="color:#75715e"># resume stopped job in background</span>
+</span></span><span style="display:flex;"><span>Ctrl+Z                <span style="color:#75715e"># suspend foreground process</span>
+</span></span><span style="display:flex;"><span>nohup command &amp;       <span style="color:#75715e"># run and keep running after logout</span></span></span></code></pre></div>
+<hr>
+<h2 id="services-systemd">Services (systemd)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Most modern Linux distros use systemd to manage services.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>systemctl status nginx          <span style="color:#75715e"># is this service running?</span>
+</span></span><span style="display:flex;"><span>systemctl start nginx           <span style="color:#75715e"># start it</span>
+</span></span><span style="display:flex;"><span>systemctl stop nginx            <span style="color:#75715e"># stop it</span>
+</span></span><span style="display:flex;"><span>systemctl restart nginx         <span style="color:#75715e"># restart</span>
+</span></span><span style="display:flex;"><span>systemctl enable nginx          <span style="color:#75715e"># start on boot</span>
+</span></span><span style="display:flex;"><span>systemctl disable nginx         <span style="color:#75715e"># do not start on boot</span>
+</span></span><span style="display:flex;"><span>systemctl list-units --type<span style="color:#f92672">=</span>service   <span style="color:#75715e"># all running services</span></span></span></code></pre></div>
+<hr>
+<h2 id="checking-open-connections">Checking Open Connections<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ss -tulnp             <span style="color:#75715e"># listening ports and which process owns them</span>
+</span></span><span style="display:flex;"><span>netstat -tulnp        <span style="color:#75715e"># older equivalent</span>
+</span></span><span style="display:flex;"><span>lsof -i :80           <span style="color:#75715e"># what is using port 80</span></span></span></code></pre></div>
+<hr>
+<h2 id="in-ctf-environments">In CTF Environments<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p><strong>After landing a shell — understand what is running:</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># What is running and as whom?</span>
+</span></span><span style="display:flex;"><span>ps aux
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Any process running as root that looks unusual?</span>
+</span></span><span style="display:flex;"><span>ps aux | grep root | grep -v <span style="color:#e6db74">&#39;\[&#39;</span> | grep -v systemd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># What ports are open internally that were not visible from outside?</span>
+</span></span><span style="display:flex;"><span>ss -tulnp
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Common find: database running on localhost only (3306 mysql, 5432 postgres)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># — useful for port forwarding back to your machine</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># What services are running?</span>
+</span></span><span style="display:flex;"><span>systemctl list-units --type<span style="color:#f92672">=</span>service --state<span style="color:#f92672">=</span>running</span></span></code></pre></div>
+<p><strong>Port forwarding an internal service to your machine:</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># On your machine — forward remote port 3306 to local 3306 via SSH</span>
+</span></span><span style="display:flex;"><span>ssh -L 3306:localhost:3306 user@target.htb
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Then connect to MySQL locally</span>
+</span></span><span style="display:flex;"><span>mysql -u root -p -h 127.0.0.1</span></span></code></pre></div>
+<p><strong>Looking for running processes that expose credentials:</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Watch what processes run (catches cron jobs)</span>
+</span></span><span style="display:flex;"><span>watch -n <span style="color:#ae81ff">1</span> <span style="color:#e6db74">&#34;ps aux --sort=-%cpu | head -20&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Check process command lines for embedded credentials</span>
+</span></span><span style="display:flex;"><span>cat /proc/*/cmdline 2&gt;/dev/null | tr <span style="color:#e6db74">&#39;\0&#39;</span> <span style="color:#e6db74">&#39; &#39;</span> | grep -i <span style="color:#e6db74">&#34;pass\|key\|secret&#34;</span></span></span></code></pre></div>
+<p><strong>Blue team / CCDC — detecting attacker processes:</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Processes connecting outbound (reverse shells)</span>
+</span></span><span style="display:flex;"><span>ss -tulnp | grep ESTABLISHED
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Check for unusual listening ports that appeared recently</span>
+</span></span><span style="display:flex;"><span>ss -tulnp
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Suspicious process names or paths</span>
+</span></span><span style="display:flex;"><span>ps aux | grep -E <span style="color:#e6db74">&#39;(nc|ncat|bash -i|/tmp/|python -c)&#39;</span></span></span></code></pre></div>
+<hr>
+<h2 id="using-ai">Using AI<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p><strong>Where it helps with processes:</strong></p>
+<ul>
+<li><strong>Interpreting <code>ps aux</code> output:</strong> Paste an unusual process line. Ask what it is doing and whether it is suspicious.</li>
+<li><strong>Writing monitoring scripts:</strong> &ldquo;Write a bash script that watches for new processes connecting to external IPs and logs them with a timestamp.&rdquo; This is the kind of one-off defensive tooling that AI produces well.</li>
+<li><strong>Understanding systemd unit files:</strong> Paste a <code>.service</code> file and ask what it does, what user it runs as, and whether there is anything misconfigured.</li>
+<li><strong>Port forwarding syntax:</strong> SSH forwarding flags are not obvious. Describe the scenario and get the exact command.</li>
+</ul>
+<hr>
+
+<details open class="box cstyle notices info">
+  <summary class="box-label" tabindex="-1">
+    <i class="fa-fw fas fa-info-circle"></i> 
+    How the Club Uses This
+  </summary>
+  <div class="box-content">
+<p>TODO: Add examples from competition scenarios where process analysis was relevant (blue team, forensics challenges, etc.).</p>
+  </div>
+</details>
+<hr>
+<p><strong>References</strong></p>
+<ul>
+<li><a href="https://systemd.io/" rel="external">systemd documentation</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/process-management-in-linux" rel="external">Linux process management — DigitalOcean</a></li>
+<li><code>man ps</code>, <code>man kill</code>, <code>man systemctl</code> — in your terminal</li>
+</ul>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <a id="R-logo" class="R-default direction-row" href="/index.html">
+          <span class="logo-title default-animation">FAU Cyber Security Club</span>
+        </a>
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-home default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/introduction/index.html"><a class="padding default-animation" href="/introduction/index.html">Introduction</a><ul id="R-subsections-e1ed3a04f1f57a27be4a8d0eb274be18" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/virtual-machines/index.html"><a class="padding default-animation" href="/virtual-machines/index.html">Virtual Machines</a><ul id="R-subsections-874cad8e32e27d3815c2fbe38c2c4129" class="collapsible-menu"></ul></li>
+            <li class="parent " data-nav-id="/linux/index.html"><a class="padding default-animation" href="/linux/index.html">Linux</a><ul id="R-subsections-e2509333b88222aa06f1b5fc60b020b2" class="collapsible-menu">
+            <li class="" data-nav-id="/linux/filesystem/index.html"><a class="padding" href="/linux/filesystem/index.html">The Filesystem</a></li>
+            <li class="" data-nav-id="/linux/permissions/index.html"><a class="padding" href="/linux/permissions/index.html">Permissions &amp; Users</a></li>
+            <li class="active " data-nav-id="/linux/processes/index.html"><a class="padding" href="/linux/processes/index.html">Processes &amp; Services</a></li></ul></li>
+            <li class="" data-nav-id="/networking/index.html"><a class="padding default-animation" href="/networking/index.html">Networking</a><ul id="R-subsections-d7c3359b808d40df139a3bb9f9073483" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/cli-scripting/index.html"><a class="padding default-animation" href="/cli-scripting/index.html">CLI &amp; Scripting</a><ul id="R-subsections-c73e482835d9355e5f1e382f2ae56552" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/web-fundamentals/index.html"><a class="padding default-animation" href="/web-fundamentals/index.html">Web &amp; System Fundamentals</a><ul id="R-subsections-a148b684aeed8492b8c3e70b6f24edc4" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/ctf/index.html"><a class="padding default-animation" href="/ctf/index.html">CTF</a><ul id="R-subsections-b7de208e1dbb9555f350027fc09192d1" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/specializations/index.html"><a class="padding default-animation" href="/specializations/index.html">Specializations</a><ul id="R-subsections-df6b5100c51808a0b68da3e53f945bbc" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/ai-security/index.html"><a class="padding default-animation" href="/ai-security/index.html">AI &amp; Agents for Security</a><ul id="R-subsections-76c8f223c8f20ea8d87d51384f1f5997" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/contributing/index.html"><a class="padding default-animation" href="/contributing/index.html">Contributing to the Club</a><ul id="R-subsections-0d02badb7422c7536b9ac4528048a4b1" class="collapsible-menu"></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <div class="nav-title padding">Quick Links</div>
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="https://discord.gg/kHvmg3AFhN"><a class="padding" href="https://discord.gg/kHvmg3AFhN" rel="external"><i class='fab fa-fw fa-discord'></i> Discord</a></li>
+            <li class="" data-nav-id="https://github.com/dxcently/fau-cyber-security-club-wiki"><a class="padding" href="https://github.com/dxcently/fau-cyber-security-club-wiki" rel="external"><i class='fab fa-fw fa-github'></i> GitHub</a></li>
+            <li class="" data-nav-id="https://github.com/dxcently/fau-cyber-security-club-wiki"><a class="padding" href="https://github.com/dxcently/fau-cyber-security-club-wiki" rel="external"><i class='fa-solid fa-school-flag'></i> Owl Central</a></li>
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1780078471" defer></script>
+    <script src="/js/theme.min.js?1780078471" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>
