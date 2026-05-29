@@ -287,19 +287,19 @@ are defined as CSS variables in `assets/css/theme-hacker.css`.
 
 **Key CSS variables**
 
-| Variable                    | Value     | What it controls       |
-| --------------------------- | --------- | ---------------------- |
-| `--PRIMARY-color`           | `#00BB00` | Primary brand color    |
-| `--PRIMARY-HOVER-color`     | `#00FF00` | Hover state            |
-| `--MAIN-BG-color`           | `#001100` | Page background        |
-| `--MAIN-TEXT-color`         | `#00BB00` | Body text              |
-| `--MAIN-TITLES-TEXT-color`  | `#00FF00` | H1 / H2 headings       |
-| `--MAIN-LINK-color`         | `#00FF88` | Hyperlinks             |
-| `--CODE-BLOCK-BG-color`     | `#002200` | Code block background  |
-| `--CODE-BLOCK-BORDER-color` | `#005500` | Code block border      |
-| `--CODE-INLINE-color`       | `#00FF00` | Inline code text       |
-| `--MENU-SECTIONS-BG-color`  | `#001100` | Sidebar background     |
-| `--MENU-VISITED-color`      | `#007700` | Visited sidebar links  |
+| Variable                    | Value     | What it controls      |
+| --------------------------- | --------- | --------------------- |
+| `--PRIMARY-color`           | `#00BB00` | Primary brand color   |
+| `--PRIMARY-HOVER-color`     | `#00FF00` | Hover state           |
+| `--MAIN-BG-color`           | `#001100` | Page background       |
+| `--MAIN-TEXT-color`         | `#00BB00` | Body text             |
+| `--MAIN-TITLES-TEXT-color`  | `#00FF00` | H1 / H2 headings      |
+| `--MAIN-LINK-color`         | `#00FF88` | Hyperlinks            |
+| `--CODE-BLOCK-BG-color`     | `#002200` | Code block background |
+| `--CODE-BLOCK-BORDER-color` | `#005500` | Code block border     |
+| `--CODE-INLINE-color`       | `#00FF00` | Inline code text      |
+| `--MENU-SECTIONS-BG-color`  | `#001100` | Sidebar background    |
+| `--MENU-VISITED-color`      | `#007700` | Visited sidebar links |
 
 Edit `assets/css/theme-hacker.css` to change any of these. The theme variant is
 wired up in `hugo.toml` via `themeVariant = 'hacker'`.
@@ -346,7 +346,7 @@ Cut any paragraph that says nothing. Phrases like "it's important to note" or
 If you have [Claude Code](https://claude.ai/code), run `claude` or `claude rc`
 from the repo root. It reads the existing content and `CLAUDE.md`, matches the
 site's style, and writes files directly. Just tell it what you need. I've also
-prompted it to write a less condescending Linus Torvalds lol.
+prompted it to write like a less condescending Linus Torvalds lol.
 
 ---
 
