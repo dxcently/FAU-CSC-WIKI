@@ -26,4 +26,4 @@ What the club does and provides:
 - Networking oportunities with real high network professionals.
 - It'll look good on the resume
 
-[← Back to Introduction](../)
+[Continue to the Roadmap →](./roadmap.md)

@@ -1,7 +1,15 @@
 var relearn_searchindex = [
   {
+    "breadcrumb": "FAU Cyber Security Club \u003e Past Competitions",
+    "content": "CyberPatriot is the National Youth Cyber Education Program, focused on securing misconfigured systems across Windows and Linux environments against a scoring engine.\nRepos https://github.com/caol777/findnfix",
+    "description": "CyberPatriot is the National Youth Cyber Education Program, focused on securing misconfigured systems across Windows and Linux environments against a scoring engine.\nRepos https://github.com/caol777/findnfix",
+    "tags": [],
+    "title": "2026 Cyber Patriot",
+    "uri": "/past-competitions/2026-cyber-patriot/index.html"
+  },
+  {
     "breadcrumb": "FAU Cyber Security Club \u003e Introduction",
-    "content": "Welcome to the FAU Cyber Security Club!\nWe are so glad to have you here and taking the time to sit down to read this! For those who are looking into or is already interested in all things cyber security. This is the place for you!\nThe main goal of this club is to create a fun and engaging environment to help students engage not only in learning more about cyber security and tech, but also to create a space of driven and passsionate people who are looking for community and connections.\nWhat the club does and provides:\nWeekly demos and lessons on things related to cyber security and hacking. Hackathons and competitions. We are often joining in competition and it is HIGHLY reccomended to attend even if you aren’t participating because they will be the best way to learn. Real hands on experience with hacking in Networking oportunities with real high network professionals. It’ll look good on the resume",
+    "content": "Welcome to the FAU Cyber Security Club!\nWe are so glad to have you here and taking the time to sit down to read this! For those who are looking into or is already interested in all things cyber security. This is the place for you!\nThe main goal of this club is to create a fun and engaging environment to help students engage not only in learning more about cyber security and tech, but also to create a space of driven and passsionate people who are looking for community and connections.\nWhat the club does and provides:\nWeekly demos and lessons on things related to cyber security and hacking. Hackathons and competitions. We are often joining in competition and it is HIGHLY reccomended to attend even if you aren’t participating because they will be the best way to learn. Real hands on experience with hacking in Networking oportunities with real high network professionals. It’ll look good on the resume ← Back to Introduction",
     "description": "Welcome to the FAU Cyber Security Club!\nWe are so glad to have you here and taking the time to sit down to read this! For those who are looking into or is already interested in all things cyber security. This is the place for you!\nThe main goal of this club is to create a fun and engaging environment to help students engage not only in learning more about cyber security and tech, but also to create a space of driven and passsionate people who are looking for community and connections.",
     "tags": [],
     "title": "Getting Started With the Club",
@@ -9,27 +17,67 @@ var relearn_searchindex = [
   },
   {
     "breadcrumb": "FAU Cyber Security Club",
-    "content": "This Wiki is where you can find quick information about the club and current events, as well as helpful resources and guides to help you get initalized.\nWe strongly encourage an open environment of learning, so NEVER be afraid to ask questions. It is ok if you don’t know something, remember that we are all learning. And the best way to learn is to fail!\n\" It is hard to write a simple definition of something as varied as hacking, but I think what these activities have in common is playfulness, cleverness, and exploration. Thus, hacking means exploring the limits of what is possible, in a spirit of playful cleverness. Activities that display playful cleverness have ‘hack value.’ “ - Richard Stallman\nSome things we reccommend you checking out: Getting Started with the club",
+    "content": "This Wiki is where you can find quick information about the club and current events, as well as helpful resources and guides to help you get initalized.\nWe strongly encourage an open environment of learning, so NEVER be afraid to ask questions. It is ok if you don’t know something, remember that we are all learning. And the best way to learn is to fail!\nIt is hard to write a simple definition of something as varied as hacking, but I think what these activities have in common is playfulness, cleverness, and exploration. Thus, hacking means exploring the limits of what is possible, in a spirit of playful cleverness. Activities that display playful cleverness have “hack value.”\n– Richard Stallman\nContinue reading and to get onboarded with the club so you can be prepared for the next meeting!",
     "description": "This Wiki is where you can find quick information about the club and current events, as well as helpful resources and guides to help you get initalized.\nWe strongly encourage an open environment of learning, so NEVER be afraid to ask questions. It is ok if you don’t know something, remember that we are all learning. And the best way to learn is to fail!",
     "tags": [],
     "title": "Introduction",
     "uri": "/introduction/index.html"
   },
   {
+    "breadcrumb": "FAU Cyber Security Club \u003e Past Competitions",
+    "content": "The Collegiate Cyber Defense Competition (CCDC) puts teams in charge of inheriting and defending a live network infrastructure against a professional red team. It is as close to a real incident response scenario as it gets.\nRepos https://github.com/caol777/CCDC-scripts",
+    "description": "The Collegiate Cyber Defense Competition (CCDC) puts teams in charge of inheriting and defending a live network infrastructure against a professional red team. It is as close to a real incident response scenario as it gets.\nRepos https://github.com/caol777/CCDC-scripts",
+    "tags": [],
+    "title": "2026 CCDC",
+    "uri": "/past-competitions/2026-ccdc/index.html"
+  },
+  {
+    "breadcrumb": "FAU Cyber Security Club \u003e Past Competitions",
+    "content": "The eMERGE hackathon project centered around a Cowrie honeypot deployment with a hybrid edge AI component, submitted under the name Project Scalpel.\nRepos https://github.com/RohanDS2024/Emirge https://github.com/caol777/Cowrie-honeypot",
+    "description": "The eMERGE hackathon project centered around a Cowrie honeypot deployment with a hybrid edge AI component, submitted under the name Project Scalpel.\nRepos https://github.com/RohanDS2024/Emirge https://github.com/caol777/Cowrie-honeypot",
+    "tags": [],
+    "title": "2026 eMERGE Hackathon — Project Scalpel",
+    "uri": "/past-competitions/2026-emerge-hackathon/index.html"
+  },
+  {
+    "breadcrumb": "FAU Cyber Security Club",
+    "content": "This is where you come to find things. Tools, learning material, reference guides — the good stuff that actually helps when you sit down and try to do something real.\nHere is the honest truth though: nobody is going to hand it to you, and that is fine. The resources here exist to point you in a direction, but whether you actually go anywhere is entirely up to you and what you do with your own time. The people who really get good at this are the ones who go home and keep going. Meetings are a starting point, not the whole picture.\nGet comfortable reading documentation. Break things on purpose. When something does not make sense, lean into it — that confusion is usually where the best learning happens.\nThis section contains:\nLinks — curated external tools, learning platforms, and references we actually use and recommend. Dig in, have fun with it, and do not be afraid to go down a rabbit hole or two. That is kind of the whole point.\n“Talk is cheap. Show me the code.”\n– Linus Torvalds",
+    "description": "This is where you come to find things. Tools, learning material, reference guides — the good stuff that actually helps when you sit down and try to do something real.\nHere is the honest truth though: nobody is going to hand it to you, and that is fine. The resources here exist to point you in a direction, but whether you actually go anywhere is entirely up to you and what you do with your own time. The people who really get good at this are the ones who go home and keep going. Meetings are a starting point, not the whole picture.",
+    "tags": [],
+    "title": "Resources",
+    "uri": "/resources/index.html"
+  },
+  {
     "breadcrumb": "FAU Cyber Security Club \u003e Resources",
-    "content": "USEFUL LINKS Guide on all things Cyber\nhttps://github.com/Berkanktk/CyberSecurity?tab=readme-ov-file#links ACTIVE CLUB REPOS Repo for this wiki\nhttps://github.com/dxcently/fau-cyber-security-club-wiki ARCHIVED CLUB REPOS 2026 Cyber Patriot\nhttps://github.com/caol777/findnfix 2026 CCDC\nhttps://github.com/caol777/CCDC-scripts 2026 eMERGE Project Scalpel Hackathon - Cowrie Honeypot with Hybrid Edge AI\nhttps://github.com/RohanDS2024/Emirge https://github.com/caol777/Cowrie-honeypot",
-    "description": "USEFUL LINKS Guide on all things Cyber\nhttps://github.com/Berkanktk/CyberSecurity?tab=readme-ov-file#links ACTIVE CLUB REPOS Repo for this wiki\nhttps://github.com/dxcently/fau-cyber-security-club-wiki ARCHIVED CLUB REPOS 2026 Cyber Patriot\nhttps://github.com/caol777/findnfix 2026 CCDC\nhttps://github.com/caol777/CCDC-scripts 2026 eMERGE Project Scalpel Hackathon - Cowrie Honeypot with Hybrid Edge AI",
+    "content": "USEFUL LINKS Guide on all things Cyber\nhttps://github.com/Berkanktk/CyberSecurity?tab=readme-ov-file#links ACTIVE CLUB REPOS Repo for this wiki\nhttps://github.com/dxcently/fau-cyber-security-club-wiki",
+    "description": "USEFUL LINKS Guide on all things Cyber\nhttps://github.com/Berkanktk/CyberSecurity?tab=readme-ov-file#links ACTIVE CLUB REPOS Repo for this wiki\nhttps://github.com/dxcently/fau-cyber-security-club-wiki",
     "tags": [],
     "title": "Links",
     "uri": "/resources/links/index.html"
   },
   {
     "breadcrumb": "FAU Cyber Security Club",
+    "content": "A record of competitions and events the club has participated in, along with the repos and write-ups from each one.\nThese are worth browsing. Seeing how past members approached a challenge — what they built, how they structured it, what worked — is genuinely useful if you are gearing up for your own run.",
+    "description": "A record of competitions and events the club has participated in, along with the repos and write-ups from each one.\nThese are worth browsing. Seeing how past members approached a challenge — what they built, how they structured it, what worked — is genuinely useful if you are gearing up for your own run.",
+    "tags": [],
+    "title": "Past Competitions",
+    "uri": "/past-competitions/index.html"
+  },
+  {
+    "breadcrumb": "FAU Cyber Security Club",
+    "content": "So You Want to Help Write the Wiki? First off, thank you! This wiki is a community effort and every page you write makes it a better resource for everyone in the club. Whether you want to write a full guide, add some links, or just fix a typo — it all helps.\nThis page will walk you through everything you need to get set up and start contributing.\nStep 1 — Install Hugo Hugo is the tool that builds the wiki. You need it installed locally so you can preview your changes before pushing them.\nLinux / macOS (recommended) # using homebrew brew install hugo # or snap (linux) sudo snap install hugo Windows Download the latest release from the Hugo releases page and add it to your PATH, or use:\nwinget install Hugo.Hugo.Extended Verify it worked:\nhugo version Step 2 — Clone the Repo git clone https://github.com/dxcently/fau-cyber-security-club-wiki.git cd fau-cyber-security-club-wiki Step 3 — Run the Dev Server hugo server Then open http://localhost:1313 in your browser. The page will live reload whenever you save a file, so you can see your changes in real time.\nTo build the final static site (usually not needed unless you’re deploying):\nhugo This outputs everything to the public/ folder.\nStep 4 — Write Your Page All content lives in the content/ folder. Here’s how it’s organized:\ncontent/ ├── _index.md # Home page ├── Introduction/ │ ├── _index.md # Section page │ └── Getting Started/ │ └── _index.md └── YourNewSection/ └── _index.md # Your new page goes here Every page starts with a front matter block at the top:\n+++ title = \"Your Page Title\" weight = 2 +++ title — what shows up in the sidebar and as the page heading weight — controls ordering in the menu (lower number = higher up) For section index pages, add type = \"chapter\" to get the big chapter header style Write the rest of the page in plain Markdown below the front matter.\nStep 5 — Submit Your Changes When you’re happy with what you wrote:\ngit checkout -b my-new-page git add content/ git commit -m \"add guide for xyz\" git push origin my-new-page Then open a pull request on GitHub. Someone will review it and merge it in.\nIf you’re not sure about git or any of this, just reach out on the Discord and someone will help you out. No judgment, we were all new at this once!\nShortcodes (Fancy Formatting) The Relearn theme gives you a bunch of shortcodes for things that plain Markdown can’t do. Here’s a quick overview of the useful ones:\nShortcode What It Does Notice Callout boxes (tip, warning, info, caution, etc) Tabs Tabbed content views Expand Collapsible/expandable sections Mermaid Diagrams and flowcharts from text Highlight Syntax highlighted code blocks Badge Little marker badges inline with text Button Clickable buttons Card Content cards Icon Font Awesome icons Notice (Callout Boxes) Great for tips, warnings, or anything you want to call attention to.\n\u003e [!tip] Pro Tip \u003e This is a tip box. Super easy to write. Heads Up Something important to know here.\nAvailable styles: tip, warning, info, note, caution, important\nTabs ​ Linux Windows Linux instructions here\nWindows instructions here\nExpand (Collapsible Sections) Click to show… Hidden content here\nMermaid (Diagrams) graph LR; A --\u003e B B --\u003e C Supports flowcharts, sequence diagrams, state machines, GANTT charts, mind maps, and more.\nFront Matter Reference Parameter Type Default What It Does title string — Page title weight int — Menu order (lower = higher up) type string — \"home\" or \"chapter\" for special layouts hidden boolean false Hides the page from the sidebar menu disableToc boolean false Hides the table of contents button disableNextPrev boolean false Hides the Next / Previous navigation buttons collapsibleMenu boolean false Makes submenus collapsible in the sidebar Theme Reference The wiki uses the Base16 “Greenscreen” color scheme. If you’re touching CSS, here’s the palette:\nColor Name Hex Usage Background #001100 Main background, sidebar Foreground #00BB00 Main text, links Bright White #00FF00 Titles, highlights, accents Bright Black #007700 Borders, separators, muted text Blue/Cyan #009900 Secondary elements Dark Accent #005500 Subtle accents, dark borders The CSS file is at assets/css/theme-hacker.css. The theme variant is set in hugo.toml under [params] themeVariant = 'hacker'.\nTo add or change social links in the sidebar, edit the [[menus.shortcuts]] entries in hugo.toml. The sidebar section title (“Quick Links”) is set in i18n/en.toml.\nQuestions? If you get stuck on anything, reach out on the Discord. We are always happy to help!",
+    "description": "So You Want to Help Write the Wiki? First off, thank you! This wiki is a community effort and every page you write makes it a better resource for everyone in the club. Whether you want to write a full guide, add some links, or just fix a typo — it all helps.\nThis page will walk you through everything you need to get set up and start contributing.",
+    "tags": [],
+    "title": "Authoring",
+    "uri": "/authoring/index.html"
+  },
+  {
+    "breadcrumb": "FAU Cyber Security Club \u003e Authoring",
     "content": "TODO Setting up VM guide setup club server to hack server hacking guide Club env (have a standard “club environment” for hacking) Glossary page Have an permanent CTF environment running (that can regenerate itself) for newcomers Contacts page career path map Have this wiki/one page be hackable Wiki layout\nHome Introduction Getting Started Roadmap CTF blue teaming red teaming Infrastructure networking setting up a VM Club Server environment documentation Hacking the club server Resources Links tools linkdins connections",
     "description": "TODO Setting up VM guide setup club server to hack server hacking guide Club env (have a standard “club environment” for hacking) Glossary page Have an permanent CTF environment running (that can regenerate itself) for newcomers Contacts page career path map Have this wiki/one page be hackable Wiki layout\nHome Introduction Getting Started Roadmap CTF blue teaming red teaming Infrastructure networking setting up a VM Club Server environment documentation Hacking the club server Resources Links tools linkdins connections",
     "tags": [],
     "title": "TODO",
-    "uri": "/todo/index.html"
+    "uri": "/authoring/todo/index.html"
   },
   {
     "breadcrumb": "FAU Cyber Security Club",
@@ -46,14 +94,6 @@ var relearn_searchindex = [
     "tags": [],
     "title": "FAU Cyber Security Club",
     "uri": "/index.html"
-  },
-  {
-    "breadcrumb": "FAU Cyber Security Club",
-    "content": "This is a new page.",
-    "description": "This is a new page.",
-    "tags": [],
-    "title": "Resources",
-    "uri": "/resources/index.html"
   },
   {
     "breadcrumb": "FAU Cyber Security Club",

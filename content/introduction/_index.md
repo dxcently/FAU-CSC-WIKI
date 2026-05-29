@@ -1,6 +1,5 @@
 +++
 title = "Introduction"
-type = "chapter"
 weight = 1
 +++
 
@@ -23,5 +22,4 @@ spirit of playful cleverness. Activities that display playful cleverness have
 
 _-- Richard Stallman_
 
-[Continue reading and to get onboarded with the club so you can be prepared for
-the next meeting!](./getting-started/)
+[Continue reading →](./getting-started/)

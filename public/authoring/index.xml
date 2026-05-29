@@ -3,7 +3,7 @@
   <channel>
     <title>Authoring :: FAU Cyber Security Club</title>
     <link>http://localhost:1313/authoring/index.html</link>
-    <description>Hugo Relearn Theme Reference Overview The Hugo Relearn Theme is a documentation-focused theme with features like shortcodes, customizable front matter, sidebar navigation, and search.&#xA;Custom Hacker Terminal Theme File: assets/css/theme-hacker.css</description>
+    <description>So You Want to Help Write the Wiki? This wiki is a community effort. Every page someone writes makes it more useful for the next person who joins. You do not need to be a developer to contribute — if you can write Markdown and use GitHub, you can add pages.&#xA;This guide covers two paths:</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <atom:link href="http://localhost:1313/authoring/index.xml" rel="self" type="application/rss+xml" />

@@ -14,5 +14,12 @@
       <guid>http://localhost:1313/introduction/getting-started/index.html</guid>
       <description>Welcome to the FAU Cyber Security Club!&#xA;We are so glad to have you here and taking the time to sit down to read this! For those who are looking into or is already interested in all things cyber security. This is the place for you!&#xA;The main goal of this club is to create a fun and engaging environment to help students engage not only in learning more about cyber security and tech, but also to create a space of driven and passsionate people who are looking for community and connections.</description>
     </item>
+    <item>
+      <title>Beginner Roadmap</title>
+      <link>http://localhost:1313/introduction/roadmap/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/introduction/roadmap/index.html</guid>
+      <description>You are probably here because you want to get into cybersecurity but you are not quite sure where to start, or you came to a meeting, heard words like “lateral movement” and “privilege escalation,” and thought — okay, I need to catch up.&#xA;That is completely fine. Everyone starts at zero. The goal of this page is to give you an honest map of the road ahead so you are not wandering in the dark.</description>
+    </item>
   </channel>
 </rss>

@@ -3,308 +3,354 @@ title = "Authoring"
 weight = 999
 +++
 
-# Hugo Relearn Theme Reference
+---
 
-## Overview
+# So You Want to Help Write the Wiki?
 
-The Hugo Relearn Theme is a documentation-focused theme with features like
-shortcodes, customizable front matter, sidebar navigation, and search.
+This wiki is a community effort. Every page someone writes makes it more useful
+for the next person who joins. You do not need to be a developer to contribute —
+if you can write Markdown and use GitHub, you can add pages.
+
+This guide covers two paths:
+
+- **Just writing content** — the fast path. No local setup needed.
+- **Full local setup** — for previewing changes before submitting, or making
+  deeper edits to the site config and theme.
 
 ---
 
-## Custom Hacker Terminal Theme
+## Path 1 — Just Writing a Page
 
-**File:** `assets/css/theme-hacker.css`
+If you only want to add or edit content, you do not need Hugo installed. The
+wiki is just Markdown files. You can write one, open a pull request, and someone
+will review and merge it.
 
-### Color Palette (Base16 Terminal Style)
+### 1. Fork and clone the repo
 
-| Color Name   | Hex Code  | RGB            | Usage                           |
-| ------------ | --------- | -------------- | ------------------------------- |
-| Background   | `#001100` | rgb(0, 17, 0)  | Main background, sidebar        |
-| Foreground   | `#00BB00` | rgb(0, 187, 0) | Main text, links                |
-| Bright White | `#00FF00` | rgb(0, 255, 0) | Titles, highlights, accents     |
-| Bright Black | `#007700` | rgb(0, 119, 0) | Borders, separators, muted text |
-| Blue/Cyan    | `#009900` | rgb(0, 153, 0) | Secondary elements              |
-| Dark Accent  | `#005500` | rgb(0, 85, 0)  | Subtle accents, dark borders    |
-
-### Original Terminal Color Mapping
-
-```json
-{
-  "terminal.background": "#001100",
-  "terminal.foreground": "#00BB00",
-  "terminalCursor.background": "#00BB00",
-  "terminalCursor.foreground": "#00BB00",
-  "terminal.ansiBlack": "#001100",
-  "terminal.ansiBlue": "#009900",
-  "terminal.ansiBrightBlack": "#007700",
-  "terminal.ansiBrightBlue": "#009900",
-  "terminal.ansiBrightCyan": "#005500",
-  "terminal.ansiBrightGreen": "#00BB00",
-  "terminal.ansiBrightMagenta": "#00BB00",
-  "terminal.ansiBrightRed": "#007700",
-  "terminal.ansiBrightWhite": "#00FF00",
-  "terminal.ansiBrightYellow": "#007700",
-  "terminal.ansiCyan": "#005500",
-  "terminal.ansiGreen": "#00BB00",
-  "terminal.ansiMagenta": "#00BB00",
-  "terminal.ansiRed": "#007700",
-  "terminal.ansiWhite": "#00BB00",
-  "terminal.ansiYellow": "#007700"
-}
+```bash
+git clone https://github.com/dxcently/fau-cyber-security-club-wiki.git
+cd fau-cyber-security-club-wiki
 ```
 
-### Configuration
+### 2. Create your file
 
-In `hugo.toml`:
-
-```toml
-[params]
-  themeVariant = 'hacker'
-```
-
----
-
-## Sidebar Configuration
-
-### Social Links (Discord & GitHub)
-
-Added via Hugo menus in `hugo.toml`:
-
-```toml
-[menus]
-  [[menus.shortcuts]]
-    name = "<i class='fab fa-fw fa-discord'></i> Discord"
-    identifier = "discord"
-    url = "https://discord.gg/kHvmg3AFhN"
-    weight = 10
-
-  [[menus.shortcuts]]
-    name = "<i class='fab fa-fw fa-github'></i> GitHub"
-    identifier = "github"
-    url = "https://github.com/dxcently/fau-cyber-security-club-wiki"
-    weight = 20
-```
-
-### Sidebar Menus Configuration
-
-```toml
-[params]
-  # Configure sidebar menus
-  [[params.sidebarmenus]]
-    type = 'page'
-    identifier = 'home'
-    main = true
-    disableTitle = true
-    pageRef = ''
-
-  [[params.sidebarmenus]]
-    type = 'menu'
-    identifier = 'shortcuts'
-    main = false
-    disableTitle = false
-```
-
-### Custom Menu Title
-
-In `i18n/en.toml`:
-
-```toml
-[shortcuts-menuTitle]
-other = "Connect"
-```
-
-### Search
-
-Search is **enabled by default** in Relearn theme. To disable:
-
-```toml
-[params]
-  search.disable = true        # Disable all search
-  search.index.disable = true  # Disable search popup only
-  search.page.disable = true   # Disable dedicated search page only
-```
-
----
-
-## Available Shortcodes (17 total)
-
-| Shortcode     | Purpose                                      |
-| ------------- | -------------------------------------------- |
-| **Badge**     | Marker badges to display in your text        |
-| **Button**    | Clickable buttons                            |
-| **Card**      | Show content in a card                       |
-| **Cards**     | Show content in a set of cards               |
-| **Children**  | List the child pages of a page               |
-| **Expand**    | Expandable/collapsible sections of text      |
-| **Highlight** | Render code with a syntax highlighter        |
-| **Icon**      | Nice icons for your page                     |
-| **Include**   | Displays content from other files            |
-| **Math**      | Beautiful math and chemical formulae         |
-| **Mermaid**   | Generate diagrams and flowcharts from text   |
-| **Notice**    | Boxes to help you structure your page        |
-| **OpenAPI**   | UI for your OpenAPI / Swagger specifications |
-| **Resources** | List resources contained in a page bundle    |
-| **SiteParam** | Get value of site params                     |
-| **Tab**       | Show content in a single tab                 |
-| **Tabs**      | Show content in tabbed views                 |
-| **Tree**      | Display text as a tree                       |
-
----
-
-## Notice Shortcode
-
-### Parameters
-
-| Parameter    | Position | Default         | Purpose                                        |
-| ------------ | -------- | --------------- | ---------------------------------------------- |
-| **style**    | 1        | `default`       | Determines appearance scheme                   |
-| **title**    | 2        | Varies          | Box heading text                               |
-| **icon**     | 3        | Varies          | Font Awesome icon name                         |
-| **groupid**  | —        | Empty           | Groups expandable boxes to sync                |
-| **color**    | —        | Style-dependent | CSS color value                                |
-| **expanded** | —        | Empty           | Controls expandability: empty, `true`, `false` |
-
-### Available Styles
-
-- **By Severity:** caution, important, info, note, tip, warning
-- **By Brand:** primary, secondary, accent
-- **By Color:** blue, cyan, green, grey, magenta, orange, red
-- **By Special Type:** default, transparent, code, link, action, inline
-
-### Usage Examples
-
-```markdown
-> [!tip] My Title Box content here
-```
-
-```markdown
-{{% notice style="tip" title="My Title" %}} Box content here {{% /notice %}}
-```
-
----
-
-## Tabs Shortcode
-
-### Parameters
-
-| Parameter   | Default | Purpose                           |
-| ----------- | ------- | --------------------------------- |
-| **groupid** | Random  | Group name for synchronized tabs  |
-| **style**   | Empty   | Default styling for all tabs      |
-| **color**   | Empty   | Default color for all tabs        |
-| **title**   | Empty   | Display text in front of tab view |
-| **icon**    | Empty   | Font Awesome icon                 |
-
-### Usage
-
-```markdown
-{{< tabs >}} {{% tab title="Label" %}}Content here{{% /tab %}} {{% tab
-title="Label 2" %}}More content{{% /tab %}} {{< /tabs >}}
-```
-
----
-
-## Front Matter Parameters Reference
-
-| Parameter                 | Type    | Default | Description                                            |
-| ------------------------- | ------- | ------- | ------------------------------------------------------ |
-| **title**                 | string  | —       | Page title                                             |
-| **weight**                | int     | —       | Controls menu order (lower = higher)                   |
-| **type**                  | string  | —       | Page type: "home", "chapter", etc.                     |
-| **hidden**                | boolean | false   | Hides page's menu entry                                |
-| **alwaysopen**            | string  | empty   | Controls whether submenus expand or collapse           |
-| **collapsibleMenu**       | boolean | false   | Shows expander for submenus                            |
-| **disableBreadcrumb**     | boolean | false   | Hides breadcrumbs from topbar                          |
-| **disableToc**            | boolean | false   | Hides table of contents button                         |
-| **disableNextPrev**       | boolean | false   | Hides Next and Previous navigation                     |
-| **headingPre**            | string  | empty   | HTML prefix for page heading                           |
-| **headingPost**           | string  | empty   | HTML suffix for page heading                           |
-| **menuPre**               | string  | empty   | HTML prefix for menu entry title                       |
-| **menuPost**              | string  | empty   | HTML suffix for menu entry title                       |
-| **linkTitle**             | string  | empty   | Menu-specific title for page                           |
-| **ordersectionsby**       | string  | weight  | Ordering: weight, title, linktitle, modifieddate, etc. |
-| **imageEffects.border**   | boolean | false   | Adds border to images                                  |
-| **imageEffects.shadow**   | boolean | false   | Adds shadow effect to images                           |
-| **imageEffects.lightbox** | boolean | true    | Enables lightbox for images                            |
-| **highlightWrap**         | boolean | true    | Enables line wrapping in code blocks                   |
-
----
-
-## Page Types
-
-- **home** - For the main landing page
-- **chapter** - For section index pages (creates chapter-style header)
-- (default) - Regular content pages
-
----
-
-## Mermaid Shortcode (Diagrams)
-
-### Parameters
-
-| Parameter | Default | Purpose                                  |
-| --------- | ------- | ---------------------------------------- |
-| **align** | center  | Vertical alignment (left, center, right) |
-| **zoom**  | varies  | Enables pan/zoom functionality           |
-
-### Supported Diagram Types
-
-- Flowcharts and graphs
-- Sequence and class diagrams
-- State and entity relationship models
-- GANTT charts, timelines, and user journeys
-- Pie, quadrant, and radar charts
-- C4 architecture diagrams
-- Mindmaps, sankey flows, and block diagrams
-- Git graphs, kanban boards, and treemaps
-
-### Usage
-
-```markdown
-{{< mermaid align="center" zoom="true" >}} graph LR; If --> Then Then --> Else
-{{< /mermaid >}}
-```
-
----
-
-## Expand Shortcode (Collapsible Content)
-
-### Parameters
-
-| Parameter    | Position | Default   | Purpose                  |
-| ------------ | -------- | --------- | ------------------------ |
-| **title**    | 1        | "Details" | Text next to expand icon |
-| **expanded** | 2        | false     | Initial state            |
-
-### Usage
-
-```markdown
-{{% expand title="Expand me..." %}} Hidden content here {{% /expand %}}
-```
-
-Or with Markdown callout:
-
-```markdown
-> [!default] Expand me... Hidden content here
-```
-
----
-
-## Content Organization
+All content lives under `content/`. The structure looks like this:
 
 ```
 content/
-├── _index.md              # Home page (type: home)
-├── section1/
-│   ├── _index.md          # Section page (type: chapter)
-│   ├── page1.md           # Regular page
-│   └── subsection/
-│       └── _index.md      # Nested section
-└── section2/
-    └── _index.md
+├── _index.md                     # Home page
+├── introduction/
+│   ├── _index.md                 # Section landing page
+│   └── getting-started/_index.md
+├── resources/
+│   └── _index.md
+└── your-section/
+    └── your-page.md              ← your file goes here
 ```
 
-- Use `weight` in front matter to control menu order
-- Chapters create visual separation in navigation
-- Nested folders create hierarchical navigation
+Create a `.md` file in the right section. Every page needs a front matter block
+at the top:
+
+```toml
++++
+title = "Your Page Title"
+weight = 2
++++
+```
+
+- `title` — shows up in the sidebar and as the page heading
+- `weight` — controls order in the sidebar (lower number = higher up)
+- Add `type = "chapter"` for section landing pages to get the big header style
+
+Write your content in plain Markdown below the front matter. That is it.
+
+### 3. Submit a pull request
+
+```bash
+git checkout -b my-new-page
+git add content/
+git commit -m "add page: your topic here"
+git push origin my-new-page
+```
+
+Open a pull request on GitHub. Someone will review it and merge it in.
+
+---
+
+## Path 2 — Full Local Setup
+
+Do this if you want to preview the site before submitting, or if you are making
+changes beyond content — config, menus, theme, etc.
+
+### Install Hugo
+
+{{< tabs >}} {{% tab title="Linux" %}}
+
+```bash
+sudo snap install hugo
+```
+
+{{% /tab %}} {{% tab title="macOS" %}}
+
+```bash
+brew install hugo
+```
+
+{{% /tab %}} {{% tab title="Windows" %}}
+
+```bash
+winget install Hugo.Hugo.Extended
+```
+
+{{% /tab %}} {{< /tabs >}}
+
+Verify:
+
+```bash
+hugo version
+```
+
+### Run the dev server
+
+```bash
+hugo server
+```
+
+Open [http://localhost:1313](http://localhost:1313). The page live-reloads on
+every save. Use this to check that your page looks right before submitting.
+
+### Build the site
+
+```bash
+hugo
+```
+
+Outputs the static site to `public/`. You normally do not need this unless you
+are deploying.
+
+---
+
+## Shortcodes (Fancy Formatting)
+
+Shortcodes are Hugo's way of doing things plain Markdown cannot. Use them
+sparingly — plain text is usually enough and easier to maintain.
+
+| Shortcode   | What It Does                                     |
+| ----------- | ------------------------------------------------ |
+| **Notice**  | Callout boxes (tip, warning, info, caution, etc) |
+| **Tabs**    | Tabbed content for OS or environment differences |
+| **Expand**  | Collapsible sections for optional content        |
+| **Mermaid** | Diagrams and flowcharts rendered from text       |
+
+---
+
+### Notice (Callout Boxes)
+
+Use when something needs to stand out — a warning, a tip, a gotcha. Two syntax
+options; both work the same way.
+
+Short form (simpler to write):
+
+```
+> [!tip] Pro Tip
+> Your tip text goes here.
+```
+
+Shortcode form (more control over the title text):
+
+```
+{{%/* notice style="warning" title="Heads Up" */%}}
+Something the reader should not skip.
+{{%/* /notice */%}}
+```
+
+Swap `style=` for: `tip`, `warning`, `info`, `note`, `caution`, `important`
+
+---
+
+### Tabs
+
+Use tabs when the same instructions differ by OS or environment and stacking
+them vertically would be cluttered.
+
+Wrap everything in `tabs`, then put each option in its own `tab` block. The
+`title=` value is what appears on the clickable tab.
+
+```
+{{</* tabs */>}}
+{{%/* tab title="Linux" */%}}
+Your Linux instructions here.
+{{%/* /tab */%}}
+{{%/* tab title="Windows" */%}}
+Your Windows instructions here.
+{{%/* /tab */%}}
+{{</* /tabs */>}}
+```
+
+Any normal Markdown works inside a tab block — code, lists, paragraphs.
+
+---
+
+### Expand (Collapsible Sections)
+
+Use for content that is optional or would interrupt the flow — full command
+output, a deeper explanation, a reference table. The section is collapsed by
+default; the reader opens it if they want it.
+
+The `title=` is the label shown while collapsed.
+
+```
+{{%/* expand title="Show the full output..." */%}}
+Your hidden content here. Works with any Markdown inside.
+{{%/* /expand */%}}
+```
+
+---
+
+### Mermaid (Diagrams)
+
+Renders diagrams from text. No image files, no external tools. Write the diagram
+definition between the tags.
+
+```
+{{</* mermaid */>}}
+flowchart TD
+    A[Start] --> B[Do a thing]
+    B --> C[Done]
+{{</* /mermaid */>}}
+```
+
+Mermaid supports flowcharts, sequence diagrams, state machines, Gantt charts,
+and more. The syntax differs per diagram type — check the
+[Mermaid docs](https://mermaid.js.org/intro/) for what you need.
+
+---
+
+## Front Matter Reference
+
+| Parameter           | Type    | Default | What It Does                                |
+| ------------------- | ------- | ------- | ------------------------------------------- |
+| **title**           | string  | —       | Page title                                  |
+| **weight**          | int     | —       | Sidebar order (lower = higher up)           |
+| **type**            | string  | —       | `"home"` or `"chapter"` for special layouts |
+| **hidden**          | boolean | false   | Hides the page from the sidebar             |
+| **disableToc**      | boolean | false   | Hides the table of contents                 |
+| **disableNextPrev** | boolean | false   | Hides the Next / Previous nav buttons       |
+
+---
+
+## Deeper Edits — Hugo Config and Theme
+
+This section is for changes beyond content: menus, sidebar links, colors,
+config.
+
+### Key files
+
+| File                          | What it controls                                    |
+| ----------------------------- | --------------------------------------------------- |
+| `hugo.toml`                   | Site title, theme variant, sidebar menus, nav links |
+| `i18n/en.toml`                | UI string overrides (e.g. sidebar section title)    |
+| `assets/css/theme-hacker.css` | Color scheme — Base16 Greenscreen palette           |
+
+### Adding sidebar shortcut links
+
+Shortcut links (Discord, GitHub, etc.) live in `hugo.toml` under
+`[[menus.shortcuts]]`. Add a new entry:
+
+```toml
+[[menus.shortcuts]]
+  name = "<i class='fab fa-github'></i> GitHub"
+  url = "https://github.com/your-repo"
+  weight = 10
+```
+
+The sidebar section title ("Quick Links") is set in `i18n/en.toml`.
+
+### Color scheme
+
+The wiki uses a custom **Hacker Terminal** palette — green on black. All colors
+are defined as CSS variables in `assets/css/theme-hacker.css`.
+
+**Base palette**
+
+| Hex       | Role                               |
+| --------- | ---------------------------------- |
+| `#001100` | Background (main + sidebar)        |
+| `#002200` | Slightly lighter bg (code, boxes)  |
+| `#005500` | Dark accent, borders, separators   |
+| `#007700` | Muted text, visited links          |
+| `#009900` | Secondary elements, H5/H6 headings |
+| `#00BB00` | Main text, H3/H4 headings          |
+| `#00FF00` | H1/H2 titles, highlights, hover    |
+| `#00FF88` | Hyperlinks (cyan-green)            |
+| `#00FFC8` | Hyperlink hover state              |
+
+**Key CSS variables**
+
+| Variable                    | Value     | What it controls       |
+| --------------------------- | --------- | ---------------------- |
+| `--PRIMARY-color`           | `#00BB00` | Primary brand color    |
+| `--PRIMARY-HOVER-color`     | `#00FF00` | Hover state            |
+| `--MAIN-BG-color`           | `#001100` | Page background        |
+| `--MAIN-TEXT-color`         | `#00BB00` | Body text              |
+| `--MAIN-TITLES-TEXT-color`  | `#00FF00` | H1 / H2 headings       |
+| `--MAIN-LINK-color`         | `#00FF88` | Hyperlinks             |
+| `--CODE-BLOCK-BG-color`     | `#002200` | Code block background  |
+| `--CODE-BLOCK-BORDER-color` | `#005500` | Code block border      |
+| `--CODE-INLINE-color`       | `#00FF00` | Inline code text       |
+| `--MENU-SECTIONS-BG-color`  | `#001100` | Sidebar background     |
+| `--MENU-VISITED-color`      | `#007700` | Visited sidebar links  |
+
+Edit `assets/css/theme-hacker.css` to change any of these. The theme variant is
+wired up in `hugo.toml` via `themeVariant = 'hacker'`.
+
+---
+
+## Using AI to Write Pages
+
+You do not have to write everything from scratch. Claude, ChatGPT, and similar
+tools are good at drafting Markdown pages — as long as you give them enough
+context and review what comes out.
+
+### What to tell it
+
+- The front matter format (TOML with `+++` delimiters)
+- Which section the page belongs to
+- What it should cover
+- The tone: direct, practical, no filler
+
+Example prompt:
+
+```
+Write a wiki page for a cybersecurity club. Front matter uses TOML with +++ delimiters.
+
++++
+title = "Your Title"
+weight = 2
++++
+
+The page is about [topic]. Keep it direct and practical.
+Cover: [list what you want].
+```
+
+### What to watch for
+
+AI will confidently write things that are wrong. Read it before committing. If
+the page covers a specific tool or command, test that it actually works.
+
+Cut any paragraph that says nothing. Phrases like "it's important to note" or
+"feel free to explore" are filler — delete them.
+
+### Claude Code
+
+If you have [Claude Code](https://claude.ai/code), run `claude` or `claude rc`
+from the repo root. It reads the existing content and `CLAUDE.md`, matches the
+site's style, and writes files directly. Just tell it what you need. I've also
+prompted it to write a less condescending Linus Torvalds lol.
+
+---
+
+## Questions?
+
+Reach out on the [Discord](https://discord.gg/kHvmg3AFhN). No judgment — we were
+all new to this once.

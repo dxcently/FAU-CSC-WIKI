@@ -15,18 +15,25 @@
       <description>This Wiki is where you can find quick information about the club and current events, as well as helpful resources and guides to help you get initalized.&#xA;We strongly encourage an open environment of learning, so NEVER be afraid to ask questions. It is ok if you don’t know something, remember that we are all learning. And the best way to learn is to fail!</description>
     </item>
     <item>
-      <title>TODO</title>
-      <link>http://localhost:1313/todo/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/todo/index.html</guid>
-      <description>TODO Setting up VM guide setup club server to hack server hacking guide Club env (have a standard “club environment” for hacking) Glossary page Have an permanent CTF environment running (that can regenerate itself) for newcomers Contacts page career path map Have this wiki/one page be hackable Wiki layout&#xA;Home Introduction Getting Started Roadmap CTF blue teaming red teaming Infrastructure networking setting up a VM Club Server environment documentation Hacking the club server Resources Links tools linkdins connections</description>
-    </item>
-    <item>
       <title>Resources</title>
       <link>http://localhost:1313/resources/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/resources/index.html</guid>
-      <description>This is a new page.</description>
+      <description>This is where you come to find things. Tools, learning material, reference guides — the good stuff that actually helps when you sit down and try to do something real.&#xA;Here is the honest truth though: nobody is going to hand it to you, and that is fine. The resources here exist to point you in a direction, but whether you actually go anywhere is entirely up to you and what you do with your own time. The people who really get good at this are the ones who go home and keep going. Meetings are a starting point, not the whole picture.</description>
+    </item>
+    <item>
+      <title>Past Competitions</title>
+      <link>http://localhost:1313/past-competitions/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/past-competitions/index.html</guid>
+      <description>A record of competitions and events the club has participated in, along with the repos and write-ups from each one.&#xA;These are worth browsing. Seeing how past members approached a challenge — what they built, how they structured it, what worked — is genuinely useful if you are gearing up for your own run.</description>
+    </item>
+    <item>
+      <title>Authoring</title>
+      <link>http://localhost:1313/authoring/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/authoring/index.html</guid>
+      <description>So You Want to Help Write the Wiki? This wiki is a community effort. Every page someone writes makes it more useful for the next person who joins. You do not need to be a developer to contribute — if you can write Markdown and use GitHub, you can add pages.&#xA;This guide covers two paths:</description>
     </item>
   </channel>
 </rss>

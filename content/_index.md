@@ -5,15 +5,15 @@ type = "home"
 
 ---
 
-#### 👋 Welcome to the FAU Cyber Security Club Wiki!
+## 👋 Welcome to the FAU Cyber Security Club Wiki!
 
-## Meeting information
+### Meeting information
 
 Weekly Meetings: Thursdays 5 PM - 7 PM
 
 Location: CM22
 
-## Contact
+### Contact
 
 Email: csc@fau.edu
 

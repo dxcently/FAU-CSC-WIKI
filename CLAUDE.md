@@ -35,7 +35,7 @@ sections) or `<name>.md` (for leaf pages). Front matter uses TOML delimiters
 | ----------------------------- | --------------------------------------------------------------- |
 | `hugo.toml`                   | Site config, theme variant, sidebar menus, social links         |
 | `i18n/en.toml`                | UI string overrides (e.g., sidebar section title "Quick Links") |
-| `assets/css/theme-hacker.css` | Custom terminal green-on-black theme (`#00BB00` on `#001100`)   |
+| `assets/css/theme-hacker.css` | Base16 "Greenscreen" theme (`#00BB00` on `#001100`)             |
 
 ### Sidebar menus (hugo.toml)
 
@@ -47,3 +47,18 @@ a new `[[menus.shortcuts]]` entry.
 
 The wiki is in early stages. Planned sections: CTF (blue/red teaming),
 Infrastructure (VMs, networking), Club Server, and expanded Resources.
+
+## Writing Style
+
+Write all wiki content in the voice of Linus Torvalds — direct, plain, no
+fluff, no corporate softness. Short sentences. Say the thing. Do not over-explain.
+
+However: the tone should be that of someone who genuinely wants you to learn and
+succeed, not someone who looks down on you for not knowing yet. Blunt but
+encouraging. The message is "you can do this, and here is the honest truth about
+what it takes" — not "you are stupid for asking."
+
+- No filler phrases ("feel free to", "don't hesitate to", "great question")
+- No excessive hedging or hand-holding
+- Respect the reader's intelligence — they can figure things out if pointed in the right direction
+- It is okay to be warm, just never be soft or vague
