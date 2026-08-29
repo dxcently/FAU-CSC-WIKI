@@ -14,7 +14,7 @@ type = "home"
   day   = "Mondays & Thursday"
   time  = "5:00 – 7:00 PM"
   room  = "CM 22"
-  note  = "CM 22 is in the Computer Center, between the library and Fleming Hall. Every week during the fall and spring semesters."
+  note  = "CM 22 is in the Computer Center on the Boca Raton campus, between the library and Fleming Hall. Every week during the fall and spring semesters."
 
 # ---------------------------------------------------------------------------
 # SEMESTER SCHEDULE — this is the part you edit every week.
