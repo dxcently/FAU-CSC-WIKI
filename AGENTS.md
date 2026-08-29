@@ -1,19 +1,32 @@
 # AGENTS.md
 
-This file is for agents that EDIT this wiki's content. It is not wiki content.
-It does not get published. It lives next to `CLAUDE.md` and does not repeat
-what that file already covers (Hugo commands, theme, front matter). Read
-`CLAUDE.md` first.
+This file is for agents that EDIT this wiki. It is not wiki content and does
+not get published.
 
-This file has two jobs: keep the wiki inside FAU policy, and keep the prose
-readable. Neither job is optional. Neither is hard, if you follow the
+**`CLAUDE.md` is a symlink to this file.** One set of instructions, two names,
+so no agent reads a stale half of the rules. Edit this file; the other name
+follows.
+
+Three jobs: keep the wiki inside FAU policy, keep the prose readable, and get
+the site mechanics right. None is optional. None is hard, if you follow the
 checklists below.
 
-Scope: applies to every page under `content/`. `CLAUDE.md` governs mechanics
-(shortcodes, front matter, build). This file governs what you're allowed to
-say and how you say it. Where the two disagree on tone, `CLAUDE.md`'s voice
-rule wins — this file only adds the STE constraints on top of it (see
-"STE vs. club voice" below).
+Scope: everything under `content/`, plus the layout and stylesheet notes in
+Part 3.
+
+---
+
+## Commands
+
+```bash
+hugo server    # local dev server with live reload
+hugo           # build to public/ — run this before you push
+```
+
+Run plain `hugo`, **not** `hugo --quiet`. Quiet suppresses warnings, which
+are exactly what you want to see: a link or image pointing at a page that
+does not exist prints the source file and the bad target. Silence is the
+pass condition.
 
 ---
 
@@ -107,8 +120,8 @@ if you cite anything.
 
 ## Part 2 — Simplified Technical English (ASD-STE100), distilled
 
-Unless `CLAUDE.md` says otherwise for the case in front of you, wiki prose
-follows this. It's a big spec. Here's the part you need while writing
+Wiki prose follows this, except where the club voice takes precedence — see
+the precedence rule below. It's a big spec. Here's the part you need while writing
 Markdown.
 
 - **One word, one meaning.** Pick one term per concept and reuse it across
@@ -149,11 +162,27 @@ Markdown.
   "Dive into the deep end," "footgun," "rabbit hole" — cut them from
   procedural text. Say the plain thing instead.
 
+### The club voice
+
+Write wiki content in the voice of Linus Torvalds — direct, plain, no fluff,
+no corporate softness. Short sentences. Say the thing. Do not over-explain.
+
+The tone is someone who genuinely wants you to learn and succeed, not someone
+who looks down on you for not knowing yet. Blunt but encouraging. The message
+is "you can do this, and here is the honest truth about what it takes" — not
+"you are stupid for asking."
+
+- No filler ("feel free to", "don't hesitate to", "great question")
+- No excessive hedging or hand-holding
+- Respect the reader's intelligence — they can work it out if pointed the
+  right way
+- It is fine to be warm. It is never fine to be soft or vague
+
 ### STE vs. club voice — precedence rule
 
-`CLAUDE.md` wants Linus Torvalds: blunt, warm, encouraging, willing to use
-an idiom to land a point. STE wants none of that in technical prose. Both
-are right, for different parts of the page.
+The club voice wants blunt, warm, encouraging, willing to use an idiom to
+land a point. STE wants none of that in technical prose. Both are right, for
+different parts of the page.
 
 **STE governs technical and procedural prose** — anything that tells the
 reader what a thing is or what to type. **The club voice governs framing,
@@ -214,12 +243,30 @@ content/            every page. Directory structure == URL structure == nav.
   projects/         member projects and guides
   toolbox/          links, cheat sheets, AI pages
   meta/             authoring guide, TODO — docs about the wiki itself
-assets/css/         custom.css (structural) + theme-hacker.css (palette tokens)
-assets/images/      logo.svg — sidebar logo AND favicon, one file
+assets/css/         custom.css (structural) + theme-hacker*.css (palette tokens)
+assets/images/      the owl mark — three forms, two grounds each
+assets/js/          custom.js — theme toggle and scramble-reveal
 layouts/            template overrides: home page partials, shortcodes
 themes/relearn/     git submodule — NEVER edit
 public/             generated output — NEVER hand-edit
 ```
+
+### Key config files
+
+| File | Purpose |
+| ---- | ------- |
+| `hugo.toml` | Site config, the two theme variants, sidebar menus, shortcuts |
+| `i18n/en.toml` | UI string overrides (e.g. the sidebar's "Quick Links" title) |
+| `assets/css/theme-hacker.css` | Dark palette — tokens only |
+| `assets/css/theme-hacker-light.css` | Light palette — must define the SAME token set |
+| `assets/css/custom.css` | Structure. No colour literals; every value is a `--wf-*` token |
+
+`baseURL` in `hugo.toml` is still the placeholder `https://example.org/`. It
+is baked into every `<base href>` in the built output, so it has to be set
+before any real deploy.
+
+Adding a link to the sidebar's Quick Links means adding a
+`[[menus.shortcuts]]` entry in `hugo.toml`. There is nothing else to update.
 
 ### File naming
 

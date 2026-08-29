@@ -307,8 +307,8 @@ reads well:
 
 ### Writing style
 
-Read `CLAUDE.md` in the repo root for the voice, and `AGENTS.md` for the
-policy rules and the plain-English guidelines every page follows. The short
+Read `AGENTS.md` in the repo root — it carries the voice, the policy rules,
+and the plain-English guidelines every page follows. The short
 version: short sentences, active voice, define jargon the first time you use
 it, no filler, and never publish anything that points a reader at a system
 they are not allowed to touch.
@@ -579,9 +579,9 @@ Cover: [list what you want].
 Coding agents that run in a terminal read the repo before they write. Point one
 at the repo root and it picks up the rules on its own:
 
-- `CLAUDE.md` — build commands, structure, and the writing voice
-- `AGENTS.md` — FAU policy rules and the Simplified Technical English rules
-  every page must follow
+- `AGENTS.md` — one file, everything: build commands, site structure, the
+  writing voice, FAU policy rules, and the Simplified Technical English
+  rules. `CLAUDE.md` is a symlink to it, so either name loads the same thing.
 
 Read both yourself before you write a page by hand. They apply to people too.
 
