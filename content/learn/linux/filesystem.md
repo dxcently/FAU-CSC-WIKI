@@ -7,6 +7,62 @@ icon = "fa-solid fa-folder-tree"
 
 In Linux, everything is a file. Devices, sockets, processes — all represented as files somewhere in the tree. Understanding the layout is step one.
 
+There is exactly one tree. Windows gives you `C:` and `D:`; Linux gives you `/`
+and hangs everything off it, including your second disk and your USB stick.
+Learn this shape once and you can find your way around any Linux box you are
+ever dropped onto.
+
+---
+
+## The Tree
+
+```tree
+- / | folder | secondary
+  - bin | folder | grey
+  - boot | folder | grey
+  - dev | folder | cyan
+  - etc | folder | red
+  - home | folder | green
+    - you | folder | green
+      - .ssh | folder | red
+      - .bashrc | file | orange
+  - lib | folder | grey
+  - opt | folder | grey
+  - proc | folder | cyan
+  - root | folder | red
+  - sbin | folder | grey
+  - srv | folder | grey
+  - tmp | folder | orange
+  - usr | folder | grey
+    - bin | folder | grey
+    - local | folder | grey
+    - share | folder | grey
+  - var | folder | orange
+    - log | folder | red
+    - www | folder | orange
+```
+
+The colours are the security read, not part of the standard:
+
+| Colour | Means | Why you care |
+| --- | --- | --- |
+| 🔴 Red | Secrets and control | Configuration, keys, credentials. Where an attacker looks first, and what a defender watches. |
+| 🟠 Orange | Writable or volatile | Anyone can write to `/tmp`. Web roots and logs get attacker-influenced content. |
+| 🔵 Cyan | Not real files | `/proc` and `/dev` are the kernel pretending to be a filesystem. Nothing here is on your disk. |
+| 🟢 Green | Yours | Your files, your dotfiles, your keys. |
+| ⚪ Grey | Programs | Binaries and libraries. Mostly read-only, and a change here is worth noticing. |
+
+Two things surprise people coming from Windows:
+
+**`/proc` is fake.** It is a view into the running kernel rendered as text
+files. `cat /proc/self/status` tells you about the process that ran `cat`.
+Nothing under `/proc` exists on disk, which is why it survives no reboot and
+why it is the fastest way to inspect a live system.
+
+**`/root` is not `/`.** `/root` is the superuser's home directory. `/` is the
+top of the tree. They are different places, and mixing them up in a command is
+how people delete things they did not mean to.
+
 ---
 
 ## Key Directories
