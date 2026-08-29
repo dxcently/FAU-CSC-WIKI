@@ -1,0 +1,75 @@
+/* FAU Cyber Security Club — chroma for the "hacker" variant.
+ * Retint of relearn-dark (monokai) onto the 4-color system.
+ * Contains NO red: see design-spec §3. */
+
+/* Background */  .bg      { color:#D6E8DC; background-color:#071310; }
+/* PreWrapper */  .chroma  { color:#D6E8DC; background-color:#071310; }
+
+/* Error */              .chroma .err { color:#A98BFF; text-decoration:underline wavy }
+/* LineLink */           .chroma .lnlinks { outline:none;text-decoration:none;color:inherit }
+/* LineTableTD */        .chroma .lntd { vertical-align:top;padding:0;margin:0;border:0; }
+/* LineTable */          .chroma .lntable { border-spacing:0;padding:0;margin:0;border:0; }
+/* LineHighlight */      .chroma .hl { background-color:rgba(30,144,255,.14) }
+/* LineNumbersTable */   .chroma .lnt { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6E8B7E }
+/* LineNumbers */        .chroma .ln  { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6E8B7E }
+/* Line */               .chroma .line { display:flex; }
+
+/* Keyword */            .chroma .k  { color:#1E90FF }
+/* KeywordConstant */    .chroma .kc { color:#1E90FF }
+/* KeywordDeclaration */ .chroma .kd { color:#1E90FF }
+/* KeywordNamespace */   .chroma .kn { color:#7FC4FF }
+/* KeywordPseudo */      .chroma .kp { color:#1E90FF }
+/* KeywordReserved */    .chroma .kr { color:#1E90FF }
+/* KeywordType */        .chroma .kt { color:#1E90FF }
+
+/* NameAttribute */      .chroma .na { color:#7FE3A0 }
+/* NameClass */          .chroma .nc { color:#7FE3A0 }
+/* NameConstant */       .chroma .no { color:#1E90FF }
+/* NameDecorator */      .chroma .nd { color:#7FE3A0 }
+/* NameException */      .chroma .ne { color:#7FE3A0 }
+/* NameOther */          .chroma .nx { color:#7FE3A0 }
+/* NameTag */            .chroma .nt { color:#7FC4FF }
+/* NameFunction */       .chroma .nf { color:#7FE3A0 }
+/* NameFunctionMagic */  .chroma .fm { color:#7FE3A0 }
+
+/* Literal */            .chroma .l  { color:#A98BFF }
+/* LiteralDate */        .chroma .ld { color:#00BB00 }
+/* LiteralString */      .chroma .s  { color:#00BB00 }
+/* LiteralStringAffix */ .chroma .sa { color:#00BB00 }
+/* LiteralStringBacktick */   .chroma .sb { color:#00BB00 }
+/* LiteralStringChar */       .chroma .sc { color:#00BB00 }
+/* LiteralStringDelimiter */  .chroma .dl { color:#00BB00 }
+/* LiteralStringDoc */        .chroma .sd { color:#00BB00 }
+/* LiteralStringDouble */     .chroma .s2 { color:#00BB00 }
+/* LiteralStringEscape */     .chroma .se { color:#A98BFF }
+/* LiteralStringHeredoc */    .chroma .sh { color:#00BB00 }
+/* LiteralStringInterpol */   .chroma .si { color:#00BB00 }
+/* LiteralStringOther */      .chroma .sx { color:#00BB00 }
+/* LiteralStringRegex */      .chroma .sr { color:#00BB00 }
+/* LiteralStringSingle */     .chroma .s1 { color:#00BB00 }
+/* LiteralStringSymbol */     .chroma .ss { color:#00BB00 }
+
+/* LiteralNumber */             .chroma .m  { color:#A98BFF }
+/* LiteralNumberBin */          .chroma .mb { color:#A98BFF }
+/* LiteralNumberFloat */        .chroma .mf { color:#A98BFF }
+/* LiteralNumberHex */          .chroma .mh { color:#A98BFF }
+/* LiteralNumberInteger */      .chroma .mi { color:#A98BFF }
+/* LiteralNumberIntegerLong */  .chroma .il { color:#A98BFF }
+/* LiteralNumberOct */          .chroma .mo { color:#A98BFF }
+
+/* Operator */           .chroma .o  { color:#7FC4FF }
+/* OperatorWord */       .chroma .ow { color:#7FC4FF }
+
+/* Comment */            .chroma .c   { color:#6E8B7E }
+/* CommentHashbang */    .chroma .ch  { color:#6E8B7E }
+/* CommentMultiline */   .chroma .cm  { color:#6E8B7E }
+/* CommentSingle */      .chroma .c1  { color:#6E8B7E }
+/* CommentSpecial */     .chroma .cs  { color:#6E8B7E }
+/* CommentPreproc */     .chroma .cp  { color:#6E8B7E }
+/* CommentPreprocFile */ .chroma .cpf { color:#6E8B7E }
+
+/* GenericDeleted */     .chroma .gd { color:#7FC4FF }
+/* GenericEmph */        .chroma .ge { font-style:italic }
+/* GenericInserted */    .chroma .gi { color:#7FE3A0 }
+/* GenericStrong */      .chroma .gs { font-weight:bold }
+/* GenericSubheading */  .chroma .gu { color:#6E8B7E }

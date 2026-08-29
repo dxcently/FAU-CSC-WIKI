@@ -1,3 +1,4 @@
+# TODO: placeholder — set the real baseURL before deploying
 baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'FAU Cyber Security Club'
@@ -8,7 +9,7 @@ theme = 'relearn'
   [[menus.shortcuts]]
     name = "<i class='fab fa-fw fa-discord'></i> Discord"
     identifier = "discord"
-    url = "https://discord.gg/kHvmg3AFhN"
+    url = "http://discord.gg/2Yun8WAUuy"
     weight = 10
 
   [[menus.shortcuts]]
@@ -20,15 +21,38 @@ theme = 'relearn'
   [[menus.shortcuts]]
     name = "<i class='fa-solid fa-school-flag'></i> Owl Central"
     identifier = "owl_central"
-    url = "https://github.com/dxcently/fau-cyber-security-club-wiki"
+    url = "https://fau.campuslabs.com/engage/organization/cybersecurity"
     weight = 30
+
+  [[menus.shortcuts]]
+    name = "<i class='fa-solid fa-envelope'></i> csc@fau.edu"
+    identifier = "email"
+    url = "mailto:csc@fau.edu"
+    weight = 40
 
 [params]
   # Use the custom hacker terminal theme
-  themeVariant = 'hacker'
+  # Two variants: the dark screen and its daylight twin. The first entry is
+  # the default for a first-time visitor; the topbar toggle
+  # (layouts/partials/topbar/button/variant.html) flips between them and the
+  # theme remembers the choice in localStorage.
+  themeVariant = [
+    { identifier = 'hacker',       name = 'Dark' },
+    { identifier = 'hacker-light', name = 'Light' },
+  ]
 
   # Show the shortcuts menu title
   disableShortcutsTitle = false
+
+  # Report content mistakes at build time instead of failing silently.
+  # A link or image that points at a page which does not exist prints a
+  # warning naming the source file and the bad target. Warning, not error:
+  # the build still completes so you can see every problem in one pass.
+  [params.link]
+    errorlevel = 'warning'
+
+  [params.image]
+    errorlevel = 'warning'
 
   # Configure sidebar menus
   # Header: search and home button (default)
@@ -46,3 +70,14 @@ theme = 'relearn'
     identifier = 'shortcuts'
     main = false
     disableTitle = false
+
+# Syntax highlighting: emit CSS CLASSES, not inline styles.
+#
+# Hugo's default (noClasses = true) writes `style="...background-color:#272822"`
+# straight into every code block — Monokai, hardcoded, in the HTML. That wins
+# over any stylesheet and is blind to the colour variant, so code blocks stayed
+# dark in light mode and never used assets/css/chroma-hacker.css at all.
+# With classes, the theme's per-variant chroma sheet does the colouring.
+[markup]
+  [markup.highlight]
+    noClasses = false

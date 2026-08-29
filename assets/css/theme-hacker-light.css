@@ -1,120 +1,139 @@
-/* FAU Cyber Security Club — "hacker" variant
+/* FAU Cyber Security Club — "hacker-light" variant
  *
- * Four colors, four jobs:
- *   green  #00BB00  identity  — code, labels, h3
- *   blue   #1E90FF  structure — nav, edges, links, h2
- *   pale   #D6E8DC  reading   — long-form body copy
- *   red    #CC0000  here/now  — active nav, next meeting, hover, warnings
+ * The daylight twin of theme-hacker.css. Same four jobs, same identity:
+ *   green  identity  — code, labels, h3
+ *   blue   structure — nav, edges, links, h2
+ *   ink    reading   — long-form body copy
+ *   red    here/now  — active nav, next meeting, hover, warnings
  *
- * Red is budgeted: max 3 instances per viewport. See design-spec §0.1.
- * This file is TOKENS ONLY. Structural CSS lives in assets/css/custom.css.
- * (Hugo wraps this file in :root[data-r-theme-variant='hacker'] using native
- *  CSS nesting, so any non-:root selector here becomes a nested descendant.)
+ * What changes and why:
+ *   1. Every hue is DARKENED. #1E90FF is 3.0:1 on white and fails AA; #00BB00
+ *      is 2.4:1 and fails badly. Both are fine on black and unusable on paper.
+ *      Every colour below was measured against the ground: the lowest is
+ *      5.07:1, so all of them clear AA for normal text.
+ *   2. FAU red stays #CC0000 — 5.5:1 here, so the true brand red is legible as
+ *      text and the lifted red the dark variant needs is not required.
+ *   3. GLOW BECOMES SHADOW. A halo is light spilling off a lit surface; on
+ *      paper the same shape reads as a smudge. The bloom tokens resolve to
+ *      soft neutral shadows, and the headline halo resolves to transparent.
+ *   4. The hero does NOT flip — see THE STAGE below.
+ *
+ * This file is TOKENS ONLY, and it must define EVERY token the dark variant
+ * does: only one variant stylesheet is active at a time, so anything missing
+ * here is simply undefined. Structural CSS lives in assets/css/custom.css.
+ * (Hugo wraps this file in :root[data-r-theme-variant='hacker-light'] using
+ *  native CSS nesting, so any non-:root selector here becomes a descendant.)
  */
 
 :root {
   /* ---- raw palette : the only literals in the codebase ---- */
-  --wf-bg:            #030A08;  /* page ground, green-shifted near-black */
-  --wf-bg-raised:     #060F0D;  /* sidebar, topbar, panel fill base */
-  --wf-bg-code:       #071310;  /* code block ground */
+  --wf-bg:            #F4F7FA;  /* page ground, cool paper */
+  --wf-bg-raised:     #FFFFFF;  /* sidebar, topbar, panel fill base */
+  --wf-bg-code:       #EDF2F7;  /* code block ground */
 
-  --wf-primary:       #00BB00;  /* identity green */
-  --wf-primary-hi:    #00DD55;  /* green, lifted (hover on green things) */
+  --wf-primary:       #0A6B2C;  /* identity green            6.2:1 */
+  --wf-primary-hi:    #0E8A3A;  /* green, lifted */
 
-  --wf-chrome:        #1E90FF;  /* structure blue */
-  --wf-chrome-hi:     #7FC4FF;  /* blue, lifted (link hover) */
+  --wf-chrome:        #0B5FC4;  /* structure blue            5.7:1 */
+  --wf-chrome-hi:     #0847A0;  /* blue, deepened on hover   8.1:1 */
 
-  --wf-text:          #D6E8DC;  /* long-form body copy */
-  --wf-text-strong:   #E8F4FF;  /* h1, box captions, emphasis */
-  --wf-text-muted:    #8FA69B;  /* meta, card descriptions, comments */
-  --wf-text-dim:      #93B3A5;  /* h4-h6 */
+  --wf-text:          #16202B;  /* long-form body copy      15.3:1 */
+  --wf-text-strong:   #0A121A;  /* h1, box captions         17.5:1 */
+  --wf-text-muted:    #5A6A78;  /* meta, card descriptions   5.2:1 */
+  --wf-text-dim:      #44525F;  /* h4-h6 */
 
-  --wf-red:           #CC0000;  /* FAU red — FILLS AND BORDERS ONLY */
-  --wf-red-text:      #FF4D4D;  /* FAU red lifted — the ONLY red for text */
+  --wf-red:           #CC0000;  /* FAU red — fills and borders */
+  --wf-red-text:      #CC0000;  /* and text: 5.5:1 here, no lift needed */
 
-  --wf-violet:        #A98BFF;  /* numeric literals, magenta box slot */
-  --wf-cyan:          #3AA6D6;  /* cyan box slot */
-  --wf-amber:         #E0A030;  /* orange box slot */
+  --wf-violet:        #6B3FD4;  /* numeric literals, magenta box slot */
+  --wf-cyan:          #0B6E8F;  /* cyan box slot */
+  --wf-amber:         #8A5A00;  /* orange box slot */
 
   /* ---- derived line / surface alphas ---- */
-  --wf-edge:          rgba( 30, 144, 255, .30 );  /* resting panel border */
-  --wf-edge-soft:     rgba( 30, 144, 255, .16 );  /* table rules, hairlines */
-  --wf-edge-tick:     rgba( 30, 144, 255, .75 );  /* corner ticks */
-  --wf-edge-now:      rgba( 204,  0,  0, .55 );   /* hover/current border */
-  --wf-glow:          rgba( 30, 144, 255, .35 );
-  --wf-glow-now:      rgba( 204,  0,  0, .50 );
+  --wf-edge:          rgba( 11, 95, 196, .28 );  /* resting panel border */
+  --wf-edge-soft:     rgba( 11, 95, 196, .15 );  /* table rules, hairlines */
+  --wf-edge-tick:     rgba( 11, 95, 196, .65 );  /* corner ticks */
+  --wf-edge-now:      rgba( 204,  0,  0, .45 );  /* hover/current border */
+  --wf-glow:          rgba( 13, 38, 66, .20 );
+  --wf-glow-now:      rgba( 204,  0,  0, .25 );
 
-  /* ---- bloom: CRT halo. Goes on structure, chrome and headings ONLY.
-     Never on paragraph text — a halo there costs legibility and buys
-     nothing. Each is a spread of a colour already in the palette. ---- */
-  --wf-bloom:         rgba( 30, 144, 255, .55 );  /* tight ring on linework */
-  --wf-bloom-wide:    rgba( 30, 144, 255, .22 );  /* wide outer halo */
-  --wf-bloom-now:     rgba( 255, 77, 77, .55 );   /* the red "here" halo */
-  --wf-bloom-text:    rgba( 232, 244, 255, .32 ); /* white headline halo */
-  --wf-fill:          rgba(  6, 16, 13, .72 );    /* translucent panel fill */
+  /* ---- bloom, reinterpreted as shadow. Same token names, opposite physics:
+     on a dark ground these are light spilling outward, on paper they are the
+     object casting down. Alphas are low — paper does not glow. ---- */
+  --wf-bloom:         rgba( 13, 38, 66, .18 );
+  --wf-bloom-wide:    rgba( 13, 38, 66, .07 );
+  --wf-bloom-now:     rgba( 204,  0,  0, .30 );
+  --wf-bloom-text:    transparent;  /* no halo on headlines in daylight */
+  --wf-fill:          rgba( 255, 255, 255, .82 );  /* translucent panel fill */
 
-  /* ---- washes, insets and hairlines used by custom.css ----
-     These exist so custom.css holds no colour literals of its own, which is
-     what lets a second variant repaint the whole site from this file alone. */
-  --wf-wash:          rgba( 30, 144, 255, .055 ); /* faint blue tint fill */
-  --wf-wash-hi:       rgba( 30, 144, 255, .10 );  /* the same, stronger */
-  --wf-wash-alt:      rgba(  0, 187,   0, .055 ); /* the green ground bloom */
-  --wf-wash-row:      rgba( 30, 144, 255, .05 );  /* table row hover */
-  --wf-now-wash:      rgba( 204,   0,   0, .07 ); /* the one red row */
-  --wf-inset:         rgba( 30, 144, 255, .20 );  /* top inner highlight */
-  --wf-inset-now:     rgba( 204,   0,   0, .20 );
-  --wf-hairline:      rgba( 30, 144, 255, .05 );  /* 1px outer ring */
-  --wf-hairline-now:  rgba( 255,  77,  77, .12 );
+  /* ---- washes, insets and hairlines used by custom.css ---- */
+  --wf-wash:          rgba( 11, 95, 196, .045 );
+  --wf-wash-hi:       rgba( 11, 95, 196, .07 );
+  --wf-wash-alt:      rgba( 10, 107, 44, .05 );
+  --wf-wash-row:      rgba( 11, 95, 196, .05 );
+  --wf-now-wash:      rgba( 204,  0,  0, .06 );
+  --wf-inset:         rgba( 255, 255, 255, .90 );  /* highlight is WHITE here */
+  --wf-inset-now:     rgba( 204,  0,  0, .14 );
+  --wf-hairline:      rgba( 13, 38, 66, .06 );
+  --wf-hairline-now:  rgba( 204,  0,  0, .10 );
   /* scanlines on panels. Fainter than --wf-stage-scan because cards
      carry body copy and the hero carries one headline. */
-  --wf-scan:          rgba( 30, 144, 255, .040 );
+  --wf-scan:          rgba( 11, 95, 196, .045 );
   /* text selection, as a solid block the way a terminal draws it */
   /* light cast by the shield into the sidebar header. Stronger on the
      light variant: a white sidebar gives the mark nothing to sit in,
      so the halo is what stops it reading as a sticker. */
-  --wf-logo-halo:     rgba( 30, 144, 255, .07 );
-  --wf-logo-glow:     rgba( 30, 144, 255, .16 );
-  --wf-select-bg:     #00BB00;
-  --wf-select-fg:     #001510;
-  --wf-link-line:     rgba( 30, 144, 255, .35 );  /* prose link underline */
-  --wf-scroll:        rgba( 30, 144, 255, .35 );
-  --wf-scroll-hi:     rgba( 30, 144, 255, .60 );
+  --wf-logo-halo:     rgba( 11, 95, 196, .09 );
+  --wf-logo-glow:     rgba( 11, 95, 196, .18 );
+  --wf-select-bg:     #0B5FC4;
+  --wf-select-fg:     #FFFFFF;
+  --wf-link-line:     rgba( 11, 95, 196, .32 );
+  --wf-scroll:        rgba( 11, 95, 196, .30 );
+  --wf-scroll-hi:     rgba( 11, 95, 196, .55 );
 
   /* ---- THE STAGE ----
-     The home hero has its own small palette, separate from the page, because
-     it is a composed picture rather than a surface: a ground, a floor grid,
-     two fog lights, a scrim and the owl on top. Keeping those in their own
-     token set means the hero can be tuned without touching anything else.
-     The light variant redefines every one of them. */
-  --wf-stage:            #030A08;
-  --wf-stage-fg:         #E8F4FF;
-  --wf-stage-chrome:     #1E90FF;
-  --wf-stage-accent:     #00BB00;
-  --wf-stage-red:        #FF4D4D;
+     The hero in daylight. Same composition as the dark variant — ground,
+     floor grid, two fog lights, a scrim, the owl — rebuilt for paper:
+
+       * the ground goes white, so the hero reads as a raised panel lifted
+         off the page rather than a hole cut into it;
+       * the owl's highlight shapes invert to ink, exactly as they do in
+         images/owl-mark-light.svg — on a dark screen they are light catching
+         an edge, on paper the same job is done by ink;
+       * the scrim that fades the grid out goes white instead of black;
+       * the glows become soft shadows, and the headline halo goes away
+         entirely. Paper does not glow.
+       * the owl sits at higher opacity: dark linework on white needs less
+         help than bright linework on black. */
+  --wf-stage:            #FFFFFF;
+  --wf-stage-fg:         #0A121A;
+  --wf-stage-chrome:     #0B5FC4;
+  --wf-stage-accent:     #0A6B2C;
+  --wf-stage-red:        #CC0000;
   /* the owl's eyes, beak ridge and chin. Its own token because
      --wf-stage-fg is also the hero HEADLINE, which must stay
      near-black on a white ground; these are marks inside a drawing
      and follow different rules. */
-  --wf-stage-mark:       #E8F4FF;  /* light catching an edge */
+  --wf-stage-mark:       #0847A0;  /* deep blue, NOT black */
   /* CRT scanlines over the hero ground. A UNIFORM texture on purpose:
      a gradient shifts contrast across the panel, so the headline sits
      on a lighter ground at one end than the other and the type reads
      unevenly. Repeating lines add the same amount everywhere. */
-  --wf-stage-scan:       rgba( 30, 144, 255, .055 );
-  --wf-stage-edge:       rgba( 30, 144, 255, .30 );
-  --wf-stage-tick:       rgba( 30, 144, 255, .75 );
-  --wf-stage-grid:       rgba( 30, 144, 255, .16 );
-  --wf-stage-fog-a:      rgba( 30, 144, 255, .10 );
+  --wf-stage-scan:       rgba( 11, 95, 196, .06 );
+  --wf-stage-edge:       rgba( 11, 95, 196, .28 );
+  --wf-stage-tick:       rgba( 11, 95, 196, .65 );
+  --wf-stage-grid:       rgba( 11, 95, 196, .13 );
+  --wf-stage-fog-a:      rgba( 11, 95, 196, .09 );
   /* Both fog lights are BLUE. This one is aimed at 82% 50%, which is
      precisely where the owl sits — and the mark is blue, red and
      white by design, with green reserved for the site around it. A
      green light here washed the mark in a colour that is not in it. */
-  --wf-stage-fog-b:      rgba( 30, 144, 255, .07 );
-  --wf-stage-scrim:      rgba(  3,  10,   8, .92 );
-  --wf-stage-glow:       rgba( 30, 144, 255, .45 );
-  --wf-stage-glow-wide:  rgba( 30, 144, 255, .18 );
-  --wf-stage-text-glow:  rgba( 232, 244, 255, .32 );
-  --wf-stage-art:        .62;   /* owl opacity over the ground */
+  --wf-stage-fog-b:      rgba( 11, 95, 196, .06 );
+  --wf-stage-scrim:      rgba( 255, 255, 255, .92 );
+  --wf-stage-glow:       rgba( 13, 38, 66, .16 );
+  --wf-stage-glow-wide:  rgba( 13, 38, 66, .06 );
+  --wf-stage-text-glow:  transparent;
+  --wf-stage-art:        .85;
 
   /* ---- type ---- */
   --wf-font-mono: ui-monospace, "SFMono-Regular", "JetBrains Mono", "Cascadia Mono",
@@ -123,7 +142,7 @@
                   "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
   /* ---- spacing / geometry ---- */
-  --wf-radius:  2px;      /* near-square: wireframe, not app card */
+  --wf-radius:  2px;
   --wf-gap:     1rem;
   --wf-pad:     1.25rem;
 
@@ -139,8 +158,8 @@
   /* ACCENT drives the search-hit <mark>, which the theme renders with BLACK
    * text on top. FAU red fails contrast under black text (3.6:1). This slot is
    * mechanical, not identity — keep it bright green. Do not "fix" it to red. */
-  --ACCENT-color:             #00FF88;
-  --ACCENT-HOVER-color:       #7DFFC0;
+  --ACCENT-color:             #7DFFC0;
+  --ACCENT-HOVER-color:       #B6FFDD;
 
   /* main content */
   --MAIN-BG-color:            var( --wf-bg );
@@ -193,7 +212,7 @@
   --MENU-HEADER-BORDER-color:             var( --wf-edge-soft );
   --MENU-SEARCH-color:                    var( --wf-text );
   --MENU-SEARCH-HOVER-color:              var( --wf-chrome-hi );
-  --MENU-SEARCH-BG-color:                 rgba( 3, 10, 8, .85 );
+  --MENU-SEARCH-BG-color:                 rgba( 255, 255, 255, .9 );
   --MENU-SEARCH-BORDER-color:             var( --wf-edge );
   --MENU-HOME-LINK-color:                 var( --wf-text-muted );
   --MENU-HOME-LINK-HOVER-color:           var( --wf-chrome-hi );
@@ -201,11 +220,11 @@
   --MENU-HOME-SEPARATOR-color:            var( --wf-edge-soft );
   --MENU-HOME-BOTTOM-SEPARATOR-color:     var( --wf-edge-soft );
   --MENU-SECTIONS-BG-color:               var( --wf-bg-raised );
-  --MENU-SECTIONS-ACTIVE-BG-color:        rgba( 30, 144, 255, .07 );
+  --MENU-SECTIONS-ACTIVE-BG-color:        rgba( 11, 95, 196, .06 );
   --MENU-SECTIONS-LINK-color:             var( --wf-text-muted );
   --MENU-SECTIONS-LINK-HOVER-color:       var( --wf-text-strong );
   --MENU-SECTION-ACTIVE-CATEGORY-color:   var( --wf-red-text );
-  --MENU-SECTION-ACTIVE-CATEGORY-BG-color: rgba( 204, 0, 0, .08 );
+  --MENU-SECTION-ACTIVE-CATEGORY-BG-color: rgba( 204, 0, 0, .06 );
   --MENU-SECTION-ACTIVE-CATEGORY-BORDER-color: var( --wf-edge-now );
   --MENU-SECTION-SEPARATOR-color:         var( --wf-edge-soft );
   --MENU-VISITED-color:                   var( --wf-chrome );
@@ -216,7 +235,7 @@
   --LOGO-LINK-HOVER-color:  var( --wf-chrome-hi );
 
   /* code */
-  --CODE-theme:               hacker;   /* -> assets/css/chroma-hacker.css */
+  --CODE-theme:               relearn-light;  /* theme ships this one */
   --CODE-font:                var( --wf-font-mono );
   --CODE-font-weight:         400;
   --CODE-letter-spacing:      normal;
@@ -224,14 +243,14 @@
   --CODE-BLOCK-BG-color:      var( --wf-bg-code );
   --CODE-BLOCK-BORDER-color:  var( --wf-edge-soft );
   --CODE-INLINE-color:        var( --wf-primary );
-  --CODE-INLINE-BG-color:     rgba( 0, 187, 0, .07 );
-  --CODE-INLINE-BORDER-color: rgba( 0, 187, 0, .22 );
+  --CODE-INLINE-BG-color:     rgba( 10, 107, 44, .07 );
+  --CODE-INLINE-BORDER-color: rgba( 10, 107, 44, .25 );
 
   /* browser / embeds */
-  --BROWSER-theme:      dark;
-  --MERMAID-theme:      dark;
-  --OPENAPI-theme:      dark;
-  --OPENAPI-CODE-theme: obsidian;
+  --BROWSER-theme:      light;
+  --MERMAID-theme:      default;
+  --OPENAPI-theme:      light;
+  --OPENAPI-CODE-theme: idea;
 
   /* boxes (notices, callouts, tabs, badges) */
   --BOX-CAPTION-color: var( --wf-text-strong );
