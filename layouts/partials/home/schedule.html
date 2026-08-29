@@ -1,0 +1,91 @@
+{{- /*
+  Semester schedule. Source of truth is the home page's own front matter
+  (content/_index.md → [params.schedule] and [[params.sessions]]), so the
+  club edits the calendar as Markdown and the page applies it.
+
+  Row state is derived from the date. `status` in front matter only overrides.
+  Dates are "YYYY-MM-DD" strings, so lexicographic compare is chronological.
+*/ -}}
+{{- $sched := .Params.schedule | default dict }}
+{{- /* Sessions inherit the weekly room unless they override it. Most weeks
+       are in the usual place; the ones that are not are why this column
+       exists — a different building, or "Online". */ -}}
+{{- $defaultRoom := (.Params.meeting | default dict).room | default "" }}
+{{- $sessions := sort (.Params.sessions | default slice) "date" }}
+{{- with $sessions }}
+{{- $today := now.Format "2006-01-02" }}
+
+{{- /* Is one of today's dates a live meeting? If so it takes the highlight
+       and nothing gets flagged NEXT. */ -}}
+{{- $hasToday := false }}
+{{- range $sessions }}
+  {{- $skip := in (slice "cancelled" "moved") (.status | default "") }}
+  {{- if and (not $skip) (eq .date $today) }}{{ $hasToday = true }}{{ end }}
+{{- end }}
+
+{{- /* NEXT = earliest session still ahead of today that has not been called
+       off. Only assigned when today is not itself a meeting day. */ -}}
+{{- /* Track the NEXT row by INDEX, not by date: two meetings can share a
+       date, and matching on the date value flags both of them. */ -}}
+{{- $nextIdx := -1 }}
+{{- if not $hasToday }}
+  {{- range $i, $sn := $sessions }}
+    {{- $skip := in (slice "cancelled" "moved") ($sn.status | default "") }}
+    {{- if and (eq $nextIdx -1) (not $skip) (gt $sn.date $today) }}
+      {{- $nextIdx = $i }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+
+<section class="wf-schedule wf-schedule--lead" aria-labelledby="wf-schedule-label">
+  <h2 id="wf-schedule-label">
+    Semester schedule
+    {{- with $sched.semester }}<span class="wf-kicker">{{ . }}</span>{{ end }}
+  </h2>
+  <table class="wf-table">
+    <thead class="sr-only">
+      <tr><th scope="col">Date</th><th scope="col">Topic</th>
+          <th scope="col">Where</th>
+          <th scope="col">Track</th><th scope="col">Status</th></tr>
+    </thead>
+    <tbody>
+    {{- range $i, $sn := $sessions }}
+      {{- $status := $sn.status | default "" }}
+      {{- $state := "upcoming" }}
+      {{- if eq $status "cancelled" }}{{ $state = "cancelled" }}
+      {{- else if eq $status "moved" }}{{ $state = "moved" }}
+      {{- else if eq $status "done" }}{{ $state = "done" }}
+      {{- else if lt $sn.date $today }}{{ $state = "done" }}
+      {{- else if eq $sn.date $today }}{{ $state = "today" }}
+      {{- else if eq $i $nextIdx }}{{ $state = "next" }}
+      {{- end }}
+      <tr class="wf-row is-{{ $state }}">
+        <td class="wf-date">
+          <time datetime="{{ $sn.date }}">
+            {{- dateFormat "Mon Jan 2" (time.AsTime (printf "%sT12:00:00Z" $sn.date)) -}}
+          </time>
+        </td>
+        <td class="wf-title">
+          {{- with $sn.link }}<a href="{{ . | relURL }}">{{ end }}
+          {{- $sn.title -}}
+          {{- with $sn.link }}</a>{{ end }}
+          {{- with $sn.lead }} <span class="wf-note" style="display:inline">— {{ . }}</span>{{ end }}
+        </td>
+        {{- $room := $sn.room | default $defaultRoom }}
+        <td class="wf-room{{ if and $sn.room (ne $sn.room $defaultRoom) }} is-moved-room{{ end }}">
+          {{- $room -}}
+        </td>
+        <td class="wf-track">{{ $sn.track }}</td>
+        <td class="wf-state">
+          {{- if eq $state "today" }}TODAY
+          {{- else if eq $state "next" }}NEXT
+          {{- else if eq $state "cancelled" }}CANCELLED
+          {{- else if eq $state "moved" }}MOVED{{ end -}}
+        </td>
+      </tr>
+    {{- end }}
+    </tbody>
+  </table>
+  {{- with $sched.note }}<p class="wf-note">{{ . }}</p>{{ end }}
+</section>
+{{- end }}

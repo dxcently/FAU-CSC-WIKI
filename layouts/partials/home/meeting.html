@@ -1,0 +1,13 @@
+{{- /* Weekly meeting: a compact one-line strip. This is reference information
+     people read once and remember, so it gets a single row rather than a
+     panel — the semester schedule below is what they come back for. */ -}}
+{{- $m := .Params.meeting | default dict }}
+<section class="wf-meetbar" aria-label="Weekly meeting">
+  <span class="wf-meetbar__tag"><span class="wf-dot" aria-hidden="true"></span> Weekly</span>
+  <span class="wf-meetbar__item"><strong>{{ $m.day | default "Thursday" }}</strong></span>
+  <span class="wf-meetbar__sep" aria-hidden="true">·</span>
+  <span class="wf-meetbar__item">{{ $m.time | default "5:00 – 7:00 PM" }}</span>
+  <span class="wf-meetbar__sep" aria-hidden="true">·</span>
+  <span class="wf-meetbar__item">{{ $m.room | default "CM 22" }}</span>
+  {{- with $m.note }}<span class="wf-meetbar__note">{{ . }}</span>{{ end }}
+</section>

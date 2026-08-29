@@ -1,0 +1,16 @@
+{{- /* Shows the dark-ground mark or its light-ground twin, whichever matches
+     the reader's current theme. Both <img> tags are emitted and CSS hides one
+     (§12 in custom.css) — a display:none image is out of the accessibility
+     tree too, so only one alt text is ever announced.
+
+     A shortcode rather than raw HTML in the Markdown: goldmark strips raw
+     HTML by default, and turning that off site-wide to place two images is a
+     bad trade. */ -}}
+{{- $dark  := .Get "dark" }}
+{{- $light := .Get "light" | default $dark }}
+{{- $alt   := .Get "alt" | default "" }}
+{{- $w     := .Get "width" | default "240" }}
+<span class="wf-mark">
+  <img class="wf-mark__dark"  src="{{ $dark  | relURL }}" alt="{{ $alt }}" width="{{ $w }}">
+  <img class="wf-mark__light" src="{{ $light | relURL }}" alt="{{ $alt }}" width="{{ $w }}">
+</span>

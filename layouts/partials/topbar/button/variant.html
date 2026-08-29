@@ -1,0 +1,18 @@
+{{- /* Dark/light toggle in the topbar.
+
+     The theme's own switcher is a <select> in the sidebar footer — fine for a
+     long variant list, heavy for exactly two. This is one button that flips
+     between them and swaps its own icon to show where it takes you.
+
+     No href here on purpose: the theme renders topbar buttons as <button>,
+     so a `javascript:` URL would never fire. assets/js/custom.js binds the
+     click and calls window.relearn.changeVariant(), the theme's public API —
+     that writes localStorage and fires themeVariantLoaded, which mermaid and
+     the OpenAPI embeds need in order to re-render in the new palette. */ -}}
+{{- partial "topbar/func/button.html" (dict
+  "page" .page
+  "class" "topbar-button-variant wf-variant-toggle"
+  "icon" "circle-half-stroke"
+  "onempty" "show"
+  "hint" "Switch between dark and light"
+)}}

@@ -1,0 +1,32 @@
+{{- /* Sidebar header: owl shield beside the site title. Overrides the theme's
+     auto-logo.
+
+     Both grounds are emitted and CSS shows the one matching the current
+     variant (§12 in custom.css) — the sidebar goes white in light mode, and
+     the dark shield sitting on it reads as a black sticker.
+
+     Rendered as <img> rather than inline SVG so the theme's #R-logo svg
+     recolouring rules cannot reach the hardcoded palette inside.
+ */ -}}
+{{- /* Resolved with `default` rather than dotting straight into
+     resources.Get: a nil resource there is a nil-pointer panic that fails the
+     WHOLE build, not just this partial. If the light shield goes missing the
+     sidebar quietly falls back to the dark one. */ -}}
+{{- $dark  := resources.Get "/images/logo.svg" }}
+{{- /* NOT named logo-light.svg on purpose. The theme's auto-favicon partial
+     scans for logo-light / logo-dark and turns anything it finds into a
+     prefers-color-scheme favicon link — and it builds that link with a
+     malformed media attribute, `(prefers-color-scheme: light")`. Keeping this
+     file outside the logo-* pattern leaves one clean favicon. */ -}}
+{{- $light := resources.Get "/images/shield-light.svg" | default $dark }}
+<a id="R-logo" class="R-default direction-row" href="{{ partial "permalink.gotmpl" (dict "to" site.Home) }}">
+  <span class="logo-image default-animation">
+    {{- with $dark }}
+    <img class="wf-logo__dark"  src="{{ .RelPermalink }}" alt="" aria-hidden="true">
+    {{- end }}
+    {{- with $light }}
+    <img class="wf-logo__light" src="{{ .RelPermalink }}" alt="" aria-hidden="true">
+    {{- end }}
+  </span>
+  <span class="logo-title default-animation">{{ site.Title }}</span>
+</a>

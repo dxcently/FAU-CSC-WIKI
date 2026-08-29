@@ -1,0 +1,5 @@
+<nav class="wf-quicklinks" aria-label="Quick links">
+{{- range site.Menus.shortcuts }}
+  <a class="wf-ql" href="{{ .URL }}"{{ if hasPrefix .URL "http" }} rel="external"{{ end }}>{{ .Name | safeHTML }}</a>
+{{- end }}
+</nav>

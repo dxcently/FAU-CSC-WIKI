@@ -1,0 +1,14 @@
+{{- /* Opt-in flag for the scramble-reveal effect in assets/js/custom.js.
+
+     On for the home page and section landing pages — the places people scan.
+     Deliberately OFF for leaf pages: watching a heading resolve is a nice
+     arrival, and a distraction when you are three screens into a reference
+     page trying to read.
+
+     Override per page with `scramble = true` / `scramble = false` in front
+     matter. isset is load-bearing — `false` and "not set" are different. */ -}}
+{{- $on := or .IsHome (eq .Kind "section") }}
+{{- if isset .Params "scramble" }}{{ $on = .Params.scramble }}{{ end }}
+{{- if $on }}
+<script>document.documentElement.dataset.wfScramble = "1";</script>
+{{- end }}

@@ -1,0 +1,33 @@
+{{- $page := .Page }}
+{{- $which := .Get "pages" | default "children" }}
+{{- $items := $page.Pages }}
+{{- if eq $which "sections" }}{{ $items = $page.Sections }}{{ end }}
+{{- $items = where $items "Params.hidden" "!=" true }}
+{{- $items = where $items "Params.homecard" "!=" false }}
+{{- $sortby := .Get "sort" | default "weight" }}
+{{- if eq $sortby "title" }}
+  {{- $items = sort $items "LinkTitle" }}
+{{- else }}
+  {{- $items = sort $items "Weight" }}
+{{- end }}
+{{- $cols := .Get "cols" | default "3" }}
+{{- /* description is required front matter; a missing one leaves a card with
+       fallback text, which is easy to miss. Name the file instead. */}}
+{{- range $items }}
+  {{- if not .Description }}
+    {{- warnf "%q: missing 'description' front matter; its card in %q falls back to the page summary" (or (and .File .File.Filename) .RelPermalink) $page.RelPermalink }}
+  {{- end }}
+{{- end }}
+{{- if $items }}
+<ul class="wf-grid wf-grid--{{ $cols }}">
+{{- range $items }}
+  <li>
+    <a class="wf-panel wf-panel--link" href="{{ .RelPermalink }}">
+      {{- with .Params.icon }}<i class="{{ . }}" aria-hidden="true"></i>{{ end }}
+      <span class="wf-card-title">{{ .LinkTitle }}</span>
+      <span class="wf-card-desc">{{ .Description | default (.Summary | plainify | truncate 140) }}</span>
+    </a>
+  </li>
+{{- end }}
+</ul>
+{{- end }}

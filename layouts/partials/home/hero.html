@@ -1,0 +1,18 @@
+{{- $h := .Params.hero | default dict }}
+<section class="wf-hero">
+  <div class="wf-hero-grid" aria-hidden="true"></div>
+  <div class="wf-hero-fog" aria-hidden="true"></div>
+  <div class="wf-hero-art" aria-hidden="true">{{ partial "home/owl-wireframe.html" . }}</div>
+  <div class="wf-hero-copy">
+    <p class="wf-hero-kicker">{{ $h.kicker | default "Florida Atlantic University" }}</p>
+    <h1 class="wf-hero-title">{{ $h.title | default site.Title }}</h1>
+    {{- /* The caret lives HERE and nowhere else. One per site: it is a
+         terminal signal, and a blinking block on every surface stops being a
+         signal and becomes noise. Decoration, so it is hidden from screen
+         readers — they would announce an empty element after the tagline. */}}
+    <p class="wf-hero-tagline">
+      {{- $h.tagline | default "Learn it. Break it. Defend it." -}}
+      <span class="wf-caret" aria-hidden="true"></span>
+    </p>
+  </div>
+</section>

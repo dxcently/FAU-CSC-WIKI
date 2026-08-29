@@ -1,0 +1,13 @@
+{{- $secs := where site.Home.Sections "Params.homecard" "!=" false }}
+{{- $secs = where $secs "Params.hidden" "!=" true }}
+<ul class="wf-grid">
+{{- range sort $secs "Weight" }}
+  <li>
+    <a class="wf-panel wf-panel--link" href="{{ .RelPermalink }}">
+      <i class="{{ .Params.icon | default "fa-solid fa-folder" }}" aria-hidden="true"></i>
+      <span class="wf-card-title">{{ .LinkTitle }}</span>
+      <span class="wf-card-desc">{{ .Description }}</span>
+    </a>
+  </li>
+{{- end }}
+</ul>

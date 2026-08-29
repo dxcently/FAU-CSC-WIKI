@@ -1,0 +1,27 @@
+{{- /* Overrides the theme's end area to put the dark/light toggle first —
+     it is the only button here a reader uses on every page. The rest is the
+     theme's own list, unchanged. */ -}}
+{{- partial "topbar/button/variant.html" (dict
+	"page" .
+)}}
+{{- partial "topbar/button/edit.html" (dict
+	"page" .
+)}}
+{{- partial "topbar/button/source.html" (dict
+	"page" .
+)}}
+{{- partial "topbar/button/markdown.html" (dict
+	"page" .
+)}}
+{{- partial "topbar/button/print.html" (dict
+	"page" .
+)}}
+{{- partial "topbar/button/prev.html" (dict
+	"page" .
+)}}
+{{- partial "topbar/button/next.html" (dict
+	"page" .
+)}}
+{{- partial "topbar/button/more.html" (dict
+	"page" .
+)}}

@@ -1,0 +1,156 @@
+<svg viewBox="-12 0 284 258" width="100%" height="100%" fill="none"
+     role="img" aria-label="Wireframe owl mark">
+  <defs>
+    <linearGradient id="wf-owl-face" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="var(--wf-stage-chrome)" stop-opacity=".26"/>
+      <stop offset="1" stop-color="var(--wf-stage-chrome)" stop-opacity=".06"/>
+    </linearGradient>
+    <linearGradient id="wf-owl-rim" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--wf-stage-chrome)" stop-opacity=".16"/>
+      <stop offset="1" stop-color="var(--wf-stage-chrome)" stop-opacity=".03"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Body: folded wings and breast, hanging from the head's lower edges.
+       Drawn first so the head overlaps it. Same faceted language. -->
+  <g stroke="var(--wf-stage-chrome)" stroke-linecap="round" stroke-linejoin="round">
+    <!-- wings: from the outer head corners, tapering to points -->
+    <path stroke-width="1" opacity=".6" fill="url(#wf-owl-rim)"
+          d="M40 112 L34 180 L58 252 L84 196 L74 138 Z"/>
+    <path stroke-width="1" opacity=".6" fill="url(#wf-owl-rim)"
+          d="M220 112 L226 180 L202 252 L176 196 L186 138 Z"/>
+    <!-- wing fold lines -->
+    <g stroke-width="1" opacity=".3">
+      <path d="M40 112 L58 252"/>
+      <path d="M220 112 L202 252"/>
+    </g>
+    <!-- underline + talons, per the sketch: one wide shallow V spanning the
+         bottom of the body, with a small three-prong talon mark astride each
+         slope — bird-track shorthand for feet. -->
+    <g stroke-width="1.3" opacity=".6">
+      <path fill="url(#wf-owl-rim)" opacity=".9"
+            d="M71 223 L130 252 L189 223 L176 196 L130 236 L84 196 Z"/>
+    </g>
+    <!-- claws: three filled talon triangles per foot, hanging from the line -->
+    <g fill="var(--wf-stage-chrome)" fill-opacity=".55" stroke-width=".75" opacity=".8">
+      <path d="M92 233 L96 246 L98 236 Z"/>
+      <path d="M100 237 L104 251 L106 240 Z"/>
+      <path d="M108 241 L111 251 L113 244 Z"/>
+      <path d="M168 233 L164 246 L162 236 Z"/>
+      <path d="M160 237 L156 251 L154 240 Z"/>
+      <path d="M152 241 L149 251 L147 244 Z"/>
+    </g>
+    <!-- breast: between the wings, under the chin, down to a tail point -->
+    <path stroke-width="1" opacity=".5" fill="url(#wf-owl-face)"
+          d="M84 196 L74 138 L130 158 L186 138 L176 196 L130 236 Z"/>
+    <!-- breast feather chevrons -->
+    <g stroke-width="1" opacity=".35">
+      <path d="M106 182 L130 196 L154 182"/>
+      <path d="M112 204 L130 215 L148 204"/>
+    </g>
+  </g>
+
+  <!-- Bevel rim: outer silhouette minus the inner plate, shaded as one band.
+       The plate is pulled well in so the band reads as a wide facial disc. -->
+  <path fill="url(#wf-owl-rim)" fill-rule="evenodd"
+        d="M130 36 L110 30 L88 26 L2 58 L40 112 L130 158 L220 112 L258 58
+           L172 26 L150 30 Z
+           M130 55 L98 48 L40 64 L67 101 L130 124 L193 101 L220 64 L162 48 Z"/>
+
+  <!-- Inner face plate, shaded top-down so the mark has some body. -->
+  <path fill="url(#wf-owl-face)"
+        d="M130 55 L98 48 L40 64 L67 101 L130 124 L193 101 L220 64 L162 48 Z"/>
+
+  <!-- chin: a thin white chevron hugging the underside of the face plate's
+       bottom V — tapering to nothing at both ends, deepest under the chin. -->
+  <path fill="var(--wf-stage-mark)" opacity=".13"
+        d="M67 101 L130 124 L193 101 L130 132 Z"/>
+
+  <g stroke="var(--wf-stage-chrome)" stroke-linecap="round" stroke-linejoin="round">
+    <!-- outer silhouette -->
+    <path stroke-width="1" opacity=".75"
+          d="M130 36 L110 30 L88 26 L2 58 L40 112 L130 158 L220 112 L258 58
+             L172 26 L150 30 Z"/>
+    <!-- inner plate -->
+    <path stroke-width="1" opacity=".5"
+          d="M130 55 L98 48 L40 64 L67 101 L130 124 L193 101 L220 64 L162 48 Z"/>
+    <!-- bevel connectors: outer vertex to its inner twin -->
+    <g stroke-width="1" opacity=".32">
+      <path d="M130 36 L130 55"/>
+      <path d="M88 26 L98 48"/>
+      <path d="M2 58 L40 64"/>
+      <path d="M40 112 L67 101"/>
+      <path d="M220 112 L193 101"/>
+      <path d="M258 58 L220 64"/>
+      <path d="M172 26 L162 48"/>
+    </g>
+    <!-- breast facets -->
+    <g stroke-width="1" opacity=".4">
+      <path d="M67 101 L130 132"/>
+      <path d="M193 101 L130 132"/>
+    </g>
+  </g>
+
+  <!-- Beak: short top triangle, long lower one, tip past the chin. -->
+  <g fill="var(--wf-stage-chrome)" opacity=".6">
+    <path d="M130 82 L114 104 L130 162 L146 104 Z"/>
+  </g>
+  <!-- inner beak: same shape scaled in, silver like the real mark's beak -->
+  <g fill="var(--wf-stage-mark)" opacity=".28">
+    <path d="M130 94 L121 105 L130 144 L139 105 Z"/>
+  </g>
+
+  <!-- Eyes: quads whose edges run parallel to real face lines. Socket is fill
+       only — it has no outline of its own. -->
+  <g fill="var(--wf-stage-chrome)" opacity=".16">
+    <path d="M40 64 L123 82 L103 110 L59 88 Z"/>
+    <path d="M220 64 L137 82 L157 110 L201 88 Z"/>
+  </g>
+  <!-- The break belongs on the TOP edge — that is where the brow crosses the
+       eye, so the outline drops out there and the dark ground finishes the
+       shape. Outer, bottom and inner runs are complete; the top survives only
+       as a stub at each end. -->
+  <g stroke="var(--wf-stage-chrome)" stroke-width="1.4" opacity=".9"
+     stroke-linecap="round" stroke-linejoin="round">
+    <path d="M40 64 L59 88 L103 110 L123 82"/>
+    <path d="M40 64 L63 69"/>
+    <path d="M123 82 L103 78"/>
+    <path d="M220 64 L201 88 L157 110 L137 82"/>
+    <path d="M220 64 L197 69"/>
+    <path d="M137 82 L157 78"/>
+  </g>
+  <!-- Pupil hangs off the top edge: its upper side sits exactly on the eye's
+       top-edge line (40,64)->(123,82). -->
+  <g fill="var(--wf-stage-mark)" opacity=".92">
+    <path d="M62 68.77 L112 79.61 L99 97 Z"/>
+    <path d="M198 68.77 L148 79.61 L161 97 Z"/>
+  </g>
+
+  <!-- Forehead: nested V plates. Each chevron is two parallelogram facets
+       meeting at the centre; the left face catches the light, the right sits
+       in shade — same upper-left key light as the face gradients. -->
+  <g stroke="var(--wf-stage-chrome)" stroke-width=".75" stroke-linejoin="round">
+    <path fill="var(--wf-stage-chrome)" fill-opacity=".42" opacity=".9"
+          d="M112 40 L130 52 L130 60 L112 48 Z"/>
+    <path fill="var(--wf-stage-chrome)" fill-opacity=".20" opacity=".9"
+          d="M148 40 L130 52 L130 60 L148 48 Z"/>
+    <path fill="var(--wf-stage-chrome)" fill-opacity=".42" opacity=".9"
+          d="M118 62 L130 71 L130 77 L118 68 Z"/>
+    <path fill="var(--wf-stage-chrome)" fill-opacity=".20" opacity=".9"
+          d="M142 62 L130 71 L130 77 L142 68 Z"/>
+  </g>
+
+  <!-- brow-shadow facets: the wedge between the brow's underside and the
+       eye's top edge, filled so the gap reads as a solid plate. -->
+  <g fill="var(--wf-stage-chrome)" fill-opacity=".34" stroke="var(--wf-stage-chrome)"
+     stroke-width=".75" opacity=".9" stroke-linejoin="round">
+    <path d="M40 64 L63 58 L98 72 L130 82 Z"/>
+    <path d="M220 64 L197 58 L162 72 L130 82 Z"/>
+  </g>
+
+  <!-- Brows: thin tapered slivers, tips kicking up past the head. -->
+  <g fill="var(--wf-stage-red)" opacity=".92">
+    <path d="M130 82 L96 60 L52 44 L-2 14 L28 38 L6 44 L54 54 L98 72 L122 93 Z"/>
+    <path d="M130 82 L164 60 L208 44 L262 14 L232 38 L254 44 L206 54 L162 72 L138 93 Z"/>
+  </g>
+</svg>

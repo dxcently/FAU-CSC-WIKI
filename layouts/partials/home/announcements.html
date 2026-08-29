@@ -1,0 +1,58 @@
+{{- /*
+  ANNOUNCEMENTS — scaffolding for live Discord posts.
+
+  Renders from `data/announcements.json`, which nothing writes yet. The shape
+  each entry must have:
+
+      [
+        { "date": "2026-09-04T18:30:00Z",
+          "author": "shaamad",
+          "text": "CTF team meets in CM 22 tonight.",
+          "url": "https://discord.com/channels/..." }
+      ]
+
+  To make it live, something must produce that file before `hugo` runs — a
+  small bot or scheduled job that reads an announcements channel and writes
+  the JSON into data/. The site does not call Discord itself: Hugo builds
+  static output, and a browser-side call would need a token the public page
+  must never hold.
+
+  Until that exists this block renders a placeholder, so the section's shape
+  and styling are already in place when the feed turns up.
+*/ -}}
+{{- $items := site.Data.announcements }}
+<section class="wf-ann" aria-labelledby="wf-ann-label">
+  <h2 id="wf-ann-label">
+    Announcements
+    <span class="wf-kicker">from Discord</span>
+  </h2>
+
+  {{- if $items }}
+  <ul class="wf-ann__list">
+    {{- range first 5 $items }}
+    <li class="wf-panel wf-scanlines wf-ann__item">
+      <p class="wf-kicker">
+        {{- with .date }}
+        <time datetime="{{ . }}">{{ dateFormat "Mon Jan 2" (time.AsTime .) }}</time>
+        {{- end }}
+        {{- with .author }} · {{ . }}{{ end }}
+      </p>
+      <p class="wf-ann__text">{{ .text }}</p>
+      {{- with .url }}<a class="wf-ann__link" href="{{ . }}" rel="external">Open in Discord →</a>{{ end }}
+    </li>
+    {{- end }}
+  </ul>
+  {{- else }}
+  <div class="wf-panel wf-scanlines wf-ann__empty">
+    <p class="wf-ann__text">
+      Nothing piped in yet. Announcements are posted in
+      <a href="http://discord.gg/2Yun8WAUuy" rel="external">the Discord</a> —
+      this panel will mirror them once the feed is wired up.
+    </p>
+    <p class="wf-note">
+      Setup notes for whoever builds it are in the comment at the top of
+      <code>layouts/partials/home/announcements.html</code>.
+    </p>
+  </div>
+  {{- end }}
+</section>

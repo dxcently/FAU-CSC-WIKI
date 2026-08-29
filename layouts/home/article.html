@@ -1,0 +1,23 @@
+<article class="home wf-home">
+  <header class="headline">
+    {{- partial "content-header.html" . }}
+  </header>
+
+  {{ partial "home/hero.html" . }}
+  {{ partial "home/meeting.html" . }}
+  {{ partial "home/schedule.html" . }}
+  {{ partial "home/announcements.html" . }}
+
+  <h2>Where to go</h2>
+  {{ partial "home/sections.html" . }}
+
+  {{ partial "home/quicklinks.html" . }}
+
+  <div class="wf-freeform">
+    {{ partial "article-content.html" . }}
+  </div>
+
+  <footer class="footline">
+    {{- partial "content-footer.html" . }}
+  </footer>
+</article>
