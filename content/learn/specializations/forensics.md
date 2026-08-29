@@ -1,6 +1,8 @@
 +++
 title = "Forensics"
 weight = 3
+description = "What digital forensics involves, from real incident response to CTF file analysis."
+icon = "fa-solid fa-fingerprint"
 +++
 
 Digital forensics is investigating what happened. You examine artifacts — memory dumps, disk images, network captures, logs — and reconstruct events or extract hidden data.

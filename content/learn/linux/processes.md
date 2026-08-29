@@ -1,6 +1,8 @@
 +++
 title = "Processes & Services"
 weight = 3
+description = "What a Linux process is and how to inspect what is running and as whom."
+icon = "fa-solid fa-gears"
 +++
 
 A process is a running program. Understanding what is running, as whom, and why is essential for both offense and defense.

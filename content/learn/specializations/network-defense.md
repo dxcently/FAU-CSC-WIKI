@@ -1,6 +1,8 @@
 +++
 title = "Network Defense"
 weight = 4
+description = "What network defense covers and why it is the focus of competitions like CCDC."
+icon = "fa-solid fa-shield"
 +++
 
 Network defense is keeping attackers out and detecting them when they get in. It is the blue team side of security — monitoring, hardening, and response.

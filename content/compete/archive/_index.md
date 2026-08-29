@@ -1,6 +1,8 @@
 +++
 title = "Past Competitions"
-weight = 1
+weight = 9
+description = "An archive of past club competitions with links to team repos and write-ups."
+icon = "fa-solid fa-box-archive"
 +++
 
 ---

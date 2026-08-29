@@ -1,6 +1,8 @@
 +++
 title = "Bash Fundamentals"
 weight = 1
+description = "The Bash basics needed to automate tasks and chain tools together on the command line."
+icon = "fa-solid fa-terminal"
 +++
 
 Bash is the default shell on most Linux systems. You use it every time you open a terminal. Knowing the basics means you can automate repetitive tasks and chain tools together.

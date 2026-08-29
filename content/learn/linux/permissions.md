@@ -1,6 +1,8 @@
 +++
 title = "Permissions & Users"
 weight = 2
+description = "How Linux file permissions and users work, and why misconfigurations lead to privilege escalation."
+icon = "fa-solid fa-user-lock"
 +++
 
 Linux permissions are how the OS decides who can read, write, or execute a file. Misconfigurations here are a leading cause of privilege escalation.

@@ -1,6 +1,8 @@
 +++
 title = "Why Virtual Machines"
 weight = 1
+description = "Why you practice inside a VM instead of on your host machine."
+icon = "fa-solid fa-circle-question"
 +++
 
 A VM runs a full operating system inside your current one. It is isolated — what happens inside stays inside.

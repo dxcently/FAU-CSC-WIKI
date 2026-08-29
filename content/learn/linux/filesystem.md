@@ -1,6 +1,8 @@
 +++
 title = "The Filesystem"
 weight = 1
+description = "How the Linux filesystem is laid out and why understanding it matters for security work."
+icon = "fa-solid fa-folder-tree"
 +++
 
 In Linux, everything is a file. Devices, sockets, processes — all represented as files somewhere in the tree. Understanding the layout is step one.

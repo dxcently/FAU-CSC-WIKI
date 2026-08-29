@@ -1,6 +1,8 @@
 +++
 title = "Python for Security"
 weight = 2
+description = "Enough Python to read and write scripts for security work, without a full CS course."
+icon = "fa-brands fa-python"
 +++
 
 Python is the most common scripting language in security. It ships on most systems, has a massive library ecosystem, and you can go from idea to working script in minutes.

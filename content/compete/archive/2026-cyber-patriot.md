@@ -1,6 +1,8 @@
 +++
 title = "2026 Cyber Patriot"
 weight = 1
+description = "The club's CyberPatriot entry — hardening misconfigured Windows and Linux systems."
+icon = "fa-solid fa-user-shield"
 +++
 
 ---

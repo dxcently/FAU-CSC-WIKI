@@ -1,6 +1,14 @@
 +++
 title = "🛡️ Cybersecurity Intern Training Resource Guide (2025)"
+weight = 2
+slug = "intern-training-guide"
+description = "A difficulty-tiered roadmap of external resources for building Linux, Windows, cloud, web, and competition skills."
+icon = "fa-solid fa-graduation-cap"
 +++
+
+> [!info] Who wrote this
+> This guide was put together by **@shaamad**, the club's current president.
+> If it helped you, say so — and if something in it is out of date, tell them.
 
 A curated, difficulty‑based roadmap for building Linux, Windows, cybersecurity,
 cloud, web, and competition skills.

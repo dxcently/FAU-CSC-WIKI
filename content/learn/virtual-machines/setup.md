@@ -1,6 +1,8 @@
 +++
 title = "Setting Up a VM"
 weight = 2
+description = "The universal steps for setting up a virtual machine regardless of hypervisor."
+icon = "fa-solid fa-screwdriver-wrench"
 +++
 
 Pick a hypervisor (see [Tools](./tools)), download an ISO, create the VM. That is the whole process.

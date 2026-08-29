@@ -1,6 +1,8 @@
 +++
 title = "IP, Ports & Subnets"
 weight = 1
+description = "IP addresses, ports, and subnets — the foundation of everything in networking."
+icon = "fa-solid fa-sitemap"
 +++
 
 Every device on a network has an IP address. Every service on that device runs on a port. Subnets define which devices are in the same network segment.
@@ -73,8 +75,58 @@ The first step in almost every engagement is a port scan.
 
 ---
 
+## In CTF Environments
+
+Every CTF engagement starts with the same question: what is running and where? IP, ports, and subnets are how you answer it.
+
+**Standard recon sequence for an HTB/THM box:**
+```bash
+# You are given one IP. Start there.
+TARGET=10.10.10.5
+
+# Fast port sweep — all 65535 ports, high rate
+nmap -p- --min-rate 5000 -T4 $TARGET -oN allports.txt
+
+# Extract open ports into a variable
+PORTS=$(grep "open" allports.txt | cut -d'/' -f1 | tr '\n' ',' | sed 's/,$//')
+
+# Deep scan: version detection + default scripts on open ports only
+nmap -sV -sC -p$PORTS $TARGET -oN detailed.txt
+```
+
+Doing `-sV -sC` against all 65535 ports wastes time. Do the fast sweep first, then go deep on what is open.
+
+**Identifying interesting ports fast:**
+
+| Port you see | What to check first |
+|---|---|
+| 21 (FTP) | Anonymous login: `ftp <ip>`, user `anonymous` |
+| 22 (SSH) | Username enumeration, key-based auth, version exploits |
+| 80 / 443 | Web app — run gobuster/ffuf, check robots.txt, view source |
+| 139 / 445 (SMB) | `smbclient -L //<ip>`, check null sessions |
+| 3306 (MySQL) | Try `mysql -h <ip> -u root` with no password |
+| 8080 / 8443 | Second web app, often less hardened than the main one |
+
+**CCDC — subnet enumeration after first foothold:**
+
+CCDC gives you a scored network with many hosts. After you understand your subnet layout, you can identify which hosts are yours to defend and which belong to the red team.
+
+```bash
+# Discover hosts in your subnet
+nmap -sn 192.168.x.0/24 -oN hosts.txt
+
+# Check all hosts for open management ports (SSH, RDP, WinRM)
+nmap -p 22,3389,5985 192.168.x.0/24 --open
+```
+
+**Subnetting gotcha in competitions:**
+
+CTF machines and CCDC environments often use `/24` subnets. If your machine has IP `10.10.10.15` with a `/24` mask, the gateway is probably `10.10.10.1` and the target range is `10.10.10.0/24`. Do not scan past your subnet without confirming you have permission.
+
+---
+
 > [!info] How the Club Uses This
-> TODO: Add examples from CCDC, CTFs, or lab exercises where subnetting and port identification were relevant.
+> Port scanning is the first move on every CTF box. In CCDC, subnet awareness tells you the full scope of what you are defending before the red team maps it for you.
 
 ---
 

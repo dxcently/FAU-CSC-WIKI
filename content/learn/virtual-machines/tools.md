@@ -1,6 +1,8 @@
 +++
 title = "VM Tools"
 weight = 3
+description = "A rundown of hypervisor options and how to pick one for your hardware."
+icon = "fa-solid fa-cubes"
 +++
 
 A hypervisor runs the VM on top of your host OS. There are several. Pick one that fits your hardware and OS.

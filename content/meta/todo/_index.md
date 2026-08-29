@@ -1,6 +1,8 @@
 +++
 title = "TODO"
 weight = 999
+description = "The running list of wiki and infrastructure work that has not been done yet."
+icon = "fa-solid fa-list-check"
 +++
 
 ## TODO

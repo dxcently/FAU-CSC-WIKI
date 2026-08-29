@@ -1,6 +1,8 @@
 +++
 title = "Getting Started with CTFs"
 weight = 1
+description = "How to pick a CTF platform, approach a challenge, and use AI without skipping the thinking."
+icon = "fa-solid fa-play"
 +++
 
 A CTF (Capture the Flag) is a security competition where you solve challenges to find a hidden string called a flag. Flags are usually formatted like `flag{some_text_here}`.

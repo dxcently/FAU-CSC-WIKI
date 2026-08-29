@@ -1,6 +1,8 @@
 +++
 title = "Networking Tools"
 weight = 3
+description = "The networking tools you will reach for constantly, and what each one does."
+icon = "fa-solid fa-magnifying-glass"
 +++
 
 These are the tools you will use constantly. Learn the basics of each one — not every flag, just what it does and when to reach for it.

@@ -1,6 +1,8 @@
 +++
 title = "CTF"
-weight = 60
+weight = 1
+description = "What CTFs are, where to start, and how to approach a challenge."
+icon = "fa-solid fa-flag"
 +++
 
 CTFs (Capture the Flag) are structured hacking challenges. You find a hidden string called a flag by exploiting a vulnerability or solving a puzzle.

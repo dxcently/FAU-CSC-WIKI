@@ -1,6 +1,8 @@
 +++
 title = "2026 eMERGE Hackathon — Project Scalpel"
 weight = 3
+description = "The club's eMERGE hackathon entry, Project Scalpel — a Cowrie honeypot with an edge AI analysis layer."
+icon = "fa-solid fa-lightbulb"
 +++
 
 ---

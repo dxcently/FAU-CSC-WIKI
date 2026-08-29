@@ -1,6 +1,8 @@
 +++
 title = "CTF Categories"
 weight = 2
+description = "A rundown of CTF categories — web, pwn, crypto, forensics, reverse engineering, OSINT, misc — and where to start each."
+icon = "fa-solid fa-list"
 +++
 
 CTF challenges are grouped into categories. Each one requires different knowledge and tools. Pick one to start with and go deep.
