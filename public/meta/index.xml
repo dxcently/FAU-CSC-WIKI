@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Meta :: FAU Cyber Security Club</title>
-    <link>http://localhost:1313/meta/index.html</link>
+    <link>https://example.org/meta/index.html</link>
     <description>How this wiki itself is built and maintained — authoring guide and the open TODO list.</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/meta/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://example.org/meta/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Authoring</title>
-      <link>http://localhost:1313/meta/authoring/index.html</link>
+      <link>https://example.org/meta/authoring/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/meta/authoring/index.html</guid>
+      <guid>https://example.org/meta/authoring/index.html</guid>
       <description>How to write and submit wiki pages, the shortcode reference, and Hugo config for deeper edits.</description>
     </item>
     <item>
       <title>Logo &amp; Brand</title>
-      <link>http://localhost:1313/meta/brand/index.html</link>
+      <link>https://example.org/meta/brand/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/meta/brand/index.html</guid>
+      <guid>https://example.org/meta/brand/index.html</guid>
       <description>The club owl mark in both forms, with downloads, colours, and rules for using it.</description>
     </item>
     <item>
       <title>TODO</title>
-      <link>http://localhost:1313/meta/todo/index.html</link>
+      <link>https://example.org/meta/todo/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/meta/todo/index.html</guid>
+      <guid>https://example.org/meta/todo/index.html</guid>
       <description>The running list of wiki and infrastructure work that has not been done yet.</description>
     </item>
   </channel>

@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>TODO :: FAU Cyber Security Club</title>
-    <link>http://localhost:1313/meta/todo/index.html</link>
+    <link>https://example.org/meta/todo/index.html</link>
     <description>The running list of wiki and infrastructure work that has not been done yet.</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/meta/todo/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://example.org/meta/todo/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

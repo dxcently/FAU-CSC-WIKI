@@ -1,195 +1,195 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/compete/archive/2026-cyber-patriot/index.html</loc>
+    <loc>https://example.org/compete/archive/2026-cyber-patriot/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/meta/authoring/index.html</loc>
+    <loc>https://example.org/meta/authoring/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/cli-scripting/bash/index.html</loc>
+    <loc>https://example.org/learn/cli-scripting/bash/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/compete/ctf/index.html</loc>
+    <loc>https://example.org/compete/ctf/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/ai/fundamentals/index.html</loc>
+    <loc>https://example.org/learn/ai/fundamentals/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/compete/ctf/getting-started/index.html</loc>
+    <loc>https://example.org/compete/ctf/getting-started/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/web-fundamentals/http/index.html</loc>
+    <loc>https://example.org/learn/web-fundamentals/http/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/networking/fundamentals/index.html</loc>
+    <loc>https://example.org/learn/networking/fundamentals/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/toolbox/links/index.html</loc>
+    <loc>https://example.org/toolbox/links/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/windows/powershell/index.html</loc>
+    <loc>https://example.org/learn/windows/powershell/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/lab/proxmox/index.html</loc>
+    <loc>https://example.org/lab/proxmox/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/cryptography/basics/index.html</loc>
+    <loc>https://example.org/learn/cryptography/basics/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/linux/filesystem/index.html</loc>
+    <loc>https://example.org/learn/linux/filesystem/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/virtual-machines/index.html</loc>
+    <loc>https://example.org/learn/virtual-machines/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/specializations/web-exploitation/index.html</loc>
+    <loc>https://example.org/learn/specializations/web-exploitation/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/virtual-machines/why-vms/index.html</loc>
+    <loc>https://example.org/learn/virtual-machines/why-vms/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/compete/archive/2026-ccdc/index.html</loc>
+    <loc>https://example.org/compete/archive/2026-ccdc/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/windows/active-directory/index.html</loc>
+    <loc>https://example.org/learn/windows/active-directory/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/ai/agentic-graphs/index.html</loc>
+    <loc>https://example.org/learn/ai/agentic-graphs/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/specializations/binary-exploitation/index.html</loc>
+    <loc>https://example.org/learn/specializations/binary-exploitation/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/lab/building-a-range/index.html</loc>
+    <loc>https://example.org/lab/building-a-range/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/cryptography/in-practice/index.html</loc>
+    <loc>https://example.org/learn/cryptography/in-practice/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/compete/ctf/categories/index.html</loc>
+    <loc>https://example.org/compete/ctf/categories/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/linux/index.html</loc>
+    <loc>https://example.org/learn/linux/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/linux/permissions/index.html</loc>
+    <loc>https://example.org/learn/linux/permissions/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/networking/protocols/index.html</loc>
+    <loc>https://example.org/learn/networking/protocols/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/cli-scripting/python-scripting/index.html</loc>
+    <loc>https://example.org/learn/cli-scripting/python-scripting/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/virtual-machines/setup/index.html</loc>
+    <loc>https://example.org/learn/virtual-machines/setup/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/web-fundamentals/system-concepts/index.html</loc>
+    <loc>https://example.org/learn/web-fundamentals/system-concepts/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/toolbox/intern-training-guide/index.html</loc>
+    <loc>https://example.org/toolbox/intern-training-guide/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/compete/archive/2026-emerge-hackathon/index.html</loc>
+    <loc>https://example.org/compete/archive/2026-emerge-hackathon/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/toolbox/cheatsheets/index.html</loc>
+    <loc>https://example.org/toolbox/cheatsheets/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/toolbox/ai/index.html</loc>
+    <loc>https://example.org/toolbox/ai/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/specializations/forensics/index.html</loc>
+    <loc>https://example.org/learn/specializations/forensics/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/windows/group-policy/index.html</loc>
+    <loc>https://example.org/learn/windows/group-policy/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/ai/harnesses-and-loops/index.html</loc>
+    <loc>https://example.org/learn/ai/harnesses-and-loops/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/meta/brand/index.html</loc>
+    <loc>https://example.org/meta/brand/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/networking/index.html</loc>
+    <loc>https://example.org/learn/networking/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/networking/tools/index.html</loc>
+    <loc>https://example.org/learn/networking/tools/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/linux/processes/index.html</loc>
+    <loc>https://example.org/learn/linux/processes/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/virtual-machines/tools/index.html</loc>
+    <loc>https://example.org/learn/virtual-machines/tools/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/toolbox/ai-workflows/index.html</loc>
+    <loc>https://example.org/toolbox/ai-workflows/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/toolbox/ai-automation/index.html</loc>
+    <loc>https://example.org/toolbox/ai-automation/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/cli-scripting/index.html</loc>
+    <loc>https://example.org/learn/cli-scripting/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/ai/knowledge-bases/index.html</loc>
+    <loc>https://example.org/learn/ai/knowledge-bases/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/specializations/network-defense/index.html</loc>
+    <loc>https://example.org/learn/specializations/network-defense/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/ai/blue-and-red/index.html</loc>
+    <loc>https://example.org/learn/ai/blue-and-red/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/web-fundamentals/index.html</loc>
+    <loc>https://example.org/learn/web-fundamentals/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/windows/index.html</loc>
+    <loc>https://example.org/learn/windows/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/cryptography/index.html</loc>
+    <loc>https://example.org/learn/cryptography/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/ai/index.html</loc>
+    <loc>https://example.org/learn/ai/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/compete/archive/index.html</loc>
+    <loc>https://example.org/compete/archive/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/start/index.html</loc>
+    <loc>https://example.org/start/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/specializations/index.html</loc>
+    <loc>https://example.org/learn/specializations/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/learn/index.html</loc>
+    <loc>https://example.org/learn/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/compete/index.html</loc>
+    <loc>https://example.org/compete/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/lab/index.html</loc>
+    <loc>https://example.org/lab/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/projects/index.html</loc>
+    <loc>https://example.org/projects/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/toolbox/index.html</loc>
+    <loc>https://example.org/toolbox/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/meta/index.html</loc>
+    <loc>https://example.org/meta/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/meta/todo/index.html</loc>
+    <loc>https://example.org/meta/todo/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/categories/index.html</loc>
+    <loc>https://example.org/categories/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/index.html</loc>
+    <loc>https://example.org/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/tags/index.html</loc>
+    <loc>https://example.org/tags/index.html</loc>
   </url>
 </urlset>
