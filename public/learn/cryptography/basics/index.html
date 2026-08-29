@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html id="R-html" lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.164.0">
+    <meta name="generator" content="Relearn 9.0.3+dd4f8457f5143e91eae3954813494d2b0cc6741c">
+    <meta name="description" content="The six cryptographic primitives explained by what problem each one solves, not by the math behind it.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The Building Blocks :: FAU Cyber Security Club">
+    <meta name="twitter:description" content="The six cryptographic primitives explained by what problem each one solves, not by the math behind it.">
+    <meta property="og:url" content="https://example.org/learn/cryptography/basics/index.html">
+    <meta property="og:site_name" content="FAU Cyber Security Club">
+    <meta property="og:title" content="The Building Blocks :: FAU Cyber Security Club">
+    <meta property="og:description" content="The six cryptographic primitives explained by what problem each one solves, not by the math behind it.">
+    <meta property="og:locale" content="en_us">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Learn">
+    <meta itemprop="name" content="The Building Blocks :: FAU Cyber Security Club">
+    <meta itemprop="description" content="The six cryptographic primitives explained by what problem each one solves, not by the math behind it.">
+    <meta itemprop="wordCount" content="1285">
+    <title>The Building Blocks :: FAU Cyber Security Club</title>
+    <link href="/images/logo.svg?1787990815" rel="icon" type="image/svg+xml">
+    <link href="/css/auto-complete/auto-complete.min.css?1787990815" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1787990815" defer></script>
+    <script src="/js/search-lunr.min.js?1787990815" defer></script>
+    <script src="/js/search.min.js?1787990815" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.en.js?1787990815";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1787990815" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="/fonts/fontawesome/css/all.min.css?1787990815" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/all.min.css?1787990815" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1787990815" rel="stylesheet">
+    <link href="/css/theme.min.css?1787990815" rel="stylesheet">
+    <link href="/css/format-html.min.css?1787990815" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/learn\/cryptography\/basics\/index.html';
+      window.relearn.relBasePath='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/example.org';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'hacker', 'hacker-light' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="/css/custom.css?1787990815" rel="stylesheet">
+    <script src="/js/custom.js?1787990815" defer></script>
+  </head>
+  <body class="mobile-support html" data-origin="/learn/cryptography/basics/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#the-six-things-you-actually-need">The Six Things You Actually Need</a>
+      <ul>
+        <li><a href="#hashing">Hashing</a></li>
+        <li><a href="#symmetric-encryption">Symmetric Encryption</a></li>
+        <li><a href="#asymmetric--public-key-encryption">Asymmetric / Public-Key Encryption</a></li>
+        <li><a href="#digital-signatures">Digital Signatures</a></li>
+        <li><a href="#key-exchange">Key Exchange</a></li>
+        <li><a href="#randomness">Randomness</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">FAU Cyber Security Club</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/learn/index.html"><span itemprop="name">Learn</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/learn/cryptography/index.html"><span itemprop="name">Cryptography</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">The Building Blocks</span><meta itemprop="position" content="4"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-variant wf-variant-toggle default-animation" data-content-empty="show" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle"><span><i class="fa-fw fas fa-circle-half-stroke"></i></span></span>
+            </div>
+
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/learn/cryptography/index.html" title="Cryptography (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/learn/cryptography/in-practice/index.html" title="Crypto in the Real World (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable learn" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="the-building-blocks">The Building Blocks</h1>
+
+<hr>
+<p>Six ideas cover almost everything you will run into. Learn what each one
+does, what it promises, and what it does not promise. That last part is where
+most real mistakes happen.</p>
+<h2 id="the-six-things-you-actually-need">The Six Things You Actually Need<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="hashing">Hashing<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>A <strong>hash function</strong> takes any input — a file, a password, a whole hard drive
+— and produces a fixed-length string of characters. Change one character in
+the input and the output looks completely different. Feed it the same input
+twice, and you get the same output every time.</p>
+<p>Think of it as a fingerprint machine. You cannot rebuild a person from their
+fingerprint. You can only check whether two fingerprints match. That is the
+whole point of a hash: it proves <strong>integrity</strong> — that a file was not changed
+— not secrecy.</p>
+<p>A hash is <strong>one-way</strong>. There is no key, and there is no way to reverse it
+back to the original input. This is the detail people get wrong constantly:
+<strong>hashing is not encryption.</strong> Encryption is meant to be undone by someone
+holding the right key. A hash is never meant to be undone by anyone.</p>
+<p>This is why password storage uses hashes. A site should never store your
+actual password. It stores the hash of it. When you log in, the site hashes
+what you typed and compares the two hashes. If the site gets breached, the
+attacker gets a pile of hashes, not passwords.</p>
+<p>But a plain hash is not enough on its own, for two reasons:</p>
+<ul>
+<li><strong>Fast hashes get brute-forced.</strong> A general-purpose hash function is built
+to run fast. That is bad for password storage — an attacker with stolen
+hashes can try billions of guesses per second on modern hardware. Password
+storage instead uses <strong>slow hashes</strong>, built to take real time and memory
+per guess, so billions of guesses per second becomes thousands.</li>
+<li><strong>The same password produces the same hash.</strong> Two users with the password
+<code>hunter2</code> end up with identical hashes. An attacker who cracks one instance
+of a common password cracks every account using it. The fix is a <strong>salt</strong>
+— a random value mixed into the hash before it runs, unique per user, so
+identical passwords produce different hashes.</li>
+</ul>
+<p>One more term you will hear: a <strong>collision</strong> is two different inputs that
+happen to produce the same hash. In plain words, this is like two different
+people having the exact same fingerprint. A good hash function makes this
+so unlikely you can treat it as impossible. Some older, deprecated hash
+functions turned out not to be — researchers found ways to deliberately
+construct collisions in them. That is exactly why they were deprecated, and
+why modern systems use their replacements instead.</p>
+<h3 id="symmetric-encryption">Symmetric Encryption<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Symmetric encryption</strong> uses one key to lock data and the same key to unlock
+it. Both sides need a copy of that key before anything encrypted can be
+shared. It is fast, and it is the right tool for encrypting large amounts of
+data — a whole file, a video call, a network connection.</p>
+<p>The catch is right there in the description: <strong>both sides need the same key
+first.</strong> That is the <strong>key distribution problem</strong> — how do you get a secret
+key to someone else without an eavesdropper on the line copying it too? If
+you could send the key safely, you could probably send the data safely, and
+you would not need encryption in the first place. Symmetric encryption alone
+does not solve this. Something else has to.</p>
+<h3 id="asymmetric--public-key-encryption">Asymmetric / Public-Key Encryption<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Asymmetric encryption</strong>, also called <strong>public-key encryption</strong>, uses two
+keys instead of one: a <strong>public key</strong> you hand out to anyone, and a
+<strong>private key</strong> you never share with anyone. The two are mathematically
+linked, but you cannot work out the private key from the public one.</p>
+<p>The rule is simple: the public key encrypts, the private key decrypts.
+Anyone can lock a message with your public key. Only you can unlock it,
+because only you hold the private key. Flip it around and you get a
+<strong>signature</strong>, covered next: the private key signs, and the public key
+verifies that signature.</p>
+<p>This solves the key distribution problem above — you can publish your public
+key anywhere, openly, and nobody can do anything with it except send you
+things only you can read. Nobody needs to sneak a shared secret past an
+eavesdropper first.</p>
+<p>The tradeoff is speed. Asymmetric encryption is far slower than symmetric
+encryption and does not scale well to large amounts of data. In practice, it
+is almost never used to encrypt the actual data. It is used once, at the
+start of a connection, to safely hand over a fast, temporary symmetric key.
+That handoff is exactly what a TLS handshake does — covered in the next
+page.</p>
+<h3 id="digital-signatures">Digital Signatures<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>A <strong>digital signature</strong> proves two things at once: who sent a message, and
+that nobody changed it after they sent it. It uses the same public/private
+key pair as asymmetric encryption, but backward — the sender signs with
+their private key, and anyone can check that signature with the sender&rsquo;s
+public key.</p>
+<p>Think of it as a wax seal that only one person owns the stamp for, pressed
+into something that shows if it was tampered with afterward. Anyone can look
+at the seal and confirm it is genuine. Nobody but the sender could have made
+it. This is what proves a software update actually came from the vendor, and
+not from someone who intercepted it on the way to your machine.</p>
+<h3 id="key-exchange">Key Exchange<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Key exchange</strong> is the answer to the key distribution problem from
+symmetric encryption: how do two people agree on a shared secret while an
+eavesdropper is watching every message they send?</p>
+<p>You do not need the math to get the idea. Picture two people mixing their
+own private ingredient into a shared public color of paint, sending the
+mixed result to each other in the open, then each mixing in their private
+ingredient a second time. Both end up at the same final color. An
+eavesdropper who saw every public exchange still cannot work out either
+private ingredient, and so cannot reproduce the final result. That final,
+shared result becomes the symmetric key both sides use from then on.</p>
+<p>The details matter for cryptographers. For you, the property is what
+matters: two parties end a key exchange holding an identical secret, and
+anyone who watched the whole exchange still does not have it.</p>
+<h3 id="randomness">Randomness<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Almost every primitive above leans on one hidden ingredient: a source of
+<strong>randomness</strong> — keys, salts, and the private ingredients in a key exchange
+all need to be unpredictable. If an attacker can guess or predict a value
+that was supposed to be random, every guarantee built on top of it collapses.</p>
+<p>A computer does not generate true randomness on its own — it is a
+deterministic machine, following instructions exactly. A <strong>cryptographically
+secure random number generator (CSPRNG)</strong> pulls unpredictability from things
+like hardware noise and system timing, and produces output that no attacker
+can predict even if they see previous outputs. A <strong>predictable &ldquo;random&rdquo;</strong>
+generator does the opposite: it looks random, but an attacker who works out
+the pattern, or the starting point, can predict every value it will ever
+produce.</p>
+<p>This has broken real systems. A key generated from predictable randomness is
+not really a secret — it is a value an attacker can recompute. That single
+weak link undoes encryption, signatures, and key exchange all at once, no
+matter how strong the algorithm around it is.</p>
+<hr>
+<p>Next: <a href="/learn/cryptography/in-practice/index.html">Crypto in the Real World</a> — where all six of these
+show up in an actual HTTPS connection, and the specific mistakes that keep
+breaking systems built on top of them.</p>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+<a id="R-logo" class="R-default direction-row" href="/index.html">
+  <span class="logo-image default-animation">
+    <img class="wf-logo__dark"  src="/images/logo.svg" alt="" aria-hidden="true">
+    <img class="wf-logo__light" src="/images/shield-light.svg" alt="" aria-hidden="true">
+  </span>
+  <span class="logo-title default-animation">FAU Cyber Security Club</span>
+</a>
+
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-home default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/start/index.html"><a class="padding" href="/start/index.html">New?</a></li>
+            <li class="parent " data-nav-id="/learn/index.html"><a class="padding default-animation" href="/learn/index.html">Learn</a><ul id="R-subsections-3043ad09e1e54c6b49d9aa6fbb58ab0f" class="collapsible-menu">
+            <li class="alwaysopen " data-nav-id="/learn/virtual-machines/index.html"><a class="padding default-animation" href="/learn/virtual-machines/index.html">Virtual Machines</a><ul id="R-subsections-59f5ccd870c4fc03abd9b69640874a1f" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/linux/index.html"><a class="padding default-animation" href="/learn/linux/index.html">Linux</a><ul id="R-subsections-13cee4e8a99446dc8ebb7de89edd082b" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/networking/index.html"><a class="padding default-animation" href="/learn/networking/index.html">Networking</a><ul id="R-subsections-cf6bef6447ee5c4a2443556071838940" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/cli-scripting/index.html"><a class="padding default-animation" href="/learn/cli-scripting/index.html">CLI &amp; Scripting</a><ul id="R-subsections-25bc0dbb515bc17b3dae2198fc35e410" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/web-fundamentals/index.html"><a class="padding default-animation" href="/learn/web-fundamentals/index.html">Web &amp; System Fundamentals</a><ul id="R-subsections-059cbefc7865f445f16aa5723b8e5634" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/windows/index.html"><a class="padding default-animation" href="/learn/windows/index.html">Windows &amp; Active Directory</a><ul id="R-subsections-a730549f2efa4d1e274d14685feab8eb" class="collapsible-menu"></ul></li>
+            <li class="parent alwaysopen " data-nav-id="/learn/cryptography/index.html"><a class="padding default-animation" href="/learn/cryptography/index.html">Cryptography</a><ul id="R-subsections-39d0a9d11822e4379c1887dd88fcd860" class="collapsible-menu">
+            <li class="active " data-nav-id="/learn/cryptography/basics/index.html"><a class="padding" href="/learn/cryptography/basics/index.html">The Building Blocks</a></li>
+            <li class="" data-nav-id="/learn/cryptography/in-practice/index.html"><a class="padding" href="/learn/cryptography/in-practice/index.html">Crypto in the Real World</a></li></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/ai/index.html"><a class="padding default-animation" href="/learn/ai/index.html">AI</a><ul id="R-subsections-501934f4c83e2c1d7165e75c44f96956" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/specializations/index.html"><a class="padding default-animation" href="/learn/specializations/index.html">Specializations</a><ul id="R-subsections-76b8bdc5bdb02d450cc67abb8c740f83" class="collapsible-menu"></ul></li></ul></li>
+            <li class="" data-nav-id="/compete/index.html"><a class="padding default-animation" href="/compete/index.html">Compete</a><ul id="R-subsections-0e95d5e51c13d68d27ee0bb3e33f50b7" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/lab/index.html"><a class="padding default-animation" href="/lab/index.html">Club Lab</a><ul id="R-subsections-3267a40151b19e3e3f8d4c8a3edf34ee" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/projects/index.html"><a class="padding" href="/projects/index.html">Projects &amp; Guides</a></li>
+            <li class="" data-nav-id="/toolbox/index.html"><a class="padding default-animation" href="/toolbox/index.html">Toolbox</a><ul id="R-subsections-f7060c654e07bee22171d50d3d26bb46" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/meta/index.html"><a class="padding default-animation" href="/meta/index.html">Meta</a><ul id="R-subsections-2f839601009aa63e83121a533a314010" class="collapsible-menu"></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <div class="nav-title padding">Quick Links</div>
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="http://discord.gg/2Yun8WAUuy"><a class="padding" href="http://discord.gg/2Yun8WAUuy" rel="external"><i class='fab fa-fw fa-discord'></i> Discord</a></li>
+            <li class="" data-nav-id="https://github.com/dxcently/fau-cyber-security-club-wiki"><a class="padding" href="https://github.com/dxcently/fau-cyber-security-club-wiki" rel="external"><i class='fab fa-fw fa-github'></i> GitHub</a></li>
+            <li class="" data-nav-id="https://fau.campuslabs.com/engage/organization/cybersecurity"><a class="padding" href="https://fau.campuslabs.com/engage/organization/cybersecurity" rel="external"><i class='fa-solid fa-school-flag'></i> Owl Central</a></li>
+            <li class="" data-nav-id="mailto:csc@fau.edu"><a class="padding" href="mailto:csc@fau.edu" rel="external"><i class='fa-solid fa-envelope'></i> csc@fau.edu</a></li>
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-hacker" value="hacker" selected>Dark</option>
+                    <option id="R-select-variant-hacker-light" value="hacker-light">Light</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1787990815" defer></script>
+    <script src="/js/theme.min.js?1787990815" defer></script>
+
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

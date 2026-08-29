@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html id="R-html" lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.164.0">
+    <meta name="generator" content="Relearn 9.0.3+dd4f8457f5143e91eae3954813494d2b0cc6741c">
+    <meta name="description" content="Quick reference for the commands, ports, and triage steps club members look up constantly.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Cheat Sheets :: FAU Cyber Security Club">
+    <meta name="twitter:description" content="Quick reference for the commands, ports, and triage steps club members look up constantly.">
+    <meta property="og:url" content="https://example.org/toolbox/cheatsheets/index.html">
+    <meta property="og:site_name" content="FAU Cyber Security Club">
+    <meta property="og:title" content="Cheat Sheets :: FAU Cyber Security Club">
+    <meta property="og:description" content="Quick reference for the commands, ports, and triage steps club members look up constantly.">
+    <meta property="og:locale" content="en_us">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Toolbox">
+    <meta itemprop="name" content="Cheat Sheets :: FAU Cyber Security Club">
+    <meta itemprop="description" content="Quick reference for the commands, ports, and triage steps club members look up constantly.">
+    <meta itemprop="wordCount" content="861">
+    <title>Cheat Sheets :: FAU Cyber Security Club</title>
+    <link href="/images/logo.svg?1787990815" rel="icon" type="image/svg+xml">
+    <link href="/css/auto-complete/auto-complete.min.css?1787990815" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1787990815" defer></script>
+    <script src="/js/search-lunr.min.js?1787990815" defer></script>
+    <script src="/js/search.min.js?1787990815" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.en.js?1787990815";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1787990815" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="/fonts/fontawesome/css/all.min.css?1787990815" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/all.min.css?1787990815" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1787990815" rel="stylesheet">
+    <link href="/css/theme.min.css?1787990815" rel="stylesheet">
+    <link href="/css/format-html.min.css?1787990815" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/toolbox\/cheatsheets\/index.html';
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='https:\/\/example.org';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'hacker', 'hacker-light' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="/css/custom.css?1787990815" rel="stylesheet">
+    <script src="/js/custom.js?1787990815" defer></script>
+  </head>
+  <body class="mobile-support html" data-origin="/toolbox/cheatsheets/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#linux-commands-by-task">Linux Commands by Task</a>
+      <ul>
+        <li><a href="#finding-things">Finding Things</a></li>
+        <li><a href="#users--permissions">Users &amp; Permissions</a></li>
+        <li><a href="#networking">Networking</a></li>
+        <li><a href="#compression--transfer">Compression &amp; Transfer</a></li>
+      </ul>
+    </li>
+    <li><a href="#permission-notation">Permission Notation</a></li>
+    <li><a href="#common-ports">Common Ports</a></li>
+    <li><a href="#powershell-cmdlets">PowerShell Cmdlets</a></li>
+    <li><a href="#where-do-i-even-start--ctf-triage">Where Do I Even Start? — CTF Triage</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">FAU Cyber Security Club</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/toolbox/index.html"><span itemprop="name">Toolbox</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Cheat Sheets</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-variant wf-variant-toggle default-animation" data-content-empty="show" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle"><span><i class="fa-fw fas fa-circle-half-stroke"></i></span></span>
+            </div>
+
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/toolbox/intern-training-guide/index.html" title="🛡️ Cybersecurity Intern Training Resource Guide (2025) (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/toolbox/ai/index.html" title="Choosing an AI Model (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable toolbox" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="cheat-sheets">Cheat Sheets</h1>
+
+<p>This page is not for learning. It is for the moment mid-CTF or mid-lab when
+you know the concept and just need the exact command. Bookmark it.</p>
+<h2 id="linux-commands-by-task">Linux Commands by Task<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="finding-things">Finding Things<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<table>
+	<thead>
+			<tr>
+					<th>Task</th>
+					<th>Command</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Find a file by name</td>
+					<td><code>find / -name &quot;filename&quot; 2&gt;/dev/null</code></td>
+			</tr>
+			<tr>
+					<td>Find SUID binaries</td>
+					<td><code>find / -perm -4000 2&gt;/dev/null</code></td>
+			</tr>
+			<tr>
+					<td>Search file contents for a string</td>
+					<td><code>grep -r &quot;search term&quot; /path</code></td>
+			</tr>
+			<tr>
+					<td>Find recently modified files</td>
+					<td><code>find / -mmin -60 2&gt;/dev/null</code></td>
+			</tr>
+			<tr>
+					<td>List all listening ports</td>
+					<td><code>ss -tulnp</code></td>
+			</tr>
+			<tr>
+					<td>Show running processes</td>
+					<td><code>ps aux</code></td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="users--permissions">Users &amp; Permissions<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<table>
+	<thead>
+			<tr>
+					<th>Task</th>
+					<th>Command</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Show your current user and groups</td>
+					<td><code>id</code></td>
+			</tr>
+			<tr>
+					<td>Show what you can run as root</td>
+					<td><code>sudo -l</code></td>
+			</tr>
+			<tr>
+					<td>Switch to another user</td>
+					<td><code>su - username</code></td>
+			</tr>
+			<tr>
+					<td>Change file owner</td>
+					<td><code>chown user:group file</code></td>
+			</tr>
+			<tr>
+					<td>Change file permissions</td>
+					<td><code>chmod 750 file</code></td>
+			</tr>
+			<tr>
+					<td>Add a user</td>
+					<td><code>useradd username</code></td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="networking">Networking<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<table>
+	<thead>
+			<tr>
+					<th>Task</th>
+					<th>Command</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Show IP addresses on this machine</td>
+					<td><code>ip a</code></td>
+			</tr>
+			<tr>
+					<td>Show the routing table</td>
+					<td><code>ip route</code></td>
+			</tr>
+			<tr>
+					<td>Test connectivity to a host</td>
+					<td><code>ping -c 4 target</code></td>
+			</tr>
+			<tr>
+					<td>Fetch a URL from the terminal</td>
+					<td><code>curl -s URL</code></td>
+			</tr>
+			<tr>
+					<td>Start a simple file server</td>
+					<td><code>python3 -m http.server 8000</code></td>
+			</tr>
+			<tr>
+					<td>Copy a file over SSH</td>
+					<td><code>scp file user@host:/path</code></td>
+			</tr>
+			<tr>
+					<td>Set up a listener for a reverse shell</td>
+					<td><code>nc -lvnp 4444</code></td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="compression--transfer">Compression &amp; Transfer<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<table>
+	<thead>
+			<tr>
+					<th>Task</th>
+					<th>Command</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Extract a <code>.tar.gz</code></td>
+					<td><code>tar -xzvf file.tar.gz</code></td>
+			</tr>
+			<tr>
+					<td>Create a <code>.tar.gz</code></td>
+					<td><code>tar -czvf out.tar.gz folder/</code></td>
+			</tr>
+			<tr>
+					<td>Extract a <code>.zip</code></td>
+					<td><code>unzip file.zip</code></td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="permission-notation">Permission Notation<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Linux permissions show as three groups of three: <strong>owner, group, other</strong>.
+Each group is <strong>read (r), write (w), execute (x)</strong> — or <code>-</code> if absent.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>-rwxr-xr--
+ │└┬┘└┬┘└┬┘
+ │ │  │  └── other: r-- (read only)
+ │ │  └───── group: r-x (read + execute)
+ │ └──────── owner: rwx (read + write + execute)
+ └────────── file type (- = file, d = directory, l = symlink)</code></pre></div>
+<p>Numeric mode is the same thing added up: r=4, w=2, x=1 per group.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Numeric</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>755</code></td>
+					<td>owner: rwx, group: r-x, other: r-x — typical for a script</td>
+			</tr>
+			<tr>
+					<td><code>644</code></td>
+					<td>owner: rw-, group: r&ndash;, other: r&ndash; — typical for a regular file</td>
+			</tr>
+			<tr>
+					<td><code>700</code></td>
+					<td>owner: rwx, group/other: none — private to the owner</td>
+			</tr>
+			<tr>
+					<td><code>4755</code></td>
+					<td>same as 755, plus the SUID bit — runs as the file&rsquo;s owner, not the caller</td>
+			</tr>
+	</tbody>
+</table>
+<p>The leading <code>4</code> in <code>4755</code> is the SUID bit. If a binary has it set and is
+owned by root, it runs with root privileges no matter who calls it. That&rsquo;s
+why <code>find / -perm -4000</code> is one of the first things you run on a new box.</p>
+<h2 id="common-ports">Common Ports<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<table>
+	<thead>
+			<tr>
+					<th>Port</th>
+					<th>Protocol</th>
+					<th>What it usually means on a box</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>21</td>
+					<td>FTP</td>
+					<td>File transfer, often allows anonymous login — always try it</td>
+			</tr>
+			<tr>
+					<td>22</td>
+					<td>SSH</td>
+					<td>Remote login. Check the version for known vulnerabilities</td>
+			</tr>
+			<tr>
+					<td>23</td>
+					<td>Telnet</td>
+					<td>Unencrypted remote login. Rare now; a red flag when present</td>
+			</tr>
+			<tr>
+					<td>25</td>
+					<td>SMTP</td>
+					<td>Mail server</td>
+			</tr>
+			<tr>
+					<td>53</td>
+					<td>DNS</td>
+					<td>Name resolution. Zone transfers (<code>AXFR</code>) sometimes leak hostnames</td>
+			</tr>
+			<tr>
+					<td>80</td>
+					<td>HTTP</td>
+					<td>Web, plain text. Always check the source and <code>robots.txt</code></td>
+			</tr>
+			<tr>
+					<td>88</td>
+					<td>Kerberos</td>
+					<td>Authentication in Active Directory environments</td>
+			</tr>
+			<tr>
+					<td>110</td>
+					<td>POP3</td>
+					<td>Mail retrieval</td>
+			</tr>
+			<tr>
+					<td>139/445</td>
+					<td>SMB</td>
+					<td>Windows file sharing. Check for null sessions and open shares</td>
+			</tr>
+			<tr>
+					<td>143</td>
+					<td>IMAP</td>
+					<td>Mail retrieval</td>
+			</tr>
+			<tr>
+					<td>443</td>
+					<td>HTTPS</td>
+					<td>Web, encrypted</td>
+			</tr>
+			<tr>
+					<td>389/636</td>
+					<td>LDAP / LDAPS</td>
+					<td>Directory services, common in AD environments</td>
+			</tr>
+			<tr>
+					<td>3306</td>
+					<td>MySQL</td>
+					<td>Database. Try default and weak credentials</td>
+			</tr>
+			<tr>
+					<td>3389</td>
+					<td>RDP</td>
+					<td>Windows remote desktop</td>
+			</tr>
+			<tr>
+					<td>5432</td>
+					<td>PostgreSQL</td>
+					<td>Database</td>
+			</tr>
+			<tr>
+					<td>5985/5986</td>
+					<td>WinRM</td>
+					<td>Windows remote management</td>
+			</tr>
+			<tr>
+					<td>8080</td>
+					<td>HTTP (alt)</td>
+					<td>A second web service, often an admin panel or dev server</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="powershell-cmdlets">PowerShell Cmdlets<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>For when the box is Windows and <code>cmd.exe</code> isn&rsquo;t enough.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Task</th>
+					<th>Cmdlet</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>List files in a directory</td>
+					<td><code>Get-ChildItem</code> (alias <code>ls</code>, <code>dir</code>)</td>
+			</tr>
+			<tr>
+					<td>Read a file</td>
+					<td><code>Get-Content file.txt</code> (alias <code>cat</code>)</td>
+			</tr>
+			<tr>
+					<td>Search file contents</td>
+					<td><code>Select-String &quot;term&quot; file.txt</code></td>
+			</tr>
+			<tr>
+					<td>List running processes</td>
+					<td><code>Get-Process</code></td>
+			</tr>
+			<tr>
+					<td>List local users</td>
+					<td><code>Get-LocalUser</code></td>
+			</tr>
+			<tr>
+					<td>List local groups</td>
+					<td><code>Get-LocalGroup</code></td>
+			</tr>
+			<tr>
+					<td>Show current user&rsquo;s group membership</td>
+					<td><code>whoami /groups</code></td>
+			</tr>
+			<tr>
+					<td>List services</td>
+					<td><code>Get-Service</code></td>
+			</tr>
+			<tr>
+					<td>Download a file from the internet</td>
+					<td><code>Invoke-WebRequest -Uri URL -OutFile file</code></td>
+			</tr>
+			<tr>
+					<td>Run a command as another user</td>
+					<td><code>Start-Process -Credential (Get-Credential) cmd</code></td>
+			</tr>
+			<tr>
+					<td>Show installed software</td>
+					<td><code>Get-WmiObject -Class Win32_Product</code></td>
+			</tr>
+			<tr>
+					<td>Check execution policy</td>
+					<td><code>Get-ExecutionPolicy</code></td>
+			</tr>
+			<tr>
+					<td>View PowerShell command history</td>
+					<td><code>Get-History</code></td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="where-do-i-even-start--ctf-triage">Where Do I Even Start? — CTF Triage<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Stuck looking at a challenge with no idea what to try first? Work through
+this list in order.</p>
+<ol>
+<li><strong>Read the challenge name and description again.</strong> CTF authors leave
+hints there on purpose. A pun in the title is usually a real clue.</li>
+<li><strong>Identify the file type.</strong> Run <code>file &lt;filename&gt;</code> before anything else.
+Do not assume the extension is honest.</li>
+<li><strong>For a binary:</strong> run <code>checksec</code> on it. Note if it&rsquo;s 32 or 64-bit, and
+which protections (NX, PIE, canary) are on. That decides your exploit
+class.</li>
+<li><strong>For a web challenge:</strong> view the page source. Check <code>robots.txt</code>. Open
+the browser&rsquo;s network tab and watch what requests actually happen.</li>
+<li><strong>For an unknown file:</strong> run <code>strings</code> on it and skim the output. Look
+for URLs, flags, function names, or a format signature.</li>
+<li><strong>For anything that looks encoded:</strong> try CyberChef&rsquo;s &ldquo;Magic&rdquo; wand first.
+It guesses the encoding chain faster than you can by hand.</li>
+<li><strong>For a network capture (<code>.pcap</code>):</strong> open it in Wireshark, sort by
+protocol, and follow any suspicious TCP or HTTP stream.</li>
+<li><strong>Still stuck?</strong> Google the exact challenge category plus one distinct
+detail from the description — someone has hit this pattern before you.</li>
+<li><strong>Really stuck?</strong> Step away for ten minutes. Half of CTF is noticing the
+thing you walked past three times.</li>
+</ol>
+<p>Full reference on tools per category: <a href="/toolbox/links/index.html">Links</a>.</p>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+<a id="R-logo" class="R-default direction-row" href="/index.html">
+  <span class="logo-image default-animation">
+    <img class="wf-logo__dark"  src="/images/logo.svg" alt="" aria-hidden="true">
+    <img class="wf-logo__light" src="/images/shield-light.svg" alt="" aria-hidden="true">
+  </span>
+  <span class="logo-title default-animation">FAU Cyber Security Club</span>
+</a>
+
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-home default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/start/index.html"><a class="padding" href="/start/index.html">New?</a></li>
+            <li class="" data-nav-id="/learn/index.html"><a class="padding default-animation" href="/learn/index.html">Learn</a><ul id="R-subsections-3043ad09e1e54c6b49d9aa6fbb58ab0f" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/compete/index.html"><a class="padding default-animation" href="/compete/index.html">Compete</a><ul id="R-subsections-0e95d5e51c13d68d27ee0bb3e33f50b7" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/lab/index.html"><a class="padding default-animation" href="/lab/index.html">Club Lab</a><ul id="R-subsections-3267a40151b19e3e3f8d4c8a3edf34ee" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/projects/index.html"><a class="padding" href="/projects/index.html">Projects &amp; Guides</a></li>
+            <li class="parent " data-nav-id="/toolbox/index.html"><a class="padding default-animation" href="/toolbox/index.html">Toolbox</a><ul id="R-subsections-f7060c654e07bee22171d50d3d26bb46" class="collapsible-menu">
+            <li class="" data-nav-id="/toolbox/links/index.html"><a class="padding" href="/toolbox/links/index.html">Links</a></li>
+            <li class="" data-nav-id="/toolbox/intern-training-guide/index.html"><a class="padding" href="/toolbox/intern-training-guide/index.html">🛡️ Cybersecurity Intern Training Resource Guide (2025)</a></li>
+            <li class="active " data-nav-id="/toolbox/cheatsheets/index.html"><a class="padding" href="/toolbox/cheatsheets/index.html">Cheat Sheets</a></li>
+            <li class="" data-nav-id="/toolbox/ai/index.html"><a class="padding" href="/toolbox/ai/index.html">Choosing an AI Model</a></li>
+            <li class="" data-nav-id="/toolbox/ai-workflows/index.html"><a class="padding" href="/toolbox/ai-workflows/index.html">AI Workflows &amp; Agents</a></li>
+            <li class="" data-nav-id="/toolbox/ai-automation/index.html"><a class="padding" href="/toolbox/ai-automation/index.html">Automating Security Work</a></li></ul></li>
+            <li class="" data-nav-id="/meta/index.html"><a class="padding default-animation" href="/meta/index.html">Meta</a><ul id="R-subsections-2f839601009aa63e83121a533a314010" class="collapsible-menu"></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <div class="nav-title padding">Quick Links</div>
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="http://discord.gg/2Yun8WAUuy"><a class="padding" href="http://discord.gg/2Yun8WAUuy" rel="external"><i class='fab fa-fw fa-discord'></i> Discord</a></li>
+            <li class="" data-nav-id="https://github.com/dxcently/fau-cyber-security-club-wiki"><a class="padding" href="https://github.com/dxcently/fau-cyber-security-club-wiki" rel="external"><i class='fab fa-fw fa-github'></i> GitHub</a></li>
+            <li class="" data-nav-id="https://fau.campuslabs.com/engage/organization/cybersecurity"><a class="padding" href="https://fau.campuslabs.com/engage/organization/cybersecurity" rel="external"><i class='fa-solid fa-school-flag'></i> Owl Central</a></li>
+            <li class="" data-nav-id="mailto:csc@fau.edu"><a class="padding" href="mailto:csc@fau.edu" rel="external"><i class='fa-solid fa-envelope'></i> csc@fau.edu</a></li>
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-hacker" value="hacker" selected>Dark</option>
+                    <option id="R-select-variant-hacker-light" value="hacker-light">Light</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1787990815" defer></script>
+    <script src="/js/theme.min.js?1787990815" defer></script>
+
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

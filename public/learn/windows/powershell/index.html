@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html id="R-html" lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.164.0">
+    <meta name="generator" content="Relearn 9.0.3+dd4f8457f5143e91eae3954813494d2b0cc6741c">
+    <meta name="description" content="PowerShell as the Windows shell and scripting language, the object pipeline, and why execution policy is not a security control.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="PowerShell :: FAU Cyber Security Club">
+    <meta name="twitter:description" content="PowerShell as the Windows shell and scripting language, the object pipeline, and why execution policy is not a security control.">
+    <meta property="og:url" content="https://example.org/learn/windows/powershell/index.html">
+    <meta property="og:site_name" content="FAU Cyber Security Club">
+    <meta property="og:title" content="PowerShell :: FAU Cyber Security Club">
+    <meta property="og:description" content="PowerShell as the Windows shell and scripting language, the object pipeline, and why execution policy is not a security control.">
+    <meta property="og:locale" content="en_us">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Learn">
+    <meta itemprop="name" content="PowerShell :: FAU Cyber Security Club">
+    <meta itemprop="description" content="PowerShell as the Windows shell and scripting language, the object pipeline, and why execution policy is not a security control.">
+    <meta itemprop="wordCount" content="1155">
+    <title>PowerShell :: FAU Cyber Security Club</title>
+    <link href="/images/logo.svg?1787990815" rel="icon" type="image/svg+xml">
+    <link href="/css/auto-complete/auto-complete.min.css?1787990815" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1787990815" defer></script>
+    <script src="/js/search-lunr.min.js?1787990815" defer></script>
+    <script src="/js/search.min.js?1787990815" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.en.js?1787990815";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1787990815" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="/fonts/fontawesome/css/all.min.css?1787990815" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/all.min.css?1787990815" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1787990815" rel="stylesheet">
+    <link href="/css/theme.min.css?1787990815" rel="stylesheet">
+    <link href="/css/format-html.min.css?1787990815" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/learn\/windows\/powershell\/index.html';
+      window.relearn.relBasePath='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/example.org';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'hacker', 'hacker-light' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="/css/custom.css?1787990815" rel="stylesheet">
+    <script src="/js/custom.js?1787990815" defer></script>
+  </head>
+  <body class="mobile-support html" data-origin="/learn/windows/powershell/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#what-a-cmdlet-is">What a Cmdlet Is</a></li>
+    <li><a href="#the-object-pipeline--the-real-conceptual-leap">The Object Pipeline — the Real Conceptual Leap</a></li>
+    <li><a href="#cmdlets-you-will-use-constantly">Cmdlets You Will Use Constantly</a></li>
+    <li><a href="#execution-policy-is-not-a-security-boundary">Execution Policy Is Not a Security Boundary</a></li>
+    <li><a href="#logging-how-defenders-see-what-powershell-did">Logging: How Defenders See What PowerShell Did</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">FAU Cyber Security Club</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/learn/index.html"><span itemprop="name">Learn</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/learn/windows/index.html"><span itemprop="name">Windows &amp; Active Directory</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">PowerShell</span><meta itemprop="position" content="4"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-variant wf-variant-toggle default-animation" data-content-empty="show" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle"><span><i class="fa-fw fas fa-circle-half-stroke"></i></span></span>
+            </div>
+
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/learn/windows/index.html" title="Windows & Active Directory (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/learn/windows/active-directory/index.html" title="Active Directory (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable learn" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="powershell">PowerShell</h1>
+
+<p>PowerShell is the shell and scripting language built into every modern version of Windows. It is the closest thing Windows has to Bash — except it works on a completely different idea, and that difference matters.</p>
+<p>This page covers what a cmdlet is, how the PowerShell pipeline actually works, the cmdlets you will reach for constantly, and why PowerShell shows up on both sides of a security incident.</p>
+<hr>
+<h2 id="what-a-cmdlet-is">What a Cmdlet Is<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>A <strong>cmdlet</strong> (pronounced &ldquo;command-let&rdquo;) is a single PowerShell command. Every cmdlet follows the same naming pattern: <code>Verb-Noun</code>.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Get-Process</span>       <span class="c"># get the list of running processes</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Get-Service</span>        <span class="c"># get the list of services</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Stop-Process</span>        <span class="c"># stop a process</span>
+</span></span><span class="line"><span class="cl"><span class="nb">New-Item</span>            <span class="c"># create a new file or folder</span></span></span></code></pre></div>
+<p>The verb tells you what the cmdlet does. The noun tells you what it acts on. <code>Get-Process</code> gets processes. <code>Stop-Service</code> stops a service. Once you know this pattern, you can guess a huge number of cmdlet names correctly on the first try — that is the entire point of the naming convention.</p>
+<p>Run <code>Get-Command</code> to list every cmdlet available on the system. Run <code>Get-Help &lt;cmdlet-name&gt;</code> to read the manual for one cmdlet, the same way <code>man</code> works on Linux.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Get-Command</span>                  <span class="c"># list all available cmdlets</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Get-Help</span> <span class="nb">Get-Process</span>          <span class="c"># read the manual for one cmdlet</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Get-Help</span> <span class="nb">Get-Process</span> <span class="n">-Examples</span>   <span class="c"># just the usage examples</span></span></span></code></pre></div>
+<hr>
+<h2 id="the-object-pipeline--the-real-conceptual-leap">The Object Pipeline — the Real Conceptual Leap<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>This is the one idea in this section that is worth slowing down for.</p>
+<p>On Linux, a pipe (<code>|</code>) sends <strong>plain text</strong> from one command to the next. <code>ps aux | grep firefox</code> runs <code>ps</code>, gets back a wall of text, and hands that text to <code>grep</code>, which searches it line by line for the word &ldquo;firefox.&rdquo; Every command in that chain has to know how to parse the text it receives, because text is all it ever gets.</p>
+<p>PowerShell&rsquo;s pipe sends <strong>objects</strong>, not text. An object is a structured piece of data with named properties — think of a row in a spreadsheet, not a line of text. When you run <code>Get-Process</code>, PowerShell does not hand you text that merely <em>looks like</em> a process list. It hands you a collection of actual process objects, each one carrying properties like <code>Name</code>, <code>Id</code>, and <code>CPU</code>. The next cmdlet in the pipeline receives those same objects, properties intact, and can filter, sort, or inspect them directly — no parsing required.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Get-Process</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span> <span class="nv">$_</span><span class="p">.</span><span class="py">CPU</span> <span class="o">-gt</span> <span class="mf">100</span> <span class="p">}</span>   <span class="c"># keep only processes using more than 100 CPU</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Get-Process</span> <span class="p">|</span> <span class="nb">Sort-Object</span> <span class="n">CPU</span> <span class="n">-Descending</span>        <span class="c"># sort processes by CPU, highest first</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Get-Process</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">Id</span><span class="p">,</span> <span class="n">CPU</span>        <span class="c"># show only these three properties</span></span></span></code></pre></div>
+<p>Compare that to the Linux equivalent, which has to scrape columns out of text with tools like <code>awk</code> and hope the formatting never changes:</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ps aux <span class="p">|</span> awk <span class="s1">&#39;{print $3, $2, $11}&#39;</span> <span class="p">|</span> sort -rn</span></span></code></pre></div>
+<p>Same goal, different foundation. Text pipes are simple and universal but fragile — reformat the output and every downstream <code>grep</code> and <code>awk</code> breaks. Object pipes are more structured and far less fragile, but only work within PowerShell&rsquo;s own ecosystem. Neither approach is wrong. They are different answers to the same problem, and once you see PowerShell as &ldquo;Unix pipes, but every value keeps its shape,&rdquo; the rest of the language stops feeling foreign.</p>
+<hr>
+<h2 id="cmdlets-you-will-use-constantly">Cmdlets You Will Use Constantly<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>These cover enumeration — looking around a system to see what is on it — and basic administration.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Cmdlet</th>
+					<th>What it returns</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>Get-Process</code></td>
+					<td>Running processes</td>
+			</tr>
+			<tr>
+					<td><code>Get-Service</code></td>
+					<td>Installed services and their status</td>
+			</tr>
+			<tr>
+					<td><code>Get-LocalUser</code></td>
+					<td>Local user accounts on this machine</td>
+			</tr>
+			<tr>
+					<td><code>Get-LocalGroupMember Administrators</code></td>
+					<td>Members of the local Administrators group</td>
+			</tr>
+			<tr>
+					<td><code>Get-ChildItem</code></td>
+					<td>Files and folders in a directory — the PowerShell equivalent of <code>ls</code></td>
+			</tr>
+			<tr>
+					<td><code>Get-NetIPAddress</code></td>
+					<td>IP addresses configured on this machine</td>
+			</tr>
+			<tr>
+					<td><code>Get-EventLog</code> / <code>Get-WinEvent</code></td>
+					<td>Windows event log entries</td>
+			</tr>
+	</tbody>
+</table>
+<p><code>Get-ChildItem</code> is worth a second look, because it shows the object idea again: <code>ls</code> on Linux prints text. <code>Get-ChildItem</code> returns file objects with real properties — <code>Name</code>, <code>Length</code>, <code>LastWriteTime</code> — that you can filter and sort the same way you filtered processes above.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Get-ChildItem</span> <span class="n">C:</span><span class="p">\</span><span class="n">Users</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span> <span class="nv">$_</span><span class="p">.</span><span class="py">LastWriteTime</span> <span class="o">-gt</span> <span class="p">(</span><span class="nb">Get-Date</span><span class="p">).</span><span class="py">AddDays</span><span class="p">(</span><span class="mf">-1</span><span class="p">)</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c"># every item in C:\Users modified in the last day</span></span></span></code></pre></div>
+<p>On a machine you administer — your own, or a box in your lab — these cmdlets are how you answer basic questions fast: what is running, what is installed, who has an account, what changed recently.</p>
+<hr>
+<h2 id="execution-policy-is-not-a-security-boundary">Execution Policy Is Not a Security Boundary<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>PowerShell has an <strong>execution policy</strong> setting that controls whether scripts are allowed to run at all.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Get-ExecutionPolicy</span>          <span class="c"># see the current policy</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Set-ExecutionPolicy</span> <span class="n">RemoteSigned</span>   <span class="c"># a common, less restrictive policy</span></span></span></code></pre></div>
+<p>New PowerShell users assume this is a security control, the same way a locked door keeps people out. It is not. Microsoft&rsquo;s own documentation says so directly: execution policy is meant to stop you from running a script <em>by accident</em>, not to stop a determined attacker. It is trivially bypassed — running a script&rsquo;s contents through the command line directly, or loading it a different way, skips the check entirely. Do not rely on execution policy to keep a system safe. Real protection comes from the logging and monitoring covered next, plus normal account and patch hygiene.</p>
+<hr>
+<h2 id="logging-how-defenders-see-what-powershell-did">Logging: How Defenders See What PowerShell Did<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>PowerShell is a favorite tool for attackers precisely because it is already installed on every Windows machine — nothing extra to bring in, nothing that looks obviously out of place. Security teams call this <strong>living off the land</strong>: using the target&rsquo;s own built-in tools instead of custom malware, which makes the activity blend in with normal admin work.</p>
+<p>Because of that, Windows ships PowerShell-specific logging built to catch it:</p>
+<ul>
+<li><strong>Script block logging</strong> records the actual code PowerShell executes, even code that was built dynamically at runtime or deliberately obfuscated to hide from a quick glance. This is the single most useful log source for catching PowerShell abuse.</li>
+<li><strong>Module logging</strong> records which PowerShell commands ran and their pipeline output.</li>
+<li><strong>Transcription</strong> writes a full text transcript of a PowerShell session to a file — every command typed, every result shown, as if someone recorded the screen.</li>
+</ul>
+<p>None of these are on by default on a stock installation. Turning them on is usually done through Group Policy — see <a href="/learn/windows/group-policy/index.html">Group Policy &amp; Policy Configuration</a> for how policy gets pushed to every machine in a domain at once. On your lab domain, turn these on, generate some activity, and go read the resulting event logs. That is the fastest way to understand what a real detection actually looks like.</p>
+
+<details open class="box cstyle notices info">
+  <summary class="box-label" tabindex="-1">
+    <i class="fa-fw fas fa-info-circle"></i> 
+    How the Club Uses This
+  </summary>
+  <div class="box-content">
+<p>TODO: Add how FAU CSC uses PowerShell in practice — CCDC scripts, lab automation, specific enumeration workflows the team runs.</p>
+  </div>
+</details>
+<hr>
+<p><strong>References</strong></p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_command_syntax" rel="external">about_Command_Syntax</a> — official cmdlet syntax reference</li>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_pipelines" rel="external">about_Pipelines</a> — how the object pipeline works</li>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies" rel="external">about_Execution_Policies</a> — Microsoft&rsquo;s own explanation of why execution policy is not a security boundary</li>
+<li><a href="https://learn.microsoft.com/en-us/powershell/scripting/windows-powershell/wmf/whats-new/script-logging" rel="external">PowerShell Logging Guidance — Microsoft</a> — script block logging and transcription</li>
+<li><a href="https://lolbas-project.github.io/" rel="external">LOLBAS Project</a> — catalog of built-in Windows binaries and scripts abused for living-off-the-land techniques</li>
+</ul>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+<a id="R-logo" class="R-default direction-row" href="/index.html">
+  <span class="logo-image default-animation">
+    <img class="wf-logo__dark"  src="/images/logo.svg" alt="" aria-hidden="true">
+    <img class="wf-logo__light" src="/images/shield-light.svg" alt="" aria-hidden="true">
+  </span>
+  <span class="logo-title default-animation">FAU Cyber Security Club</span>
+</a>
+
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-home default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/start/index.html"><a class="padding" href="/start/index.html">New?</a></li>
+            <li class="parent " data-nav-id="/learn/index.html"><a class="padding default-animation" href="/learn/index.html">Learn</a><ul id="R-subsections-3043ad09e1e54c6b49d9aa6fbb58ab0f" class="collapsible-menu">
+            <li class="alwaysopen " data-nav-id="/learn/virtual-machines/index.html"><a class="padding default-animation" href="/learn/virtual-machines/index.html">Virtual Machines</a><ul id="R-subsections-59f5ccd870c4fc03abd9b69640874a1f" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/linux/index.html"><a class="padding default-animation" href="/learn/linux/index.html">Linux</a><ul id="R-subsections-13cee4e8a99446dc8ebb7de89edd082b" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/networking/index.html"><a class="padding default-animation" href="/learn/networking/index.html">Networking</a><ul id="R-subsections-cf6bef6447ee5c4a2443556071838940" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/cli-scripting/index.html"><a class="padding default-animation" href="/learn/cli-scripting/index.html">CLI &amp; Scripting</a><ul id="R-subsections-25bc0dbb515bc17b3dae2198fc35e410" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/web-fundamentals/index.html"><a class="padding default-animation" href="/learn/web-fundamentals/index.html">Web &amp; System Fundamentals</a><ul id="R-subsections-059cbefc7865f445f16aa5723b8e5634" class="collapsible-menu"></ul></li>
+            <li class="parent alwaysopen " data-nav-id="/learn/windows/index.html"><a class="padding default-animation" href="/learn/windows/index.html">Windows &amp; Active Directory</a><ul id="R-subsections-a730549f2efa4d1e274d14685feab8eb" class="collapsible-menu">
+            <li class="active " data-nav-id="/learn/windows/powershell/index.html"><a class="padding" href="/learn/windows/powershell/index.html">PowerShell</a></li>
+            <li class="" data-nav-id="/learn/windows/active-directory/index.html"><a class="padding" href="/learn/windows/active-directory/index.html">Active Directory</a></li>
+            <li class="" data-nav-id="/learn/windows/group-policy/index.html"><a class="padding" href="/learn/windows/group-policy/index.html">Group Policy &amp; Policy Configuration</a></li></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/cryptography/index.html"><a class="padding default-animation" href="/learn/cryptography/index.html">Cryptography</a><ul id="R-subsections-39d0a9d11822e4379c1887dd88fcd860" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/ai/index.html"><a class="padding default-animation" href="/learn/ai/index.html">AI</a><ul id="R-subsections-501934f4c83e2c1d7165e75c44f96956" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/specializations/index.html"><a class="padding default-animation" href="/learn/specializations/index.html">Specializations</a><ul id="R-subsections-76b8bdc5bdb02d450cc67abb8c740f83" class="collapsible-menu"></ul></li></ul></li>
+            <li class="" data-nav-id="/compete/index.html"><a class="padding default-animation" href="/compete/index.html">Compete</a><ul id="R-subsections-0e95d5e51c13d68d27ee0bb3e33f50b7" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/lab/index.html"><a class="padding default-animation" href="/lab/index.html">Club Lab</a><ul id="R-subsections-3267a40151b19e3e3f8d4c8a3edf34ee" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/projects/index.html"><a class="padding" href="/projects/index.html">Projects &amp; Guides</a></li>
+            <li class="" data-nav-id="/toolbox/index.html"><a class="padding default-animation" href="/toolbox/index.html">Toolbox</a><ul id="R-subsections-f7060c654e07bee22171d50d3d26bb46" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/meta/index.html"><a class="padding default-animation" href="/meta/index.html">Meta</a><ul id="R-subsections-2f839601009aa63e83121a533a314010" class="collapsible-menu"></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <div class="nav-title padding">Quick Links</div>
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="http://discord.gg/2Yun8WAUuy"><a class="padding" href="http://discord.gg/2Yun8WAUuy" rel="external"><i class='fab fa-fw fa-discord'></i> Discord</a></li>
+            <li class="" data-nav-id="https://github.com/dxcently/fau-cyber-security-club-wiki"><a class="padding" href="https://github.com/dxcently/fau-cyber-security-club-wiki" rel="external"><i class='fab fa-fw fa-github'></i> GitHub</a></li>
+            <li class="" data-nav-id="https://fau.campuslabs.com/engage/organization/cybersecurity"><a class="padding" href="https://fau.campuslabs.com/engage/organization/cybersecurity" rel="external"><i class='fa-solid fa-school-flag'></i> Owl Central</a></li>
+            <li class="" data-nav-id="mailto:csc@fau.edu"><a class="padding" href="mailto:csc@fau.edu" rel="external"><i class='fa-solid fa-envelope'></i> csc@fau.edu</a></li>
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-hacker" value="hacker" selected>Dark</option>
+                    <option id="R-select-variant-hacker-light" value="hacker-light">Light</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1787990815" defer></script>
+    <script src="/js/theme.min.js?1787990815" defer></script>
+
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

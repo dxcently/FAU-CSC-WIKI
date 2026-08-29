@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html id="R-html" lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.164.0">
+    <meta name="generator" content="Relearn 9.0.3+dd4f8457f5143e91eae3954813494d2b0cc6741c">
+    <meta name="description" content="How to pick a CTF platform, approach a challenge, and use AI without skipping the thinking.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Getting Started with CTFs :: FAU Cyber Security Club">
+    <meta name="twitter:description" content="How to pick a CTF platform, approach a challenge, and use AI without skipping the thinking.">
+    <meta property="og:url" content="https://example.org/compete/ctf/getting-started/index.html">
+    <meta property="og:site_name" content="FAU Cyber Security Club">
+    <meta property="og:title" content="Getting Started with CTFs :: FAU Cyber Security Club">
+    <meta property="og:description" content="How to pick a CTF platform, approach a challenge, and use AI without skipping the thinking.">
+    <meta property="og:locale" content="en_us">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Compete">
+    <meta itemprop="name" content="Getting Started with CTFs :: FAU Cyber Security Club">
+    <meta itemprop="description" content="How to pick a CTF platform, approach a challenge, and use AI without skipping the thinking.">
+    <meta itemprop="wordCount" content="645">
+    <title>Getting Started with CTFs :: FAU Cyber Security Club</title>
+    <link href="/images/logo.svg?1787990815" rel="icon" type="image/svg+xml">
+    <link href="/css/auto-complete/auto-complete.min.css?1787990815" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1787990815" defer></script>
+    <script src="/js/search-lunr.min.js?1787990815" defer></script>
+    <script src="/js/search.min.js?1787990815" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.en.js?1787990815";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1787990815" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="/fonts/fontawesome/css/all.min.css?1787990815" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/all.min.css?1787990815" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1787990815" rel="stylesheet">
+    <link href="/css/theme.min.css?1787990815" rel="stylesheet">
+    <link href="/css/format-html.min.css?1787990815" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/compete\/ctf\/getting-started\/index.html';
+      window.relearn.relBasePath='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/example.org';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'hacker', 'hacker-light' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="/css/custom.css?1787990815" rel="stylesheet">
+    <script src="/js/custom.js?1787990815" defer></script>
+  </head>
+  <body class="mobile-support html" data-origin="/compete/ctf/getting-started/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#formats">Formats</a></li>
+    <li><a href="#where-to-start">Where to Start</a></li>
+    <li><a href="#how-to-approach-a-challenge">How to Approach a Challenge</a></li>
+    <li><a href="#writing-writeups">Writing Writeups</a></li>
+    <li><a href="#tools-you-will-reach-for">Tools You Will Reach For</a></li>
+    <li><a href="#using-ai-in-ctfs">Using AI in CTFs</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">FAU Cyber Security Club</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/compete/index.html"><span itemprop="name">Compete</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/compete/ctf/index.html"><span itemprop="name">CTF</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Getting Started with CTFs</span><meta itemprop="position" content="4"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-variant wf-variant-toggle default-animation" data-content-empty="show" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle"><span><i class="fa-fw fas fa-circle-half-stroke"></i></span></span>
+            </div>
+
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/compete/ctf/index.html" title="CTF (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/compete/ctf/categories/index.html" title="CTF Categories (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable compete" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="getting-started-with-ctfs">Getting Started with CTFs</h1>
+
+<p>A CTF (Capture the Flag) is a security competition where you solve challenges to find a hidden string called a flag. Flags are usually formatted like <code>flag{some_text_here}</code>.</p>
+<p>They are the best way to apply what you have learned in a structured, consequence-free environment.</p>
+<hr>
+<h2 id="formats">Formats<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p><strong>Jeopardy-style:</strong> A set of challenges across different categories. Solve a challenge, get a flag, earn points. You pick what to work on. Most beginner CTFs use this format.</p>
+<p><strong>Attack/Defend:</strong> Two or more teams each run identical vulnerable systems. You attack the other teams&rsquo; services while defending your own. CCDC uses this format.</p>
+<p>Start with jeopardy. Attack/defend comes later.</p>
+<hr>
+<h2 id="where-to-start">Where to Start<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<table>
+	<thead>
+			<tr>
+					<th>Platform</th>
+					<th>Why</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><a href="https://picoctf.org/" rel="external">PicoCTF</a></td>
+					<td>Best starting point. Beginner-friendly, excellent progression.</td>
+			</tr>
+			<tr>
+					<td><a href="https://tryhackme.com/" rel="external">TryHackMe</a></td>
+					<td>Guided rooms with walkthroughs. Good for learning specific topics.</td>
+			</tr>
+			<tr>
+					<td><a href="https://www.hackthebox.com/" rel="external">HackTheBox</a></td>
+					<td>Harder. Good for intermediate to advanced.</td>
+			</tr>
+			<tr>
+					<td><a href="https://ctftime.org/" rel="external">CTFtime.org</a></td>
+					<td>Calendar of upcoming CTF events worldwide.</td>
+			</tr>
+			<tr>
+					<td><a href="https://overthewire.org/wargames/" rel="external">OverTheWire</a></td>
+					<td>Linux and exploitation wargames. Bandit is the entry point.</td>
+			</tr>
+	</tbody>
+</table>
+<p>Start on PicoCTF or TryHackMe. Do not skip to HackTheBox and wonder why it is hard.</p>
+<hr>
+<h2 id="how-to-approach-a-challenge">How to Approach a Challenge<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ol>
+<li><strong>Read the description carefully.</strong> The intended vulnerability is usually hinted at.</li>
+<li><strong>Enumerate.</strong> What do you have? A file? A web service? A binary? Network access?</li>
+<li><strong>Identify the category.</strong> Is this web? Crypto? Forensics? (See <a href="/compete/ctf/categories/index.html">Categories</a>.)</li>
+<li><strong>Try the obvious thing first.</strong> Beginners often over-think. Check the simple cases.</li>
+<li><strong>Search.</strong> Look up the technology, the error message, the behavior. CTF knowledge is cumulative.</li>
+<li><strong>Ask for a nudge, not an answer.</strong> Getting pointed in the right direction is fine. Getting the solution handed to you teaches you nothing.</li>
+</ol>
+<hr>
+<h2 id="writing-writeups">Writing Writeups<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>After you solve a challenge, write it down. Even a rough Markdown file with what you tried and what worked.</p>
+<ul>
+<li>It solidifies your understanding.</li>
+<li>It helps your teammates who got stuck.</li>
+<li>It becomes a reference when you see the same technique again.</li>
+</ul>
+<p>Good writeups explain <em>why</em> something worked, not just <em>what</em> commands you ran.</p>
+<hr>
+<h2 id="tools-you-will-reach-for">Tools You Will Reach For<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>These are not category-specific — they come up everywhere:</p>
+<ul>
+<li><strong>CyberChef</strong> — decode, encode, transform data with a GUI. <a href="https://gchq.github.io/CyberChef/" rel="external">Try it.</a></li>
+<li><strong>strings</strong> — extract printable strings from a binary file</li>
+<li><strong>file</strong> — identify what type of file something is</li>
+<li><strong>xxd</strong> / <strong>hexdump</strong> — view raw bytes of a file</li>
+<li><strong>Burp Suite</strong> — intercept and modify HTTP traffic</li>
+</ul>
+<hr>
+<h2 id="using-ai-in-ctfs">Using AI in CTFs<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>AI is a legitimate tool in CTF work. Knowing how to use it well is a skill in itself.</p>
+<p><strong>Where it genuinely helps:</strong></p>
+<ul>
+<li><strong>Identifying encodings:</strong> Paste an unknown string. &ldquo;What encoding is this and how do I decode it?&rdquo; AI recognizes base64, hex, rot13, URL encoding, JWT, and many others instantly.</li>
+<li><strong>Explaining vulnerability classes:</strong> &ldquo;What is a padding oracle attack and how does it work against AES-CBC?&rdquo; Better than reading a dry Wikipedia article.</li>
+<li><strong>Scripting:</strong> Tell it the protocol, the port, and what the service responds with. Ask for a Python socket script to interact with it. Use that as the starting frame.</li>
+<li><strong>Stuck on a hint:</strong> Paste the challenge description and say &ldquo;I&rsquo;ve tried X and Y, what categories or techniques should I look into?&rdquo; It will not give you the flag — it will point you in a direction.</li>
+<li><strong>Reading assembly:</strong> Paste a short disassembled function and ask what it does. Speeds up reverse engineering significantly.</li>
+<li><strong>CyberChef recipes:</strong> Describe the transformation you need. AI will write the CyberChef recipe.</li>
+</ul>
+<p><strong>Where it fails in CTFs:</strong></p>
+<ul>
+<li>Custom or novel challenges: AI has not seen them and will hallucinate solutions.</li>
+<li>Specific offsets, addresses, or binary internals: it cannot run the binary.</li>
+<li>The actual solve: it can outline an approach, but you have to execute it.</li>
+</ul>
+<p>Use AI to accelerate learning and eliminate grunt work — not to skip the thinking.</p>
+<hr>
+
+<details open class="box cstyle notices info">
+  <summary class="box-label" tabindex="-1">
+    <i class="fa-fw fas fa-info-circle"></i> 
+    How the Club Uses This
+  </summary>
+  <div class="box-content">
+<p>TODO: Add which CTFs the club participates in, how teams are formed, where writeups are posted, and any club-specific tooling or setup.</p>
+  </div>
+</details>
+<hr>
+<p><strong>References</strong></p>
+<ul>
+<li><a href="https://picoctf.org/" rel="external">PicoCTF</a></li>
+<li><a href="https://ctftime.org/" rel="external">CTFtime.org</a></li>
+<li><a href="https://ctf101.org/" rel="external">CTF101 — beginner field guide</a></li>
+<li><a href="https://www.youtube.com/@LiveOverflow" rel="external">LiveOverflow YouTube</a> — CTF writeup videos</li>
+</ul>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+<a id="R-logo" class="R-default direction-row" href="/index.html">
+  <span class="logo-image default-animation">
+    <img class="wf-logo__dark"  src="/images/logo.svg" alt="" aria-hidden="true">
+    <img class="wf-logo__light" src="/images/shield-light.svg" alt="" aria-hidden="true">
+  </span>
+  <span class="logo-title default-animation">FAU Cyber Security Club</span>
+</a>
+
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-home default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/start/index.html"><a class="padding" href="/start/index.html">New?</a></li>
+            <li class="" data-nav-id="/learn/index.html"><a class="padding default-animation" href="/learn/index.html">Learn</a><ul id="R-subsections-3043ad09e1e54c6b49d9aa6fbb58ab0f" class="collapsible-menu"></ul></li>
+            <li class="parent " data-nav-id="/compete/index.html"><a class="padding default-animation" href="/compete/index.html">Compete</a><ul id="R-subsections-0e95d5e51c13d68d27ee0bb3e33f50b7" class="collapsible-menu">
+            <li class="parent alwaysopen " data-nav-id="/compete/ctf/index.html"><a class="padding default-animation" href="/compete/ctf/index.html">CTF</a><ul id="R-subsections-c5a0220d3ef960467a2aff05cfca6fe8" class="collapsible-menu">
+            <li class="active " data-nav-id="/compete/ctf/getting-started/index.html"><a class="padding" href="/compete/ctf/getting-started/index.html">Getting Started with CTFs</a></li>
+            <li class="" data-nav-id="/compete/ctf/categories/index.html"><a class="padding" href="/compete/ctf/categories/index.html">CTF Categories</a></li></ul></li>
+            <li class="alwaysopen " data-nav-id="/compete/archive/index.html"><a class="padding default-animation" href="/compete/archive/index.html">Past Competitions</a><ul id="R-subsections-f699a0925bebc0fb0225bf1547d9e512" class="collapsible-menu"></ul></li></ul></li>
+            <li class="" data-nav-id="/lab/index.html"><a class="padding default-animation" href="/lab/index.html">Club Lab</a><ul id="R-subsections-3267a40151b19e3e3f8d4c8a3edf34ee" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/projects/index.html"><a class="padding" href="/projects/index.html">Projects &amp; Guides</a></li>
+            <li class="" data-nav-id="/toolbox/index.html"><a class="padding default-animation" href="/toolbox/index.html">Toolbox</a><ul id="R-subsections-f7060c654e07bee22171d50d3d26bb46" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/meta/index.html"><a class="padding default-animation" href="/meta/index.html">Meta</a><ul id="R-subsections-2f839601009aa63e83121a533a314010" class="collapsible-menu"></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <div class="nav-title padding">Quick Links</div>
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="http://discord.gg/2Yun8WAUuy"><a class="padding" href="http://discord.gg/2Yun8WAUuy" rel="external"><i class='fab fa-fw fa-discord'></i> Discord</a></li>
+            <li class="" data-nav-id="https://github.com/dxcently/fau-cyber-security-club-wiki"><a class="padding" href="https://github.com/dxcently/fau-cyber-security-club-wiki" rel="external"><i class='fab fa-fw fa-github'></i> GitHub</a></li>
+            <li class="" data-nav-id="https://fau.campuslabs.com/engage/organization/cybersecurity"><a class="padding" href="https://fau.campuslabs.com/engage/organization/cybersecurity" rel="external"><i class='fa-solid fa-school-flag'></i> Owl Central</a></li>
+            <li class="" data-nav-id="mailto:csc@fau.edu"><a class="padding" href="mailto:csc@fau.edu" rel="external"><i class='fa-solid fa-envelope'></i> csc@fau.edu</a></li>
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-hacker" value="hacker" selected>Dark</option>
+                    <option id="R-select-variant-hacker-light" value="hacker-light">Light</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1787990815" defer></script>
+    <script src="/js/theme.min.js?1787990815" defer></script>
+
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

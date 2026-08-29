@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html id="R-html" lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.164.0">
+    <meta name="generator" content="Relearn 9.0.3+dd4f8457f5143e91eae3954813494d2b0cc6741c">
+    <meta name="description" content="The agent loop, common agent patterns, and vendor-neutral workflows for using AI in security work.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="AI Workflows &amp; Agents :: FAU Cyber Security Club">
+    <meta name="twitter:description" content="The agent loop, common agent patterns, and vendor-neutral workflows for using AI in security work.">
+    <meta property="og:url" content="https://example.org/toolbox/ai-workflows/index.html">
+    <meta property="og:site_name" content="FAU Cyber Security Club">
+    <meta property="og:title" content="AI Workflows &amp; Agents :: FAU Cyber Security Club">
+    <meta property="og:description" content="The agent loop, common agent patterns, and vendor-neutral workflows for using AI in security work.">
+    <meta property="og:locale" content="en_us">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Toolbox">
+    <meta itemprop="name" content="AI Workflows &amp; Agents :: FAU Cyber Security Club">
+    <meta itemprop="description" content="The agent loop, common agent patterns, and vendor-neutral workflows for using AI in security work.">
+    <meta itemprop="wordCount" content="774">
+    <title>AI Workflows &amp; Agents :: FAU Cyber Security Club</title>
+    <link href="/images/logo.svg?1787990815" rel="icon" type="image/svg+xml">
+    <link href="/css/auto-complete/auto-complete.min.css?1787990815" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1787990815" defer></script>
+    <script src="/js/search-lunr.min.js?1787990815" defer></script>
+    <script src="/js/search.min.js?1787990815" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.en.js?1787990815";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1787990815" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="/fonts/fontawesome/css/all.min.css?1787990815" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/all.min.css?1787990815" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1787990815" rel="stylesheet">
+    <link href="/css/theme.min.css?1787990815" rel="stylesheet">
+    <link href="/css/format-html.min.css?1787990815" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/toolbox\/ai-workflows\/index.html';
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='https:\/\/example.org';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'hacker', 'hacker-light' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="/css/custom.css?1787990815" rel="stylesheet">
+    <script src="/js/custom.js?1787990815" defer></script>
+  </head>
+  <body class="mobile-support html" data-origin="/toolbox/ai-workflows/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#what-makes-something-an-agent">What Makes Something an Agent</a></li>
+    <li><a href="#agent-patterns">Agent Patterns</a>
+      <ul>
+        <li><a href="#react-reason--act">ReAct (Reason + Act)</a></li>
+        <li><a href="#planner--executor">Planner + Executor</a></li>
+      </ul>
+    </li>
+    <li><a href="#a-minimal-agent-loop">A Minimal Agent Loop</a>
+      <ul>
+        <li><a href="#safety">Safety</a></li>
+      </ul>
+    </li>
+    <li><a href="#practical-workflows">Practical Workflows</a>
+      <ul>
+        <li><a href="#ctf--recon-loop">CTF / Recon Loop</a></li>
+        <li><a href="#hardening-review-blue-team">Hardening Review (Blue Team)</a></li>
+      </ul>
+    </li>
+    <li><a href="#beyond-one-off-workflows">Beyond One-Off Workflows</a></li>
+    <li><a href="#what-kills-these-workflows">What Kills These Workflows</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">FAU Cyber Security Club</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/toolbox/index.html"><span itemprop="name">Toolbox</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">AI Workflows &amp; Agents</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-variant wf-variant-toggle default-animation" data-content-empty="show" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle"><span><i class="fa-fw fas fa-circle-half-stroke"></i></span></span>
+            </div>
+
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/toolbox/ai/index.html" title="Choosing an AI Model (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/toolbox/ai-automation/index.html" title="Automating Security Work (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable toolbox" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="ai-workflows--agents">AI Workflows &amp; Agents</h1>
+
+<p>A single model answering questions is useful. A model that can run tools,
+observe results, and adapt its next action is a different category of
+useful. This page covers both: the loop that makes something an &ldquo;agent,&rdquo; and
+practical workflows for using AI — agentic or not — in security work.</p>
+<hr>
+<h2 id="what-makes-something-an-agent">What Makes Something an Agent<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>A chat model takes input, produces output, stops. An agent:</p>
+<ol>
+<li>Receives a goal</li>
+<li>Decides what action to take</li>
+<li>Executes the action (runs a tool, writes a file, makes a request)</li>
+<li>Observes the result</li>
+<li>Decides the next action based on the result</li>
+<li>Repeats until the goal is achieved or it gives up</li>
+</ol>
+<p>The key addition is <strong>tool use</strong> and <strong>a loop</strong>. Everything else is
+engineering around those two things.</p>
+<hr>
+<h2 id="agent-patterns">Agent Patterns<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="react-reason--act">ReAct (Reason + Act)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>The simplest pattern that works. The model alternates between reasoning
+about the problem and acting on it.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>Thought: I need to find the open ports on this target.
+Action: nmap -sV -p- target.htb
+Observation: [nmap output]
+Thought: Port 8080 is running an old Tomcat. Check for CVEs.
+Action: searchsploit apache tomcat 8.5
+Observation: [exploits listed]
+...</code></pre></div>
+<p>No exotic architecture — just prompting and tool use in a loop. Enough for
+most enumeration and scripting tasks.</p>
+<h3 id="planner--executor">Planner + Executor<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>A Planner reasons about overall strategy; an Executor runs commands. The
+Planner sees summarized results, not raw output, so it does not get lost in
+noise on longer engagements. Add a Summarizer role once tool output gets too
+large to hand the Planner directly.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>Planner: &#34;Web service on port 80. Plan: fuzz directories, check
+          login form for SQLi, try default credentials.&#34;
+Executor: runs the directory fuzz, reports results back
+Planner: &#34;Found /admin. Update plan: focus on the admin panel.&#34;</code></pre></div>
+<p>Scale this up to <strong>hierarchical agents</strong> — a manager spawning specialized
+sub-agents (web, network, &hellip;) that report back — once a single agent&rsquo;s
+context gets crowded with unrelated subtasks. Otherwise it&rsquo;s overhead for no
+benefit.</p>
+<hr>
+<h2 id="a-minimal-agent-loop">A Minimal Agent Loop<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>The skeleton, independent of any specific provider. <code>chat()</code> stands in for
+whatever API call your provider uses.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">agent_loop</span><span class="p">(</span><span class="n">goal</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">max_turns</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">messages</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&#34;role&#34;</span><span class="p">:</span> <span class="s2">&#34;user&#34;</span><span class="p">,</span> <span class="s2">&#34;content&#34;</span><span class="p">:</span> <span class="n">goal</span><span class="p">}]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_turns</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">response</span> <span class="o">=</span> <span class="n">chat</span><span class="p">(</span><span class="n">messages</span><span class="p">,</span> <span class="n">tools</span><span class="o">=</span><span class="n">TOOL_DEFINITIONS</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">done</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&#34;role&#34;</span><span class="p">:</span> <span class="s2">&#34;assistant&#34;</span><span class="p">,</span> <span class="s2">&#34;content&#34;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">raw</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">call</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">tool_calls</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">output</span> <span class="o">=</span> <span class="n">run_tool</span><span class="p">(</span><span class="n">call</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">call</span><span class="o">.</span><span class="n">args</span><span class="p">)</span>   <span class="c1"># e.g. shell exec</span>
+</span></span><span class="line"><span class="cl">            <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&#34;role&#34;</span><span class="p">:</span> <span class="s2">&#34;tool&#34;</span><span class="p">,</span> <span class="s2">&#34;call_id&#34;</span><span class="p">:</span> <span class="n">call</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                              <span class="s2">&#34;content&#34;</span><span class="p">:</span> <span class="n">output</span><span class="p">[:</span><span class="mi">4000</span><span class="p">]})</span>  <span class="c1"># truncate</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s2">&#34;max turns reached&#34;</span></span></span></code></pre></div>
+<p>From here you add more tools (<code>read_file</code>, <code>http_request</code>), better output
+truncation, a separate planner pass, and logging so you can review what it
+actually did.</p>
+<h3 id="safety">Safety<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Scope it to a specific target and set of allowed actions. Run it in a VM,
+not your host. Review its logs — agents get creative. Rate limit it so it
+does not hammer a target. Keep credentials out of its context entirely.</p>
+
+<details open class="box cstyle notices warning">
+  <summary class="box-label" tabindex="-1">
+    <i class="fa-fw fas fa-exclamation-triangle"></i> 
+    Authorization
+  </summary>
+  <div class="box-content">
+<p>An agent that runs commands inherits your legal responsibilities. Only
+point it at systems you own or have explicit written permission to test.</p>
+  </div>
+</details>
+<hr>
+<h2 id="practical-workflows">Practical Workflows<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Repeatable patterns, not one-off prompts.</p>
+<h3 id="ctf--recon-loop">CTF / Recon Loop<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>1. Enumerate manually — understand what you actually have
+2. Ask the model to analyze the enumeration output
+3. Generate an exploit or script with the model
+4. Run it, get output
+5. Feed the output back for interpretation
+6. Iterate</code></pre></div>
+<p>AI is most useful at steps 2, 3, and 5. You own steps 1, 4, and the final
+call on whether the result makes sense.</p>
+<h3 id="hardening-review-blue-team">Hardening Review (Blue Team)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Collect state, then hand it over in one batch instead of describing it from
+memory:</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo -l &gt; sudo_config.txt
+</span></span><span class="line"><span class="cl">find / -perm -4000 2&gt;/dev/null &gt; suid_bins.txt
+</span></span><span class="line"><span class="cl">ss -tulnp &gt; open_ports.txt
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">cat *.txt <span class="p">|</span> chat <span class="s2">&#34;review this system configuration for security issues,
+</span></span></span><span class="line"><span class="cl"><span class="s2">list findings by severity, suggest specific fixes&#34;</span></span></span></code></pre></div>
+<hr>
+<h2 id="beyond-one-off-workflows">Beyond One-Off Workflows<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>The workflows above are things you run by hand, chat window open, when you
+need them. Wire the same pattern into a script — tool output piped
+straight into <code>chat()</code>, running on a schedule or every time a scan
+finishes — and it stops being a habit and becomes automation.</p>
+<p>See <a href="/toolbox/ai-automation/index.html">Automating Security Work</a> for the pipeline
+pattern, structured output, and what never goes in the prompt.</p>
+<hr>
+<h2 id="what-kills-these-workflows">What Kills These Workflows<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li>Trusting output you have not verified — a plausible-looking exploit that
+does not work, or an analysis that misses the one line that mattered.</li>
+<li>Letting the model write domain-specific logic it does not understand. It
+produces confident garbage and you lose hours debugging it.</li>
+<li>Skipping step 1. If you do not understand what you are enumerating, you
+cannot tell whether the model&rsquo;s read on it is right.</li>
+</ul>
+<p>The skill worth building is directing and verifying model output, not
+copy-pasting it.</p>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+<a id="R-logo" class="R-default direction-row" href="/index.html">
+  <span class="logo-image default-animation">
+    <img class="wf-logo__dark"  src="/images/logo.svg" alt="" aria-hidden="true">
+    <img class="wf-logo__light" src="/images/shield-light.svg" alt="" aria-hidden="true">
+  </span>
+  <span class="logo-title default-animation">FAU Cyber Security Club</span>
+</a>
+
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-home default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/start/index.html"><a class="padding" href="/start/index.html">New?</a></li>
+            <li class="" data-nav-id="/learn/index.html"><a class="padding default-animation" href="/learn/index.html">Learn</a><ul id="R-subsections-3043ad09e1e54c6b49d9aa6fbb58ab0f" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/compete/index.html"><a class="padding default-animation" href="/compete/index.html">Compete</a><ul id="R-subsections-0e95d5e51c13d68d27ee0bb3e33f50b7" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/lab/index.html"><a class="padding default-animation" href="/lab/index.html">Club Lab</a><ul id="R-subsections-3267a40151b19e3e3f8d4c8a3edf34ee" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/projects/index.html"><a class="padding" href="/projects/index.html">Projects &amp; Guides</a></li>
+            <li class="parent " data-nav-id="/toolbox/index.html"><a class="padding default-animation" href="/toolbox/index.html">Toolbox</a><ul id="R-subsections-f7060c654e07bee22171d50d3d26bb46" class="collapsible-menu">
+            <li class="" data-nav-id="/toolbox/links/index.html"><a class="padding" href="/toolbox/links/index.html">Links</a></li>
+            <li class="" data-nav-id="/toolbox/intern-training-guide/index.html"><a class="padding" href="/toolbox/intern-training-guide/index.html">🛡️ Cybersecurity Intern Training Resource Guide (2025)</a></li>
+            <li class="" data-nav-id="/toolbox/cheatsheets/index.html"><a class="padding" href="/toolbox/cheatsheets/index.html">Cheat Sheets</a></li>
+            <li class="" data-nav-id="/toolbox/ai/index.html"><a class="padding" href="/toolbox/ai/index.html">Choosing an AI Model</a></li>
+            <li class="active " data-nav-id="/toolbox/ai-workflows/index.html"><a class="padding" href="/toolbox/ai-workflows/index.html">AI Workflows &amp; Agents</a></li>
+            <li class="" data-nav-id="/toolbox/ai-automation/index.html"><a class="padding" href="/toolbox/ai-automation/index.html">Automating Security Work</a></li></ul></li>
+            <li class="" data-nav-id="/meta/index.html"><a class="padding default-animation" href="/meta/index.html">Meta</a><ul id="R-subsections-2f839601009aa63e83121a533a314010" class="collapsible-menu"></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <div class="nav-title padding">Quick Links</div>
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="http://discord.gg/2Yun8WAUuy"><a class="padding" href="http://discord.gg/2Yun8WAUuy" rel="external"><i class='fab fa-fw fa-discord'></i> Discord</a></li>
+            <li class="" data-nav-id="https://github.com/dxcently/fau-cyber-security-club-wiki"><a class="padding" href="https://github.com/dxcently/fau-cyber-security-club-wiki" rel="external"><i class='fab fa-fw fa-github'></i> GitHub</a></li>
+            <li class="" data-nav-id="https://fau.campuslabs.com/engage/organization/cybersecurity"><a class="padding" href="https://fau.campuslabs.com/engage/organization/cybersecurity" rel="external"><i class='fa-solid fa-school-flag'></i> Owl Central</a></li>
+            <li class="" data-nav-id="mailto:csc@fau.edu"><a class="padding" href="mailto:csc@fau.edu" rel="external"><i class='fa-solid fa-envelope'></i> csc@fau.edu</a></li>
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-hacker" value="hacker" selected>Dark</option>
+                    <option id="R-select-variant-hacker-light" value="hacker-light">Light</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1787990815" defer></script>
+    <script src="/js/theme.min.js?1787990815" defer></script>
+
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

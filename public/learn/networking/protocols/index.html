@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html id="R-html" lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.164.0">
+    <meta name="generator" content="Relearn 9.0.3+dd4f8457f5143e91eae3954813494d2b0cc6741c">
+    <meta name="description" content="What the common network protocols do and when each one is relevant.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Protocols :: FAU Cyber Security Club">
+    <meta name="twitter:description" content="What the common network protocols do and when each one is relevant.">
+    <meta property="og:url" content="https://example.org/learn/networking/protocols/index.html">
+    <meta property="og:site_name" content="FAU Cyber Security Club">
+    <meta property="og:title" content="Protocols :: FAU Cyber Security Club">
+    <meta property="og:description" content="What the common network protocols do and when each one is relevant.">
+    <meta property="og:locale" content="en_us">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Learn">
+    <meta itemprop="name" content="Protocols :: FAU Cyber Security Club">
+    <meta itemprop="description" content="What the common network protocols do and when each one is relevant.">
+    <meta itemprop="wordCount" content="743">
+    <title>Protocols :: FAU Cyber Security Club</title>
+    <link href="/images/logo.svg?1787990815" rel="icon" type="image/svg+xml">
+    <link href="/css/auto-complete/auto-complete.min.css?1787990815" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1787990815" defer></script>
+    <script src="/js/search-lunr.min.js?1787990815" defer></script>
+    <script src="/js/search.min.js?1787990815" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.en.js?1787990815";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1787990815" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="/fonts/fontawesome/css/all.min.css?1787990815" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/all.min.css?1787990815" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1787990815" rel="stylesheet">
+    <link href="/css/theme.min.css?1787990815" rel="stylesheet">
+    <link href="/css/format-html.min.css?1787990815" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/learn\/networking\/protocols\/index.html';
+      window.relearn.relBasePath='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/example.org';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'hacker', 'hacker-light' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="/css/custom.css?1787990815" rel="stylesheet">
+    <script src="/js/custom.js?1787990815" defer></script>
+  </head>
+  <body class="mobile-support html" data-origin="/learn/networking/protocols/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#tcp-vs-udp">TCP vs UDP</a></li>
+    <li><a href="#dns">DNS</a></li>
+    <li><a href="#http--https">HTTP / HTTPS</a></li>
+    <li><a href="#icmp">ICMP</a></li>
+    <li><a href="#arp">ARP</a></li>
+    <li><a href="#dhcp">DHCP</a></li>
+    <li><a href="#in-ctf-environments">In CTF Environments</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">FAU Cyber Security Club</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/learn/index.html"><span itemprop="name">Learn</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/learn/networking/index.html"><span itemprop="name">Networking</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Protocols</span><meta itemprop="position" content="4"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-variant wf-variant-toggle default-animation" data-content-empty="show" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle"><span><i class="fa-fw fas fa-circle-half-stroke"></i></span></span>
+            </div>
+
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/learn/networking/fundamentals/index.html" title="IP, Ports & Subnets (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/learn/networking/tools/index.html" title="Networking Tools (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable learn" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="protocols">Protocols</h1>
+
+<p>Protocols are agreed-upon rules for how data is sent and received. You do not need to memorize RFCs — you need to understand what each one does and when it is relevant.</p>
+<hr>
+<h2 id="tcp-vs-udp">TCP vs UDP<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>These are the two main transport-layer protocols.</p>
+<table>
+	<thead>
+			<tr>
+					<th></th>
+					<th>TCP</th>
+					<th>UDP</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Connection</td>
+					<td>Yes — three-way handshake</td>
+					<td>No — fire and forget</td>
+			</tr>
+			<tr>
+					<td>Reliability</td>
+					<td>Guaranteed delivery</td>
+					<td>No guarantee</td>
+			</tr>
+			<tr>
+					<td>Speed</td>
+					<td>Slower</td>
+					<td>Faster</td>
+			</tr>
+			<tr>
+					<td>Use cases</td>
+					<td>HTTP, SSH, FTP</td>
+					<td>DNS, VoIP, streaming</td>
+			</tr>
+	</tbody>
+</table>
+<p>The <strong>TCP three-way handshake</strong>: <code>SYN</code> → <code>SYN-ACK</code> → <code>ACK</code>. This is how a connection is established. A port scan works by sending SYN packets and seeing what responds.</p>
+<hr>
+<h2 id="dns">DNS<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>DNS (Domain Name System) translates human-readable names (<code>google.com</code>) into IP addresses.</p>
+<p><strong>How it works:</strong></p>
+<ol>
+<li>You type <code>google.com</code> in a browser.</li>
+<li>Your OS asks a DNS resolver (usually your router or ISP).</li>
+<li>The resolver queries root servers, then TLD servers, then authoritative servers.</li>
+<li>You get back an IP address.</li>
+</ol>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nslookup google.com       <span class="c1"># basic DNS lookup</span>
+</span></span><span class="line"><span class="cl">dig google.com            <span class="c1"># detailed DNS query</span>
+</span></span><span class="line"><span class="cl">dig google.com MX         <span class="c1"># look up mail records</span>
+</span></span><span class="line"><span class="cl">dig @8.8.8.8 google.com   <span class="c1"># query a specific DNS server</span></span></span></code></pre></div>
+<p>DNS misconfigurations are frequent findings. Zone transfers (<code>AXFR</code>) on misconfigured servers can leak the entire DNS zone.</p>
+<hr>
+<h2 id="http--https">HTTP / HTTPS<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>HTTP is the protocol your browser uses to talk to web servers. HTTPS is HTTP over TLS (encrypted).</p>
+<p>Every HTTP transaction is a <strong>request</strong> and a <strong>response</strong>. Both have a method (or status code), headers, and optionally a body.</p>
+<p>See the <a href="/learn/web-fundamentals/http/index.html">HTTP page</a> for full details.</p>
+<hr>
+<h2 id="icmp">ICMP<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>ICMP is used for network diagnostics. <code>ping</code> uses it.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ping -c <span class="m">4</span> 192.168.1.1   <span class="c1"># send 4 ICMP echo requests</span></span></span></code></pre></div>
+<p>Some firewalls block ICMP. A host not responding to ping does not mean it is offline.</p>
+<hr>
+<h2 id="arp">ARP<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>ARP (Address Resolution Protocol) maps IP addresses to MAC addresses on a local network.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">arp -a          <span class="c1"># view the ARP table</span></span></span></code></pre></div>
+<p>ARP spoofing is a classic local network attack — you convince other devices that your MAC is the router&rsquo;s MAC, intercepting traffic.</p>
+<hr>
+<h2 id="dhcp">DHCP<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>DHCP automatically assigns IP addresses to devices on a network. When you connect to Wi-Fi, your device gets an IP from the DHCP server (usually your router).</p>
+<p>Rogue DHCP servers are a real attack. If you can respond to DHCP requests faster than the legitimate server, you control what IP and DNS server clients use.</p>
+<hr>
+<h2 id="in-ctf-environments">In CTF Environments<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Protocols show up in CTFs mainly through packet captures and network forensics. You need to recognize what protocol you are looking at and know what can go wrong with it.</p>
+<p><strong>DNS zone transfer — first thing to try on any CTF with a DNS service:</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check if the server allows zone transfers (leaks all DNS records)</span>
+</span></span><span class="line"><span class="cl">dig axfr @&lt;target-ip&gt; &lt;domain&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Example</span>
+</span></span><span class="line"><span class="cl">dig axfr @10.10.10.5 target.htb
+</span></span><span class="line"><span class="cl"><span class="c1"># If it works, you get every subdomain and internal hostname — free recon</span></span></span></code></pre></div>
+<p><strong>Analyzing a PCAP for protocol-specific data:</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Filter by protocol in tcpdump</span>
+</span></span><span class="line"><span class="cl">tcpdump -r capture.pcap <span class="s1">&#39;dns&#39;</span>        <span class="c1"># DNS queries only</span>
+</span></span><span class="line"><span class="cl">tcpdump -r capture.pcap <span class="s1">&#39;arp&#39;</span>        <span class="c1"># ARP traffic</span>
+</span></span><span class="line"><span class="cl">tcpdump -r capture.pcap <span class="s1">&#39;tcp port 21&#39;</span> <span class="c1"># FTP</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Find cleartext credentials in FTP, Telnet, or HTTP</span>
+</span></span><span class="line"><span class="cl">tcpdump -r capture.pcap -A <span class="s1">&#39;tcp port 21&#39;</span> <span class="p">|</span> grep -i <span class="s2">&#34;pass\|user&#34;</span></span></span></code></pre></div>
+<p>In Wireshark: use display filters like <code>dns</code>, <code>ftp</code>, <code>http</code>, <code>arp</code>. File → Export Objects → HTTP lets you pull files out of captured HTTP traffic.</p>
+<p><strong>TCP SYN scan behavior — understanding what nmap is doing:</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Half-open scan: nmap sends SYN, reads SYN-ACK or RST, never completes handshake</span>
+</span></span><span class="line"><span class="cl">nmap -sS target.htb    <span class="c1"># stealth scan (requires root)</span>
+</span></span><span class="line"><span class="cl">nmap -sT target.htb    <span class="c1"># full connect scan (no root needed, louder)</span></span></span></code></pre></div>
+<p>A <code>SYN-ACK</code> means the port is open. An <code>RST</code> means closed. No response means filtered (firewall).</p>
+<p><strong>ARP in CCDC / network defense:</strong></p>
+<p>ARP spoofing is one of the first things a red team does on a local network. Detection:</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Watch for duplicate IP-to-MAC mappings (attacker poisoning ARP table)</span>
+</span></span><span class="line"><span class="cl">arp -a
+</span></span><span class="line"><span class="cl"><span class="c1"># Or use arpwatch to monitor for MAC-IP changes over time</span></span></span></code></pre></div>
+<p>Static ARP entries block this attack on critical hosts:</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">arp -s &lt;gateway-ip&gt; &lt;correct-mac&gt;</span></span></code></pre></div>
+<p><strong>DHCP rogue server — competition context:</strong></p>
+<p>In CCDC, if the red team stands up a rogue DHCP server, clients start using attacker-controlled DNS. Defense: lock down DHCP snooping on managed switches, and monitor for unexpected DHCP traffic.</p>
+<hr>
+
+<details open class="box cstyle notices info">
+  <summary class="box-label" tabindex="-1">
+    <i class="fa-fw fas fa-info-circle"></i> 
+    How the Club Uses This
+  </summary>
+  <div class="box-content">
+<p>Protocol knowledge is foundational in CCDC network defense (ARP, DHCP attacks) and CTF network forensics (analyzing PCAPs to find flags in DNS queries, FTP transfers, or cleartext HTTP).</p>
+  </div>
+</details>
+<hr>
+<p><strong>References</strong></p>
+<ul>
+<li><a href="https://www.cloudflare.com/learning/dns/what-is-dns/" rel="external">Cloudflare — How DNS works</a></li>
+<li><a href="https://wiki.wireshark.org/ProtocolReference" rel="external">Wireshark protocol docs</a></li>
+<li><a href="https://beej.us/guide/bgnet/" rel="external">Beej&rsquo;s Guide to Network Programming</a></li>
+</ul>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+<a id="R-logo" class="R-default direction-row" href="/index.html">
+  <span class="logo-image default-animation">
+    <img class="wf-logo__dark"  src="/images/logo.svg" alt="" aria-hidden="true">
+    <img class="wf-logo__light" src="/images/shield-light.svg" alt="" aria-hidden="true">
+  </span>
+  <span class="logo-title default-animation">FAU Cyber Security Club</span>
+</a>
+
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-home default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/start/index.html"><a class="padding" href="/start/index.html">New?</a></li>
+            <li class="parent " data-nav-id="/learn/index.html"><a class="padding default-animation" href="/learn/index.html">Learn</a><ul id="R-subsections-3043ad09e1e54c6b49d9aa6fbb58ab0f" class="collapsible-menu">
+            <li class="alwaysopen " data-nav-id="/learn/virtual-machines/index.html"><a class="padding default-animation" href="/learn/virtual-machines/index.html">Virtual Machines</a><ul id="R-subsections-59f5ccd870c4fc03abd9b69640874a1f" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/linux/index.html"><a class="padding default-animation" href="/learn/linux/index.html">Linux</a><ul id="R-subsections-13cee4e8a99446dc8ebb7de89edd082b" class="collapsible-menu"></ul></li>
+            <li class="parent alwaysopen " data-nav-id="/learn/networking/index.html"><a class="padding default-animation" href="/learn/networking/index.html">Networking</a><ul id="R-subsections-cf6bef6447ee5c4a2443556071838940" class="collapsible-menu">
+            <li class="" data-nav-id="/learn/networking/fundamentals/index.html"><a class="padding" href="/learn/networking/fundamentals/index.html">IP, Ports &amp; Subnets</a></li>
+            <li class="active " data-nav-id="/learn/networking/protocols/index.html"><a class="padding" href="/learn/networking/protocols/index.html">Protocols</a></li>
+            <li class="" data-nav-id="/learn/networking/tools/index.html"><a class="padding" href="/learn/networking/tools/index.html">Networking Tools</a></li></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/cli-scripting/index.html"><a class="padding default-animation" href="/learn/cli-scripting/index.html">CLI &amp; Scripting</a><ul id="R-subsections-25bc0dbb515bc17b3dae2198fc35e410" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/web-fundamentals/index.html"><a class="padding default-animation" href="/learn/web-fundamentals/index.html">Web &amp; System Fundamentals</a><ul id="R-subsections-059cbefc7865f445f16aa5723b8e5634" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/windows/index.html"><a class="padding default-animation" href="/learn/windows/index.html">Windows &amp; Active Directory</a><ul id="R-subsections-a730549f2efa4d1e274d14685feab8eb" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/cryptography/index.html"><a class="padding default-animation" href="/learn/cryptography/index.html">Cryptography</a><ul id="R-subsections-39d0a9d11822e4379c1887dd88fcd860" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/ai/index.html"><a class="padding default-animation" href="/learn/ai/index.html">AI</a><ul id="R-subsections-501934f4c83e2c1d7165e75c44f96956" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/specializations/index.html"><a class="padding default-animation" href="/learn/specializations/index.html">Specializations</a><ul id="R-subsections-76b8bdc5bdb02d450cc67abb8c740f83" class="collapsible-menu"></ul></li></ul></li>
+            <li class="" data-nav-id="/compete/index.html"><a class="padding default-animation" href="/compete/index.html">Compete</a><ul id="R-subsections-0e95d5e51c13d68d27ee0bb3e33f50b7" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/lab/index.html"><a class="padding default-animation" href="/lab/index.html">Club Lab</a><ul id="R-subsections-3267a40151b19e3e3f8d4c8a3edf34ee" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/projects/index.html"><a class="padding" href="/projects/index.html">Projects &amp; Guides</a></li>
+            <li class="" data-nav-id="/toolbox/index.html"><a class="padding default-animation" href="/toolbox/index.html">Toolbox</a><ul id="R-subsections-f7060c654e07bee22171d50d3d26bb46" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/meta/index.html"><a class="padding default-animation" href="/meta/index.html">Meta</a><ul id="R-subsections-2f839601009aa63e83121a533a314010" class="collapsible-menu"></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <div class="nav-title padding">Quick Links</div>
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="http://discord.gg/2Yun8WAUuy"><a class="padding" href="http://discord.gg/2Yun8WAUuy" rel="external"><i class='fab fa-fw fa-discord'></i> Discord</a></li>
+            <li class="" data-nav-id="https://github.com/dxcently/fau-cyber-security-club-wiki"><a class="padding" href="https://github.com/dxcently/fau-cyber-security-club-wiki" rel="external"><i class='fab fa-fw fa-github'></i> GitHub</a></li>
+            <li class="" data-nav-id="https://fau.campuslabs.com/engage/organization/cybersecurity"><a class="padding" href="https://fau.campuslabs.com/engage/organization/cybersecurity" rel="external"><i class='fa-solid fa-school-flag'></i> Owl Central</a></li>
+            <li class="" data-nav-id="mailto:csc@fau.edu"><a class="padding" href="mailto:csc@fau.edu" rel="external"><i class='fa-solid fa-envelope'></i> csc@fau.edu</a></li>
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-hacker" value="hacker" selected>Dark</option>
+                    <option id="R-select-variant-hacker-light" value="hacker-light">Light</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1787990815" defer></script>
+    <script src="/js/theme.min.js?1787990815" defer></script>
+
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

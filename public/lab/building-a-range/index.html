@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html id="R-html" lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.164.0">
+    <meta name="generator" content="Relearn 9.0.3+dd4f8457f5143e91eae3954813494d2b0cc6741c">
+    <meta name="description" content="How individual VMs get wired together into one range that behaves like a small company network.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Building an End-to-End Range :: FAU Cyber Security Club">
+    <meta name="twitter:description" content="How individual VMs get wired together into one range that behaves like a small company network.">
+    <meta property="og:url" content="https://example.org/lab/building-a-range/index.html">
+    <meta property="og:site_name" content="FAU Cyber Security Club">
+    <meta property="og:title" content="Building an End-to-End Range :: FAU Cyber Security Club">
+    <meta property="og:description" content="How individual VMs get wired together into one range that behaves like a small company network.">
+    <meta property="og:locale" content="en_us">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Club Lab">
+    <meta itemprop="name" content="Building an End-to-End Range :: FAU Cyber Security Club">
+    <meta itemprop="description" content="How individual VMs get wired together into one range that behaves like a small company network.">
+    <meta itemprop="wordCount" content="1109">
+    <title>Building an End-to-End Range :: FAU Cyber Security Club</title>
+    <link href="/images/logo.svg?1787990815" rel="icon" type="image/svg+xml">
+    <link href="/css/auto-complete/auto-complete.min.css?1787990815" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1787990815" defer></script>
+    <script src="/js/search-lunr.min.js?1787990815" defer></script>
+    <script src="/js/search.min.js?1787990815" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.en.js?1787990815";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1787990815" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="/fonts/fontawesome/css/all.min.css?1787990815" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/all.min.css?1787990815" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1787990815" rel="stylesheet">
+    <link href="/css/theme.min.css?1787990815" rel="stylesheet">
+    <link href="/css/format-html.min.css?1787990815" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/lab\/building-a-range\/index.html';
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='https:\/\/example.org';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'hacker', 'hacker-light' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="/css/custom.css?1787990815" rel="stylesheet">
+    <script src="/js/custom.js?1787990815" defer></script>
+  </head>
+  <body class="mobile-support html" data-origin="/lab/building-a-range/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#1-what-a-range-is">1. What a Range Is</a></li>
+    <li><a href="#2-the-standard-pieces">2. The Standard Pieces</a></li>
+    <li><a href="#3-network-segmentation--off-the-campus-network">3. Network Segmentation — Off the Campus Network</a></li>
+    <li><a href="#4-how-the-pieces-depend-on-each-other">4. How the Pieces Depend on Each Other</a></li>
+    <li><a href="#5-building-it-so-you-can-rebuild-it">5. Building It So You Can Rebuild It</a></li>
+    <li><a href="#6-a-suggested-progression">6. A Suggested Progression</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">FAU Cyber Security Club</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/lab/index.html"><span itemprop="name">Club Lab</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Building an End-to-End Range</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-variant wf-variant-toggle default-animation" data-content-empty="show" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle"><span><i class="fa-fw fas fa-circle-half-stroke"></i></span></span>
+            </div>
+
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/lab/proxmox/index.html" title="Proxmox (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/projects/index.html" title="Projects & Guides (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable lab" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="building-an-end-to-end-range">Building an End-to-End Range</h1>
+
+<p>One VM is a target. It is not a <em>range</em>. A range is what you get when
+several VMs stop being separate boxes and start being one small network
+that behaves like a real company&rsquo;s — because that is the only way practice
+on it teaches you anything close to the real thing.</p>
+<hr>
+<h2 id="1-what-a-range-is">1. What a Range Is<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>A <strong>range</strong> is a set of VMs, networked together, built to imitate a real
+environment closely enough that attacking or defending it teaches real
+skills.</p>
+<p>A single Linux VM teaches you to attack one Linux VM. A range teaches you
+to move through a network — get a foothold on one machine, use it to reach
+another, find out that the file server trusts the domain controller more
+than it trusts you. That movement, called <strong>lateral movement</strong>, is most of
+what a real attack or a real defense looks like. You cannot practice it on
+one box.</p>
+<hr>
+<h2 id="2-the-standard-pieces">2. The Standard Pieces<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>A basic range that stands in for a small company network needs a handful
+of roles. None of these need to be powerful machines — small, correctly
+configured VMs teach the same lessons as big ones.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Piece</th>
+					<th>Role</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Domain controller</td>
+					<td>Runs the directory service that other Windows machines trust for logins</td>
+			</tr>
+			<tr>
+					<td>Windows clients (x2)</td>
+					<td>Normal user workstations, joined to the domain</td>
+			</tr>
+			<tr>
+					<td>Linux server</td>
+					<td>A service host — web app, file share, database, pick one</td>
+			</tr>
+			<tr>
+					<td>Attacker box</td>
+					<td>A Linux VM with attack tooling, kept outside the &ldquo;company&rdquo; network</td>
+			</tr>
+	</tbody>
+</table>
+<p>A <strong>domain controller</strong> is a server that runs Windows&rsquo;s directory
+service — it holds the list of users and machines, and decides who is
+allowed to log in where. Windows networks built around one are common in
+the real world, which is why a range built to teach real skills needs one
+too.</p>
+<p>Start smaller than this table if you need to. Section 6 covers that.</p>
+<hr>
+<h2 id="3-network-segmentation--off-the-campus-network">3. Network Segmentation — Off the Campus Network<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>A range is not one network. It needs at least two.</p>
+<p>The <strong>range network</strong> is where the domain controller, the clients, and the
+Linux server live. They talk to each other freely, the way real coworkers'
+machines would.</p>
+<p>The <strong>attacker network</strong> is where the attacker box sits — connected to the
+range network so it can reach its targets, but not bridged out to anything
+else.</p>
+<p>Neither network may ever touch the FAU campus network. This is the same
+isolation rule the hypervisor page covers, and it applies here at the range
+level too: every VM in the range sits on a virtual bridge with no path to
+campus. A range that can reach the campus network by accident is not a lab
+anymore — it is a live attack surface pointed at a real university network,
+and that is exactly what the club lab exists to prevent. Check this before
+you check anything else when a new range comes online.</p>
+<hr>
+<h2 id="4-how-the-pieces-depend-on-each-other">4. How the Pieces Depend on Each Other<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>The pieces in a range are not independent. Build them in the wrong order
+and nothing works, because each one waits on something built before it.</p>
+<p><strong>DNS points at the domain controller first.</strong> DNS is the service that
+turns a name, like a computer&rsquo;s hostname, into an IP address. A Windows
+domain controller usually runs this service itself. Every other machine in
+the range must be told to use the domain controller as its DNS server
+<em>before</em> anything else is configured — if a client cannot resolve the
+domain controller&rsquo;s name, it cannot join the domain at all.</p>
+<p><strong>Clients join the domain after DNS works.</strong> &ldquo;Joining the domain&rdquo; means a
+Windows client hands over local login control to the domain controller.
+This step fails immediately if DNS is not already pointed at the domain
+controller — so troubleshooting a failed domain join almost always starts
+by checking DNS again.</p>
+<p><strong>The Linux server joins last, if at all.</strong> Depending on what you are
+practicing, the Linux server may not need to join the domain at all — it
+might just need network reachability from the clients. Decide what role it
+plays before you configure it, not after.</p>
+<p>Skipping this order is the single most common way a range build stalls out
+for hours over what turns out to be a DNS setting.</p>
+<hr>
+<h2 id="5-building-it-so-you-can-rebuild-it">5. Building It So You Can Rebuild It<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>A range you build once by hand and never document is a range you cannot
+rebuild when it breaks — and it will break, because breaking it on purpose
+is the entire point of a lab.</p>
+<p>Use the same tools the hypervisor page covers, at the range level:</p>
+<ul>
+<li><strong>Templates.</strong> Build one clean domain controller template and one clean
+client template. Clone new range instances from them instead of
+reinstalling every piece by hand.</li>
+<li><strong>Snapshots.</strong> Take a snapshot of every VM in the range once it is fully
+built and working — domain joined, DNS resolving, services running. That
+snapshot is the range&rsquo;s known-good state. Roll back to it after a
+training session wrecks the range, instead of rebuilding from nothing.</li>
+<li><strong>Documentation.</strong> Write down the build order from section 4 as an actual
+checklist — which VM gets configured first, second, third. A range with
+no written build order only exists in the head of whoever built it, and
+that does not scale to a club.</li>
+</ul>
+<p>A range that takes one person a weekend to build, and thirty minutes to
+rebuild from templates and snapshots, is a range the whole club can
+actually use.</p>
+<hr>
+<h2 id="6-a-suggested-progression">6. A Suggested Progression<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Do not start with the full table from section 2. Build up to it.</p>
+<ol>
+<li><strong>Two VMs.</strong> One Linux target, one Linux attacker box, on an isolated
+network. Get comfortable with the networking and the isolation rules
+before adding Windows into the mix.</li>
+<li><strong>Add a domain controller.</strong> Now you have three VMs, and you get to
+learn the DNS-then-join dependency from section 4 firsthand, because it
+will trip you up at least once.</li>
+<li><strong>Add clients.</strong> Join one Windows client to the domain. Then a second,
+so you have lateral movement between two client machines to practice,
+not just client-to-server.</li>
+<li><strong>Add the Linux server.</strong> Now the range has a mixed Windows-and-Linux
+footprint, which is what most real small networks actually look like.</li>
+</ol>
+<p>Each stage is a working range on its own. You do not need stage four to
+learn something real from stage one.</p>
+<hr>
+
+<details open class="box cstyle notices info">
+  <summary class="box-label" tabindex="-1">
+    <i class="fa-fw fas fa-info-circle"></i> 
+    How the Club Uses This
+  </summary>
+  <div class="box-content">
+<p>TBD. The club has not finalized what its actual range looks like, who
+builds and maintains it, or how members get access to it. This page
+explains the concepts so the eventual build makes sense the moment it
+exists. Specifics get added here once they are decided.</p>
+  </div>
+</details>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+<a id="R-logo" class="R-default direction-row" href="/index.html">
+  <span class="logo-image default-animation">
+    <img class="wf-logo__dark"  src="/images/logo.svg" alt="" aria-hidden="true">
+    <img class="wf-logo__light" src="/images/shield-light.svg" alt="" aria-hidden="true">
+  </span>
+  <span class="logo-title default-animation">FAU Cyber Security Club</span>
+</a>
+
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-home default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/start/index.html"><a class="padding" href="/start/index.html">New?</a></li>
+            <li class="" data-nav-id="/learn/index.html"><a class="padding default-animation" href="/learn/index.html">Learn</a><ul id="R-subsections-3043ad09e1e54c6b49d9aa6fbb58ab0f" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/compete/index.html"><a class="padding default-animation" href="/compete/index.html">Compete</a><ul id="R-subsections-0e95d5e51c13d68d27ee0bb3e33f50b7" class="collapsible-menu"></ul></li>
+            <li class="parent " data-nav-id="/lab/index.html"><a class="padding default-animation" href="/lab/index.html">Club Lab</a><ul id="R-subsections-3267a40151b19e3e3f8d4c8a3edf34ee" class="collapsible-menu">
+            <li class="" data-nav-id="/lab/proxmox/index.html"><a class="padding" href="/lab/proxmox/index.html">Proxmox</a></li>
+            <li class="active " data-nav-id="/lab/building-a-range/index.html"><a class="padding" href="/lab/building-a-range/index.html">Building an End-to-End Range</a></li></ul></li>
+            <li class="" data-nav-id="/projects/index.html"><a class="padding" href="/projects/index.html">Projects &amp; Guides</a></li>
+            <li class="" data-nav-id="/toolbox/index.html"><a class="padding default-animation" href="/toolbox/index.html">Toolbox</a><ul id="R-subsections-f7060c654e07bee22171d50d3d26bb46" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/meta/index.html"><a class="padding default-animation" href="/meta/index.html">Meta</a><ul id="R-subsections-2f839601009aa63e83121a533a314010" class="collapsible-menu"></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <div class="nav-title padding">Quick Links</div>
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="http://discord.gg/2Yun8WAUuy"><a class="padding" href="http://discord.gg/2Yun8WAUuy" rel="external"><i class='fab fa-fw fa-discord'></i> Discord</a></li>
+            <li class="" data-nav-id="https://github.com/dxcently/fau-cyber-security-club-wiki"><a class="padding" href="https://github.com/dxcently/fau-cyber-security-club-wiki" rel="external"><i class='fab fa-fw fa-github'></i> GitHub</a></li>
+            <li class="" data-nav-id="https://fau.campuslabs.com/engage/organization/cybersecurity"><a class="padding" href="https://fau.campuslabs.com/engage/organization/cybersecurity" rel="external"><i class='fa-solid fa-school-flag'></i> Owl Central</a></li>
+            <li class="" data-nav-id="mailto:csc@fau.edu"><a class="padding" href="mailto:csc@fau.edu" rel="external"><i class='fa-solid fa-envelope'></i> csc@fau.edu</a></li>
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-hacker" value="hacker" selected>Dark</option>
+                    <option id="R-select-variant-hacker-light" value="hacker-light">Light</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1787990815" defer></script>
+    <script src="/js/theme.min.js?1787990815" defer></script>
+
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

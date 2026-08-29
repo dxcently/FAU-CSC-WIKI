@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Toolbox :: FAU Cyber Security Club</title>
+    <link>http://localhost:1313/toolbox/index.html</link>
+    <description>Curated links, an intern training roadmap, and how to pick and use AI models for security work.</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/toolbox/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Links</title>
+      <link>http://localhost:1313/toolbox/links/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/toolbox/links/index.html</guid>
+      <description>Curated external tools, platforms, and references, grouped by what you are trying to do.</description>
+    </item>
+    <item>
+      <title>🛡️ Cybersecurity Intern Training Resource Guide (2025)</title>
+      <link>http://localhost:1313/toolbox/intern-training-guide/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/toolbox/intern-training-guide/index.html</guid>
+      <description>A difficulty-tiered roadmap of external resources for building Linux, Windows, cloud, web, and competition skills.</description>
+    </item>
+    <item>
+      <title>Cheat Sheets</title>
+      <link>http://localhost:1313/toolbox/cheatsheets/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/toolbox/cheatsheets/index.html</guid>
+      <description>Quick reference for the commands, ports, and triage steps club members look up constantly.</description>
+    </item>
+    <item>
+      <title>Choosing an AI Model</title>
+      <link>http://localhost:1313/toolbox/ai/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/toolbox/ai/index.html</guid>
+      <description>Selection criteria for picking an AI model for security work — not a product comparison.</description>
+    </item>
+    <item>
+      <title>AI Workflows &amp; Agents</title>
+      <link>http://localhost:1313/toolbox/ai-workflows/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/toolbox/ai-workflows/index.html</guid>
+      <description>The agent loop, common agent patterns, and vendor-neutral workflows for using AI in security work.</description>
+    </item>
+    <item>
+      <title>Automating Security Work</title>
+      <link>http://localhost:1313/toolbox/ai-automation/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/toolbox/ai-automation/index.html</guid>
+      <description>How to wire a model into a repeatable pipeline for triage, summarizing, and first-pass review — and what never goes in the prompt.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,169 +1,686 @@
 @media screen {
-:root:not([data-r-output-format='print']):not([data-r-theme-variant^='my-custom-']):not([data-r-theme-variant='hacker']),
+:root:not([data-r-output-format='print']):not([data-r-theme-variant^='my-custom-']):not([data-r-theme-variant='hacker']):not([data-r-theme-variant='hacker-light']),
 :root:not([data-r-output-format='print'])[data-r-theme-variant='hacker'] {
+/* FAU Cyber Security Club — "hacker" variant
+ *
+ * Four colors, four jobs:
+ *   green  #00BB00  identity  — code, labels, h3
+ *   blue   #1E90FF  structure — nav, edges, links, h2
+ *   pale   #D6E8DC  reading   — long-form body copy
+ *   red    #CC0000  here/now  — active nav, next meeting, hover, warnings
+ *
+ * Red is budgeted: max 3 instances per viewport. See design-spec §0.1.
+ * This file is TOKENS ONLY. Structural CSS lives in assets/css/custom.css.
+ * (Hugo wraps this file in &:root[data-r-theme-variant='hacker'] using native
+ *  CSS nesting, so any non-&:root selector here becomes a nested descendant.)
+ */
+
 &:root {
-  /* Hacker Terminal Theme
-   * Based on terminal color palette:
-   * Background: #001100 (dark green/black)
-   * Foreground: #00BB00 (bright green)
-   * Highlight:  #00FF00 (full green)
-   * Medium:     #007700, #009900
-   * Dark:       #005500
-   */
+  /* ---- raw palette : the only literals in the codebase ---- */
+  --wf-bg:            #030A08;  /* page ground, green-shifted near-black */
+  --wf-bg-raised:     #060F0D;  /* sidebar, topbar, panel fill base */
+  --wf-bg-code:       #071310;  /* code block ground */
 
-  /* Brand colors */
-  --PRIMARY-color: rgba( 0, 187, 0, 1 ); /* #00BB00 - main green */
-  --PRIMARY-HOVER-color: rgba( 0, 255, 0, 1 ); /* #00FF00 - bright green */
-  --SECONDARY-color: rgba( 0, 153, 0, 1 ); /* #009900 - secondary green */
-  --SECONDARY-HOVER-color: rgba( 0, 187, 0, 1 ); /* #00BB00 */
-  --ACCENT-color: rgba( 0, 255, 0, 1 ); /* #00FF00 - accent/highlight */
-  --ACCENT-HOVER-color: rgba( 0, 255, 0, 1 ); /* #00FF00 */
+  --wf-primary:       #00BB00;  /* identity green */
+  --wf-primary-hi:    #00DD55;  /* green, lifted (hover on green things) */
 
-  /* Menu header */
-  --MENU-HEADER-color: rgba( 0, 187, 0, 1 ); /* #00BB00 */
-  --MENU-HEADER-BG-color: rgba( 0, 17, 0, 1 ); /* #001100 */
+  --wf-chrome:        #1E90FF;  /* structure blue */
+  --wf-chrome-hi:     #7FC4FF;  /* blue, lifted (link hover) */
 
-  /* Search box */
-  --MENU-SEARCH-color: rgba( 0, 187, 0, 1 ); /* #00BB00 */
-  --MENU-SEARCH-BG-color: rgba( 0, 34, 0, 1 ); /* slightly lighter than bg */
-  --MENU-SEARCH-BORDER-color: rgba( 0, 119, 0, 1 ); /* #007700 */
+  --wf-text:          #D6E8DC;  /* long-form body copy */
+  --wf-text-strong:   #E8F4FF;  /* h1, box captions, emphasis */
+  --wf-text-muted:    #8FA69B;  /* meta, card descriptions, comments */
+  --wf-text-dim:      #93B3A5;  /* h4-h6 */
 
-  /* Home link */
-  --MENU-HOME-LINK-color: rgba( 0, 187, 0, 1 ); /* #00BB00 */
-  --MENU-HOME-LINK-HOVER-color: rgba( 0, 255, 0, 1 ); /* #00FF00 */
+  --wf-red:           #CC0000;  /* FAU red — FILLS AND BORDERS ONLY */
+  --wf-red-text:      #FF4D4D;  /* FAU red lifted — the ONLY red for text */
 
-  /* Sidebar menu */
-  --MENU-SECTIONS-BG-color: rgba( 0, 17, 0, 1 ); /* #001100 - background */
-  --MENU-SECTIONS-ACTIVE-BG-color: rgba( 0, 34, 0, 1 ); /* slightly lighter */
-  --MENU-SECTIONS-LINK-color: rgba( 0, 187, 0, 1 ); /* #00BB00 */
-  --MENU-SECTIONS-LINK-HOVER-color: rgba( 0, 255, 0, 1 ); /* #00FF00 */
-  --MENU-SECTION-ACTIVE-CATEGORY-color: rgba( 0, 255, 0, 1 ); /* #00FF00 */
-  --MENU-SECTION-SEPARATOR-color: rgba( 0, 85, 0, 1 ); /* #005500 */
-  --MENU-VISITED-color: rgba( 0, 119, 0, 1 ); /* #007700 */
+  --wf-violet:        #A98BFF;  /* numeric literals, magenta box slot */
+  --wf-cyan:          #3AA6D6;  /* cyan box slot */
+  --wf-amber:         #E0A030;  /* orange box slot */
 
-  /* Main content area */
-  --MAIN-BG-color: rgba( 0, 17, 0, 1 ); /* #001100 - background */
-  --MAIN-TEXT-color: rgba( 0, 187, 0, 1 ); /* #00BB00 - text */
-  --MAIN-TITLES-TEXT-color: rgba( 0, 255, 0, 1 ); /* #00FF00 - titles */
-  --MAIN-TITLES-H1-TEXT-color: rgba( 0, 255, 0, 1 ); /* #00FF00 */
-  --MAIN-TITLES-H2-TEXT-color: rgba( 0, 255, 0, 1 ); /* #00FF00 */
-  --MAIN-TITLES-H3-TEXT-color: rgba( 0, 187, 0, 1 ); /* #00BB00 */
-  --MAIN-TITLES-H4-TEXT-color: rgba( 0, 187, 0, 1 ); /* #00BB00 */
-  --MAIN-TITLES-H5-TEXT-color: rgba( 0, 153, 0, 1 ); /* #009900 */
-  --MAIN-TITLES-H6-TEXT-color: rgba( 0, 153, 0, 1 ); /* #009900 */
+  /* ---- derived line / surface alphas ---- */
+  --wf-edge:          rgba( 30, 144, 255, .30 );  /* resting panel border */
+  --wf-edge-soft:     rgba( 30, 144, 255, .16 );  /* table rules, hairlines */
+  --wf-edge-tick:     rgba( 30, 144, 255, .75 );  /* corner ticks */
+  --wf-edge-now:      rgba( 204,  0,  0, .55 );   /* hover/current border */
+  --wf-glow:          rgba( 30, 144, 255, .35 );
+  --wf-glow-now:      rgba( 204,  0,  0, .50 );
 
-  /* Links - brighter cyan-green to stand out from regular text */
-  --MAIN-LINK-color: rgba( 0, 255, 136, 1 ); /* #00FF88 - cyan-green for links */
-  --MAIN-LINK-HOVER-color: rgba( 0, 255, 200, 1 ); /* #00FFC8 - brighter cyan on hover */
+  /* ---- bloom: CRT halo. Goes on structure, chrome and headings ONLY.
+     Never on paragraph text — a halo there costs legibility and buys
+     nothing. Each is a spread of a colour already in the palette. ---- */
+  --wf-bloom:         rgba( 30, 144, 255, .55 );  /* tight ring on linework */
+  --wf-bloom-wide:    rgba( 30, 144, 255, .22 );  /* wide outer halo */
+  --wf-bloom-now:     rgba( 255, 77, 77, .55 );   /* the red "here" halo */
+  --wf-bloom-text:    rgba( 232, 244, 255, .32 ); /* white headline halo */
+  --wf-fill:          rgba(  6, 16, 13, .72 );    /* translucent panel fill */
 
-  /* Code blocks */
-  --CODE-theme: relearn-dark; /* use dark chroma theme */
-  --CODE-BLOCK-color: rgba( 0, 187, 0, 1 ); /* #00BB00 */
-  --CODE-BLOCK-BG-color: rgba( 0, 34, 0, 1 ); /* slightly lighter than main bg */
-  --CODE-BLOCK-BORDER-color: rgba( 0, 85, 0, 1 ); /* #005500 */
-  --CODE-INLINE-color: rgba( 0, 255, 0, 1 ); /* #00FF00 */
-  --CODE-INLINE-BG-color: rgba( 0, 34, 0, 1 );
-  --CODE-INLINE-BORDER-color: rgba( 0, 85, 0, 1 ); /* #005500 */
+  /* ---- washes, insets and hairlines used by custom.css ----
+     These exist so custom.css holds no colour literals of its own, which is
+     what lets a second variant repaint the whole site from this file alone. */
+  --wf-wash:          rgba( 30, 144, 255, .055 ); /* faint blue tint fill */
+  --wf-wash-hi:       rgba( 30, 144, 255, .10 );  /* the same, stronger */
+  --wf-wash-alt:      rgba(  0, 187,   0, .055 ); /* the green ground bloom */
+  --wf-wash-row:      rgba( 30, 144, 255, .05 );  /* table row hover */
+  --wf-now-wash:      rgba( 204,   0,   0, .07 ); /* the one red row */
+  --wf-inset:         rgba( 30, 144, 255, .20 );  /* top inner highlight */
+  --wf-inset-now:     rgba( 204,   0,   0, .20 );
+  --wf-hairline:      rgba( 30, 144, 255, .05 );  /* 1px outer ring */
+  --wf-hairline-now:  rgba( 255,  77,  77, .12 );
+  /* scanlines on panels. Fainter than --wf-stage-scan because cards
+     carry body copy and the hero carries one headline. */
+  --wf-scan:          rgba( 30, 144, 255, .040 );
+  /* text selection, as a solid block the way a terminal draws it */
+  /* light cast by the shield into the sidebar header. Stronger on the
+     light variant: a white sidebar gives the mark nothing to sit in,
+     so the halo is what stops it reading as a sticker. */
+  --wf-logo-halo:     rgba( 30, 144, 255, .07 );
+  --wf-logo-glow:     rgba( 30, 144, 255, .16 );
+  --wf-select-bg:     #00BB00;
+  --wf-select-fg:     #001510;
+  --wf-link-line:     rgba( 30, 144, 255, .35 );  /* prose link underline */
+  --wf-scroll:        rgba( 30, 144, 255, .35 );
+  --wf-scroll-hi:     rgba( 30, 144, 255, .60 );
 
-  /* Browser/system */
-  --BROWSER-theme: dark;
-  --MERMAID-theme: dark;
-  --OPENAPI-theme: dark;
+  /* ---- THE STAGE ----
+     The home hero has its own small palette, separate from the page, because
+     it is a composed picture rather than a surface: a ground, a floor grid,
+     two fog lights, a scrim and the owl on top. Keeping those in their own
+     token set means the hero can be tuned without touching anything else.
+     The light variant redefines every one of them. */
+  --wf-stage:            #030A08;
+  --wf-stage-fg:         #E8F4FF;
+  --wf-stage-chrome:     #1E90FF;
+  --wf-stage-accent:     #00BB00;
+  --wf-stage-red:        #FF4D4D;
+  /* the owl's eyes, beak ridge and chin. Its own token because
+     --wf-stage-fg is also the hero HEADLINE, which must stay
+     near-black on a white ground; these are marks inside a drawing
+     and follow different rules. */
+  --wf-stage-mark:       #E8F4FF;  /* light catching an edge */
+  /* CRT scanlines over the hero ground. A UNIFORM texture on purpose:
+     a gradient shifts contrast across the panel, so the headline sits
+     on a lighter ground at one end than the other and the type reads
+     unevenly. Repeating lines add the same amount everywhere. */
+  --wf-stage-scan:       rgba( 30, 144, 255, .055 );
+  --wf-stage-edge:       rgba( 30, 144, 255, .30 );
+  --wf-stage-tick:       rgba( 30, 144, 255, .75 );
+  --wf-stage-grid:       rgba( 30, 144, 255, .16 );
+  --wf-stage-fog-a:      rgba( 30, 144, 255, .10 );
+  /* Both fog lights are BLUE. This one is aimed at 82% 50%, which is
+     precisely where the owl sits — and the mark is blue, red and
+     white by design, with green reserved for the site around it. A
+     green light here washed the mark in a colour that is not in it. */
+  --wf-stage-fog-b:      rgba( 30, 144, 255, .07 );
+  --wf-stage-scrim:      rgba(  3,  10,   8, .92 );
+  --wf-stage-glow:       rgba( 30, 144, 255, .45 );
+  --wf-stage-glow-wide:  rgba( 30, 144, 255, .18 );
+  --wf-stage-text-glow:  rgba( 232, 244, 255, .32 );
+  --wf-stage-art:        .62;   /* owl opacity over the ground */
+
+  /* ---- type ---- */
+  --wf-font-mono: ui-monospace, "SFMono-Regular", "JetBrains Mono", "Cascadia Mono",
+                  Menlo, Consolas, "DejaVu Sans Mono", monospace;
+  --wf-font-sans: "Roboto Flex", ui-sans-serif, system-ui, -apple-system,
+                  "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* ---- spacing / geometry ---- */
+  --wf-radius:  2px;      /* near-square: wireframe, not app card */
+  --wf-gap:     1rem;
+  --wf-pad:     1.25rem;
+
+  /* ======================================================================
+   * RELEARN TOKEN MAP — everything below points at the palette above.
+   * ====================================================================== */
+
+  /* brand */
+  --PRIMARY-color:            var( --wf-primary );
+  --PRIMARY-HOVER-color:      var( --wf-primary-hi );
+  --SECONDARY-color:          var( --wf-chrome );
+  --SECONDARY-HOVER-color:    var( --wf-chrome-hi );
+  /* ACCENT drives the search-hit <mark>, which the theme renders with BLACK
+   * text on top. FAU red fails contrast under black text (3.6:1). This slot is
+   * mechanical, not identity — keep it bright green. Do not "fix" it to red. */
+  --ACCENT-color:             #00FF88;
+  --ACCENT-HOVER-color:       #7DFFC0;
+
+  /* main content */
+  --MAIN-BG-color:            var( --wf-bg );
+  --MAIN-TEXT-color:          var( --wf-text );
+  --MAIN-font:                var( --wf-font-sans );
+  --MAIN-font-weight:         400;
+  --MAIN-letter-spacing:      normal;
+  --MAIN-BOLD-font-weight:    700;
+  --MAIN-LINK-color:          var( --wf-chrome );
+  --MAIN-LINK-HOVER-color:    var( --wf-chrome-hi );
+  --MAIN-BUTTON-color:        var( --wf-chrome );
+  --MAIN-BUTTON-HOVER-color:  var( --wf-chrome-hi );
+
+  /* headings — all monospace, see §5 */
+  --MAIN-TITLES-font:                    var( --wf-font-mono );
+  --MAIN-TITLES-font-weight:             600;
+  --MAIN-TITLES-font-variation-settings: normal;
+  --MAIN-TITLES-letter-spacing:          .01em;
+  --MAIN-TITLES-TEXT-color:              var( --wf-text-strong );
+
+  --MAIN-TITLES-H1-TEXT-color:              var( --wf-text-strong );
+  --MAIN-TITLES-H1-font:                    var( --wf-font-mono );
+  --MAIN-TITLES-H1-font-weight:             600;
+  --MAIN-TITLES-H1-font-variation-settings: normal;
+  --MAIN-TITLES-H1-letter-spacing:          .04em;
+
+  --MAIN-TITLES-H2-TEXT-color:              var( --wf-chrome );
+  --MAIN-TITLES-H3-TEXT-color:              var( --wf-primary );
+  --MAIN-TITLES-H4-TEXT-color:              var( --wf-text-dim );
+  --MAIN-TITLES-H5-TEXT-color:              var( --wf-text-muted );
+  --MAIN-TITLES-H6-TEXT-color:              var( --wf-text-muted );
+  --MAIN-TITLES-H4-font-variation-settings: normal;
+
+  /* topbar */
+  --TOPBAR-BG-color:          var( --wf-bg-raised );
+  --TOPBAR-TEXT-color:        var( --wf-text-muted );
+  --TOPBAR-SEPARATOR-color:   var( --wf-edge-soft );
+  --TOPBAR-LINK-color:        var( --wf-text-muted );
+  --TOPBAR-LINK-HOVER-color:  var( --wf-chrome-hi );
+  --TOPBAR-BUTTON-color:      var( --wf-text-muted );
+  --TOPBAR-BUTTON-HOVER-color: var( --wf-chrome-hi );
+  --MAIN-TOPBAR-BORDER-color: var( --wf-edge-soft );
+
+  /* sidebar */
+  --MENU-BORDER-color:                    var( --wf-edge );
+  --MENU-TOPBAR-BORDER-color:             var( --wf-edge-soft );
+  --MENU-TOPBAR-SEPARATOR-color:          var( --wf-edge-soft );
+  --MENU-HEADER-color:                    var( --wf-text-strong );
+  --MENU-HEADER-BG-color:                 var( --wf-bg-raised );
+  --MENU-HEADER-BORDER-color:             var( --wf-edge-soft );
+  --MENU-SEARCH-color:                    var( --wf-text );
+  --MENU-SEARCH-HOVER-color:              var( --wf-chrome-hi );
+  --MENU-SEARCH-BG-color:                 rgba( 3, 10, 8, .85 );
+  --MENU-SEARCH-BORDER-color:             var( --wf-edge );
+  --MENU-HOME-LINK-color:                 var( --wf-text-muted );
+  --MENU-HOME-LINK-HOVER-color:           var( --wf-chrome-hi );
+  --MENU-HOME-TOP-SEPARATOR-color:        var( --wf-edge-soft );
+  --MENU-HOME-SEPARATOR-color:            var( --wf-edge-soft );
+  --MENU-HOME-BOTTOM-SEPARATOR-color:     var( --wf-edge-soft );
+  --MENU-SECTIONS-BG-color:               var( --wf-bg-raised );
+  --MENU-SECTIONS-ACTIVE-BG-color:        rgba( 30, 144, 255, .07 );
+  --MENU-SECTIONS-LINK-color:             var( --wf-text-muted );
+  --MENU-SECTIONS-LINK-HOVER-color:       var( --wf-text-strong );
+  --MENU-SECTION-ACTIVE-CATEGORY-color:   var( --wf-red-text );
+  --MENU-SECTION-ACTIVE-CATEGORY-BG-color: rgba( 204, 0, 0, .08 );
+  --MENU-SECTION-ACTIVE-CATEGORY-BORDER-color: var( --wf-edge-now );
+  --MENU-SECTION-SEPARATOR-color:         var( --wf-edge-soft );
+  --MENU-VISITED-color:                   var( --wf-chrome );
+
+  /* logo */
+  --LOGO-font:              var( --wf-font-mono );
+  --LOGO-LINK-color:        var( --wf-text-strong );
+  --LOGO-LINK-HOVER-color:  var( --wf-chrome-hi );
+
+  /* code */
+  --CODE-theme:               hacker;   /* -> assets/css/chroma-hacker.css */
+  --CODE-font:                var( --wf-font-mono );
+  --CODE-font-weight:         400;
+  --CODE-letter-spacing:      normal;
+  --CODE-BLOCK-color:         var( --wf-text );
+  --CODE-BLOCK-BG-color:      var( --wf-bg-code );
+  --CODE-BLOCK-BORDER-color:  var( --wf-edge-soft );
+  --CODE-INLINE-color:        var( --wf-primary );
+  --CODE-INLINE-BG-color:     rgba( 0, 187, 0, .07 );
+  --CODE-INLINE-BORDER-color: rgba( 0, 187, 0, .22 );
+
+  /* browser / embeds */
+  --BROWSER-theme:      dark;
+  --MERMAID-theme:      dark;
+  --OPENAPI-theme:      dark;
   --OPENAPI-CODE-theme: obsidian;
 
-  /* Boxes (notices, cards, etc.) */
-  --BOX-CAPTION-color: rgba( 0, 255, 0, 1 ); /* #00FF00 */
-  --BOX-BG-color: rgba( 0, 34, 0, 1 ); /* slightly lighter than main bg */
-  --BOX-TEXT-color: rgba( 0, 187, 0, 1 ); /* #00BB00 */
+  /* boxes (notices, callouts, tabs, badges) */
+  --BOX-CAPTION-color: var( --wf-text-strong );
+  --BOX-BG-color:      var( --wf-fill );
+  --BOX-TEXT-color:    var( --wf-text );
 
-  /* Box colors - all green variants for hacker theme */
-  --BOX-BLUE-color: rgba( 0, 153, 0, 1 ); /* #009900 */
-  --BOX-BLUE-TEXT-color: var( --BOX-BLUE-color );
-  --BOX-CYAN-color: rgba( 0, 85, 0, 1 ); /* #005500 */
-  --BOX-CYAN-TEXT-color: var( --BOX-CYAN-color );
-  --BOX-GREEN-color: rgba( 0, 187, 0, 1 ); /* #00BB00 */
-  --BOX-GREEN-TEXT-color: var( --BOX-GREEN-color );
-  --BOX-GREY-color: rgba( 0, 119, 0, 1 ); /* #007700 */
-  --BOX-GREY-TEXT-color: var( --BOX-GREY-color );
-  --BOX-MAGENTA-color: rgba( 0, 187, 0, 1 ); /* #00BB00 */
-  --BOX-MAGENTA-TEXT-color: var( --BOX-MAGENTA-color );
-  --BOX-ORANGE-color: rgba( 0, 119, 0, 1 ); /* #007700 */
-  --BOX-ORANGE-TEXT-color: var( --BOX-ORANGE-color );
-  --BOX-RED-color: rgba( 0, 119, 0, 1 ); /* #007700 */
-  --BOX-RED-TEXT-color: var( --BOX-RED-color );
+  /* NOTE the split: *-color is used as a FILL (white caption sits on it) and
+   * *-TEXT-color is used as TEXT on the dark ground. FAU red at #CC0000 is
+   * 3.4:1 as text and fails AA — hence --BOX-RED-TEXT-color is the lifted red. */
+  --BOX-BLUE-color:         var( --wf-chrome );
+  --BOX-BLUE-TEXT-color:    var( --wf-chrome );
+  --BOX-CYAN-color:         var( --wf-cyan );
+  --BOX-CYAN-TEXT-color:    var( --wf-cyan );
+  --BOX-GREEN-color:        var( --wf-primary );
+  --BOX-GREEN-TEXT-color:   var( --wf-primary );
+  --BOX-GREY-color:         var( --wf-text-muted );
+  --BOX-GREY-TEXT-color:    var( --wf-text-dim );
+  --BOX-MAGENTA-color:      var( --wf-violet );
+  --BOX-MAGENTA-TEXT-color: var( --wf-violet );
+  --BOX-ORANGE-color:       var( --wf-amber );
+  --BOX-ORANGE-TEXT-color:  var( --wf-amber );
+  --BOX-RED-color:          var( --wf-red );
+  --BOX-RED-TEXT-color:     var( --wf-red-text );
+
+  --TAG-BG-color: var( --wf-chrome );
 }
 
-/* Scrollbar styling */
-#R-content-wrapper {
-  --ps-thumb-color: rgba( 0, 119, 0, 1 ); /* #007700 */
-  --ps-thumb-hover-color: rgba( 0, 187, 0, 1 ); /* #00BB00 */
+/* FAU Cyber Security Club — chroma for the "hacker" variant.
+ * Retint of relearn-dark (monokai) onto the 4-color system.
+ * Contains NO red: see design-spec §3. */
+
+/* Background */  .bg      { color:#D6E8DC; background-color:#071310; }
+/* PreWrapper */  .chroma  { color:#D6E8DC; background-color:#071310; }
+
+/* Error */              .chroma .err { color:#A98BFF; text-decoration:underline wavy }
+/* LineLink */           .chroma .lnlinks { outline:none;text-decoration:none;color:inherit }
+/* LineTableTD */        .chroma .lntd { vertical-align:top;padding:0;margin:0;border:0; }
+/* LineTable */          .chroma .lntable { border-spacing:0;padding:0;margin:0;border:0; }
+/* LineHighlight */      .chroma .hl { background-color:rgba(30,144,255,.14) }
+/* LineNumbersTable */   .chroma .lnt { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6E8B7E }
+/* LineNumbers */        .chroma .ln  { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6E8B7E }
+/* Line */               .chroma .line { display:flex; }
+
+/* Keyword */            .chroma .k  { color:#1E90FF }
+/* KeywordConstant */    .chroma .kc { color:#1E90FF }
+/* KeywordDeclaration */ .chroma .kd { color:#1E90FF }
+/* KeywordNamespace */   .chroma .kn { color:#7FC4FF }
+/* KeywordPseudo */      .chroma .kp { color:#1E90FF }
+/* KeywordReserved */    .chroma .kr { color:#1E90FF }
+/* KeywordType */        .chroma .kt { color:#1E90FF }
+
+/* NameAttribute */      .chroma .na { color:#7FE3A0 }
+/* NameClass */          .chroma .nc { color:#7FE3A0 }
+/* NameConstant */       .chroma .no { color:#1E90FF }
+/* NameDecorator */      .chroma .nd { color:#7FE3A0 }
+/* NameException */      .chroma .ne { color:#7FE3A0 }
+/* NameOther */          .chroma .nx { color:#7FE3A0 }
+/* NameTag */            .chroma .nt { color:#7FC4FF }
+/* NameFunction */       .chroma .nf { color:#7FE3A0 }
+/* NameFunctionMagic */  .chroma .fm { color:#7FE3A0 }
+
+/* Literal */            .chroma .l  { color:#A98BFF }
+/* LiteralDate */        .chroma .ld { color:#00BB00 }
+/* LiteralString */      .chroma .s  { color:#00BB00 }
+/* LiteralStringAffix */ .chroma .sa { color:#00BB00 }
+/* LiteralStringBacktick */   .chroma .sb { color:#00BB00 }
+/* LiteralStringChar */       .chroma .sc { color:#00BB00 }
+/* LiteralStringDelimiter */  .chroma .dl { color:#00BB00 }
+/* LiteralStringDoc */        .chroma .sd { color:#00BB00 }
+/* LiteralStringDouble */     .chroma .s2 { color:#00BB00 }
+/* LiteralStringEscape */     .chroma .se { color:#A98BFF }
+/* LiteralStringHeredoc */    .chroma .sh { color:#00BB00 }
+/* LiteralStringInterpol */   .chroma .si { color:#00BB00 }
+/* LiteralStringOther */      .chroma .sx { color:#00BB00 }
+/* LiteralStringRegex */      .chroma .sr { color:#00BB00 }
+/* LiteralStringSingle */     .chroma .s1 { color:#00BB00 }
+/* LiteralStringSymbol */     .chroma .ss { color:#00BB00 }
+
+/* LiteralNumber */             .chroma .m  { color:#A98BFF }
+/* LiteralNumberBin */          .chroma .mb { color:#A98BFF }
+/* LiteralNumberFloat */        .chroma .mf { color:#A98BFF }
+/* LiteralNumberHex */          .chroma .mh { color:#A98BFF }
+/* LiteralNumberInteger */      .chroma .mi { color:#A98BFF }
+/* LiteralNumberIntegerLong */  .chroma .il { color:#A98BFF }
+/* LiteralNumberOct */          .chroma .mo { color:#A98BFF }
+
+/* Operator */           .chroma .o  { color:#7FC4FF }
+/* OperatorWord */       .chroma .ow { color:#7FC4FF }
+
+/* Comment */            .chroma .c   { color:#6E8B7E }
+/* CommentHashbang */    .chroma .ch  { color:#6E8B7E }
+/* CommentMultiline */   .chroma .cm  { color:#6E8B7E }
+/* CommentSingle */      .chroma .c1  { color:#6E8B7E }
+/* CommentSpecial */     .chroma .cs  { color:#6E8B7E }
+/* CommentPreproc */     .chroma .cp  { color:#6E8B7E }
+/* CommentPreprocFile */ .chroma .cpf { color:#6E8B7E }
+
+/* GenericDeleted */     .chroma .gd { color:#7FC4FF }
+/* GenericEmph */        .chroma .ge { font-style:italic }
+/* GenericInserted */    .chroma .gi { color:#7FE3A0 }
+/* GenericStrong */      .chroma .gs { font-weight:bold }
+/* GenericSubheading */  .chroma .gu { color:#6E8B7E }
+
+}
+:root:not([data-r-output-format='print'])[data-r-theme-variant$='hacker'] {
+  #R-logo.R-default:not(:has(> .logo-image[data-r-logo-variant~='hacker'])):not(:has(> .logo-title)) { display: none; }
+  #R-logo.R-default > .logo-image[data-r-logo-variant~='hacker'] { display: initial; }
+  #R-logo.R-default:has(> .logo-image[data-r-logo-variant~='hacker']) + search { margin-bottom: 1rem; }
+}
+:root:not([data-r-output-format='print'])[data-r-theme-variant='hacker-light'] {
+/* FAU Cyber Security Club — "hacker-light" variant
+ *
+ * The daylight twin of theme-hacker.css. Same four jobs, same identity:
+ *   green  identity  — code, labels, h3
+ *   blue   structure — nav, edges, links, h2
+ *   ink    reading   — long-form body copy
+ *   red    here/now  — active nav, next meeting, hover, warnings
+ *
+ * What changes and why:
+ *   1. Every hue is DARKENED. #1E90FF is 3.0:1 on white and fails AA; #00BB00
+ *      is 2.4:1 and fails badly. Both are fine on black and unusable on paper.
+ *      Every colour below was measured against the ground: the lowest is
+ *      5.07:1, so all of them clear AA for normal text.
+ *   2. FAU red stays #CC0000 — 5.5:1 here, so the true brand red is legible as
+ *      text and the lifted red the dark variant needs is not required.
+ *   3. GLOW BECOMES SHADOW. A halo is light spilling off a lit surface; on
+ *      paper the same shape reads as a smudge. The bloom tokens resolve to
+ *      soft neutral shadows, and the headline halo resolves to transparent.
+ *   4. The hero does NOT flip — see THE STAGE below.
+ *
+ * This file is TOKENS ONLY, and it must define EVERY token the dark variant
+ * does: only one variant stylesheet is active at a time, so anything missing
+ * here is simply undefined. Structural CSS lives in assets/css/custom.css.
+ * (Hugo wraps this file in &:root[data-r-theme-variant='hacker-light'] using
+ *  native CSS nesting, so any non-&:root selector here becomes a descendant.)
+ */
+
+&:root {
+  /* ---- raw palette : the only literals in the codebase ---- */
+  --wf-bg:            #F4F7FA;  /* page ground, cool paper */
+  --wf-bg-raised:     #FFFFFF;  /* sidebar, topbar, panel fill base */
+  --wf-bg-code:       #EDF2F7;  /* code block ground */
+
+  --wf-primary:       #0A6B2C;  /* identity green            6.2:1 */
+  --wf-primary-hi:    #0E8A3A;  /* green, lifted */
+
+  --wf-chrome:        #0B5FC4;  /* structure blue            5.7:1 */
+  --wf-chrome-hi:     #0847A0;  /* blue, deepened on hover   8.1:1 */
+
+  --wf-text:          #16202B;  /* long-form body copy      15.3:1 */
+  --wf-text-strong:   #0A121A;  /* h1, box captions         17.5:1 */
+  --wf-text-muted:    #5A6A78;  /* meta, card descriptions   5.2:1 */
+  --wf-text-dim:      #44525F;  /* h4-h6 */
+
+  --wf-red:           #CC0000;  /* FAU red — fills and borders */
+  --wf-red-text:      #CC0000;  /* and text: 5.5:1 here, no lift needed */
+
+  --wf-violet:        #6B3FD4;  /* numeric literals, magenta box slot */
+  --wf-cyan:          #0B6E8F;  /* cyan box slot */
+  --wf-amber:         #8A5A00;  /* orange box slot */
+
+  /* ---- derived line / surface alphas ---- */
+  --wf-edge:          rgba( 11, 95, 196, .28 );  /* resting panel border */
+  --wf-edge-soft:     rgba( 11, 95, 196, .15 );  /* table rules, hairlines */
+  --wf-edge-tick:     rgba( 11, 95, 196, .65 );  /* corner ticks */
+  --wf-edge-now:      rgba( 204,  0,  0, .45 );  /* hover/current border */
+  --wf-glow:          rgba( 13, 38, 66, .20 );
+  --wf-glow-now:      rgba( 204,  0,  0, .25 );
+
+  /* ---- bloom, reinterpreted as shadow. Same token names, opposite physics:
+     on a dark ground these are light spilling outward, on paper they are the
+     object casting down. Alphas are low — paper does not glow. ---- */
+  --wf-bloom:         rgba( 13, 38, 66, .18 );
+  --wf-bloom-wide:    rgba( 13, 38, 66, .07 );
+  --wf-bloom-now:     rgba( 204,  0,  0, .30 );
+  --wf-bloom-text:    transparent;  /* no halo on headlines in daylight */
+  --wf-fill:          rgba( 255, 255, 255, .82 );  /* translucent panel fill */
+
+  /* ---- washes, insets and hairlines used by custom.css ---- */
+  --wf-wash:          rgba( 11, 95, 196, .045 );
+  --wf-wash-hi:       rgba( 11, 95, 196, .07 );
+  --wf-wash-alt:      rgba( 10, 107, 44, .05 );
+  --wf-wash-row:      rgba( 11, 95, 196, .05 );
+  --wf-now-wash:      rgba( 204,  0,  0, .06 );
+  --wf-inset:         rgba( 255, 255, 255, .90 );  /* highlight is WHITE here */
+  --wf-inset-now:     rgba( 204,  0,  0, .14 );
+  --wf-hairline:      rgba( 13, 38, 66, .06 );
+  --wf-hairline-now:  rgba( 204,  0,  0, .10 );
+  /* scanlines on panels. Fainter than --wf-stage-scan because cards
+     carry body copy and the hero carries one headline. */
+  --wf-scan:          rgba( 11, 95, 196, .045 );
+  /* text selection, as a solid block the way a terminal draws it */
+  /* light cast by the shield into the sidebar header. Stronger on the
+     light variant: a white sidebar gives the mark nothing to sit in,
+     so the halo is what stops it reading as a sticker. */
+  --wf-logo-halo:     rgba( 11, 95, 196, .09 );
+  --wf-logo-glow:     rgba( 11, 95, 196, .18 );
+  --wf-select-bg:     #0B5FC4;
+  --wf-select-fg:     #FFFFFF;
+  --wf-link-line:     rgba( 11, 95, 196, .32 );
+  --wf-scroll:        rgba( 11, 95, 196, .30 );
+  --wf-scroll-hi:     rgba( 11, 95, 196, .55 );
+
+  /* ---- THE STAGE ----
+     The hero in daylight. Same composition as the dark variant — ground,
+     floor grid, two fog lights, a scrim, the owl — rebuilt for paper:
+
+       * the ground goes white, so the hero reads as a raised panel lifted
+         off the page rather than a hole cut into it;
+       * the owl's highlight shapes invert to ink, exactly as they do in
+         images/owl-mark-light.svg — on a dark screen they are light catching
+         an edge, on paper the same job is done by ink;
+       * the scrim that fades the grid out goes white instead of black;
+       * the glows become soft shadows, and the headline halo goes away
+         entirely. Paper does not glow.
+       * the owl sits at higher opacity: dark linework on white needs less
+         help than bright linework on black. */
+  --wf-stage:            #FFFFFF;
+  --wf-stage-fg:         #0A121A;
+  --wf-stage-chrome:     #0B5FC4;
+  --wf-stage-accent:     #0A6B2C;
+  --wf-stage-red:        #CC0000;
+  /* the owl's eyes, beak ridge and chin. Its own token because
+     --wf-stage-fg is also the hero HEADLINE, which must stay
+     near-black on a white ground; these are marks inside a drawing
+     and follow different rules. */
+  --wf-stage-mark:       #0847A0;  /* deep blue, NOT black */
+  /* CRT scanlines over the hero ground. A UNIFORM texture on purpose:
+     a gradient shifts contrast across the panel, so the headline sits
+     on a lighter ground at one end than the other and the type reads
+     unevenly. Repeating lines add the same amount everywhere. */
+  --wf-stage-scan:       rgba( 11, 95, 196, .06 );
+  --wf-stage-edge:       rgba( 11, 95, 196, .28 );
+  --wf-stage-tick:       rgba( 11, 95, 196, .65 );
+  --wf-stage-grid:       rgba( 11, 95, 196, .13 );
+  --wf-stage-fog-a:      rgba( 11, 95, 196, .09 );
+  /* Both fog lights are BLUE. This one is aimed at 82% 50%, which is
+     precisely where the owl sits — and the mark is blue, red and
+     white by design, with green reserved for the site around it. A
+     green light here washed the mark in a colour that is not in it. */
+  --wf-stage-fog-b:      rgba( 11, 95, 196, .06 );
+  --wf-stage-scrim:      rgba( 255, 255, 255, .92 );
+  --wf-stage-glow:       rgba( 13, 38, 66, .16 );
+  --wf-stage-glow-wide:  rgba( 13, 38, 66, .06 );
+  --wf-stage-text-glow:  transparent;
+  --wf-stage-art:        .85;
+
+  /* ---- type ---- */
+  --wf-font-mono: ui-monospace, "SFMono-Regular", "JetBrains Mono", "Cascadia Mono",
+                  Menlo, Consolas, "DejaVu Sans Mono", monospace;
+  --wf-font-sans: "Roboto Flex", ui-sans-serif, system-ui, -apple-system,
+                  "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* ---- spacing / geometry ---- */
+  --wf-radius:  2px;
+  --wf-gap:     1rem;
+  --wf-pad:     1.25rem;
+
+  /* ======================================================================
+   * RELEARN TOKEN MAP — everything below points at the palette above.
+   * ====================================================================== */
+
+  /* brand */
+  --PRIMARY-color:            var( --wf-primary );
+  --PRIMARY-HOVER-color:      var( --wf-primary-hi );
+  --SECONDARY-color:          var( --wf-chrome );
+  --SECONDARY-HOVER-color:    var( --wf-chrome-hi );
+  /* ACCENT drives the search-hit <mark>, which the theme renders with BLACK
+   * text on top. FAU red fails contrast under black text (3.6:1). This slot is
+   * mechanical, not identity — keep it bright green. Do not "fix" it to red. */
+  --ACCENT-color:             #7DFFC0;
+  --ACCENT-HOVER-color:       #B6FFDD;
+
+  /* main content */
+  --MAIN-BG-color:            var( --wf-bg );
+  --MAIN-TEXT-color:          var( --wf-text );
+  --MAIN-font:                var( --wf-font-sans );
+  --MAIN-font-weight:         400;
+  --MAIN-letter-spacing:      normal;
+  --MAIN-BOLD-font-weight:    700;
+  --MAIN-LINK-color:          var( --wf-chrome );
+  --MAIN-LINK-HOVER-color:    var( --wf-chrome-hi );
+  --MAIN-BUTTON-color:        var( --wf-chrome );
+  --MAIN-BUTTON-HOVER-color:  var( --wf-chrome-hi );
+
+  /* headings — all monospace, see §5 */
+  --MAIN-TITLES-font:                    var( --wf-font-mono );
+  --MAIN-TITLES-font-weight:             600;
+  --MAIN-TITLES-font-variation-settings: normal;
+  --MAIN-TITLES-letter-spacing:          .01em;
+  --MAIN-TITLES-TEXT-color:              var( --wf-text-strong );
+
+  --MAIN-TITLES-H1-TEXT-color:              var( --wf-text-strong );
+  --MAIN-TITLES-H1-font:                    var( --wf-font-mono );
+  --MAIN-TITLES-H1-font-weight:             600;
+  --MAIN-TITLES-H1-font-variation-settings: normal;
+  --MAIN-TITLES-H1-letter-spacing:          .04em;
+
+  --MAIN-TITLES-H2-TEXT-color:              var( --wf-chrome );
+  --MAIN-TITLES-H3-TEXT-color:              var( --wf-primary );
+  --MAIN-TITLES-H4-TEXT-color:              var( --wf-text-dim );
+  --MAIN-TITLES-H5-TEXT-color:              var( --wf-text-muted );
+  --MAIN-TITLES-H6-TEXT-color:              var( --wf-text-muted );
+  --MAIN-TITLES-H4-font-variation-settings: normal;
+
+  /* topbar */
+  --TOPBAR-BG-color:          var( --wf-bg-raised );
+  --TOPBAR-TEXT-color:        var( --wf-text-muted );
+  --TOPBAR-SEPARATOR-color:   var( --wf-edge-soft );
+  --TOPBAR-LINK-color:        var( --wf-text-muted );
+  --TOPBAR-LINK-HOVER-color:  var( --wf-chrome-hi );
+  --TOPBAR-BUTTON-color:      var( --wf-text-muted );
+  --TOPBAR-BUTTON-HOVER-color: var( --wf-chrome-hi );
+  --MAIN-TOPBAR-BORDER-color: var( --wf-edge-soft );
+
+  /* sidebar */
+  --MENU-BORDER-color:                    var( --wf-edge );
+  --MENU-TOPBAR-BORDER-color:             var( --wf-edge-soft );
+  --MENU-TOPBAR-SEPARATOR-color:          var( --wf-edge-soft );
+  --MENU-HEADER-color:                    var( --wf-text-strong );
+  --MENU-HEADER-BG-color:                 var( --wf-bg-raised );
+  --MENU-HEADER-BORDER-color:             var( --wf-edge-soft );
+  --MENU-SEARCH-color:                    var( --wf-text );
+  --MENU-SEARCH-HOVER-color:              var( --wf-chrome-hi );
+  --MENU-SEARCH-BG-color:                 rgba( 255, 255, 255, .9 );
+  --MENU-SEARCH-BORDER-color:             var( --wf-edge );
+  --MENU-HOME-LINK-color:                 var( --wf-text-muted );
+  --MENU-HOME-LINK-HOVER-color:           var( --wf-chrome-hi );
+  --MENU-HOME-TOP-SEPARATOR-color:        var( --wf-edge-soft );
+  --MENU-HOME-SEPARATOR-color:            var( --wf-edge-soft );
+  --MENU-HOME-BOTTOM-SEPARATOR-color:     var( --wf-edge-soft );
+  --MENU-SECTIONS-BG-color:               var( --wf-bg-raised );
+  --MENU-SECTIONS-ACTIVE-BG-color:        rgba( 11, 95, 196, .06 );
+  --MENU-SECTIONS-LINK-color:             var( --wf-text-muted );
+  --MENU-SECTIONS-LINK-HOVER-color:       var( --wf-text-strong );
+  --MENU-SECTION-ACTIVE-CATEGORY-color:   var( --wf-red-text );
+  --MENU-SECTION-ACTIVE-CATEGORY-BG-color: rgba( 204, 0, 0, .06 );
+  --MENU-SECTION-ACTIVE-CATEGORY-BORDER-color: var( --wf-edge-now );
+  --MENU-SECTION-SEPARATOR-color:         var( --wf-edge-soft );
+  --MENU-VISITED-color:                   var( --wf-chrome );
+
+  /* logo */
+  --LOGO-font:              var( --wf-font-mono );
+  --LOGO-LINK-color:        var( --wf-text-strong );
+  --LOGO-LINK-HOVER-color:  var( --wf-chrome-hi );
+
+  /* code */
+  --CODE-theme:               relearn-light;  /* theme ships this one */
+  --CODE-font:                var( --wf-font-mono );
+  --CODE-font-weight:         400;
+  --CODE-letter-spacing:      normal;
+  --CODE-BLOCK-color:         var( --wf-text );
+  --CODE-BLOCK-BG-color:      var( --wf-bg-code );
+  --CODE-BLOCK-BORDER-color:  var( --wf-edge-soft );
+  --CODE-INLINE-color:        var( --wf-primary );
+  --CODE-INLINE-BG-color:     rgba( 10, 107, 44, .07 );
+  --CODE-INLINE-BORDER-color: rgba( 10, 107, 44, .25 );
+
+  /* browser / embeds */
+  --BROWSER-theme:      light;
+  --MERMAID-theme:      default;
+  --OPENAPI-theme:      light;
+  --OPENAPI-CODE-theme: idea;
+
+  /* boxes (notices, callouts, tabs, badges) */
+  --BOX-CAPTION-color: var( --wf-text-strong );
+  --BOX-BG-color:      var( --wf-fill );
+  --BOX-TEXT-color:    var( --wf-text );
+
+  /* NOTE the split: *-color is used as a FILL (white caption sits on it) and
+   * *-TEXT-color is used as TEXT on the dark ground. FAU red at #CC0000 is
+   * 3.4:1 as text and fails AA — hence --BOX-RED-TEXT-color is the lifted red. */
+  --BOX-BLUE-color:         var( --wf-chrome );
+  --BOX-BLUE-TEXT-color:    var( --wf-chrome );
+  --BOX-CYAN-color:         var( --wf-cyan );
+  --BOX-CYAN-TEXT-color:    var( --wf-cyan );
+  --BOX-GREEN-color:        var( --wf-primary );
+  --BOX-GREEN-TEXT-color:   var( --wf-primary );
+  --BOX-GREY-color:         var( --wf-text-muted );
+  --BOX-GREY-TEXT-color:    var( --wf-text-dim );
+  --BOX-MAGENTA-color:      var( --wf-violet );
+  --BOX-MAGENTA-TEXT-color: var( --wf-violet );
+  --BOX-ORANGE-color:       var( --wf-amber );
+  --BOX-ORANGE-TEXT-color:  var( --wf-amber );
+  --BOX-RED-color:          var( --wf-red );
+  --BOX-RED-TEXT-color:     var( --wf-red-text );
+
+  --TAG-BG-color: var( --wf-chrome );
 }
 
-/* Additional terminal-style enhancements */
-body {
-  font-family: monospace, "Courier New", Courier;
-}
+/* Generated using: hugo gen chromastyles chroma-relearn-light --style monokailight */
 
-/* Make links more visible - always underlined */
-body #R-body-inner a:not(.btn):not(.anchor) {
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-body #R-body-inner a:not(.btn):not(.anchor):hover {
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-}
-
-/* Terminal cursor blink effect for active menu item */
-body #R-sidebar li.active > :is(a, span)::before {
-  content: "> ";
-}
-
-/* Generated using: hugo gen chromastyles chroma-relearn-dark --style monokai --highlightStyle bg:#404042 */
-
-/* Background */ .bg { color:#f8f8f2;background-color:#2b2b2b; }
-/* PreWrapper */ .chroma { color:#f8f8f2;background-color:#2b2b2b; }
-/* Error */ .chroma .err { color:#cc66cc }
+/* Background */ .bg { color:#272822;background-color:#fafafa; }
+/* PreWrapper */ .chroma { color:#272822;background-color:#fafafa; }
+/* Error */ .chroma .err { color:#960050 }
 /* LineLink */ .chroma .lnlinks { outline:none;text-decoration:none;color:inherit }
 /* LineTableTD */ .chroma .lntd { vertical-align:top;padding:0;margin:0;border:0; }
 /* LineTable */ .chroma .lntable { border-spacing:0;padding:0;margin:0;border:0; }
-/* LineHighlight */ .chroma .hl { background-color:#404042 }
+/* LineHighlight */ .chroma .hl { background-color:#e1e1e1 }
 /* LineNumbersTable */ .chroma .lnt { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f }
 /* LineNumbers */ .chroma .ln { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f }
 /* Line */ .chroma .line { display:flex; }
-/* Keyword */ .chroma .k { color:#66d9ef }
-/* KeywordConstant */ .chroma .kc { color:#66d9ef }
-/* KeywordDeclaration */ .chroma .kd { color:#66d9ef }
+/* Keyword */ .chroma .k { color:#00a8c8 }
+/* KeywordConstant */ .chroma .kc { color:#00a8c8 }
+/* KeywordDeclaration */ .chroma .kd { color:#00a8c8 }
 /* KeywordNamespace */ .chroma .kn { color:#f92672 }
-/* KeywordPseudo */ .chroma .kp { color:#66d9ef }
-/* KeywordReserved */ .chroma .kr { color:#66d9ef }
-/* KeywordType */ .chroma .kt { color:#66d9ef }
-/* NameAttribute */ .chroma .na { color:#a6e22e }
-/* NameClass */ .chroma .nc { color:#a6e22e }
-/* NameConstant */ .chroma .no { color:#66d9ef }
-/* NameDecorator */ .chroma .nd { color:#a6e22e }
-/* NameException */ .chroma .ne { color:#a6e22e }
-/* NameOther */ .chroma .nx { color:#a6e22e }
+/* KeywordPseudo */ .chroma .kp { color:#00a8c8 }
+/* KeywordReserved */ .chroma .kr { color:#00a8c8 }
+/* KeywordType */ .chroma .kt { color:#00a8c8 }
+/* Name */ .chroma .n { color:#111 }
+/* NameAttribute */ .chroma .na { color:#75af00 }
+/* NameClass */ .chroma .nc { color:#75af00 }
+/* NameConstant */ .chroma .no { color:#00a8c8 }
+/* NameDecorator */ .chroma .nd { color:#75af00 }
+/* NameEntity */ .chroma .ni { color:#111 }
+/* NameException */ .chroma .ne { color:#75af00 }
+/* NameLabel */ .chroma .nl { color:#111 }
+/* NameNamespace */ .chroma .nn { color:#111 }
+/* NameOther */ .chroma .nx { color:#75af00 }
+/* NameProperty */ .chroma .py { color:#111 }
 /* NameTag */ .chroma .nt { color:#f92672 }
-/* NameFunction */ .chroma .nf { color:#a6e22e }
-/* NameFunctionMagic */ .chroma .fm { color:#a6e22e }
+/* NameBuiltin */ .chroma .nb { color:#111 }
+/* NameBuiltinPseudo */ .chroma .bp { color:#111 }
+/* NameVariable */ .chroma .nv { color:#111 }
+/* NameVariableClass */ .chroma .vc { color:#111 }
+/* NameVariableGlobal */ .chroma .vg { color:#111 }
+/* NameVariableInstance */ .chroma .vi { color:#111 }
+/* NameVariableMagic */ .chroma .vm { color:#111 }
+/* NameFunction */ .chroma .nf { color:#75af00 }
+/* NameFunctionMagic */ .chroma .fm { color:#75af00 }
 /* Literal */ .chroma .l { color:#ae81ff }
-/* LiteralDate */ .chroma .ld { color:#e6db74 }
-/* LiteralString */ .chroma .s { color:#e6db74 }
-/* LiteralStringAffix */ .chroma .sa { color:#e6db74 }
-/* LiteralStringBacktick */ .chroma .sb { color:#e6db74 }
-/* LiteralStringChar */ .chroma .sc { color:#e6db74 }
-/* LiteralStringDelimiter */ .chroma .dl { color:#e6db74 }
-/* LiteralStringDoc */ .chroma .sd { color:#e6db74 }
-/* LiteralStringDouble */ .chroma .s2 { color:#e6db74 }
-/* LiteralStringEscape */ .chroma .se { color:#ae81ff }
-/* LiteralStringHeredoc */ .chroma .sh { color:#e6db74 }
-/* LiteralStringInterpol */ .chroma .si { color:#e6db74 }
-/* LiteralStringOther */ .chroma .sx { color:#e6db74 }
-/* LiteralStringRegex */ .chroma .sr { color:#e6db74 }
-/* LiteralStringSingle */ .chroma .s1 { color:#e6db74 }
-/* LiteralStringSymbol */ .chroma .ss { color:#e6db74 }
+/* LiteralDate */ .chroma .ld { color:#d88200 }
+/* LiteralString */ .chroma .s { color:#d88200 }
+/* LiteralStringAffix */ .chroma .sa { color:#d88200 }
+/* LiteralStringBacktick */ .chroma .sb { color:#d88200 }
+/* LiteralStringChar */ .chroma .sc { color:#d88200 }
+/* LiteralStringDelimiter */ .chroma .dl { color:#d88200 }
+/* LiteralStringDoc */ .chroma .sd { color:#d88200 }
+/* LiteralStringDouble */ .chroma .s2 { color:#d88200 }
+/* LiteralStringEscape */ .chroma .se { color:#8045ff }
+/* LiteralStringHeredoc */ .chroma .sh { color:#d88200 }
+/* LiteralStringInterpol */ .chroma .si { color:#d88200 }
+/* LiteralStringOther */ .chroma .sx { color:#d88200 }
+/* LiteralStringRegex */ .chroma .sr { color:#d88200 }
+/* LiteralStringSingle */ .chroma .s1 { color:#d88200 }
+/* LiteralStringSymbol */ .chroma .ss { color:#d88200 }
 /* LiteralNumber */ .chroma .m { color:#ae81ff }
 /* LiteralNumberBin */ .chroma .mb { color:#ae81ff }
 /* LiteralNumberFloat */ .chroma .mf { color:#ae81ff }
@@ -173,24 +690,22 @@ body #R-sidebar li.active > :is(a, span)::before {
 /* LiteralNumberOct */ .chroma .mo { color:#ae81ff }
 /* Operator */ .chroma .o { color:#f92672 }
 /* OperatorWord */ .chroma .ow { color:#f92672 }
-/* Comment */ .chroma .c { color:#75715e }
-/* CommentHashbang */ .chroma .ch { color:#75715e }
-/* CommentMultiline */ .chroma .cm { color:#75715e }
-/* CommentSingle */ .chroma .c1 { color:#75715e }
-/* CommentSpecial */ .chroma .cs { color:#75715e }
-/* CommentPreproc */ .chroma .cp { color:#75715e }
-/* CommentPreprocFile */ .chroma .cpf { color:#75715e }
-/* GenericDeleted */ .chroma .gd { color:#f92672 }
+/* Punctuation */ .chroma .p { color:#111 }
+/* Comment */ .chroma .c { color:#a7a187 }
+/* CommentHashbang */ .chroma .ch { color:#a7a187 }
+/* CommentMultiline */ .chroma .cm { color:#a7a187 }
+/* CommentSingle */ .chroma .c1 { color:#a7a187 }
+/* CommentSpecial */ .chroma .cs { color:#a7a187 }
+/* CommentPreproc */ .chroma .cp { color:#a7a187 }
+/* CommentPreprocFile */ .chroma .cpf { color:#a7a187 }
 /* GenericEmph */ .chroma .ge { font-style:italic }
-/* GenericInserted */ .chroma .gi { color:#a6e22e }
 /* GenericStrong */ .chroma .gs { font-weight:bold }
-/* GenericSubheading */ .chroma .gu { color:#75715e }
 
 }
-:root:not([data-r-output-format='print'])[data-r-theme-variant$='hacker'] {
-  #R-logo.R-default:not(:has(> .logo-image[data-r-logo-variant~='hacker'])):not(:has(> .logo-title)) { display: none; }
-  #R-logo.R-default > .logo-image[data-r-logo-variant~='hacker'] { display: initial; }
-  #R-logo.R-default:has(> .logo-image[data-r-logo-variant~='hacker']) + search { margin-bottom: 1rem; }
+:root:not([data-r-output-format='print'])[data-r-theme-variant$='hacker-light'] {
+  #R-logo.R-default:not(:has(> .logo-image[data-r-logo-variant~='hacker-light'])):not(:has(> .logo-title)) { display: none; }
+  #R-logo.R-default > .logo-image[data-r-logo-variant~='hacker-light'] { display: initial; }
+  #R-logo.R-default:has(> .logo-image[data-r-logo-variant~='hacker-light']) + search { margin-bottom: 1rem; }
 }
 }
 @media print {

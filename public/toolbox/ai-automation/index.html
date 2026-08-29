@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html id="R-html" lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.164.0">
+    <meta name="generator" content="Relearn 9.0.3+dd4f8457f5143e91eae3954813494d2b0cc6741c">
+    <meta name="description" content="How to wire a model into a repeatable pipeline for triage, summarizing, and first-pass review — and what never goes in the prompt.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Automating Security Work :: FAU Cyber Security Club">
+    <meta name="twitter:description" content="How to wire a model into a repeatable pipeline for triage, summarizing, and first-pass review — and what never goes in the prompt.">
+    <meta property="og:url" content="https://example.org/toolbox/ai-automation/index.html">
+    <meta property="og:site_name" content="FAU Cyber Security Club">
+    <meta property="og:title" content="Automating Security Work :: FAU Cyber Security Club">
+    <meta property="og:description" content="How to wire a model into a repeatable pipeline for triage, summarizing, and first-pass review — and what never goes in the prompt.">
+    <meta property="og:locale" content="en_us">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Toolbox">
+    <meta itemprop="name" content="Automating Security Work :: FAU Cyber Security Club">
+    <meta itemprop="description" content="How to wire a model into a repeatable pipeline for triage, summarizing, and first-pass review — and what never goes in the prompt.">
+    <meta itemprop="wordCount" content="1122">
+    <title>Automating Security Work :: FAU Cyber Security Club</title>
+    <link href="/images/logo.svg?1787990815" rel="icon" type="image/svg+xml">
+    <link href="/css/auto-complete/auto-complete.min.css?1787990815" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1787990815" defer></script>
+    <script src="/js/search-lunr.min.js?1787990815" defer></script>
+    <script src="/js/search.min.js?1787990815" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.en.js?1787990815";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1787990815" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="/fonts/fontawesome/css/all.min.css?1787990815" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/all.min.css?1787990815" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1787990815" rel="stylesheet">
+    <link href="/css/theme.min.css?1787990815" rel="stylesheet">
+    <link href="/css/format-html.min.css?1787990815" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/toolbox\/ai-automation\/index.html';
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='https:\/\/example.org';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'hacker', 'hacker-light' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="/css/custom.css?1787990815" rel="stylesheet">
+    <script src="/js/custom.js?1787990815" defer></script>
+  </head>
+  <body class="mobile-support html" data-origin="/toolbox/ai-automation/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#where-automation-actually-pays-off">Where Automation Actually Pays Off</a></li>
+    <li><a href="#the-pipeline-pattern">The Pipeline Pattern</a></li>
+    <li><a href="#structured-output">Structured Output</a></li>
+    <li><a href="#loops-and-agents">Loops and Agents</a></li>
+    <li><a href="#verification-is-the-job">Verification Is the Job</a></li>
+    <li><a href="#what-not-to-feed-a-model">What Not to Feed a Model</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">FAU Cyber Security Club</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/toolbox/index.html"><span itemprop="name">Toolbox</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Automating Security Work</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-variant wf-variant-toggle default-animation" data-content-empty="show" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle"><span><i class="fa-fw fas fa-circle-half-stroke"></i></span></span>
+            </div>
+
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/toolbox/ai-workflows/index.html" title="AI Workflows & Agents (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/meta/index.html" title="Meta (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable toolbox" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="automating-security-work">Automating Security Work</h1>
+
+<p>Running a model by hand, one prompt at a time, is fine for a one-off
+question. Automation is different: you wire the model into a script that
+runs the same way every time, on output you did not write and may not have
+read yet. That raises the stakes. This page covers where that pays off,
+the pattern to build it on, and the policy rules that apply the moment you
+pipe real data into a model.</p>
+<hr>
+<h2 id="where-automation-actually-pays-off">Where Automation Actually Pays Off<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Automation works when the task is repetitive, high-volume, and you can
+check the result. It fails when you cannot verify the answer, or the task
+needs facts the model does not have.</p>
+<p><strong>Good fits:</strong></p>
+<ul>
+<li><strong>Triage.</strong> Rank a pile of alerts or scan hits by severity. You still
+check the top of the list yourself.</li>
+<li><strong>Summarizing large output.</strong> Logs, scan results, packet captures — data
+too long to read line by line, but small enough to skim once summarized.</li>
+<li><strong>First-pass code review.</strong> Catch the obvious problems before a human
+reviews the code. It is a filter, not a replacement for review.</li>
+<li><strong>Throwaway parsing scripts.</strong> A quick script that reshapes one file&rsquo;s
+format. Read the script before you run it — &ldquo;throwaway&rdquo; describes its
+lifespan, not your attention.</li>
+<li><strong>Drafting writeups from notes.</strong> Turn rough notes into a readable draft.
+You still check every technical claim in it.</li>
+</ul>
+<p><strong>Bad fits:</strong></p>
+<ul>
+<li><strong>Anything you cannot verify.</strong> If you have no way to check the answer
+against ground truth, you cannot catch the model when it is wrong. It
+will state a wrong answer with the same confidence as a right one.</li>
+<li><strong>Anything that needs ground truth you do not have.</strong> The model only
+knows what is in the prompt. Ask it a question about your network that
+you did not already answer for it, and it will guess.</li>
+</ul>
+<hr>
+<h2 id="the-pipeline-pattern">The Pipeline Pattern<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Automation means treating the model as one stage in a pipeline, not a
+source of answers. The pattern has four stages:</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>tool output -&gt; model -&gt; structured result -&gt; your decision</code></pre></div>
+<ul>
+<li><strong>Tool output.</strong> Raw text from a scanner, a log file, a capture. You
+produced this yourself; you know where it came from.</li>
+<li><strong>Model.</strong> One processing step. It has no memory of your target beyond
+what you put in the prompt this run.</li>
+<li><strong>Structured result.</strong> A fixed-shape answer — see below — not a
+paragraph of prose.</li>
+<li><strong>Your decision.</strong> The model does not act on its own conclusion. You
+read the result and decide what happens next.</li>
+</ul>
+<p>A small example: a script that runs a scan, asks the model to prioritize
+the findings, and prints them sorted by risk.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">json</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">subprocess</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">TARGET</span> <span class="o">=</span> <span class="s2">&#34;TARGET_IP&#34;</span>  <span class="c1"># your lab VM, never a real host</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">scan</span><span class="p">(</span><span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="p">[</span><span class="s2">&#34;nmap&#34;</span><span class="p">,</span> <span class="s2">&#34;-sV&#34;</span><span class="p">,</span> <span class="n">target</span><span class="p">],</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">stdout</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">triage</span><span class="p">(</span><span class="n">scan_output</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;&#34;&#34;Review this scan output. Return JSON only: a list of
+</span></span></span><span class="line"><span class="cl"><span class="s2">objects with keys &#34;port&#34;, &#34;service&#34;, &#34;risk&#34; (&#34;low&#34;, &#34;medium&#34;, or &#34;high&#34;),
+</span></span></span><span class="line"><span class="cl"><span class="s2">and &#34;reason&#34;. No text outside the JSON.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="si">{</span><span class="n">scan_output</span><span class="si">}</span><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">response</span> <span class="o">=</span> <span class="n">chat</span><span class="p">([{</span><span class="s2">&#34;role&#34;</span><span class="p">:</span> <span class="s2">&#34;user&#34;</span><span class="p">,</span> <span class="s2">&#34;content&#34;</span><span class="p">:</span> <span class="n">prompt</span><span class="p">}])</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>  <span class="c1"># raises if the model didn&#39;t comply</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">findings</span> <span class="o">=</span> <span class="n">triage</span><span class="p">(</span><span class="n">scan</span><span class="p">(</span><span class="n">TARGET</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">findings</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="n">f</span><span class="p">[</span><span class="s2">&#34;risk&#34;</span><span class="p">]):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;[</span><span class="si">{</span><span class="n">f</span><span class="p">[</span><span class="s1">&#39;risk&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">] port </span><span class="si">{</span><span class="n">f</span><span class="p">[</span><span class="s1">&#39;port&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">f</span><span class="p">[</span><span class="s1">&#39;service&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">): </span><span class="si">{</span><span class="n">f</span><span class="p">[</span><span class="s1">&#39;reason&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span></span></span></code></pre></div>
+<p>Nothing here runs an exploit or touches the target beyond the scan you
+already chose to run. The model reads text and returns text. You still
+decide what to do about port 8080 running something old.</p>
+<hr>
+<h2 id="structured-output">Structured Output<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Free-form prose is for a human to read once. A pipeline needs something a
+script can parse without a human re-reading it every run. That is why you
+ask for JSON, or any fixed schema: a list of fields with known names and
+known types, instead of a paragraph.</p>
+<p>Asking for a schema does not guarantee you get one. Treat the model&rsquo;s
+output like input from an untrusted source:</p>
+<ul>
+<li>Parse it. If it does not parse, that is a signal, not a crash you paper
+over with a retry loop that hides the problem.</li>
+<li>Check the required keys exist.</li>
+<li>Check the values are in the range you expect (<code>&quot;risk&quot;</code> is one of three
+strings, not one of three strings <em>or</em> a sentence explaining the risk).</li>
+<li>Fail loudly when it does not fit. A pipeline that silently drops bad
+output is worse than one that stops and tells you.</li>
+</ul>
+<hr>
+<h2 id="loops-and-agents">Loops and Agents<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Everything above is a single pass through the pipeline: one batch of tool
+output in, one structured result out. Wiring that into a loop — the model
+deciding what to run next based on what it just saw, and running it again
+— is the agent pattern.</p>
+<p>That loop, its patterns, and the safety rules for running it are covered
+on <a href="/toolbox/ai-workflows/index.html">AI Workflows &amp; Agents</a>. Read that page for the
+loop itself; this page is about the pipeline stage the loop is built on.</p>
+<hr>
+<h2 id="verification-is-the-job">Verification Is the Job<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Automation does not remove the need to check the work. It changes what
+checking looks like — you are reviewing a pipeline&rsquo;s output, not typing
+each command yourself. The skill worth having is directing and checking,
+not copy-pasting.</p>
+<p>Two habits that are not optional:</p>
+<ul>
+<li><strong>Never run a generated command you do not understand.</strong> If you cannot
+explain what every flag does, look it up before you run it. A command
+you cannot explain is a command you cannot be responsible for.</li>
+<li><strong>Test a generated script on a lab VM first.</strong> Never point a
+model-written script at a real target or your daily machine on the
+first run. Run it somewhere a mistake costs nothing.</li>
+</ul>
+<hr>
+<h2 id="what-not-to-feed-a-model">What Not to Feed a Model<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>A hosted model runs on somebody else&rsquo;s server. The moment you paste
+something into it, that data leaves your machine. Assume it is logged.
+Running a model locally avoids this (see
+<a href="/toolbox/ai/index.html">Choosing an AI Model</a>), but the rules below apply either
+way — make them a habit, not a per-tool decision.</p>
+<p>Never put any of the following in a prompt, a scan file, or an example you
+paste in:</p>
+<ul>
+<li><strong>Credentials or API keys.</strong> Not even to check if one is still valid.</li>
+<li><strong>Real target hostnames or IP addresses.</strong> Use <code>TARGET_IP</code>,
+<code>example.com</code>, or a named lab or CTF machine instead.</li>
+<li><strong>Personal information about club members.</strong> Real names, contact
+details, anything they have not already published themselves.</li>
+<li><strong>Copyrighted course material.</strong> Textbook PDFs, a professor&rsquo;s slides,
+anything licensed that is not yours to redistribute.</li>
+<li><strong>Exam questions or graded assignment content.</strong> FAU&rsquo;s academic
+integrity policy names this as misconduct, not a gray area.</li>
+</ul>
+<p>If a script pulls files automatically before handing them to a model —
+grabbing every log in a directory, say — check what is in that directory
+first. Automation makes it easy to feed a model something you never meant
+to paste in.</p>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+<a id="R-logo" class="R-default direction-row" href="/index.html">
+  <span class="logo-image default-animation">
+    <img class="wf-logo__dark"  src="/images/logo.svg" alt="" aria-hidden="true">
+    <img class="wf-logo__light" src="/images/shield-light.svg" alt="" aria-hidden="true">
+  </span>
+  <span class="logo-title default-animation">FAU Cyber Security Club</span>
+</a>
+
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-home default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/start/index.html"><a class="padding" href="/start/index.html">New?</a></li>
+            <li class="" data-nav-id="/learn/index.html"><a class="padding default-animation" href="/learn/index.html">Learn</a><ul id="R-subsections-3043ad09e1e54c6b49d9aa6fbb58ab0f" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/compete/index.html"><a class="padding default-animation" href="/compete/index.html">Compete</a><ul id="R-subsections-0e95d5e51c13d68d27ee0bb3e33f50b7" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/lab/index.html"><a class="padding default-animation" href="/lab/index.html">Club Lab</a><ul id="R-subsections-3267a40151b19e3e3f8d4c8a3edf34ee" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/projects/index.html"><a class="padding" href="/projects/index.html">Projects &amp; Guides</a></li>
+            <li class="parent " data-nav-id="/toolbox/index.html"><a class="padding default-animation" href="/toolbox/index.html">Toolbox</a><ul id="R-subsections-f7060c654e07bee22171d50d3d26bb46" class="collapsible-menu">
+            <li class="" data-nav-id="/toolbox/links/index.html"><a class="padding" href="/toolbox/links/index.html">Links</a></li>
+            <li class="" data-nav-id="/toolbox/intern-training-guide/index.html"><a class="padding" href="/toolbox/intern-training-guide/index.html">🛡️ Cybersecurity Intern Training Resource Guide (2025)</a></li>
+            <li class="" data-nav-id="/toolbox/cheatsheets/index.html"><a class="padding" href="/toolbox/cheatsheets/index.html">Cheat Sheets</a></li>
+            <li class="" data-nav-id="/toolbox/ai/index.html"><a class="padding" href="/toolbox/ai/index.html">Choosing an AI Model</a></li>
+            <li class="" data-nav-id="/toolbox/ai-workflows/index.html"><a class="padding" href="/toolbox/ai-workflows/index.html">AI Workflows &amp; Agents</a></li>
+            <li class="active " data-nav-id="/toolbox/ai-automation/index.html"><a class="padding" href="/toolbox/ai-automation/index.html">Automating Security Work</a></li></ul></li>
+            <li class="" data-nav-id="/meta/index.html"><a class="padding default-animation" href="/meta/index.html">Meta</a><ul id="R-subsections-2f839601009aa63e83121a533a314010" class="collapsible-menu"></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <div class="nav-title padding">Quick Links</div>
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="http://discord.gg/2Yun8WAUuy"><a class="padding" href="http://discord.gg/2Yun8WAUuy" rel="external"><i class='fab fa-fw fa-discord'></i> Discord</a></li>
+            <li class="" data-nav-id="https://github.com/dxcently/fau-cyber-security-club-wiki"><a class="padding" href="https://github.com/dxcently/fau-cyber-security-club-wiki" rel="external"><i class='fab fa-fw fa-github'></i> GitHub</a></li>
+            <li class="" data-nav-id="https://fau.campuslabs.com/engage/organization/cybersecurity"><a class="padding" href="https://fau.campuslabs.com/engage/organization/cybersecurity" rel="external"><i class='fa-solid fa-school-flag'></i> Owl Central</a></li>
+            <li class="" data-nav-id="mailto:csc@fau.edu"><a class="padding" href="mailto:csc@fau.edu" rel="external"><i class='fa-solid fa-envelope'></i> csc@fau.edu</a></li>
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-hacker" value="hacker" selected>Dark</option>
+                    <option id="R-select-variant-hacker-light" value="hacker-light">Light</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1787990815" defer></script>
+    <script src="/js/theme.min.js?1787990815" defer></script>
+
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

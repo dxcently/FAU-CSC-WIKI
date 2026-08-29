@@ -3,79 +3,58 @@
   <channel>
     <title>FAU Cyber Security Club</title>
     <link>http://localhost:1313/index.html</link>
-    <description>👋 Welcome to the FAU Cyber Security Club Wiki! Meeting information Weekly Meetings: Thursdays 5 PM - 7 PM&#xA;Location: CM22&#xA;Contact Email: csc@fau.edu&#xA;This wiki is currently underconstruction. If you would like to help me with it, contact me @solitude_freak or @shaamad on the Discord.</description>
+    <description>Contact Email: csc@fau.edu — or message @shaamad, club president, on the Discord.</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Introduction</title>
-      <link>http://localhost:1313/introduction/index.html</link>
+      <title>Start Here</title>
+      <link>http://localhost:1313/start/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/introduction/index.html</guid>
-      <description>This Wiki is where you can find quick information about the club and current events, as well as helpful resources and guides to help you get initalized.&#xA;We strongly encourage an open environment of learning, so NEVER be afraid to ask questions. It is ok if you don’t know something, remember that we are all learning. And the best way to learn is to fail!</description>
+      <guid>http://localhost:1313/start/index.html</guid>
+      <description>Start here! What the club is, what it offers, and the roadmap from knowing nothing to competing.</description>
     </item>
     <item>
-      <title>Virtual Machines</title>
-      <link>http://localhost:1313/virtual-machines/index.html</link>
+      <title>Learn</title>
+      <link>http://localhost:1313/learn/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/virtual-machines/index.html</guid>
-      <description>A virtual machine is your lab. All practice happens here — not on your host.&#xA;Break it. Reset it. Repeat. That is the whole point.&#xA;This section covers why VMs matter, how to get one running, and what tools to use.</description>
+      <guid>http://localhost:1313/learn/index.html</guid>
+      <description>Every subject the club teaches, one section per stage of the roadmap.</description>
     </item>
     <item>
-      <title>Linux</title>
-      <link>http://localhost:1313/linux/index.html</link>
+      <title>Compete</title>
+      <link>http://localhost:1313/compete/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/linux/index.html</guid>
-      <description>Security tooling runs on Linux. You don’t need to master it — you need to stop being afraid of it.&#xA;This section covers the filesystem, permissions, and processes. That is the floor everything else builds on.</description>
+      <guid>http://localhost:1313/compete/index.html</guid>
+      <description>What competing at the club means, and the difference between defense competitions and CTFs.</description>
     </item>
     <item>
-      <title>Networking</title>
-      <link>http://localhost:1313/networking/index.html</link>
+      <title>Club Lab</title>
+      <link>http://localhost:1313/lab/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/networking/index.html</guid>
-      <description>You cannot hack or defend something you do not understand. Networking is load-bearing knowledge.&#xA;This section covers IP, protocols, and the tools used to inspect traffic.</description>
+      <guid>http://localhost:1313/lab/index.html</guid>
+      <description>A shared club environment members are allowed to attack — details still being worked out.</description>
     </item>
     <item>
-      <title>CLI &amp; Scripting</title>
-      <link>http://localhost:1313/cli-scripting/index.html</link>
+      <title>Projects &amp; Guides</title>
+      <link>http://localhost:1313/projects/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/cli-scripting/index.html</guid>
-      <description>The terminal is where real work happens. Scripting is the difference between doing something once and automating it forever.&#xA;This section covers Bash fundamentals and enough Python to be dangerous.</description>
+      <guid>http://localhost:1313/projects/index.html</guid>
+      <description>Things club members built and wrote — writeups, tools, and wiki pages — and how to add your own.</description>
     </item>
     <item>
-      <title>Web &amp; System Fundamentals</title>
-      <link>http://localhost:1313/web-fundamentals/index.html</link>
+      <title>Toolbox</title>
+      <link>http://localhost:1313/toolbox/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/web-fundamentals/index.html</guid>
-      <description>Most real-world vulnerabilities live at the intersection of web requests and system privileges.&#xA;This section covers HTTP, how a browser-to-server conversation actually works, and the system-level concepts that make or break security.</description>
+      <guid>http://localhost:1313/toolbox/index.html</guid>
+      <description>Curated links, an intern training roadmap, and how to pick and use AI models for security work.</description>
     </item>
     <item>
-      <title>CTF</title>
-      <link>http://localhost:1313/ctf/index.html</link>
+      <title>Meta</title>
+      <link>http://localhost:1313/meta/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/ctf/index.html</guid>
-      <description>CTFs (Capture the Flag) are structured hacking challenges. You find a hidden string called a flag by exploiting a vulnerability or solving a puzzle.&#xA;They are the best low-stakes way to practice. This section covers where to start, how to approach challenges, and what categories exist.</description>
-    </item>
-    <item>
-      <title>Specializations</title>
-      <link>http://localhost:1313/specializations/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/specializations/index.html</guid>
-      <description>Once you have the basics, it is time to go deep. Security branches out into distinct disciplines. Pick one that interests you and start going down the rabbit hole.&#xA;This section introduces web exploitation, binary exploitation, forensics, and network defense.</description>
-    </item>
-    <item>
-      <title>AI &amp; Agents for Security</title>
-      <link>http://localhost:1313/ai-security/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/ai-security/index.html</guid>
-      <description>AI is not a shortcut. It is a force multiplier — and in 2024–2025, it became a genuine competitive advantage in security work.&#xA;By the end of 2024, LLM agents were solving 95%+ of beginner CTF challenges autonomously. In 2025, one AI system placed first at a live competition and took a $50,000 prize. An autonomous pen-testing AI reached #1 on HackerOne’s US leaderboard.&#xA;This section covers what AI can actually do, which models to use, how to set them up, and how to build workflows and agents for security work.</description>
-    </item>
-    <item>
-      <title>Contributing to the Club</title>
-      <link>http://localhost:1313/contributing/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/contributing/index.html</guid>
-      <description>This is where learning turns into doing. Competing, writing writeups, helping newer members, building tools — this is where skills compound fast.&#xA;You do not need to be an expert to contribute. You just need to show up and try.&#xA;Ways to Contribute Compete Show up to competitions even if you do not know what you are doing. Watching how others solve problems is worth more than a week of tutorials.</description>
+      <guid>http://localhost:1313/meta/index.html</guid>
+      <description>How this wiki itself is built and maintained — authoring guide and the open TODO list.</description>
     </item>
   </channel>
 </rss>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AI :: FAU Cyber Security Club</title>
+    <link>https://example.org/learn/ai/index.html</link>
+    <description>What language models and agents actually are, how agent systems are built, and why they are both a tool and a target.</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://example.org/learn/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fundamentals for the AI Era</title>
+      <link>https://example.org/learn/ai/fundamentals/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/learn/ai/fundamentals/index.html</guid>
+      <description>What to actually learn now that models write code: the framings worth knowing, the case for small local models, and why the rest of the roadmap matters more.</description>
+    </item>
+    <item>
+      <title>Agentic Graphs</title>
+      <link>https://example.org/learn/ai/agentic-graphs/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/learn/ai/agentic-graphs/index.html</guid>
+      <description>Nodes, edges, state and cycles: the vocabulary for describing systems built from many model calls, the named patterns, and the failure modes.</description>
+    </item>
+    <item>
+      <title>Harnesses &amp; the Agent Loop</title>
+      <link>https://example.org/learn/ai/harnesses-and-loops/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/learn/ai/harnesses-and-loops/index.html</guid>
+      <description>What actually turns a language model into an agent: the loop, the harness around it, and the tools people really use.</description>
+    </item>
+    <item>
+      <title>Knowledge Bases as Agent Context</title>
+      <link>https://example.org/learn/ai/knowledge-bases/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/learn/ai/knowledge-bases/index.html</guid>
+      <description>Knowledge graphs against vector retrieval in plain terms, and what document structure actually helps an agent — with this wiki as the worked example.</description>
+    </item>
+    <item>
+      <title>AI on Both Sides</title>
+      <link>https://example.org/learn/ai/blue-and-red/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/learn/ai/blue-and-red/index.html</guid>
+      <description>Defensive and offensive application of AI, and the part a cyber club uniquely needs: how agent systems themselves get attacked and defended.</description>
+    </item>
+  </channel>
+</rss>

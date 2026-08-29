@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html id="R-html" lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.164.0">
+    <meta name="generator" content="Relearn 9.0.3+dd4f8457f5143e91eae3954813494d2b0cc6741c">
+    <meta name="description" content="What language models and agents actually are, how agent systems are built, and why they are both a tool and a target.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="AI :: FAU Cyber Security Club">
+    <meta name="twitter:description" content="What language models and agents actually are, how agent systems are built, and why they are both a tool and a target.">
+    <meta property="og:url" content="https://example.org/learn/ai/index.html">
+    <meta property="og:site_name" content="FAU Cyber Security Club">
+    <meta property="og:title" content="AI :: FAU Cyber Security Club">
+    <meta property="og:description" content="What language models and agents actually are, how agent systems are built, and why they are both a tool and a target.">
+    <meta property="og:locale" content="en_us">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="AI :: FAU Cyber Security Club">
+    <meta itemprop="description" content="What language models and agents actually are, how agent systems are built, and why they are both a tool and a target.">
+    <meta itemprop="wordCount" content="660">
+    <title>AI :: FAU Cyber Security Club</title>
+    <link href="/learn/ai/index.xml" rel="alternate" type="application/rss+xml" title="AI :: FAU Cyber Security Club">
+    <link href="/images/logo.svg?1787990815" rel="icon" type="image/svg+xml">
+    <link href="/css/auto-complete/auto-complete.min.css?1787990815" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1787990815" defer></script>
+    <script src="/js/search-lunr.min.js?1787990815" defer></script>
+    <script src="/js/search.min.js?1787990815" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.en.js?1787990815";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1787990815" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="/fonts/fontawesome/css/all.min.css?1787990815" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/all.min.css?1787990815" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1787990815" rel="stylesheet">
+    <link href="/css/theme.min.css?1787990815" rel="stylesheet">
+    <link href="/css/format-html.min.css?1787990815" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/learn\/ai\/index.html';
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='https:\/\/example.org';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'hacker', 'hacker-light' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="/css/custom.css?1787990815" rel="stylesheet">
+    <script src="/js/custom.js?1787990815" defer></script>
+  </head>
+  <body class="mobile-support html" data-origin="/learn/ai/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#why-this-is-here">Why This Is Here</a></li>
+    <li><a href="#the-five-pages">The Five Pages</a></li>
+    <li><a href="#read-the-toolbox-for-the-practical-side">Read the Toolbox for the Practical Side</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">FAU Cyber Security Club</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/learn/index.html"><span itemprop="name">Learn</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">AI</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-variant wf-variant-toggle default-animation" data-content-empty="show" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle"><span><i class="fa-fw fas fa-circle-half-stroke"></i></span></span>
+            </div>
+
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/learn/cryptography/in-practice/index.html" title="Crypto in the Real World (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/learn/ai/fundamentals/index.html" title="Fundamentals for the AI Era (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable learn" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="ai">AI</h1>
+
+<p>Every security club now has an argument about this, so here is the club&rsquo;s
+position up front: these tools change what one person can do in an afternoon,
+and they are a new attack surface. Both statements are true at the same time.
+Neither one cancels the other out.</p>
+<p>This section is the conceptual half. It covers what a <strong>large language model</strong>
+(LLM) is, what an agent system is made of, what runs the loop, how knowledge gets in front of one,
+and what happens when the same technology is pointed at you. The practical
+half — which model to pick, how to wire one into a script, what never goes in
+a prompt — lives in the <a href="/toolbox/index.html">Toolbox</a>.</p>
+<hr>
+<h2 id="why-this-is-here">Why This Is Here<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Three reasons.</p>
+<p><strong>It changes the leverage of one person.</strong> A student with a lab VM, a shell,
+and a model that can read a thousand log lines is doing work that used to
+need a team. That is real. It is also the exact reason your fundamentals
+matter more than they did before — you cannot check work you do not
+understand.</p>
+<p><strong>It is a target.</strong> An agent that reads a web page, a ticket, or a log file
+is reading text an attacker can write. The model has no built-in separation
+between &ldquo;text to process&rdquo; and &ldquo;instructions to follow.&rdquo; That single fact
+generates a whole class of attacks, and a cyber club is exactly the place to
+learn it.</p>
+<p><strong>It is already on both sides.</strong> Defenders use it for triage and
+summarization. Attackers use it for recon and for finding bugs. Neither side
+gets to opt out, so learn how it works.</p>
+<hr>
+<h2 id="the-five-pages">The Five Pages<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p><strong><a href="/learn/ai/fundamentals/index.html">Fundamentals for the AI Era</a></strong> — what to actually learn,
+and why the rest of the roadmap got more valuable, not less. Draws on Andrej
+Karpathy&rsquo;s teaching material and framings, his case for small locally
+runnable models, and Matt Pocock&rsquo;s argument that engineering fundamentals are
+what make agents useful.</p>
+<p><strong><a href="/learn/ai/agentic-graphs/index.html">Agentic Graphs</a></strong> — the vocabulary for describing a
+system built from many model calls. Nodes, edges, state, and cycles. The
+named patterns, when to reach for each, and the honest failure modes.</p>
+<p><strong><a href="/learn/ai/harnesses-and-loops/index.html">Harnesses &amp; the Agent Loop</a></strong> — the mechanism
+underneath all of it. What a harness is, what it owns, why stop conditions
+are not optional, and the named tools people actually run — with their
+licences, because &ldquo;open source&rdquo; is claimed more often than it is true.</p>
+<p><strong><a href="/learn/ai/knowledge-bases/index.html">Knowledge Bases as Agent Context</a></strong> — knowledge graphs
+against vector retrieval in plain terms, and what document structure actually
+helps an agent. This wiki is the worked example.</p>
+<p><strong><a href="/learn/ai/blue-and-red/index.html">AI on Both Sides</a></strong> — defensive and offensive application,
+scoped to systems you are authorized to touch, plus the part a security club
+uniquely needs: how to attack and defend agent systems themselves.</p>
+<hr>
+<h2 id="read-the-toolbox-for-the-practical-side">Read the Toolbox for the Practical Side<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>These pages explain concepts. They deliberately do not repeat the how-to.</p>
+<ul>
+<li><a href="/toolbox/ai/index.html">Choosing an AI Model</a> — the selection criteria, including
+local against hosted.</li>
+<li><a href="/toolbox/ai-workflows/index.html">AI Workflows &amp; Agents</a> — the agent loop and
+hands-on workflows.</li>
+<li><a href="/toolbox/ai-automation/index.html">Automating Security Work</a> — pipelines,
+verification, and what never goes into a prompt.</li>
+</ul>
+<hr>
+
+<ul class="wf-grid wf-grid--3">
+  <li>
+    <a class="wf-panel wf-panel--link" href="/learn/ai/fundamentals/"><i class="fa-solid fa-brain" aria-hidden="true"></i>
+      <span class="wf-card-title">Fundamentals for the AI Era</span>
+      <span class="wf-card-desc">What to actually learn now that models write code: the framings worth knowing, the case for small local models, and why the rest of the roadmap matters more.</span>
+    </a>
+  </li>
+  <li>
+    <a class="wf-panel wf-panel--link" href="/learn/ai/agentic-graphs/"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
+      <span class="wf-card-title">Agentic Graphs</span>
+      <span class="wf-card-desc">Nodes, edges, state and cycles: the vocabulary for describing systems built from many model calls, the named patterns, and the failure modes.</span>
+    </a>
+  </li>
+  <li>
+    <a class="wf-panel wf-panel--link" href="/learn/ai/harnesses-and-loops/"><i class="fa-solid fa-rotate" aria-hidden="true"></i>
+      <span class="wf-card-title">Harnesses &amp; the Agent Loop</span>
+      <span class="wf-card-desc">What actually turns a language model into an agent: the loop, the harness around it, and the tools people really use.</span>
+    </a>
+  </li>
+  <li>
+    <a class="wf-panel wf-panel--link" href="/learn/ai/knowledge-bases/"><i class="fa-solid fa-book" aria-hidden="true"></i>
+      <span class="wf-card-title">Knowledge Bases as Agent Context</span>
+      <span class="wf-card-desc">Knowledge graphs against vector retrieval in plain terms, and what document structure actually helps an agent — with this wiki as the worked example.</span>
+    </a>
+  </li>
+  <li>
+    <a class="wf-panel wf-panel--link" href="/learn/ai/blue-and-red/"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+      <span class="wf-card-title">AI on Both Sides</span>
+      <span class="wf-card-desc">Defensive and offensive application of AI, and the part a cyber club uniquely needs: how agent systems themselves get attacked and defended.</span>
+    </a>
+  </li>
+</ul>
+
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+<a id="R-logo" class="R-default direction-row" href="/index.html">
+  <span class="logo-image default-animation">
+    <img class="wf-logo__dark"  src="/images/logo.svg" alt="" aria-hidden="true">
+    <img class="wf-logo__light" src="/images/shield-light.svg" alt="" aria-hidden="true">
+  </span>
+  <span class="logo-title default-animation">FAU Cyber Security Club</span>
+</a>
+
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-home default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/start/index.html"><a class="padding" href="/start/index.html">New?</a></li>
+            <li class="parent " data-nav-id="/learn/index.html"><a class="padding default-animation" href="/learn/index.html">Learn</a><ul id="R-subsections-3043ad09e1e54c6b49d9aa6fbb58ab0f" class="collapsible-menu">
+            <li class="alwaysopen " data-nav-id="/learn/virtual-machines/index.html"><a class="padding default-animation" href="/learn/virtual-machines/index.html">Virtual Machines</a><ul id="R-subsections-59f5ccd870c4fc03abd9b69640874a1f" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/linux/index.html"><a class="padding default-animation" href="/learn/linux/index.html">Linux</a><ul id="R-subsections-13cee4e8a99446dc8ebb7de89edd082b" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/networking/index.html"><a class="padding default-animation" href="/learn/networking/index.html">Networking</a><ul id="R-subsections-cf6bef6447ee5c4a2443556071838940" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/cli-scripting/index.html"><a class="padding default-animation" href="/learn/cli-scripting/index.html">CLI &amp; Scripting</a><ul id="R-subsections-25bc0dbb515bc17b3dae2198fc35e410" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/web-fundamentals/index.html"><a class="padding default-animation" href="/learn/web-fundamentals/index.html">Web &amp; System Fundamentals</a><ul id="R-subsections-059cbefc7865f445f16aa5723b8e5634" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/windows/index.html"><a class="padding default-animation" href="/learn/windows/index.html">Windows &amp; Active Directory</a><ul id="R-subsections-a730549f2efa4d1e274d14685feab8eb" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/cryptography/index.html"><a class="padding default-animation" href="/learn/cryptography/index.html">Cryptography</a><ul id="R-subsections-39d0a9d11822e4379c1887dd88fcd860" class="collapsible-menu"></ul></li>
+            <li class="active parent alwaysopen " data-nav-id="/learn/ai/index.html"><a class="padding default-animation" href="/learn/ai/index.html">AI</a><ul id="R-subsections-501934f4c83e2c1d7165e75c44f96956" class="collapsible-menu">
+            <li class="" data-nav-id="/learn/ai/fundamentals/index.html"><a class="padding" href="/learn/ai/fundamentals/index.html">Fundamentals for the AI Era</a></li>
+            <li class="" data-nav-id="/learn/ai/agentic-graphs/index.html"><a class="padding" href="/learn/ai/agentic-graphs/index.html">Agentic Graphs</a></li>
+            <li class="" data-nav-id="/learn/ai/harnesses-and-loops/index.html"><a class="padding" href="/learn/ai/harnesses-and-loops/index.html">Harnesses &amp; the Agent Loop</a></li>
+            <li class="" data-nav-id="/learn/ai/knowledge-bases/index.html"><a class="padding" href="/learn/ai/knowledge-bases/index.html">Knowledge Bases as Agent Context</a></li>
+            <li class="" data-nav-id="/learn/ai/blue-and-red/index.html"><a class="padding" href="/learn/ai/blue-and-red/index.html">AI on Both Sides</a></li></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/specializations/index.html"><a class="padding default-animation" href="/learn/specializations/index.html">Specializations</a><ul id="R-subsections-76b8bdc5bdb02d450cc67abb8c740f83" class="collapsible-menu"></ul></li></ul></li>
+            <li class="" data-nav-id="/compete/index.html"><a class="padding default-animation" href="/compete/index.html">Compete</a><ul id="R-subsections-0e95d5e51c13d68d27ee0bb3e33f50b7" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/lab/index.html"><a class="padding default-animation" href="/lab/index.html">Club Lab</a><ul id="R-subsections-3267a40151b19e3e3f8d4c8a3edf34ee" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/projects/index.html"><a class="padding" href="/projects/index.html">Projects &amp; Guides</a></li>
+            <li class="" data-nav-id="/toolbox/index.html"><a class="padding default-animation" href="/toolbox/index.html">Toolbox</a><ul id="R-subsections-f7060c654e07bee22171d50d3d26bb46" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/meta/index.html"><a class="padding default-animation" href="/meta/index.html">Meta</a><ul id="R-subsections-2f839601009aa63e83121a533a314010" class="collapsible-menu"></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <div class="nav-title padding">Quick Links</div>
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="http://discord.gg/2Yun8WAUuy"><a class="padding" href="http://discord.gg/2Yun8WAUuy" rel="external"><i class='fab fa-fw fa-discord'></i> Discord</a></li>
+            <li class="" data-nav-id="https://github.com/dxcently/fau-cyber-security-club-wiki"><a class="padding" href="https://github.com/dxcently/fau-cyber-security-club-wiki" rel="external"><i class='fab fa-fw fa-github'></i> GitHub</a></li>
+            <li class="" data-nav-id="https://fau.campuslabs.com/engage/organization/cybersecurity"><a class="padding" href="https://fau.campuslabs.com/engage/organization/cybersecurity" rel="external"><i class='fa-solid fa-school-flag'></i> Owl Central</a></li>
+            <li class="" data-nav-id="mailto:csc@fau.edu"><a class="padding" href="mailto:csc@fau.edu" rel="external"><i class='fa-solid fa-envelope'></i> csc@fau.edu</a></li>
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-hacker" value="hacker" selected>Dark</option>
+                    <option id="R-select-variant-hacker-light" value="hacker-light">Light</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1787990815" defer></script>
+    <script src="/js/theme.min.js?1787990815" defer></script>
+<script>document.documentElement.dataset.wfScramble = "1";</script>
+
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html id="R-html" lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.164.0">
+    <meta name="generator" content="Relearn 9.0.3+dd4f8457f5143e91eae3954813494d2b0cc6741c">
+    <meta name="description" content="How the primitives from the last page show up in HTTPS and encrypted messaging, and the specific mistakes that keep breaking them.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Crypto in the Real World :: FAU Cyber Security Club">
+    <meta name="twitter:description" content="How the primitives from the last page show up in HTTPS and encrypted messaging, and the specific mistakes that keep breaking them.">
+    <meta property="og:url" content="https://example.org/learn/cryptography/in-practice/index.html">
+    <meta property="og:site_name" content="FAU Cyber Security Club">
+    <meta property="og:title" content="Crypto in the Real World :: FAU Cyber Security Club">
+    <meta property="og:description" content="How the primitives from the last page show up in HTTPS and encrypted messaging, and the specific mistakes that keep breaking them.">
+    <meta property="og:locale" content="en_us">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Learn">
+    <meta itemprop="name" content="Crypto in the Real World :: FAU Cyber Security Club">
+    <meta itemprop="description" content="How the primitives from the last page show up in HTTPS and encrypted messaging, and the specific mistakes that keep breaking them.">
+    <meta itemprop="wordCount" content="1134">
+    <title>Crypto in the Real World :: FAU Cyber Security Club</title>
+    <link href="/images/logo.svg?1787990815" rel="icon" type="image/svg+xml">
+    <link href="/css/auto-complete/auto-complete.min.css?1787990815" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1787990815" defer></script>
+    <script src="/js/search-lunr.min.js?1787990815" defer></script>
+    <script src="/js/search.min.js?1787990815" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.en.js?1787990815";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1787990815" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="/fonts/fontawesome/css/all.min.css?1787990815" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/all.min.css?1787990815" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1787990815" rel="stylesheet">
+    <link href="/css/theme.min.css?1787990815" rel="stylesheet">
+    <link href="/css/format-html.min.css?1787990815" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/learn\/cryptography\/in-practice\/index.html';
+      window.relearn.relBasePath='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/example.org';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'hacker', 'hacker-light' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="/css/custom.css?1787990815" rel="stylesheet">
+    <script src="/js/custom.js?1787990815" defer></script>
+  </head>
+  <body class="mobile-support html" data-origin="/learn/cryptography/in-practice/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#where-this-shows-up">Where This Shows Up</a>
+      <ul>
+        <li><a href="#tls--https-end-to-end">TLS / HTTPS, End to End</a></li>
+        <li><a href="#end-to-end-encryption">End-to-End Encryption</a></li>
+        <li><a href="#how-crypto-actually-fails">How Crypto Actually Fails</a></li>
+        <li><a href="#crypto-in-ctfs">Crypto in CTFs</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">FAU Cyber Security Club</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/learn/index.html"><span itemprop="name">Learn</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/learn/cryptography/index.html"><span itemprop="name">Cryptography</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Crypto in the Real World</span><meta itemprop="position" content="4"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-variant wf-variant-toggle default-animation" data-content-empty="show" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle"><span><i class="fa-fw fas fa-circle-half-stroke"></i></span></span>
+            </div>
+
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/learn/cryptography/basics/index.html" title="The Building Blocks (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/learn/ai/index.html" title="AI (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable learn" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="crypto-in-the-real-world">Crypto in the Real World</h1>
+
+<hr>
+<p>The last page covered six primitives in isolation. Nothing in the real world
+uses just one. A single HTTPS connection uses all six together, in a
+specific order, for a specific reason. This page walks through that, then
+covers where the whole system actually breaks — almost never the math, and
+you should be able to explain exactly why by the end.</p>
+<h2 id="where-this-shows-up">Where This Shows Up<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="tls--https-end-to-end">TLS / HTTPS, End to End<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>TLS</strong> (Transport Layer Security) is the encryption behind HTTPS — the &ldquo;S&rdquo;
+you see in a browser&rsquo;s address bar. When your browser connects to a site, it
+runs a <strong>handshake</strong>: a short exchange of messages before any real data
+moves, whose whole job is to set up two things.</p>
+<p><strong>First, authenticate the server.</strong> Your browser needs proof that it is
+really talking to the site it asked for, not an attacker sitting in the
+middle. This is what a <strong>certificate</strong> provides — a signed document, tied to
+the site&rsquo;s public key, saying &ldquo;this public key belongs to this domain.&rdquo; The
+signature on that certificate comes from a <strong>certificate authority (CA)</strong>, an
+organization your browser already trusts by default. If the signature checks
+out, your browser trusts the site&rsquo;s public key.</p>
+<p><strong>Second, agree on a session key.</strong> Once the server is authenticated, both
+sides run a key exchange to land on a shared secret, then use that secret as
+a fast symmetric key for the rest of the connection. This is exactly the
+asymmetric-to-symmetric handoff from the last page: slow public-key crypto
+sets things up, fast symmetric crypto carries the actual traffic.</p>
+<p>Once the handshake finishes, HTTPS gives you three things: the data is
+unreadable to anyone watching the connection, tampering with it in transit
+gets detected, and you have real assurance you are talking to the domain you
+typed. HTTPS does <strong>not</strong> protect you from a malicious site itself, a
+compromised endpoint, or a phishing page that has a perfectly valid
+certificate for its own fake domain. The padlock icon means the connection
+is private. It says nothing about whether the site on the other end is
+trustworthy.</p>
+<h3 id="end-to-end-encryption">End-to-End Encryption<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>End-to-end encryption (E2EE)</strong> is a stronger, specific property some
+messaging apps advertise: only the two endpoints — sender and recipient —
+can read the message content. Not an attacker on the network, and not even
+the company running the server in the middle.</p>
+<p>This works because the encryption and decryption keys live only on the
+endpoints&rsquo; devices. The server routes encrypted data it cannot read. Compare
+this to a normal HTTPS connection to a web app: your traffic is encrypted in
+transit to the company&rsquo;s server, but the server itself can read the content
+once it arrives. E2EE removes that step — the server is a courier for a
+sealed envelope, not someone with a key to open it.</p>
+<p>Even with E2EE working correctly, the server usually still sees <strong>metadata</strong>
+— data about the communication that is not the content itself: who
+messaged whom, when, how often, and sometimes message size. Encrypting a
+letter&rsquo;s contents does not hide the envelope, the return address, or the
+mailbox it was dropped in. Metadata alone can reveal a lot. Do not assume
+E2EE means a conversation leaves no trace anywhere.</p>
+<h3 id="how-crypto-actually-fails">How Crypto Actually Fails<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Cryptographic algorithms in wide use today have had decades of public
+scrutiny from researchers trying to break them. Attacking the math directly
+almost never works. Attacking how a system uses that math works constantly.
+These are the patterns that keep showing up.</p>
+<ul>
+<li><strong>Reused keys or nonces.</strong> A <strong>nonce</strong> is a number meant to be used only
+once per encryption operation — the name is short for &ldquo;number used once.&rdquo;
+Several encryption modes lose their guarantees completely if the same key
+and nonce pair gets reused. This has broken real systems: reusing a
+supposedly one-time value quietly turns strong encryption into something
+an attacker can unravel.</li>
+<li><strong>Homemade crypto.</strong> Someone decides to write their own cipher or their
+own protocol instead of using a reviewed standard. It looks fine in
+testing. It is almost never fine — real cryptographic algorithms survive
+because thousands of researchers spent years trying to break them and
+failed. A cipher one developer wrote last week has had none of that
+scrutiny. Never design your own algorithm for anything that matters. Use
+an established library instead.</li>
+<li><strong>Weak or default keys.</strong> Hardware or software shipped with the same
+default password or key on every unit, never changed after setup. A key
+everyone has is not a secret. This single mistake has been behind entire
+classes of real-world breaches.</li>
+<li><strong>Expired or unvalidated certificates.</strong> Software that skips checking a
+TLS certificate properly — or ignores that it expired — throws away the
+entire &ldquo;authenticate the server&rdquo; guarantee from the handshake above. The
+connection is still encrypted. It might just be encrypted straight to an
+attacker.</li>
+<li><strong>Secrets committed to source code.</strong> An API key, password, or private
+key typed directly into a file and pushed to a repository. Source code
+gets copied, cached, and mirrored in places you do not control, forever.
+A secret in source code should be treated as a leaked secret the moment
+it is committed.</li>
+</ul>
+<p>The pattern across all five: the cryptography did its job. A human decision
+around it did not.</p>
+<h3 id="crypto-in-ctfs">Crypto in CTFs<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Capture-the-flag competitions run a dedicated crypto category almost every
+time, and it is one of the more approachable ones once you know what it is
+actually testing. These challenges are not asking you to break real math.
+They are testing whether you can recognize a primitive and spot exactly
+where the challenge&rsquo;s implementation cut a corner, on purpose, for you to
+find.</p>
+<p>Common patterns you will run into on a CTF box or lab machine:</p>
+<ul>
+<li>A hash with no salt, or a fast hash used for passwords — crack it.</li>
+<li>A key or nonce reused across multiple encrypted messages.</li>
+<li>A weak or predictable random number generator, so a &ldquo;random&rdquo; key turns
+out to be guessable.</li>
+<li>A classic, deliberately weak cipher used somewhere it should not be, as a
+teaching exercise.</li>
+<li>A signature or certificate check the challenge skips or gets wrong.</li>
+</ul>
+<p>Notice that every one of these is a version of the mistakes in the section
+above. That is not a coincidence — CTF crypto challenges are built to teach
+the exact failure modes that show up in real breaches. Practice this on CTF
+platforms and lab machines you are meant to be attacking. Never point these
+techniques at a system you do not own or have not been given explicit
+permission to test.</p>
+<hr>
+<p>Back to <a href="/learn/cryptography/basics/index.html">The Building Blocks</a> if any of the terms above need a
+second look. That page has the primitives; this page has the failures. Know
+both, and &ldquo;it&rsquo;s encrypted&rdquo; stops being an answer you accept without a
+follow-up question.</p>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+<a id="R-logo" class="R-default direction-row" href="/index.html">
+  <span class="logo-image default-animation">
+    <img class="wf-logo__dark"  src="/images/logo.svg" alt="" aria-hidden="true">
+    <img class="wf-logo__light" src="/images/shield-light.svg" alt="" aria-hidden="true">
+  </span>
+  <span class="logo-title default-animation">FAU Cyber Security Club</span>
+</a>
+
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-home default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/start/index.html"><a class="padding" href="/start/index.html">New?</a></li>
+            <li class="parent " data-nav-id="/learn/index.html"><a class="padding default-animation" href="/learn/index.html">Learn</a><ul id="R-subsections-3043ad09e1e54c6b49d9aa6fbb58ab0f" class="collapsible-menu">
+            <li class="alwaysopen " data-nav-id="/learn/virtual-machines/index.html"><a class="padding default-animation" href="/learn/virtual-machines/index.html">Virtual Machines</a><ul id="R-subsections-59f5ccd870c4fc03abd9b69640874a1f" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/linux/index.html"><a class="padding default-animation" href="/learn/linux/index.html">Linux</a><ul id="R-subsections-13cee4e8a99446dc8ebb7de89edd082b" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/networking/index.html"><a class="padding default-animation" href="/learn/networking/index.html">Networking</a><ul id="R-subsections-cf6bef6447ee5c4a2443556071838940" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/cli-scripting/index.html"><a class="padding default-animation" href="/learn/cli-scripting/index.html">CLI &amp; Scripting</a><ul id="R-subsections-25bc0dbb515bc17b3dae2198fc35e410" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/web-fundamentals/index.html"><a class="padding default-animation" href="/learn/web-fundamentals/index.html">Web &amp; System Fundamentals</a><ul id="R-subsections-059cbefc7865f445f16aa5723b8e5634" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/windows/index.html"><a class="padding default-animation" href="/learn/windows/index.html">Windows &amp; Active Directory</a><ul id="R-subsections-a730549f2efa4d1e274d14685feab8eb" class="collapsible-menu"></ul></li>
+            <li class="parent alwaysopen " data-nav-id="/learn/cryptography/index.html"><a class="padding default-animation" href="/learn/cryptography/index.html">Cryptography</a><ul id="R-subsections-39d0a9d11822e4379c1887dd88fcd860" class="collapsible-menu">
+            <li class="" data-nav-id="/learn/cryptography/basics/index.html"><a class="padding" href="/learn/cryptography/basics/index.html">The Building Blocks</a></li>
+            <li class="active " data-nav-id="/learn/cryptography/in-practice/index.html"><a class="padding" href="/learn/cryptography/in-practice/index.html">Crypto in the Real World</a></li></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/ai/index.html"><a class="padding default-animation" href="/learn/ai/index.html">AI</a><ul id="R-subsections-501934f4c83e2c1d7165e75c44f96956" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/specializations/index.html"><a class="padding default-animation" href="/learn/specializations/index.html">Specializations</a><ul id="R-subsections-76b8bdc5bdb02d450cc67abb8c740f83" class="collapsible-menu"></ul></li></ul></li>
+            <li class="" data-nav-id="/compete/index.html"><a class="padding default-animation" href="/compete/index.html">Compete</a><ul id="R-subsections-0e95d5e51c13d68d27ee0bb3e33f50b7" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/lab/index.html"><a class="padding default-animation" href="/lab/index.html">Club Lab</a><ul id="R-subsections-3267a40151b19e3e3f8d4c8a3edf34ee" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/projects/index.html"><a class="padding" href="/projects/index.html">Projects &amp; Guides</a></li>
+            <li class="" data-nav-id="/toolbox/index.html"><a class="padding default-animation" href="/toolbox/index.html">Toolbox</a><ul id="R-subsections-f7060c654e07bee22171d50d3d26bb46" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/meta/index.html"><a class="padding default-animation" href="/meta/index.html">Meta</a><ul id="R-subsections-2f839601009aa63e83121a533a314010" class="collapsible-menu"></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <div class="nav-title padding">Quick Links</div>
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="http://discord.gg/2Yun8WAUuy"><a class="padding" href="http://discord.gg/2Yun8WAUuy" rel="external"><i class='fab fa-fw fa-discord'></i> Discord</a></li>
+            <li class="" data-nav-id="https://github.com/dxcently/fau-cyber-security-club-wiki"><a class="padding" href="https://github.com/dxcently/fau-cyber-security-club-wiki" rel="external"><i class='fab fa-fw fa-github'></i> GitHub</a></li>
+            <li class="" data-nav-id="https://fau.campuslabs.com/engage/organization/cybersecurity"><a class="padding" href="https://fau.campuslabs.com/engage/organization/cybersecurity" rel="external"><i class='fa-solid fa-school-flag'></i> Owl Central</a></li>
+            <li class="" data-nav-id="mailto:csc@fau.edu"><a class="padding" href="mailto:csc@fau.edu" rel="external"><i class='fa-solid fa-envelope'></i> csc@fau.edu</a></li>
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-hacker" value="hacker" selected>Dark</option>
+                    <option id="R-select-variant-hacker-light" value="hacker-light">Light</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1787990815" defer></script>
+    <script src="/js/theme.min.js?1787990815" defer></script>
+
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

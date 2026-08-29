@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html id="R-html" lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.164.0">
+    <meta name="generator" content="Relearn 9.0.3+dd4f8457f5143e91eae3954813494d2b0cc6741c">
+    <meta name="description" content="Knowledge graphs against vector retrieval in plain terms, and what document structure actually helps an agent — with this wiki as the worked example.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Knowledge Bases as Agent Context :: FAU Cyber Security Club">
+    <meta name="twitter:description" content="Knowledge graphs against vector retrieval in plain terms, and what document structure actually helps an agent — with this wiki as the worked example.">
+    <meta property="og:url" content="https://example.org/learn/ai/knowledge-bases/index.html">
+    <meta property="og:site_name" content="FAU Cyber Security Club">
+    <meta property="og:title" content="Knowledge Bases as Agent Context :: FAU Cyber Security Club">
+    <meta property="og:description" content="Knowledge graphs against vector retrieval in plain terms, and what document structure actually helps an agent — with this wiki as the worked example.">
+    <meta property="og:locale" content="en_us">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Learn">
+    <meta itemprop="name" content="Knowledge Bases as Agent Context :: FAU Cyber Security Club">
+    <meta itemprop="description" content="Knowledge graphs against vector retrieval in plain terms, and what document structure actually helps an agent — with this wiki as the worked example.">
+    <meta itemprop="wordCount" content="1414">
+    <title>Knowledge Bases as Agent Context :: FAU Cyber Security Club</title>
+    <link href="/images/logo.svg?1787990815" rel="icon" type="image/svg+xml">
+    <link href="/css/auto-complete/auto-complete.min.css?1787990815" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1787990815" defer></script>
+    <script src="/js/search-lunr.min.js?1787990815" defer></script>
+    <script src="/js/search.min.js?1787990815" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.en.js?1787990815";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1787990815" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="/fonts/fontawesome/css/all.min.css?1787990815" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/all.min.css?1787990815" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1787990815" rel="stylesheet">
+    <link href="/css/theme.min.css?1787990815" rel="stylesheet">
+    <link href="/css/format-html.min.css?1787990815" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/learn\/ai\/knowledge-bases\/index.html';
+      window.relearn.relBasePath='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/example.org';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'hacker', 'hacker-light' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="/css/custom.css?1787990815" rel="stylesheet">
+    <script src="/js/custom.js?1787990815" defer></script>
+  </head>
+  <body class="mobile-support html" data-origin="/learn/ai/knowledge-bases/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#two-ways-to-retrieve">Two Ways To Retrieve</a>
+      <ul>
+        <li><a href="#vector-retrieval">Vector retrieval</a></li>
+        <li><a href="#knowledge-graphs">Knowledge graphs</a></li>
+        <li><a href="#when-each-one-wins">When each one wins</a></li>
+        <li><a href="#the-honest-tradeoffs">The honest tradeoffs</a></li>
+        <li><a href="#what-is-marketing">What is marketing</a></li>
+      </ul>
+    </li>
+    <li><a href="#documents-as-agent-context">Documents As Agent Context</a>
+      <ul>
+        <li><a href="#what-actually-helps">What actually helps</a></li>
+        <li><a href="#llmstxt">llms.txt</a></li>
+        <li><a href="#one-protocol-worth-knowing-by-name">One protocol worth knowing by name</a></li>
+      </ul>
+    </li>
+    <li><a href="#this-wiki-as-the-worked-example">This Wiki As The Worked Example</a></li>
+    <li><a href="#if-you-build-one">If You Build One</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">FAU Cyber Security Club</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/learn/index.html"><span itemprop="name">Learn</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/learn/ai/index.html"><span itemprop="name">AI</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Knowledge Bases as Agent Context</span><meta itemprop="position" content="4"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-variant wf-variant-toggle default-animation" data-content-empty="show" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle"><span><i class="fa-fw fas fa-circle-half-stroke"></i></span></span>
+            </div>
+
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/learn/ai/harnesses-and-loops/index.html" title="Harnesses & the Agent Loop (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/learn/ai/blue-and-red/index.html" title="AI on Both Sides (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable learn" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="knowledge-bases-as-agent-context">Knowledge Bases as Agent Context</h1>
+
+<p>An agent is only as good as what it can read. A model knows what was in its
+training data and nothing about your club, your lab, or the incident you are
+working. Getting the right information in front of it is most of the
+engineering.</p>
+<p>There are two ways to do that, and a great deal of marketing about which one
+wins. This page gives the plain version, then covers the part you can act on
+today: how to structure documents so an agent can use them.</p>
+<hr>
+<h2 id="two-ways-to-retrieve">Two Ways To Retrieve<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="vector-retrieval">Vector retrieval<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>An <strong>embedding</strong> turns a piece of text into a list of numbers. Texts with
+similar meaning get similar numbers. To answer a question, you embed the
+question, find the stored chunks whose numbers are nearest, and paste those
+chunks into the prompt.</p>
+<p>That last step has a name: <strong>retrieval-augmented generation</strong> (RAG). Search a
+corpus, put the hits in the prompt, ask the question.</p>
+<p>Vector retrieval answers one question well: does this chunk of text sound like
+the question. It knows nothing about how two chunks relate.</p>
+<h3 id="knowledge-graphs">Knowledge graphs<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>A <strong>knowledge graph</strong> stores entities as nodes and explicit relationships as
+edges. <code>(web server) -[runs]-&gt; (nginx 1.24)</code> and
+<code>(nginx 1.24) -[affected by]-&gt; (CVE-2024-XXXX)</code>.</p>
+<p>The structure is asserted by whoever built the graph. It is not inferred from
+similarity. That is the whole difference: a graph knows that two things are
+connected and how, even when the two documents describing them share no
+wording at all.</p>
+<h3 id="when-each-one-wins">When each one wins<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Vector retrieval wins</strong> on a flat corpus of documents where most questions
+are lookups. It needs no schema, it adapts to whatever document types you
+throw at it, and standing one up is a short job. It also catches loose
+similarity a graph has no edge for.</p>
+<p><strong>A knowledge graph wins</strong> when the corpus has real relational structure — who
+reports to whom, what depends on what, what caused what — and the questions
+are <strong>multi-hop</strong>, meaning the answer requires following two or more links.
+&ldquo;Which of our hosts run a service affected by this advisory&rdquo; is a multi-hop
+question. Vector search will find you documents that sound relevant and miss
+the connection.</p>
+<p>Graphs also give you an auditable answer. You can see the exact path the
+system walked to reach a conclusion. A similarity score does not explain
+itself.</p>
+<h3 id="the-honest-tradeoffs">The honest tradeoffs<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Building a graph means deciding what the entity types are and what
+relationships exist between them. That work is the cost, and it is much larger
+than setting up vector search.</p>
+<p>Extraction is also lossy. Turning a paragraph into entity-and-relationship
+triples throws away context the paragraph carried. A graph is a summary of
+your source material, with the same risks as any summary.</p>
+<h3 id="what-is-marketing">What is marketing<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Two claims to distrust.</p>
+<p><strong>&ldquo;Graphs replace vector search.&rdquo;</strong> In practice most working systems use
+both — vector search finds candidate entry points, graph traversal expands
+from there. Hybrid is the credible consensus, not one side winning.</p>
+<p><strong>Any win-rate percentage you see quoted secondhand.</strong> Numbers comparing the
+two approaches trace back to specific benchmark papers under specific
+conditions. Read the paper before you repeat the number. This wiki does not
+publish one for exactly that reason.</p>
+<p>The tooling is worth knowing about.
+<a href="https://microsoft.github.io/graphrag/" rel="external">GraphRAG</a> is an open-source
+implementation that extracts a graph from raw text, builds a hierarchy of
+communities, and summarizes them, so it can answer questions about a whole
+corpus rather than one matching chunk. Its own documentation is upfront that
+running it on your data out of the box &ldquo;may not yield the best possible
+results.&rdquo; Tuning is the job.</p>
+<hr>
+<h2 id="documents-as-agent-context">Documents As Agent Context<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Now the part that matters more for a club wiki than any retrieval strategy.</p>
+<p>A human skims a page, finds the heading that looks right, and ignores the
+rest. An agent cannot skim cheaply. It either loads a whole page it did not
+need and burns context on it, or it needs enough external structure to decide
+it can skip the page without reading it.</p>
+<p>Structure is what makes skipping possible. That is the entire argument.</p>
+<h3 id="what-actually-helps">What actually helps<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>One topic per page.</strong> Published guidance on
+<a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" rel="external">context engineering for agents</a>
+makes the point about tools, and it transfers exactly: if a human engineer
+cannot say which of two options applies, an agent will not do better. Two
+pages with overlapping scope create that ambiguity.</p>
+<p><strong>Stable URLs.</strong> The same guidance recommends just-in-time retrieval — an
+agent keeps lightweight identifiers such as file paths and links, and loads
+the content at runtime instead of pre-loading everything. A link that stops
+resolving breaks that. Renaming a page is not a cosmetic change.</p>
+<p><strong>Explicit headings, used consistently.</strong> Markdown headers delineate sections,
+and an agent uses them the same way a table of contents works for you. Keep
+the same heading structure across similar pages so the shape is predictable.</p>
+<p><strong>Metadata the machine can read.</strong> Title, ordering, and a one-line
+description, stored in a fixed format, give an index that does not require
+reading the body.</p>
+<p><strong>Cross-links instead of duplication.</strong> Copying a paragraph to a second page
+creates two answers to the same question, and neither the agent nor the reader
+knows which one is current. Link.</p>
+<p><strong>Plain Markdown alongside the rendered page.</strong> Navigation, styling and
+scripts are context an agent pays for and gets nothing from.</p>
+<h3 id="llmstxt">llms.txt<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>There is an emerging convention for this.
+<a href="https://llmstxt.org/" rel="external">llms.txt</a> is a plain Markdown index file at the root of
+a site, proposed by Jeremy Howard, &ldquo;to provide information to help agents use
+a website&rdquo; instead of making them crawl the HTML.</p>
+<p>The format is simple: an H1 title, a one-line summary as a blockquote, then
+H2 sections listing pages as <code>[name](url): details</code>. The specification also
+recommends serving a plain <code>.md</code> version of every page.</p>
+<p>Copy the idea whether or not you adopt the file. Keep an index. Keep the URLs
+stable. Serve clean text.</p>
+<h3 id="one-protocol-worth-knowing-by-name">One protocol worth knowing by name<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><code>llms.txt</code> is a static file. The <strong>Model Context Protocol</strong> (MCP) is the live
+counterpart: one standard way for an application to expose data and tools to a
+model, instead of a custom integration per data source.</p>
+<p>It matters when you want an agent to query a knowledge base — search it, pull
+one section — rather than read a page it was handed. A static site does not
+need one. Know the term exists and move on.</p>
+<hr>
+<h2 id="this-wiki-as-the-worked-example">This Wiki As The Worked Example<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Everything above describes this site, which is a convenient accident and a
+useful thing to look at.</p>
+<ul>
+<li><strong>The directory structure is the URL structure is the navigation.</strong> A page
+at <code>content/learn/linux/permissions.md</code> is served at
+<code>/learn/linux/permissions/</code>. Paths are stable because moving a file moves a
+URL, and everyone here knows it.</li>
+<li><strong>One topic per page.</strong> Sections get an <code>_index.md</code>, every other topic gets
+its own file. The Linux pages do not explain networking.</li>
+<li><strong>Front matter is the machine-readable index.</strong> Every page carries a title,
+a weight for ordering, and a one-sentence description. The site builds its
+entire navigation and its card grids from those fields — no menu file
+exists. The same fields tell an agent what a page is without opening it.</li>
+<li><strong>Cross-links, not duplication.</strong> The Learn pages explain concepts. The
+<a href="/toolbox/index.html">Toolbox</a> pages cover practical use. Each links to the other and
+neither repeats it. That is why this page sends you to
+<a href="/toolbox/ai/index.html">Choosing an AI Model</a> instead of restating it.</li>
+<li><strong>Content is Markdown on disk.</strong> The rendered site is for you. The source
+files are clean text an agent can read directly from the repository.</li>
+<li><strong>There is an <code>AGENTS.md</code> at the repository root.</strong> It states the rules for
+anything editing this wiki: what may be published, the writing style, the
+file format, and the sourcing rule that no number or date ships without a
+primary source cited inline.</li>
+</ul>
+<p>That last file is the part worth copying. The pages in this section were
+drafted with agent help under those rules, and the rules are what made the
+result reviewable. Structure is not decoration. It is what lets a person check
+the work.</p>
+<hr>
+<h2 id="if-you-build-one">If You Build One<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Start with structure and stable paths. You can change retrieval strategy
+later — swapping vector search for a graph is a weekend. A corpus with no
+structure stays hard forever.</p>
+<p>Then read <a href="/learn/ai/agentic-graphs/index.html">Agentic Graphs</a> for how the retrieval step fits
+into a larger system, and <a href="/learn/ai/blue-and-red/index.html">AI on Both Sides</a> for why a
+knowledge base an agent writes to is also a place an attacker wants to write
+to.</p>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+<a id="R-logo" class="R-default direction-row" href="/index.html">
+  <span class="logo-image default-animation">
+    <img class="wf-logo__dark"  src="/images/logo.svg" alt="" aria-hidden="true">
+    <img class="wf-logo__light" src="/images/shield-light.svg" alt="" aria-hidden="true">
+  </span>
+  <span class="logo-title default-animation">FAU Cyber Security Club</span>
+</a>
+
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-home default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/start/index.html"><a class="padding" href="/start/index.html">New?</a></li>
+            <li class="parent " data-nav-id="/learn/index.html"><a class="padding default-animation" href="/learn/index.html">Learn</a><ul id="R-subsections-3043ad09e1e54c6b49d9aa6fbb58ab0f" class="collapsible-menu">
+            <li class="alwaysopen " data-nav-id="/learn/virtual-machines/index.html"><a class="padding default-animation" href="/learn/virtual-machines/index.html">Virtual Machines</a><ul id="R-subsections-59f5ccd870c4fc03abd9b69640874a1f" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/linux/index.html"><a class="padding default-animation" href="/learn/linux/index.html">Linux</a><ul id="R-subsections-13cee4e8a99446dc8ebb7de89edd082b" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/networking/index.html"><a class="padding default-animation" href="/learn/networking/index.html">Networking</a><ul id="R-subsections-cf6bef6447ee5c4a2443556071838940" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/cli-scripting/index.html"><a class="padding default-animation" href="/learn/cli-scripting/index.html">CLI &amp; Scripting</a><ul id="R-subsections-25bc0dbb515bc17b3dae2198fc35e410" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/web-fundamentals/index.html"><a class="padding default-animation" href="/learn/web-fundamentals/index.html">Web &amp; System Fundamentals</a><ul id="R-subsections-059cbefc7865f445f16aa5723b8e5634" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/windows/index.html"><a class="padding default-animation" href="/learn/windows/index.html">Windows &amp; Active Directory</a><ul id="R-subsections-a730549f2efa4d1e274d14685feab8eb" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/cryptography/index.html"><a class="padding default-animation" href="/learn/cryptography/index.html">Cryptography</a><ul id="R-subsections-39d0a9d11822e4379c1887dd88fcd860" class="collapsible-menu"></ul></li>
+            <li class="parent alwaysopen " data-nav-id="/learn/ai/index.html"><a class="padding default-animation" href="/learn/ai/index.html">AI</a><ul id="R-subsections-501934f4c83e2c1d7165e75c44f96956" class="collapsible-menu">
+            <li class="" data-nav-id="/learn/ai/fundamentals/index.html"><a class="padding" href="/learn/ai/fundamentals/index.html">Fundamentals for the AI Era</a></li>
+            <li class="" data-nav-id="/learn/ai/agentic-graphs/index.html"><a class="padding" href="/learn/ai/agentic-graphs/index.html">Agentic Graphs</a></li>
+            <li class="" data-nav-id="/learn/ai/harnesses-and-loops/index.html"><a class="padding" href="/learn/ai/harnesses-and-loops/index.html">Harnesses &amp; the Agent Loop</a></li>
+            <li class="active " data-nav-id="/learn/ai/knowledge-bases/index.html"><a class="padding" href="/learn/ai/knowledge-bases/index.html">Knowledge Bases as Agent Context</a></li>
+            <li class="" data-nav-id="/learn/ai/blue-and-red/index.html"><a class="padding" href="/learn/ai/blue-and-red/index.html">AI on Both Sides</a></li></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/specializations/index.html"><a class="padding default-animation" href="/learn/specializations/index.html">Specializations</a><ul id="R-subsections-76b8bdc5bdb02d450cc67abb8c740f83" class="collapsible-menu"></ul></li></ul></li>
+            <li class="" data-nav-id="/compete/index.html"><a class="padding default-animation" href="/compete/index.html">Compete</a><ul id="R-subsections-0e95d5e51c13d68d27ee0bb3e33f50b7" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/lab/index.html"><a class="padding default-animation" href="/lab/index.html">Club Lab</a><ul id="R-subsections-3267a40151b19e3e3f8d4c8a3edf34ee" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/projects/index.html"><a class="padding" href="/projects/index.html">Projects &amp; Guides</a></li>
+            <li class="" data-nav-id="/toolbox/index.html"><a class="padding default-animation" href="/toolbox/index.html">Toolbox</a><ul id="R-subsections-f7060c654e07bee22171d50d3d26bb46" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/meta/index.html"><a class="padding default-animation" href="/meta/index.html">Meta</a><ul id="R-subsections-2f839601009aa63e83121a533a314010" class="collapsible-menu"></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <div class="nav-title padding">Quick Links</div>
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="http://discord.gg/2Yun8WAUuy"><a class="padding" href="http://discord.gg/2Yun8WAUuy" rel="external"><i class='fab fa-fw fa-discord'></i> Discord</a></li>
+            <li class="" data-nav-id="https://github.com/dxcently/fau-cyber-security-club-wiki"><a class="padding" href="https://github.com/dxcently/fau-cyber-security-club-wiki" rel="external"><i class='fab fa-fw fa-github'></i> GitHub</a></li>
+            <li class="" data-nav-id="https://fau.campuslabs.com/engage/organization/cybersecurity"><a class="padding" href="https://fau.campuslabs.com/engage/organization/cybersecurity" rel="external"><i class='fa-solid fa-school-flag'></i> Owl Central</a></li>
+            <li class="" data-nav-id="mailto:csc@fau.edu"><a class="padding" href="mailto:csc@fau.edu" rel="external"><i class='fa-solid fa-envelope'></i> csc@fau.edu</a></li>
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-hacker" value="hacker" selected>Dark</option>
+                    <option id="R-select-variant-hacker-light" value="hacker-light">Light</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1787990815" defer></script>
+    <script src="/js/theme.min.js?1787990815" defer></script>
+
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

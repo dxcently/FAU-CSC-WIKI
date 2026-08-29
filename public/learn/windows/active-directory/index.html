@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html id="R-html" lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.164.0">
+    <meta name="generator" content="Relearn 9.0.3+dd4f8457f5143e91eae3954813494d2b0cc6741c">
+    <meta name="description" content="How Active Directory organizes an enterprise network, how Windows authentication works, and why Active Directory is the top target for attackers.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Active Directory :: FAU Cyber Security Club">
+    <meta name="twitter:description" content="How Active Directory organizes an enterprise network, how Windows authentication works, and why Active Directory is the top target for attackers.">
+    <meta property="og:url" content="https://example.org/learn/windows/active-directory/index.html">
+    <meta property="og:site_name" content="FAU Cyber Security Club">
+    <meta property="og:title" content="Active Directory :: FAU Cyber Security Club">
+    <meta property="og:description" content="How Active Directory organizes an enterprise network, how Windows authentication works, and why Active Directory is the top target for attackers.">
+    <meta property="og:locale" content="en_us">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Learn">
+    <meta itemprop="name" content="Active Directory :: FAU Cyber Security Club">
+    <meta itemprop="description" content="How Active Directory organizes an enterprise network, how Windows authentication works, and why Active Directory is the top target for attackers.">
+    <meta itemprop="wordCount" content="1813">
+    <title>Active Directory :: FAU Cyber Security Club</title>
+    <link href="/images/logo.svg?1787990815" rel="icon" type="image/svg+xml">
+    <link href="/css/auto-complete/auto-complete.min.css?1787990815" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1787990815" defer></script>
+    <script src="/js/search-lunr.min.js?1787990815" defer></script>
+    <script src="/js/search.min.js?1787990815" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.en.js?1787990815";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1787990815" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="/fonts/fontawesome/css/all.min.css?1787990815" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/all.min.css?1787990815" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1787990815" rel="stylesheet">
+    <link href="/css/theme.min.css?1787990815" rel="stylesheet">
+    <link href="/css/format-html.min.css?1787990815" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/learn\/windows\/active-directory\/index.html';
+      window.relearn.relBasePath='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/example.org';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'hacker', 'hacker-light' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="/css/custom.css?1787990815" rel="stylesheet">
+    <script src="/js/custom.js?1787990815" defer></script>
+  </head>
+  <body class="mobile-support html" data-origin="/learn/windows/active-directory/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#the-building-blocks">The Building Blocks</a>
+      <ul>
+        <li><a href="#domain">Domain</a></li>
+        <li><a href="#domain-controller">Domain Controller</a></li>
+        <li><a href="#forest">Forest</a></li>
+        <li><a href="#organizational-unit-ou">Organizational Unit (OU)</a></li>
+      </ul>
+    </li>
+    <li><a href="#objects-users-computers-groups">Objects: Users, Computers, Groups</a></li>
+    <li><a href="#kerberos-how-login-actually-works">Kerberos: How Login Actually Works</a></li>
+    <li><a href="#why-active-directory-is-the-crown-jewel">Why Active Directory Is the Crown Jewel</a>
+      <ul>
+        <li><a href="#credential-theft">Credential Theft</a></li>
+        <li><a href="#lateral-movement">Lateral Movement</a></li>
+        <li><a href="#privilege-escalation-paths">Privilege Escalation Paths</a></li>
+        <li><a href="#why-domain-admin-is-the-goal">Why Domain Admin Is the Goal</a></li>
+      </ul>
+    </li>
+    <li><a href="#practice-this-safely">Practice This Safely</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">FAU Cyber Security Club</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/learn/index.html"><span itemprop="name">Learn</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/learn/windows/index.html"><span itemprop="name">Windows &amp; Active Directory</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Active Directory</span><meta itemprop="position" content="4"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-variant wf-variant-toggle default-animation" data-content-empty="show" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle"><span><i class="fa-fw fas fa-circle-half-stroke"></i></span></span>
+            </div>
+
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/learn/windows/powershell/index.html" title="PowerShell (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/learn/windows/group-policy/index.html" title="Group Policy & Policy Configuration (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable learn" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="active-directory">Active Directory</h1>
+
+<p>Active Directory is the directory service that runs most corporate and school networks. It is one central system that tracks every user, every computer, and who is allowed to do what. Log into a work laptop, print to a shared printer, or open a file on a network drive — Active Directory is usually the thing that made that possible.</p>
+<p>This page covers the core objects, how authentication actually works, and why Active Directory is the single highest-value target on any enterprise network — explained so you can recognize and defend the paths attackers take, not so you can walk them against a system you don&rsquo;t own.</p>
+<hr>
+<h2 id="the-building-blocks">The Building Blocks<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Four words carry almost all of the concept. Get these, and Active Directory stops looking like alphabet soup.</p>
+<h3 id="domain">Domain<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>A <strong>domain</strong> is one administrative unit — one set of users, computers, and policies, managed together under a shared name like <code>corp.local</code>. Think of it as one company&rsquo;s entire network, organized under a single roof. Everything else in this page happens inside a domain.</p>
+<h3 id="domain-controller">Domain Controller<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>A <strong>domain controller</strong> (DC) is the server that holds the actual Active Directory database and answers login requests for the domain. Every domain has at least one. When a user logs into any computer in the domain, that computer asks the domain controller: &ldquo;is this password correct, and what is this user allowed to do?&rdquo;</p>
+<p>The domain controller is the most important machine on the network. If an attacker fully controls a domain controller, they control the domain — every account, every password hash, every computer that trusts it.</p>
+<h3 id="forest">Forest<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>A <strong>forest</strong> is a collection of one or more domains that trust each other and share a common structure. A small organization might run one domain in one forest. A large university or corporation might run several domains — one per department or region — all inside the same forest. You do not need to go deeper than this for now: know that a forest is the container domains live inside, and that trust between domains in the same forest is usually automatic.</p>
+<h3 id="organizational-unit-ou">Organizational Unit (OU)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>An <strong>organizational unit</strong> (OU) is a folder inside the domain used to organize users and computers — for example, an &ldquo;Accounting&rdquo; OU and an &ldquo;IT&rdquo; OU, each with different rules applied to it. OUs exist so an administrator can apply different settings to different groups of machines or people without touching the whole domain at once. <a href="/learn/windows/group-policy/index.html">Group Policy &amp; Policy Configuration</a> covers exactly how those settings get applied through OUs.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Term</th>
+					<th>Plain-English answer to &ldquo;what is it&rdquo;</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Domain</td>
+					<td>One company&rsquo;s network, managed as a unit</td>
+			</tr>
+			<tr>
+					<td>Domain Controller</td>
+					<td>The server that checks logins for the domain</td>
+			</tr>
+			<tr>
+					<td>Forest</td>
+					<td>A group of domains that trust each other</td>
+			</tr>
+			<tr>
+					<td>OU</td>
+					<td>A folder for organizing users and computers inside a domain</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="objects-users-computers-groups">Objects: Users, Computers, Groups<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Everything Active Directory tracks is an <strong>object</strong> — a record in the directory with a name and a set of properties. Three object types matter most.</p>
+<ul>
+<li><strong>User objects</strong> represent a person: a username, a password hash, group memberships, and account settings like whether the account is disabled.</li>
+<li><strong>Computer objects</strong> represent a machine joined to the domain. Every domain-joined computer has its own object and its own set of credentials, separate from any user.</li>
+<li><strong>Group objects</strong> are collections of users or computers, used to grant permissions in bulk instead of one account at a time. Add a user to the &ldquo;Domain Admins&rdquo; group, and that user inherits every permission the group carries — full administrative control over the domain.</li>
+</ul>
+<p>Managing permission through group membership instead of per-user settings is the entire point of Active Directory. Grant access to a group once, add and remove members as people join or leave, and you never touch the underlying permission again. It also means a single misconfigured group can quietly hand out far more access than anyone intended — a recurring theme in real-world Active Directory compromises.</p>
+<hr>
+<h2 id="kerberos-how-login-actually-works">Kerberos: How Login Actually Works<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p><strong>Kerberos</strong> is the authentication protocol Active Directory uses to verify who you are and what you&rsquo;re allowed to touch, without sending your password across the network every time you access something.</p>
+<p>The core idea is a <strong>ticket</strong>: proof that you already proved your identity once, so you don&rsquo;t have to prove it again for every single request. Here is the plain version of the flow:</p>
+<ol>
+<li>You log in. Your computer proves your identity to the domain controller one time, using your password.</li>
+<li>The domain controller hands back a <strong>Ticket Granting Ticket</strong> (TGT) — a signed token that says &ldquo;this user already authenticated successfully,&rdquo; valid for a limited time.</li>
+<li>When you want to access something — a file server, a printer, an application — your computer shows the TGT to the domain controller and asks for a <strong>service ticket</strong> for that specific resource.</li>
+<li>The domain controller issues a service ticket. You hand that ticket to the file server, the file server trusts it because it trusts the domain controller, and you&rsquo;re in.</li>
+</ol>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>You            Domain Controller         File Server
+ |  1. login (password)   |                    |
+ |------------------------&gt;|                    |
+ |  2. TGT issued          |                    |
+ |&lt;------------------------|                    |
+ |  3. &#34;give me a ticket for the file server&#34;    |
+ |------------------------&gt;|                    |
+ |  4. service ticket issued                     |
+ |&lt;------------------------|                    |
+ |  5. present service ticket                    |
+ |-----------------------------------------------&gt;|
+ |  6. access granted                             |
+ |&lt;-----------------------------------------------|</code></pre></div>
+<p>Why go through all this instead of just sending your password every time? Two reasons. Your actual password never travels across the network after the initial login, which limits how often it can be intercepted. And tickets expire, so a stolen ticket is only useful for a limited window — unlike a stolen password, which stays useful until someone changes it.</p>
+<p>This is also exactly why tickets are worth stealing. A ticket is portable proof of identity. Steal one, and for as long as it stays valid, you can act as the user it belongs to without ever knowing their password. That single fact underpins most of the attack concepts below.</p>
+<hr>
+<h2 id="why-active-directory-is-the-crown-jewel">Why Active Directory Is the Crown Jewel<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Compromise one laptop, and an attacker has one laptop. Compromise Active Directory, and an attacker has the entire domain — every account, every server, every file share that domain controls. That difference in scale is why Active Directory is the number one target in almost every real intrusion that goes beyond a single machine, and why &ldquo;Domain Admin&rdquo; — membership in the group with unrestricted control over the domain — is the standard end goal attackers work toward once they have a foothold.</p>
+<p>Understanding the shape of that path is defensive knowledge. You cannot recognize an intrusion in progress, or design a network that resists one, if you have never seen how these pieces connect.</p>
+<h3 id="credential-theft">Credential Theft<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Once an attacker has any foothold on a domain-joined machine, they look for credentials sitting in memory, in configuration files, or cached from a previous login. Windows keeps authentication material available in memory so users don&rsquo;t have to re-enter passwords constantly — useful for legitimate logins, and just as useful to whoever gets local access to that memory first. This is why limiting who has administrative rights on any given machine matters: a low-privilege foothold on a box where a domain admin recently logged in can be far more dangerous than it looks.</p>
+<p>Two named techniques come up constantly in this space, worth recognizing by name even at a purely conceptual level. <strong>Pass-the-hash</strong> is using a stolen password hash directly to authenticate, without ever cracking it back into the plaintext password. <strong>Kerberoasting</strong> targets service accounts specifically: any authenticated user can request a service ticket for any service in the domain, and that ticket is encrypted with the service account&rsquo;s password hash — so an attacker requests a batch of these tickets, takes them off-network, and tries to crack the hash at their own pace. Both are reasons weak service-account passwords and standing local-admin credentials are treated as serious findings during a security review, not cosmetic ones.</p>
+<h3 id="lateral-movement">Lateral Movement<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Lateral movement</strong> is using one compromised machine or account to reach another one, spreading sideways across the network instead of just digging deeper into the first box. A stolen set of credentials or a stolen Kerberos ticket, valid on one machine, is often valid on several others — especially where the same local administrator account is reused across many computers, a common and avoidable misconfiguration.</p>
+<h3 id="privilege-escalation-paths">Privilege Escalation Paths<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Active Directory permissions are complex, and complexity hides mistakes. A <strong>privilege escalation path</strong> is a chain of ordinary-looking misconfigurations — a user with rights to reset another user&rsquo;s password, a group nested inside another group, a service account with excessive permissions — that, strung together, lead from a low-privilege account all the way to Domain Admin. No single step looks alarming on its own. That is exactly why these paths are dangerous and why security teams map them proactively, looking for the chain before an attacker finds it first.</p>
+<h3 id="why-domain-admin-is-the-goal">Why Domain Admin Is the Goal<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Domain Admin means unrestricted control over every user, computer, and policy in the domain — the practical end state of a full compromise. Once an attacker holds it, they can create new accounts, disable security tooling, and access anything the domain touches. Defending Active Directory means treating every step on the way to Domain Admin as worth stopping, not just the last one.</p>
+<p>Do not confuse this with the <strong>local Administrator</strong> account. Local Administrator controls one machine. Domain Admin controls every machine in the domain at once. An attacker with local admin on your laptop has your laptop. An attacker with Domain Admin has the company.</p>
+<hr>
+<h2 id="practice-this-safely">Practice This Safely<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Everything above is a map, not a set of instructions. Do not attempt any of these concepts against a network you do not own or are not explicitly authorized to test — that includes any FAU network, any club member&rsquo;s machine, and anything else outside a lab you built yourself.</p>
+<p>The right way to learn this hands-on: build a small lab domain as described in <a href="/learn/windows/index.html">Windows &amp; Active Directory</a>, with one domain controller and one or two joined machines, all inside virtual machines you control. Practice detection and defense in that lab — set up logging, watch how normal authentication looks in the event log, and only then look at what an attack path looks like from the defender&rsquo;s chair. Platforms built specifically for this, like a dedicated Active Directory attack lab range, are a safer and more structured next step than improvising against your own lab once you&rsquo;re past the basics.</p>
+
+<details open class="box cstyle notices info">
+  <summary class="box-label" tabindex="-1">
+    <i class="fa-fw fas fa-info-circle"></i> 
+    How the Club Uses This
+  </summary>
+  <div class="box-content">
+<p>TODO: Add how FAU CSC uses this in practice — the club&rsquo;s lab domain setup, CCDC AD scenarios, walkthroughs the team has done.</p>
+  </div>
+</details>
+<hr>
+<p><strong>References</strong></p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview" rel="external">Active Directory Domain Services Overview — Microsoft</a></li>
+<li><a href="https://learn.microsoft.com/en-us/windows-server/security/kerberos/kerberos-authentication-overview" rel="external">How the Kerberos Version 5 Authentication Protocol Works — Microsoft</a></li>
+<li><a href="https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/understand-security-groups" rel="external">Active Directory Security Groups — Microsoft</a></li>
+<li><a href="https://attack.mitre.org/tactics/TA0008/" rel="external">MITRE ATT&amp;CK — Lateral Movement</a></li>
+<li><a href="https://attack.mitre.org/tactics/TA0006/" rel="external">MITRE ATT&amp;CK — Credential Access</a></li>
+</ul>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+<a id="R-logo" class="R-default direction-row" href="/index.html">
+  <span class="logo-image default-animation">
+    <img class="wf-logo__dark"  src="/images/logo.svg" alt="" aria-hidden="true">
+    <img class="wf-logo__light" src="/images/shield-light.svg" alt="" aria-hidden="true">
+  </span>
+  <span class="logo-title default-animation">FAU Cyber Security Club</span>
+</a>
+
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-home default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/start/index.html"><a class="padding" href="/start/index.html">New?</a></li>
+            <li class="parent " data-nav-id="/learn/index.html"><a class="padding default-animation" href="/learn/index.html">Learn</a><ul id="R-subsections-3043ad09e1e54c6b49d9aa6fbb58ab0f" class="collapsible-menu">
+            <li class="alwaysopen " data-nav-id="/learn/virtual-machines/index.html"><a class="padding default-animation" href="/learn/virtual-machines/index.html">Virtual Machines</a><ul id="R-subsections-59f5ccd870c4fc03abd9b69640874a1f" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/linux/index.html"><a class="padding default-animation" href="/learn/linux/index.html">Linux</a><ul id="R-subsections-13cee4e8a99446dc8ebb7de89edd082b" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/networking/index.html"><a class="padding default-animation" href="/learn/networking/index.html">Networking</a><ul id="R-subsections-cf6bef6447ee5c4a2443556071838940" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/cli-scripting/index.html"><a class="padding default-animation" href="/learn/cli-scripting/index.html">CLI &amp; Scripting</a><ul id="R-subsections-25bc0dbb515bc17b3dae2198fc35e410" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/web-fundamentals/index.html"><a class="padding default-animation" href="/learn/web-fundamentals/index.html">Web &amp; System Fundamentals</a><ul id="R-subsections-059cbefc7865f445f16aa5723b8e5634" class="collapsible-menu"></ul></li>
+            <li class="parent alwaysopen " data-nav-id="/learn/windows/index.html"><a class="padding default-animation" href="/learn/windows/index.html">Windows &amp; Active Directory</a><ul id="R-subsections-a730549f2efa4d1e274d14685feab8eb" class="collapsible-menu">
+            <li class="" data-nav-id="/learn/windows/powershell/index.html"><a class="padding" href="/learn/windows/powershell/index.html">PowerShell</a></li>
+            <li class="active " data-nav-id="/learn/windows/active-directory/index.html"><a class="padding" href="/learn/windows/active-directory/index.html">Active Directory</a></li>
+            <li class="" data-nav-id="/learn/windows/group-policy/index.html"><a class="padding" href="/learn/windows/group-policy/index.html">Group Policy &amp; Policy Configuration</a></li></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/cryptography/index.html"><a class="padding default-animation" href="/learn/cryptography/index.html">Cryptography</a><ul id="R-subsections-39d0a9d11822e4379c1887dd88fcd860" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/ai/index.html"><a class="padding default-animation" href="/learn/ai/index.html">AI</a><ul id="R-subsections-501934f4c83e2c1d7165e75c44f96956" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/specializations/index.html"><a class="padding default-animation" href="/learn/specializations/index.html">Specializations</a><ul id="R-subsections-76b8bdc5bdb02d450cc67abb8c740f83" class="collapsible-menu"></ul></li></ul></li>
+            <li class="" data-nav-id="/compete/index.html"><a class="padding default-animation" href="/compete/index.html">Compete</a><ul id="R-subsections-0e95d5e51c13d68d27ee0bb3e33f50b7" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/lab/index.html"><a class="padding default-animation" href="/lab/index.html">Club Lab</a><ul id="R-subsections-3267a40151b19e3e3f8d4c8a3edf34ee" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/projects/index.html"><a class="padding" href="/projects/index.html">Projects &amp; Guides</a></li>
+            <li class="" data-nav-id="/toolbox/index.html"><a class="padding default-animation" href="/toolbox/index.html">Toolbox</a><ul id="R-subsections-f7060c654e07bee22171d50d3d26bb46" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/meta/index.html"><a class="padding default-animation" href="/meta/index.html">Meta</a><ul id="R-subsections-2f839601009aa63e83121a533a314010" class="collapsible-menu"></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <div class="nav-title padding">Quick Links</div>
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="http://discord.gg/2Yun8WAUuy"><a class="padding" href="http://discord.gg/2Yun8WAUuy" rel="external"><i class='fab fa-fw fa-discord'></i> Discord</a></li>
+            <li class="" data-nav-id="https://github.com/dxcently/fau-cyber-security-club-wiki"><a class="padding" href="https://github.com/dxcently/fau-cyber-security-club-wiki" rel="external"><i class='fab fa-fw fa-github'></i> GitHub</a></li>
+            <li class="" data-nav-id="https://fau.campuslabs.com/engage/organization/cybersecurity"><a class="padding" href="https://fau.campuslabs.com/engage/organization/cybersecurity" rel="external"><i class='fa-solid fa-school-flag'></i> Owl Central</a></li>
+            <li class="" data-nav-id="mailto:csc@fau.edu"><a class="padding" href="mailto:csc@fau.edu" rel="external"><i class='fa-solid fa-envelope'></i> csc@fau.edu</a></li>
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-hacker" value="hacker" selected>Dark</option>
+                    <option id="R-select-variant-hacker-light" value="hacker-light">Light</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1787990815" defer></script>
+    <script src="/js/theme.min.js?1787990815" defer></script>
+
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

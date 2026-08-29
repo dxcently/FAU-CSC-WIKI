@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html id="R-html" lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.164.0">
+    <meta name="generator" content="Relearn 9.0.3+dd4f8457f5143e91eae3954813494d2b0cc6741c">
+    <meta name="description" content="How Group Policy pushes configuration to every machine in a domain, and why it decides most CCDC and CyberPatriot scores.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Group Policy &amp; Policy Configuration :: FAU Cyber Security Club">
+    <meta name="twitter:description" content="How Group Policy pushes configuration to every machine in a domain, and why it decides most CCDC and CyberPatriot scores.">
+    <meta property="og:url" content="https://example.org/learn/windows/group-policy/index.html">
+    <meta property="og:site_name" content="FAU Cyber Security Club">
+    <meta property="og:title" content="Group Policy &amp; Policy Configuration :: FAU Cyber Security Club">
+    <meta property="og:description" content="How Group Policy pushes configuration to every machine in a domain, and why it decides most CCDC and CyberPatriot scores.">
+    <meta property="og:locale" content="en_us">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Learn">
+    <meta itemprop="name" content="Group Policy &amp; Policy Configuration :: FAU Cyber Security Club">
+    <meta itemprop="description" content="How Group Policy pushes configuration to every machine in a domain, and why it decides most CCDC and CyberPatriot scores.">
+    <meta itemprop="wordCount" content="1341">
+    <title>Group Policy &amp; Policy Configuration :: FAU Cyber Security Club</title>
+    <link href="/images/logo.svg?1787990815" rel="icon" type="image/svg+xml">
+    <link href="/css/auto-complete/auto-complete.min.css?1787990815" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1787990815" defer></script>
+    <script src="/js/search-lunr.min.js?1787990815" defer></script>
+    <script src="/js/search.min.js?1787990815" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.en.js?1787990815";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1787990815" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="/fonts/fontawesome/css/all.min.css?1787990815" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/all.min.css?1787990815" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1787990815" rel="stylesheet">
+    <link href="/css/theme.min.css?1787990815" rel="stylesheet">
+    <link href="/css/format-html.min.css?1787990815" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/learn\/windows\/group-policy\/index.html';
+      window.relearn.relBasePath='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/example.org';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'hacker', 'hacker-light' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="/css/custom.css?1787990815" rel="stylesheet">
+    <script src="/js/custom.js?1787990815" defer></script>
+  </head>
+  <body class="mobile-support html" data-origin="/learn/windows/group-policy/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#what-a-gpo-is">What a GPO Is</a></li>
+    <li><a href="#what-group-policy-can-enforce">What Group Policy Can Enforce</a></li>
+    <li><a href="#how-policy-applies-order-matters">How Policy Applies: Order Matters</a></li>
+    <li><a href="#security-baselines-and-hardening-benchmarks">Security Baselines and Hardening Benchmarks</a></li>
+    <li><a href="#why-this-is-most-of-ccdc-and-cyberpatriot">Why This Is Most of CCDC and CyberPatriot</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">FAU Cyber Security Club</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/learn/index.html"><span itemprop="name">Learn</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/learn/windows/index.html"><span itemprop="name">Windows &amp; Active Directory</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Group Policy &amp; Policy Configuration</span><meta itemprop="position" content="4"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-variant wf-variant-toggle default-animation" data-content-empty="show" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle"><span><i class="fa-fw fas fa-circle-half-stroke"></i></span></span>
+            </div>
+
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/learn/windows/active-directory/index.html" title="Active Directory (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/learn/cryptography/index.html" title="Cryptography (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable learn" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="group-policy--policy-configuration">Group Policy &amp; Policy Configuration</h1>
+
+<p>You do not walk around to a thousand computers and configure each one by hand. In Active Directory, you configure a setting once, and Group Policy pushes it to every machine that should have it — automatically, and on an ongoing basis.</p>
+<p>This page covers what Group Policy can enforce, how it decides which settings win when several apply at once, what a security baseline is, and why so much of CCDC and CyberPatriot scoring comes down to this one topic.</p>
+<hr>
+<h2 id="what-a-gpo-is">What a GPO Is<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>A <strong>Group Policy Object</strong> (GPO) is a named bundle of settings — think of it as a rulebook. You build a GPO once, then link it to a domain, a site, or an <a href="/learn/windows/active-directory/index.html#organizational-unit-ou">organizational unit</a>, and every computer or user inside that scope picks up the rules automatically the next time policy refreshes.</p>
+<p>Windows refreshes policy on a regular interval on its own, and also whenever a computer restarts or a user logs in. You do not have to touch each machine again after the GPO is linked — that is the entire value of the system. Change the GPO once, and every machine in scope gets the update on its next refresh.</p>
+<p>On a machine in your lab domain, you do not have to wait for the automatic refresh to see a change take effect. Running <code>gpupdate /force</code> from an elevated PowerShell or Command Prompt session tells that machine to pull the latest policy immediately — the standard way to test a GPO change without waiting or rebooting.</p>
+<hr>
+<h2 id="what-group-policy-can-enforce">What Group Policy Can Enforce<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Group Policy&rsquo;s reach is enormous — thousands of individual settings — but almost all of it falls into a handful of categories that matter for security work.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Category</th>
+					<th>What it controls</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>Password policy</strong></td>
+					<td>Minimum length, complexity requirements, how often passwords must change</td>
+			</tr>
+			<tr>
+					<td><strong>Account lockout policy</strong></td>
+					<td>How many failed login attempts before an account locks, and for how long</td>
+			</tr>
+			<tr>
+					<td><strong>Audit policy</strong></td>
+					<td>Which events get written to the security log — logins, file access, privilege use</td>
+			</tr>
+			<tr>
+					<td><strong>Service configuration</strong></td>
+					<td>Which services are allowed to run, and how they start</td>
+			</tr>
+			<tr>
+					<td><strong>Software restriction</strong></td>
+					<td>Which applications are allowed to run at all</td>
+			</tr>
+			<tr>
+					<td><strong>User rights assignment</strong></td>
+					<td>Who can log in locally, log in over the network, or log in as a service</td>
+			</tr>
+	</tbody>
+</table>
+<p>A weak password policy is not a small thing. Set the minimum length too low, or skip complexity requirements, and every account in the domain becomes easier to guess or crack the moment an attacker gets a copy of the password hashes. Audit policy is just as easy to get wrong in the other direction: log too little, and there is nothing to look at after an incident; log too much, and the important events drown in noise.</p>
+<p>Every GPO is split into two halves: <strong>Computer Configuration</strong> and <strong>User Configuration</strong>. Computer Configuration settings apply to the machine itself, regardless of who logs in — service configuration and most security settings live here. User Configuration settings follow the person, applying no matter which domain-joined machine they log into — things like desktop restrictions. Knowing which half a setting belongs to explains a lot of &ldquo;why didn&rsquo;t this apply&rdquo; confusion: a Computer Configuration setting linked to an OU full of user accounts, with no computers in it, will never take effect, because there are no computers in scope to apply it to.</p>
+<hr>
+<h2 id="how-policy-applies-order-matters">How Policy Applies: Order Matters<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>A computer can be in scope for more than one GPO at once — one linked to the whole domain, another linked to its specific OU. When two GPOs disagree on the same setting, Windows needs a rule for which one wins.</p>
+<p>The short version, in the order policy applies:</p>
+<ol>
+<li><strong>Local policy</strong> on the machine itself applies first.</li>
+<li><strong>Site-linked</strong> GPOs apply next.</li>
+<li><strong>Domain-linked</strong> GPOs apply after that.</li>
+<li><strong>OU-linked</strong> GPOs apply last, and closer OUs override further ones.</li>
+</ol>
+<p>Later always beats earlier. This is usually shortened to <strong>LSDOU</strong> (Local, Site, Domain, OU) as a memory aid, not a term you need to recite — the idea that matters is: the more specific the scope, the more power it has to override something broader. A domain-wide password policy can be tightened further for one sensitive OU, and that OU&rsquo;s setting wins for the machines inside it.</p>
+<p>There is one important exception worth knowing exists: an administrator can mark a GPO setting so nothing more specific is allowed to override it, forcing that setting to apply everywhere regardless of what a closer-scoped GPO says. You will not need this on day one. Know that it exists so a setting that &ldquo;should have&rdquo; been overridden and wasn&rsquo;t makes sense later.</p>
+<p><strong>A worked example.</strong> Say the domain-wide GPO sets minimum password length to 8 characters, and a separate GPO linked to the &ldquo;IT&rdquo; OU sets it to 14 characters. A user account inside the IT OU is in scope for both. Because OU-linked policy applies last and wins, that user&rsquo;s real minimum is 14 — the domain-wide 8 still applies to everyone outside the IT OU. Nothing was deleted or broken; the more specific rule simply took precedence, exactly as designed.</p>
+<hr>
+<h2 id="security-baselines-and-hardening-benchmarks">Security Baselines and Hardening Benchmarks<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Figuring out the right value for every setting from scratch, for an entire domain, is not a reasonable task for one person. That is what a <strong>security baseline</strong> is for: a pre-built, vetted set of policy settings, published by an organization that has already done the work of deciding what &ldquo;reasonably secure&rdquo; looks like for a given system.</p>
+<p>The best-known example is the <strong>CIS Benchmarks</strong>, published by the Center for Internet Security — a free, detailed document for each major operating system that lists every setting worth locking down, why it matters, and what value to set it to. Microsoft publishes its own baselines too, built specifically for Group Policy, that you can import directly instead of configuring thousands of individual settings by hand.</p>
+<p>Using a published baseline instead of guessing matters for two reasons. It has been reviewed by people who do this professionally, and it saves you from having to independently research thousands of settings. Start from a baseline, then adjust the handful of settings that do not fit your specific environment — do not start from a blank GPO and improvise.</p>
+<p>A small taste of what a baseline actually recommends, to make the idea concrete:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Setting</th>
+					<th>A typical baseline value</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Minimum password length</td>
+					<td>14 characters</td>
+			</tr>
+			<tr>
+					<td>Account lockout threshold</td>
+					<td>10 invalid attempts</td>
+			</tr>
+			<tr>
+					<td>Audit logon events</td>
+					<td>Success and failure</td>
+			</tr>
+			<tr>
+					<td>Guest account</td>
+					<td>Disabled</td>
+			</tr>
+			<tr>
+					<td>Anonymous SID/name translation</td>
+					<td>Disabled</td>
+			</tr>
+	</tbody>
+</table>
+<p>None of these numbers are magic. They are defaults a professional body arrived at after reviewing real attack data. Apply the baseline, understand why each setting exists, and only deviate from it once you have a specific reason to.</p>
+<hr>
+<h2 id="why-this-is-most-of-ccdc-and-cyberpatriot">Why This Is Most of CCDC and CyberPatriot<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Both major club competitions score defense largely by asking one question over and over: <strong>is this setting configured correctly?</strong></p>
+<p>CyberPatriot hands you a Windows image with a list of intentional misconfigurations and vulnerabilities baked in, and scores you automatically as you find and fix them — weak passwords, unnecessary services running, missing audit settings, the works. CCDC does the same thing at the scale of a whole network, live, while a professional red team actively tries to break back in through anything you missed. In both cases, a huge share of the score is decided before the clock even starts moving fast: how much of your baseline hardening did you actually get right?</p>
+<p>This is why Group Policy is not a side topic. It is the practical mechanism behind most of what &ldquo;hardening a Windows network&rdquo; means in competition, and in a real job.</p>
+
+<details open class="box cstyle notices info">
+  <summary class="box-label" tabindex="-1">
+    <i class="fa-fw fas fa-info-circle"></i> 
+    How the Club Uses This
+  </summary>
+  <div class="box-content">
+<p>TODO: Add how FAU CSC uses this in practice — GPO templates the team has built, baseline checklists, CyberPatriot image walkthroughs.</p>
+  </div>
+</details>
+<hr>
+<p><strong>References</strong></p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/group-policy/group-policy-overview" rel="external">Group Policy Overview — Microsoft</a></li>
+<li><a href="https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/group-policy/core-group-policy-tools-and-settings" rel="external">How Core Group Policy Works — Microsoft</a></li>
+<li><a href="https://www.cisecurity.org/cis-benchmarks" rel="external">CIS Benchmarks</a> — free hardening benchmarks for Windows and most major platforms</li>
+<li><a href="https://learn.microsoft.com/en-us/windows/security/operating-system-security/device-management/windows-security-configuration-framework/security-compliance-toolkit-10" rel="external">Microsoft Security Compliance Toolkit</a> — Microsoft&rsquo;s own importable security baselines</li>
+<li><a href="https://www.uscyberpatriot.org/" rel="external">CyberPatriot</a> and <a href="https://www.nationalccdc.org/" rel="external">CCDC</a> — the competitions this page&rsquo;s scoring model refers to</li>
+</ul>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+<a id="R-logo" class="R-default direction-row" href="/index.html">
+  <span class="logo-image default-animation">
+    <img class="wf-logo__dark"  src="/images/logo.svg" alt="" aria-hidden="true">
+    <img class="wf-logo__light" src="/images/shield-light.svg" alt="" aria-hidden="true">
+  </span>
+  <span class="logo-title default-animation">FAU Cyber Security Club</span>
+</a>
+
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-home default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/start/index.html"><a class="padding" href="/start/index.html">New?</a></li>
+            <li class="parent " data-nav-id="/learn/index.html"><a class="padding default-animation" href="/learn/index.html">Learn</a><ul id="R-subsections-3043ad09e1e54c6b49d9aa6fbb58ab0f" class="collapsible-menu">
+            <li class="alwaysopen " data-nav-id="/learn/virtual-machines/index.html"><a class="padding default-animation" href="/learn/virtual-machines/index.html">Virtual Machines</a><ul id="R-subsections-59f5ccd870c4fc03abd9b69640874a1f" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/linux/index.html"><a class="padding default-animation" href="/learn/linux/index.html">Linux</a><ul id="R-subsections-13cee4e8a99446dc8ebb7de89edd082b" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/networking/index.html"><a class="padding default-animation" href="/learn/networking/index.html">Networking</a><ul id="R-subsections-cf6bef6447ee5c4a2443556071838940" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/cli-scripting/index.html"><a class="padding default-animation" href="/learn/cli-scripting/index.html">CLI &amp; Scripting</a><ul id="R-subsections-25bc0dbb515bc17b3dae2198fc35e410" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/web-fundamentals/index.html"><a class="padding default-animation" href="/learn/web-fundamentals/index.html">Web &amp; System Fundamentals</a><ul id="R-subsections-059cbefc7865f445f16aa5723b8e5634" class="collapsible-menu"></ul></li>
+            <li class="parent alwaysopen " data-nav-id="/learn/windows/index.html"><a class="padding default-animation" href="/learn/windows/index.html">Windows &amp; Active Directory</a><ul id="R-subsections-a730549f2efa4d1e274d14685feab8eb" class="collapsible-menu">
+            <li class="" data-nav-id="/learn/windows/powershell/index.html"><a class="padding" href="/learn/windows/powershell/index.html">PowerShell</a></li>
+            <li class="" data-nav-id="/learn/windows/active-directory/index.html"><a class="padding" href="/learn/windows/active-directory/index.html">Active Directory</a></li>
+            <li class="active " data-nav-id="/learn/windows/group-policy/index.html"><a class="padding" href="/learn/windows/group-policy/index.html">Group Policy &amp; Policy Configuration</a></li></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/cryptography/index.html"><a class="padding default-animation" href="/learn/cryptography/index.html">Cryptography</a><ul id="R-subsections-39d0a9d11822e4379c1887dd88fcd860" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/ai/index.html"><a class="padding default-animation" href="/learn/ai/index.html">AI</a><ul id="R-subsections-501934f4c83e2c1d7165e75c44f96956" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/specializations/index.html"><a class="padding default-animation" href="/learn/specializations/index.html">Specializations</a><ul id="R-subsections-76b8bdc5bdb02d450cc67abb8c740f83" class="collapsible-menu"></ul></li></ul></li>
+            <li class="" data-nav-id="/compete/index.html"><a class="padding default-animation" href="/compete/index.html">Compete</a><ul id="R-subsections-0e95d5e51c13d68d27ee0bb3e33f50b7" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/lab/index.html"><a class="padding default-animation" href="/lab/index.html">Club Lab</a><ul id="R-subsections-3267a40151b19e3e3f8d4c8a3edf34ee" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/projects/index.html"><a class="padding" href="/projects/index.html">Projects &amp; Guides</a></li>
+            <li class="" data-nav-id="/toolbox/index.html"><a class="padding default-animation" href="/toolbox/index.html">Toolbox</a><ul id="R-subsections-f7060c654e07bee22171d50d3d26bb46" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/meta/index.html"><a class="padding default-animation" href="/meta/index.html">Meta</a><ul id="R-subsections-2f839601009aa63e83121a533a314010" class="collapsible-menu"></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <div class="nav-title padding">Quick Links</div>
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="http://discord.gg/2Yun8WAUuy"><a class="padding" href="http://discord.gg/2Yun8WAUuy" rel="external"><i class='fab fa-fw fa-discord'></i> Discord</a></li>
+            <li class="" data-nav-id="https://github.com/dxcently/fau-cyber-security-club-wiki"><a class="padding" href="https://github.com/dxcently/fau-cyber-security-club-wiki" rel="external"><i class='fab fa-fw fa-github'></i> GitHub</a></li>
+            <li class="" data-nav-id="https://fau.campuslabs.com/engage/organization/cybersecurity"><a class="padding" href="https://fau.campuslabs.com/engage/organization/cybersecurity" rel="external"><i class='fa-solid fa-school-flag'></i> Owl Central</a></li>
+            <li class="" data-nav-id="mailto:csc@fau.edu"><a class="padding" href="mailto:csc@fau.edu" rel="external"><i class='fa-solid fa-envelope'></i> csc@fau.edu</a></li>
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-hacker" value="hacker" selected>Dark</option>
+                    <option id="R-select-variant-hacker-light" value="hacker-light">Light</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1787990815" defer></script>
+    <script src="/js/theme.min.js?1787990815" defer></script>
+
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

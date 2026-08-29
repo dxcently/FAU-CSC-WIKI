@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Past Competitions :: FAU Cyber Security Club</title>
+    <link>https://example.org/compete/archive/index.html</link>
+    <description>An archive of past club competitions with links to team repos and write-ups.</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://example.org/compete/archive/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2026 Cyber Patriot</title>
+      <link>https://example.org/compete/archive/2026-cyber-patriot/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/compete/archive/2026-cyber-patriot/index.html</guid>
+      <description>The club&#39;s CyberPatriot entry — hardening misconfigured Windows and Linux systems.</description>
+    </item>
+    <item>
+      <title>2026 CCDC</title>
+      <link>https://example.org/compete/archive/2026-ccdc/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/compete/archive/2026-ccdc/index.html</guid>
+      <description>The club&#39;s CCDC entry — defending a live network against a red team.</description>
+    </item>
+    <item>
+      <title>2026 eMERGE Hackathon — Project Scalpel</title>
+      <link>https://example.org/compete/archive/2026-emerge-hackathon/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/compete/archive/2026-emerge-hackathon/index.html</guid>
+      <description>The club&#39;s eMERGE hackathon entry, Project Scalpel — a Cowrie honeypot with an edge AI analysis layer.</description>
+    </item>
+  </channel>
+</rss>

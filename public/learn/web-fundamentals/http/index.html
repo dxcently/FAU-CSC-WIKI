@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html id="R-html" lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.164.0">
+    <meta name="generator" content="Relearn 9.0.3+dd4f8457f5143e91eae3954813494d2b0cc6741c">
+    <meta name="description" content="How HTTP requests and responses work, and why that matters for web security.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="HTTP :: FAU Cyber Security Club">
+    <meta name="twitter:description" content="How HTTP requests and responses work, and why that matters for web security.">
+    <meta property="og:url" content="https://example.org/learn/web-fundamentals/http/index.html">
+    <meta property="og:site_name" content="FAU Cyber Security Club">
+    <meta property="og:title" content="HTTP :: FAU Cyber Security Club">
+    <meta property="og:description" content="How HTTP requests and responses work, and why that matters for web security.">
+    <meta property="og:locale" content="en_us">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Learn">
+    <meta itemprop="name" content="HTTP :: FAU Cyber Security Club">
+    <meta itemprop="description" content="How HTTP requests and responses work, and why that matters for web security.">
+    <meta itemprop="wordCount" content="802">
+    <title>HTTP :: FAU Cyber Security Club</title>
+    <link href="/images/logo.svg?1787990815" rel="icon" type="image/svg+xml">
+    <link href="/css/auto-complete/auto-complete.min.css?1787990815" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1787990815" defer></script>
+    <script src="/js/search-lunr.min.js?1787990815" defer></script>
+    <script src="/js/search.min.js?1787990815" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.en.js?1787990815";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1787990815" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1787990815" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="/fonts/fontawesome/css/all.min.css?1787990815" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/all.min.css?1787990815" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1787990815" rel="stylesheet">
+    <link href="/css/theme.min.css?1787990815" rel="stylesheet">
+    <link href="/css/format-html.min.css?1787990815" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/learn\/web-fundamentals\/http\/index.html';
+      window.relearn.relBasePath='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/example.org';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'hacker', 'hacker-light' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="/css/custom.css?1787990815" rel="stylesheet">
+    <script src="/js/custom.js?1787990815" defer></script>
+  </head>
+  <body class="mobile-support html" data-origin="/learn/web-fundamentals/http/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#the-request-response-model">The Request-Response Model</a></li>
+    <li><a href="#http-methods">HTTP Methods</a></li>
+    <li><a href="#status-codes">Status Codes</a></li>
+    <li><a href="#headers">Headers</a></li>
+    <li><a href="#cookies-and-sessions">Cookies and Sessions</a></li>
+    <li><a href="#https-and-tls">HTTPS and TLS</a></li>
+    <li><a href="#inspecting-http-traffic">Inspecting HTTP Traffic</a></li>
+    <li><a href="#in-ctf-environments">In CTF Environments</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">FAU Cyber Security Club</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/learn/index.html"><span itemprop="name">Learn</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/learn/web-fundamentals/index.html"><span itemprop="name">Web &amp; System Fundamentals</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">HTTP</span><meta itemprop="position" content="4"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-variant wf-variant-toggle default-animation" data-content-empty="show" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle"><span><i class="fa-fw fas fa-circle-half-stroke"></i></span></span>
+            </div>
+
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/learn/web-fundamentals/index.html" title="Web & System Fundamentals (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/learn/web-fundamentals/system-concepts/index.html" title="System Concepts (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable learn" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="http">HTTP</h1>
+
+<p>HTTP is the protocol browsers and servers use to communicate. Understanding it is non-negotiable for web security — every web vulnerability lives in an HTTP request or response.</p>
+<hr>
+<h2 id="the-request-response-model">The Request-Response Model<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Every HTTP interaction is a request from a client and a response from a server. Both have a structure.</p>
+<p><strong>Request:</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>GET /login HTTP/1.1
+Host: example.com
+Cookie: session=abc123
+User-Agent: Mozilla/5.0</code></pre></div>
+<p><strong>Response:</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>HTTP/1.1 200 OK
+Content-Type: text/html
+Set-Cookie: session=xyz789
+
+&lt;html&gt;...&lt;/html&gt;</code></pre></div>
+<hr>
+<h2 id="http-methods">HTTP Methods<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<table>
+	<thead>
+			<tr>
+					<th>Method</th>
+					<th>What it does</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>GET</code></td>
+					<td>Retrieve a resource</td>
+			</tr>
+			<tr>
+					<td><code>POST</code></td>
+					<td>Submit data to the server</td>
+			</tr>
+			<tr>
+					<td><code>PUT</code></td>
+					<td>Replace a resource</td>
+			</tr>
+			<tr>
+					<td><code>PATCH</code></td>
+					<td>Partially update a resource</td>
+			</tr>
+			<tr>
+					<td><code>DELETE</code></td>
+					<td>Remove a resource</td>
+			</tr>
+			<tr>
+					<td><code>HEAD</code></td>
+					<td>GET but returns only headers</td>
+			</tr>
+			<tr>
+					<td><code>OPTIONS</code></td>
+					<td>Ask what methods are supported</td>
+			</tr>
+	</tbody>
+</table>
+<p>GET requests should never change state. POST, PUT, PATCH, DELETE should. When this rule is broken, bugs happen.</p>
+<hr>
+<h2 id="status-codes">Status Codes<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<table>
+	<thead>
+			<tr>
+					<th>Code</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>200 OK</code></td>
+					<td>Success</td>
+			</tr>
+			<tr>
+					<td><code>201 Created</code></td>
+					<td>Resource created</td>
+			</tr>
+			<tr>
+					<td><code>301 / 302</code></td>
+					<td>Redirect</td>
+			</tr>
+			<tr>
+					<td><code>400 Bad Request</code></td>
+					<td>Client sent garbage</td>
+			</tr>
+			<tr>
+					<td><code>401 Unauthorized</code></td>
+					<td>Not authenticated</td>
+			</tr>
+			<tr>
+					<td><code>403 Forbidden</code></td>
+					<td>Authenticated but no permission</td>
+			</tr>
+			<tr>
+					<td><code>404 Not Found</code></td>
+					<td>Resource does not exist</td>
+			</tr>
+			<tr>
+					<td><code>500 Internal Server Error</code></td>
+					<td>Server crashed</td>
+			</tr>
+	</tbody>
+</table>
+<p>The difference between <code>401</code> and <code>403</code> matters: <code>401</code> means &ldquo;log in first,&rdquo; <code>403</code> means &ldquo;you are logged in but not allowed.&rdquo; IDOR vulnerabilities often produce <code>403</code> but can be bypassed.</p>
+<hr>
+<h2 id="headers">Headers<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Headers are key-value pairs that carry metadata.</p>
+<p><strong>Common request headers:</strong></p>
+<table>
+	<thead>
+			<tr>
+					<th>Header</th>
+					<th>Purpose</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>Host</code></td>
+					<td>Which site you&rsquo;re requesting</td>
+			</tr>
+			<tr>
+					<td><code>Cookie</code></td>
+					<td>Session data</td>
+			</tr>
+			<tr>
+					<td><code>Authorization</code></td>
+					<td>Bearer tokens, Basic auth</td>
+			</tr>
+			<tr>
+					<td><code>Content-Type</code></td>
+					<td>Format of the request body</td>
+			</tr>
+			<tr>
+					<td><code>User-Agent</code></td>
+					<td>What client is making the request</td>
+			</tr>
+			<tr>
+					<td><code>Referer</code></td>
+					<td>Where the request came from</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>Common response headers:</strong></p>
+<table>
+	<thead>
+			<tr>
+					<th>Header</th>
+					<th>Purpose</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>Set-Cookie</code></td>
+					<td>Creates a cookie in the browser</td>
+			</tr>
+			<tr>
+					<td><code>Content-Type</code></td>
+					<td>Format of the response body</td>
+			</tr>
+			<tr>
+					<td><code>Location</code></td>
+					<td>URL to redirect to</td>
+			</tr>
+			<tr>
+					<td><code>Content-Security-Policy</code></td>
+					<td>Restricts where resources can be loaded from</td>
+			</tr>
+			<tr>
+					<td><code>X-Frame-Options</code></td>
+					<td>Prevents the page from being embedded in iframes</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="cookies-and-sessions">Cookies and Sessions<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>HTTP is stateless — each request has no memory of previous ones. Cookies solve this.</p>
+<ol>
+<li>You log in. Server sends <code>Set-Cookie: session=TOKEN</code>.</li>
+<li>Your browser stores the cookie.</li>
+<li>Every request after that includes <code>Cookie: session=TOKEN</code>.</li>
+<li>Server looks up the token and knows who you are.</li>
+</ol>
+<p><strong>Cookie flags that matter for security:</strong></p>
+<table>
+	<thead>
+			<tr>
+					<th>Flag</th>
+					<th>What it does</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>HttpOnly</code></td>
+					<td>JavaScript cannot access the cookie. Prevents XSS cookie theft.</td>
+			</tr>
+			<tr>
+					<td><code>Secure</code></td>
+					<td>Cookie only sent over HTTPS.</td>
+			</tr>
+			<tr>
+					<td><code>SameSite</code></td>
+					<td>Controls cross-site cookie behavior. Mitigates CSRF.</td>
+			</tr>
+	</tbody>
+</table>
+<p>Missing any of these flags is a finding in a security review.</p>
+<hr>
+<h2 id="https-and-tls">HTTPS and TLS<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>HTTPS is HTTP inside a TLS (Transport Layer Security) tunnel. The data is encrypted in transit.</p>
+<p>TLS does not mean the application is secure. It means your data cannot be read <em>between you and the server</em>. The server-side code can still be vulnerable to everything else.</p>
+<hr>
+<h2 id="inspecting-http-traffic">Inspecting HTTP Traffic<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li><strong>Browser DevTools</strong> (F12) → Network tab — see every request/response</li>
+<li><strong>Burp Suite</strong> — intercept and modify requests</li>
+<li><strong>curl</strong> — make requests from the terminal</li>
+<li><strong>mitmproxy</strong> — terminal-based intercepting proxy</li>
+</ul>
+<hr>
+<h2 id="in-ctf-environments">In CTF Environments<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Web CTF challenges live and die on your ability to read and manipulate HTTP. Burp Suite is the tool — it sits between your browser and the target and lets you intercept, modify, and replay every request.</p>
+<p><strong>Reading response headers for hints:</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Server headers often reveal the tech stack</span>
+</span></span><span class="line"><span class="cl">curl -I http://target.htb
+</span></span><span class="line"><span class="cl"><span class="c1"># Look for: Server, X-Powered-By, Set-Cookie names, custom headers</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># A header like X-Debug: true or X-Flag: ... is not unheard of</span></span></span></code></pre></div>
+<p><strong>Cookie manipulation — most common auth bypass pattern:</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get your cookie</span>
+</span></span><span class="line"><span class="cl">curl -c cookies.txt -X POST http://target.htb/login <span class="se">\
+</span></span></span><span class="line"><span class="cl">    -d <span class="s2">&#34;user=guest&amp;pass=guest&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Inspect what you got</span>
+</span></span><span class="line"><span class="cl">cat cookies.txt
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Replay with a modified cookie (change role=user to role=admin, etc.)</span>
+</span></span><span class="line"><span class="cl">curl -b <span class="s2">&#34;session=MODIFIED_TOKEN&#34;</span> http://target.htb/admin</span></span></code></pre></div>
+<p><strong>Status code map for web challenges:</strong></p>
+<ul>
+<li><code>403</code> on a path that exists → try method switching (<code>POST</code> instead of <code>GET</code>), different <code>Content-Type</code>, or removing auth headers entirely</li>
+<li><code>302</code> redirect → follow it with <code>-L</code> in curl, or intercept the redirect response itself in Burp (the body often contains the flag)</li>
+<li><code>500</code> → you triggered an error; push harder on the input that caused it</li>
+</ul>
+<p><strong>Checking what methods a server accepts:</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X OPTIONS http://target.htb/api/users -v
+</span></span><span class="line"><span class="cl"><span class="c1"># Look for the Allow: header in the response</span></span></span></code></pre></div>
+<p><strong>Replaying and fuzzing requests with curl:</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Test for IDOR — swap out a user ID</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> id in <span class="o">{</span>1..50<span class="o">}</span><span class="p">;</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">result</span><span class="o">=</span><span class="k">$(</span>curl -s -b <span class="s2">&#34;session=TOKEN&#34;</span> http://target.htb/api/user/<span class="nv">$id</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$id</span><span class="s2">: </span><span class="nv">$result</span><span class="s2">&#34;</span> <span class="p">|</span> grep -v <span class="s2">&#34;not found\|unauthorized&#34;</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&#34;HIT: </span><span class="nv">$id</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">done</span></span></span></code></pre></div>
+<p><strong>CCDC / hackathon — hardening HTTP response headers:</strong></p>
+<p>When you are on defense and own the web server, add these to your nginx or Apache config:</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>add_header X-Frame-Options &#34;DENY&#34;;
+add_header X-Content-Type-Options &#34;nosniff&#34;;
+add_header Content-Security-Policy &#34;default-src &#39;self&#39;&#34;;
+add_header Strict-Transport-Security &#34;max-age=31536000&#34;;</code></pre></div>
+<p>Missing these headers is a scored finding in CCDC-style competitions.</p>
+<hr>
+
+<details open class="box cstyle notices info">
+  <summary class="box-label" tabindex="-1">
+    <i class="fa-fw fas fa-info-circle"></i> 
+    How the Club Uses This
+  </summary>
+  <div class="box-content">
+<p>HTTP knowledge shows up in every web CTF challenge and in CCDC when defending web services. The pattern is always the same: intercept the request, understand what the server expects, and manipulate it.</p>
+  </div>
+</details>
+<hr>
+<p><strong>References</strong></p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP" rel="external">MDN HTTP docs</a></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc7230" rel="external">HTTP/1.1 spec (RFC 7230)</a></li>
+<li><a href="https://owasp.org/www-project-web-security-testing-guide/" rel="external">OWASP Testing Guide</a></li>
+</ul>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+<a id="R-logo" class="R-default direction-row" href="/index.html">
+  <span class="logo-image default-animation">
+    <img class="wf-logo__dark"  src="/images/logo.svg" alt="" aria-hidden="true">
+    <img class="wf-logo__light" src="/images/shield-light.svg" alt="" aria-hidden="true">
+  </span>
+  <span class="logo-title default-animation">FAU Cyber Security Club</span>
+</a>
+
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-home default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/start/index.html"><a class="padding" href="/start/index.html">New?</a></li>
+            <li class="parent " data-nav-id="/learn/index.html"><a class="padding default-animation" href="/learn/index.html">Learn</a><ul id="R-subsections-3043ad09e1e54c6b49d9aa6fbb58ab0f" class="collapsible-menu">
+            <li class="alwaysopen " data-nav-id="/learn/virtual-machines/index.html"><a class="padding default-animation" href="/learn/virtual-machines/index.html">Virtual Machines</a><ul id="R-subsections-59f5ccd870c4fc03abd9b69640874a1f" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/linux/index.html"><a class="padding default-animation" href="/learn/linux/index.html">Linux</a><ul id="R-subsections-13cee4e8a99446dc8ebb7de89edd082b" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/networking/index.html"><a class="padding default-animation" href="/learn/networking/index.html">Networking</a><ul id="R-subsections-cf6bef6447ee5c4a2443556071838940" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/cli-scripting/index.html"><a class="padding default-animation" href="/learn/cli-scripting/index.html">CLI &amp; Scripting</a><ul id="R-subsections-25bc0dbb515bc17b3dae2198fc35e410" class="collapsible-menu"></ul></li>
+            <li class="parent alwaysopen " data-nav-id="/learn/web-fundamentals/index.html"><a class="padding default-animation" href="/learn/web-fundamentals/index.html">Web &amp; System Fundamentals</a><ul id="R-subsections-059cbefc7865f445f16aa5723b8e5634" class="collapsible-menu">
+            <li class="active " data-nav-id="/learn/web-fundamentals/http/index.html"><a class="padding" href="/learn/web-fundamentals/http/index.html">HTTP</a></li>
+            <li class="" data-nav-id="/learn/web-fundamentals/system-concepts/index.html"><a class="padding" href="/learn/web-fundamentals/system-concepts/index.html">System Concepts</a></li></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/windows/index.html"><a class="padding default-animation" href="/learn/windows/index.html">Windows &amp; Active Directory</a><ul id="R-subsections-a730549f2efa4d1e274d14685feab8eb" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/cryptography/index.html"><a class="padding default-animation" href="/learn/cryptography/index.html">Cryptography</a><ul id="R-subsections-39d0a9d11822e4379c1887dd88fcd860" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/ai/index.html"><a class="padding default-animation" href="/learn/ai/index.html">AI</a><ul id="R-subsections-501934f4c83e2c1d7165e75c44f96956" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/learn/specializations/index.html"><a class="padding default-animation" href="/learn/specializations/index.html">Specializations</a><ul id="R-subsections-76b8bdc5bdb02d450cc67abb8c740f83" class="collapsible-menu"></ul></li></ul></li>
+            <li class="" data-nav-id="/compete/index.html"><a class="padding default-animation" href="/compete/index.html">Compete</a><ul id="R-subsections-0e95d5e51c13d68d27ee0bb3e33f50b7" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/lab/index.html"><a class="padding default-animation" href="/lab/index.html">Club Lab</a><ul id="R-subsections-3267a40151b19e3e3f8d4c8a3edf34ee" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/projects/index.html"><a class="padding" href="/projects/index.html">Projects &amp; Guides</a></li>
+            <li class="" data-nav-id="/toolbox/index.html"><a class="padding default-animation" href="/toolbox/index.html">Toolbox</a><ul id="R-subsections-f7060c654e07bee22171d50d3d26bb46" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/meta/index.html"><a class="padding default-animation" href="/meta/index.html">Meta</a><ul id="R-subsections-2f839601009aa63e83121a533a314010" class="collapsible-menu"></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <div class="nav-title padding">Quick Links</div>
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="http://discord.gg/2Yun8WAUuy"><a class="padding" href="http://discord.gg/2Yun8WAUuy" rel="external"><i class='fab fa-fw fa-discord'></i> Discord</a></li>
+            <li class="" data-nav-id="https://github.com/dxcently/fau-cyber-security-club-wiki"><a class="padding" href="https://github.com/dxcently/fau-cyber-security-club-wiki" rel="external"><i class='fab fa-fw fa-github'></i> GitHub</a></li>
+            <li class="" data-nav-id="https://fau.campuslabs.com/engage/organization/cybersecurity"><a class="padding" href="https://fau.campuslabs.com/engage/organization/cybersecurity" rel="external"><i class='fa-solid fa-school-flag'></i> Owl Central</a></li>
+            <li class="" data-nav-id="mailto:csc@fau.edu"><a class="padding" href="mailto:csc@fau.edu" rel="external"><i class='fa-solid fa-envelope'></i> csc@fau.edu</a></li>
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-hacker" value="hacker" selected>Dark</option>
+                    <option id="R-select-variant-hacker-light" value="hacker-light">Light</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1787990815" defer></script>
+    <script src="/js/theme.min.js?1787990815" defer></script>
+
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>
