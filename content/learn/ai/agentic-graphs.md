@@ -14,7 +14,7 @@ technology. It is a way to draw the system so you can reason about how it
 fails before you run it.
 
 This page covers the concepts. For the loop mechanics and hands-on workflows,
-read [AI Workflows & Agents](/toolbox/ai-workflows/).
+read [AI Workflows & Agents](/learn/ai/workflows/).
 
 ---
 

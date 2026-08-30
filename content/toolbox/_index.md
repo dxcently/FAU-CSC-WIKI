@@ -1,7 +1,7 @@
 +++
 title = "Toolbox"
 weight = 60
-description = "Curated links, an intern training roadmap, and how to pick and use AI models for security work."
+description = "Curated links, cheat sheets, and the intern training roadmap."
 icon = "fa-solid fa-toolbox"
 +++
 
@@ -32,10 +32,10 @@ This section contains:
 - **[Cybersecurity Intern Training Resource Guide](<🛡️ Cybersecurity Intern Training R 2.md>)**
   — a difficulty-tiered roadmap of external resources, from Linux basics to
   advanced exploit development.
-- **[Choosing an AI Model](/toolbox/ai/)** — the criteria that actually
-  matter when picking a model for security work.
-- **[AI Workflows & Agents](/toolbox/ai-workflows/)** — the agent loop and
-  practical patterns for using AI in CTFs and hardening reviews.
+
+Everything about AI — what the models are, how agents work, which one to pick,
+and how to automate with them — lives in **[Learn → AI](/learn/ai/)**. It was
+split across two sections and that helped nobody.
 
 {{< section-grid >}}
 

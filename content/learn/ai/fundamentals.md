@@ -206,7 +206,7 @@ Local models also work in an isolated lab with no network route out, which is
 where malware analysis belongs anyway.
 
 The selection criteria for local against hosted are in
-[Choosing an AI Model](/toolbox/ai/). This page is the reason the choice
+[Choosing an AI Model](/learn/ai/choosing-a-model/). This page is the reason the choice
 exists.
 
 ---

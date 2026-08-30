@@ -173,10 +173,9 @@ useful thing to look at.
   a weight for ordering, and a one-sentence description. The site builds its
   entire navigation and its card grids from those fields — no menu file
   exists. The same fields tell an agent what a page is without opening it.
-- **Cross-links, not duplication.** The Learn pages explain concepts. The
-  [Toolbox](/toolbox/) pages cover practical use. Each links to the other and
-  neither repeats it. That is why this page sends you to
-  [Choosing an AI Model](/toolbox/ai/) instead of restating it.
+- **Cross-links, not duplication.** One page owns each idea and the rest link
+  to it. That is why this page sends you to
+  [Choosing an AI Model](choosing-a-model/) instead of restating it.
 - **Content is Markdown on disk.** The rendered site is for you. The source
   files are clean text an agent can read directly from the repository.
 - **There is an `AGENTS.md` at the repository root.** It states the rules for

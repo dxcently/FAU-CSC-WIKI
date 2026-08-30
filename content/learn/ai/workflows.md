@@ -1,6 +1,6 @@
 +++
 title = "AI Workflows & Agents"
-weight = 4
+weight = 7
 description = "The agent loop, common agent patterns, and vendor-neutral workflows for using AI in security work."
 icon = "fa-solid fa-diagram-project"
 +++
@@ -149,7 +149,7 @@ need them. Wire the same pattern into a script — tool output piped
 straight into `chat()`, running on a schedule or every time a scan
 finishes — and it stops being a habit and becomes automation.
 
-See [Automating Security Work](/toolbox/ai-automation/) for the pipeline
+See [Automating Security Work](/learn/ai/automation/) for the pipeline
 pattern, structured output, and what never goes in the prompt.
 
 ---

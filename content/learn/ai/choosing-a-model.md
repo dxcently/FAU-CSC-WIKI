@@ -1,6 +1,6 @@
 +++
 title = "Choosing an AI Model"
-weight = 3
+weight = 6
 description = "Selection criteria for picking an AI model for security work — not a product comparison."
 icon = "fa-solid fa-robot"
 +++

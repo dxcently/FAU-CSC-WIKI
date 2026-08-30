@@ -10,11 +10,15 @@ position up front: these tools change what one person can do in an afternoon,
 and they are a new attack surface. Both statements are true at the same time.
 Neither one cancels the other out.
 
-This section is the conceptual half. It covers what a **large language model**
-(LLM) is, what an agent system is made of, what runs the loop, how knowledge gets in front of one,
-and what happens when the same technology is pointed at you. The practical
-half — which model to pick, how to wire one into a script, what never goes in
-a prompt — lives in the [Toolbox](/toolbox/).
+This section is all of it, concept and practice in one place. What a **large
+language model** (LLM) is, what an agent system is made of, what runs the
+loop, how knowledge gets in front of one, what happens when the same
+technology is pointed at you — and then which model to pick, how to wire one
+into a script, and what never goes in a prompt.
+
+The split used to be conceptual pages here and how-to pages in the Toolbox.
+That was a bad seam: nobody reads about the agent loop and then goes hunting
+in a different section for how to run one.
 
 ---
 
@@ -40,7 +44,7 @@ gets to opt out, so learn how it works.
 
 ---
 
-## The Five Pages
+## The Pages
 
 **[Fundamentals for the AI Era](fundamentals/)** — what to actually learn,
 and why the rest of the roadmap got more valuable, not less. Draws on Andrej
@@ -67,16 +71,14 @@ uniquely needs: how to attack and defend agent systems themselves.
 
 ---
 
-## Read the Toolbox for the Practical Side
+## Then the Practical Half
 
-These pages explain concepts. They deliberately do not repeat the how-to.
-
-- [Choosing an AI Model](/toolbox/ai/) — the selection criteria, including
-  local against hosted.
-- [AI Workflows & Agents](/toolbox/ai-workflows/) — the agent loop and
-  hands-on workflows.
-- [Automating Security Work](/toolbox/ai-automation/) — pipelines,
-  verification, and what never goes into a prompt.
+- [Choosing an AI Model](choosing-a-model/) — the selection criteria that
+  actually matter, including local against hosted.
+- [AI Workflows & Agents](workflows/) — hands-on patterns for CTFs and
+  hardening reviews.
+- [Automating Security Work](automation/) — pipelines, verification, and
+  what never goes into a prompt.
 
 ---
 

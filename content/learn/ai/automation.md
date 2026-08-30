@@ -1,6 +1,6 @@
 +++
 title = "Automating Security Work"
-weight = 4
+weight = 8
 description = "How to wire a model into a repeatable pipeline for triage, summarizing, and first-pass review — and what never goes in the prompt."
 icon = "fa-solid fa-wand-magic-sparkles"
 +++
@@ -126,7 +126,7 @@ deciding what to run next based on what it just saw, and running it again
 — is the agent pattern.
 
 That loop, its patterns, and the safety rules for running it are covered
-on [AI Workflows & Agents](/toolbox/ai-workflows/). Read that page for the
+on [AI Workflows & Agents](/learn/ai/workflows/). Read that page for the
 loop itself; this page is about the pipeline stage the loop is built on.
 
 ---
@@ -154,7 +154,7 @@ Two habits that are not optional:
 A hosted model runs on somebody else's server. The moment you paste
 something into it, that data leaves your machine. Assume it is logged.
 Running a model locally avoids this (see
-[Choosing an AI Model](/toolbox/ai/)), but the rules below apply either
+[Choosing an AI Model](/learn/ai/choosing-a-model/)), but the rules below apply either
 way — make them a habit, not a per-tool decision.
 
 Never put any of the following in a prompt, a scan file, or an example you

@@ -50,7 +50,7 @@ Notice what these have in common. Fixed steps, a clear definition of success,
 and a human reviewing the end. That is a workflow, not an autonomous agent —
 see [Agentic Graphs](agentic-graphs/) for why that distinction saves you
 trouble. For how to actually build one, read
-[Automating Security Work](/toolbox/ai-automation/).
+[Automating Security Work](/learn/ai/automation/).
 
 The division of labor is worth stating plainly. The system supplies speed,
 scale and consistency. The analyst supplies judgment, context, and
@@ -229,6 +229,6 @@ have delegated a guess.
   from, and where to put the checkpoints.
 - [Fundamentals for the AI Era](fundamentals/) — why local models matter when
   the data is sensitive.
-- [Automating Security Work](/toolbox/ai-automation/) — the practical build,
+- [Automating Security Work](/learn/ai/automation/) — the practical build,
   including what never goes into a prompt.
 - [CTF](/compete/ctf/) — targets you are allowed to attack.
