@@ -223,7 +223,10 @@
   'use strict';
 
   if (!document.documentElement.dataset.wfRain) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  /* Reduced motion means no MOTION, not no texture. Returning here left the
+     page with nothing at all, which is more than the setting asks for: the
+     field is still drawn, once, and never animates. */
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var FPS = 12;              /* a texture does not need 60 */
   var FONT = 15;             /* glyph cell, px */
@@ -249,7 +252,7 @@
      attribute sits and therefore where --wf-rain resolves. */
   function readColour() {
     colour = getComputedStyle(document.documentElement)
-      .getPropertyValue('--wf-rain').trim();
+      .getPropertyValue('--wf-rain').trim().replace(/\s+/g, ' ');
   }
 
   function resize() {
@@ -305,6 +308,7 @@
   }
 
   function start() {
+    if (reduced) { draw(); return; }
     if (raf) return;
     last = 0;
     raf = requestAnimationFrame(tick);

@@ -1045,10 +1045,7 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   opacity: .42;
 }
 
-/* Belt and braces. The script already returns before it builds the canvas
-   under prefers-reduced-motion, so this rule normally has nothing to hide.
-   It is here for the case the script is changed and that guard is not: a
-   stray canvas then renders nothing instead of animating. */
-@media (prefers-reduced-motion: reduce) {
-  .wf-rain { display: none; }
-}
+/* No prefers-reduced-motion rule here on purpose. The script honours the
+   setting by drawing the field once and never starting the animation loop,
+   so the texture survives and only the motion goes. Hiding the canvas
+   outright removed the effect entirely for anyone with the setting on. */

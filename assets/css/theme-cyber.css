@@ -119,7 +119,11 @@
      the one place this variant should look most like a phosphor screen. The
      tagline and the caret take --wf-stage-accent, which is cyan, so the two
      lines of hero copy do not collapse into one colour. */
-  --wf-stage:            #010805;
+  /* Translucent, unlike the other two variants: the hero is the largest
+     block on a phone, and an opaque ground made it a lid over the matrix
+     rain. The canvas is fixed behind all content, so opening the hero is
+     what lets the rain read at all on a narrow screen. */
+  --wf-stage:            rgba(  1,   8,   5, .50 );
   --wf-stage-fg:         #9FFFC0;
   --wf-stage-chrome:     #00C853;
   --wf-stage-accent:     #00FF41;
