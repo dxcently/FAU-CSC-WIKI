@@ -759,6 +759,9 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
 .wf-panel--link:hover,
 .wf-panel--link:focus-visible {
   box-shadow:
+    /* Same inner edge as the resting card, switched to the red bloom. A
+       selected surface should change colour, not lose the treatment. */
+    inset 0 0 40px -18px var(--wf-bloom-now),
     inset 0 1px 0 var(--wf-inset-now),
     0 0 0 1px var(--wf-hairline-now),
     0 0 34px -8px var(--wf-bloom-now);
@@ -766,6 +769,7 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
 .wf-panel--now {
   box-shadow:
     inset 3px 0 0 var(--wf-red),
+    inset 0 0 40px -18px var(--wf-bloom-now),
     0 0 30px -9px var(--wf-bloom-now);
 }
 /* The corner ticks get NO halo. An outer box-shadow on a 10px square paints a
