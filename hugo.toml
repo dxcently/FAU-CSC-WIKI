@@ -31,14 +31,21 @@ theme = 'relearn'
     weight = 40
 
 [params]
-  # Use the custom hacker terminal theme
-  # Two variants: the dark screen and its daylight twin. The first entry is
-  # the default for a first-time visitor; the topbar toggle
-  # (layouts/partials/topbar/button/variant.html) flips between them and the
-  # theme remembers the choice in localStorage.
+  # Use the custom hacker terminal theme.
+  #
+  # Three variants: the dark screen, its daylight twin, and the neon-green
+  # "cyber" screen. The FIRST entry is the default for a first-time visitor —
+  # keep 'hacker' there, or every new reader lands on a different site than
+  # the one this wiki was designed around.
+  #
+  # The topbar toggle (layouts/partials/topbar/button/variant.html) cycles
+  # them in this order and the theme remembers the choice in localStorage.
+  # Each identifier needs assets/css/theme-<identifier>.css to exist; a
+  # missing file is a build error, not a silent fallback.
   themeVariant = [
     { identifier = 'hacker',       name = 'Dark' },
     { identifier = 'hacker-light', name = 'Light' },
+    { identifier = 'cyber',        name = 'Cyber' },
   ]
 
   # Show the shortcuts menu title

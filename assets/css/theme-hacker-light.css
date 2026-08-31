@@ -79,6 +79,12 @@
   /* scanlines on panels. Fainter than --wf-stage-scan because cards
      carry body copy and the hero carries one headline. */
   --wf-scan:          rgba( 11, 95, 196, .045 );
+  /* the matrix rain on the home page and section landings
+     (assets/js/custom.js, §17 in custom.css). Near-invisible in daylight on
+     purpose: falling glyphs over white are noise the dark variant can carry
+     and paper cannot. This is the token doing that job — the JS is the same
+     code in every variant. */
+  --wf-rain:          rgba( 11, 95, 196, .10 );
   /* text selection, as a solid block the way a terminal draws it */
   /* light cast by the shield into the sidebar header. Stronger on the
      light variant: a white sidebar gives the mark nothing to sit in,
