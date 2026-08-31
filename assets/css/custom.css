@@ -192,17 +192,14 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   display: block;
   padding: var(--wf-pad);
   border: 1px solid var(--wf-edge);
-  /* The lit edge, same shape .wf-meetbar uses for the current meeting: a
-     solid 3px rule with a wash falling away from it. There it is red because
-     it means "now"; here it is the chrome colour because it means "a card".
-     One motif, two jobs, which is what makes the page read as one thing. */
-  border-left: 3px solid var(--wf-chrome);
-  border-radius: 0 var(--wf-radius) var(--wf-radius) 0;
-  background:
-    linear-gradient(90deg, var(--wf-wash-hi), transparent 62%),
-    linear-gradient(158deg, var(--wf-wash) 0%, transparent 58%),
-    var(--wf-fill);
+  border-radius: var(--wf-radius);
+  /* The wash hugs the card's inner edges as a ring instead of pouring in
+     from one corner: an inset spread of the same token. The middle of the
+     card stays clean under its content and the light lives at the frame,
+     where the border and the ticks already are. */
+  background: var(--wf-fill);
   box-shadow:
+    inset 0 0 26px var(--wf-wash-hi),
     inset 0 1px 0 var(--wf-inset),
     0 0 18px -6px var(--wf-glow);
   -webkit-backdrop-filter: blur(2px);
@@ -223,7 +220,7 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   border-style: solid;
   transition: border-color .18s ease;
 }
-.wf-panel::before { top: -1px;    left: -1px;  border-width: 1px 0 0 0; }
+.wf-panel::before { top: -1px;    left: -1px;  border-width: 1px 0 0 1px; }
 .wf-panel::after  { bottom: -1px; right: -1px; border-width: 0 1px 1px 0; }
 
 /* interactive variant — hover/focus is a "here" state, so it goes RED */
@@ -811,21 +808,14 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
 
 /* ---------- 9.7 daylight, the opposite treatment ----------
  * The dark variants say "lit screen" with blur and alpha. Light mode says
- * the same thing by being harsh: one fully opaque offset shadow, no blur,
- * on headings and on every card. Variant-scoped in this file rather than
- * tokenised away, the same way section 12 scopes the paired images — the
- * shape of the shadow differs per variant, not just its colour. */
-:root[data-r-theme-variant='hacker-light'] #R-body-inner :is(h1, h2, h3) {
-  text-shadow: 2px 2px 0 var(--wf-hard);
-}
+ * the same thing by being harsh: one fully opaque offset shadow, no blur —
+ * on SURFACES only. Not on type: the headings are already near-black, and a
+ * dark shadow under dark letterforms reads as misregistered print, not
+ * contrast. Hover keeps the shared behaviour from 6.1; a variant changes
+ * how cards sit, not how they respond. */
 :root[data-r-theme-variant='hacker-light'] .wf-panel {
   border-color: var(--wf-hard);
-  box-shadow: 4px 4px 0 var(--wf-hard);
-}
-:root[data-r-theme-variant='hacker-light'] .wf-panel--link:hover,
-:root[data-r-theme-variant='hacker-light'] .wf-panel--link:focus-visible {
-  box-shadow: 6px 6px 0 var(--wf-hard);
-  transform: translate(-2px, -2px);
+  box-shadow: inset 0 0 26px var(--wf-wash-hi), 4px 4px 0 var(--wf-hard);
 }
 :root[data-r-theme-variant='hacker-light'] .wf-meetbar {
   box-shadow: 4px 4px 0 var(--wf-hard);
