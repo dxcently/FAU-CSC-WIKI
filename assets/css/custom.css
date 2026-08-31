@@ -474,6 +474,9 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   opacity: var(--wf-stage-art);
   filter: drop-shadow(0 0 6px var(--wf-stage-glow));
 }
+/* The shield ships at its own intrinsic size; the wireframe it replaced was
+   an inline svg that filled its box for free. */
+.wf-hero-art img { display: block; width: 100%; height: auto; }
 /* Narrow OR short: the owl stops being a side illustration and becomes a
    watermark. The height clause is what catches a landscape phone, where the
    hero is wide enough to keep the side placement but far too short for it —

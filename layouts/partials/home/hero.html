@@ -2,7 +2,22 @@
 <section class="wf-hero">
   <div class="wf-hero-grid" aria-hidden="true"></div>
   <div class="wf-hero-fog" aria-hidden="true"></div>
-  <div class="wf-hero-art" aria-hidden="true">{{ partial "home/owl-wireframe.html" . }}</div>
+  {{- /* The shield lockup, not the line-art owl. It carries wf-mark so the
+       per-variant swap in section 12 picks it up unchanged — three <img>
+       tags, two hidden. That is the same mechanism the sidebar logo and the
+       brand previews already use, so a fourth variant only ever needs one
+       new file and one new line there.
+
+       Unlike the wireframe this cannot recolour from --wf-stage-chrome,
+       which is exactly why it needs the three files. */}}
+  {{- $dark  := resources.Get "/images/logo.svg" }}
+  {{- $light := resources.Get "/images/shield-light.svg" | default $dark }}
+  {{- $green := resources.Get "/images/logo-green.svg"  | default $dark }}
+  <div class="wf-hero-art wf-mark" aria-hidden="true">
+    {{- with $dark }}<img class="wf-mark__dark"  src="{{ .RelPermalink }}" alt="" aria-hidden="true">{{ end }}
+    {{- with $light }}<img class="wf-mark__light" src="{{ .RelPermalink }}" alt="" aria-hidden="true">{{ end }}
+    {{- with $green }}<img class="wf-mark__green" src="{{ .RelPermalink }}" alt="" aria-hidden="true">{{ end }}
+  </div>
   <div class="wf-hero-copy">
     <p class="wf-hero-kicker">{{ $h.kicker | default "Florida Atlantic University" }}</p>
     <h1 class="wf-hero-title">{{ $h.title | default site.Title }}</h1>
