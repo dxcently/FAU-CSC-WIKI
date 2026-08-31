@@ -67,7 +67,11 @@
   /* daylight gets the opposite of a halo: one hard, fully opaque offset
      shadow. No blur, no alpha — the harsh-contrast counterpart to the
      CRT bloom the dark variants carry. */
-  --wf-hard:          #16202B;
+  /* FAU red, not the body-text near-black it started as. A dark offset
+     under dark letterforms reads as misregistered print; red is the only
+     colour in this palette that separates from BOTH the near-black h1 and
+     the blue h2 on paper, which is what a hard shadow has to do. */
+  --wf-hard:          #CC0000;
   --wf-fill:          rgba( 255, 255, 255, .82 );  /* translucent panel fill */
 
   /* ---- washes, insets and hairlines used by custom.css ---- */

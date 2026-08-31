@@ -833,9 +833,13 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
  * The dark variants say "lit screen" with blur and alpha. Light mode says
  * the same thing by being harsh: one fully opaque offset shadow, no blur —
  * on SURFACES only. Not on type: the headings are already near-black, and a
- * dark shadow under dark letterforms reads as misregistered print, not
- * contrast. Hover keeps the shared behaviour from 6.1; a variant changes
- * how cards sit, not how they respond. */
+ * dark shadow under dark letterforms read as misregistered print. In red it
+ * separates from both the near-black h1 and the blue h2, so headings carry
+ * it again. Hover keeps the shared behaviour from 6.1; a variant changes how
+ * cards sit, not how they respond. */
+:root[data-r-theme-variant='hacker-light'] #R-body-inner :is(h1, h2, h3) {
+  text-shadow: 2px 2px 0 var(--wf-hard);
+}
 :root[data-r-theme-variant='hacker-light'] .wf-panel {
   border-color: var(--wf-hard);
   box-shadow: inset 0 0 26px var(--wf-wash-hi), 4px 4px 0 var(--wf-hard);
