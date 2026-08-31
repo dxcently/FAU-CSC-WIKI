@@ -1002,3 +1002,39 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   animation: wf-blink 1.15s steps(1) infinite;
 }
 @keyframes wf-blink { 0%, 55% { opacity: 1; } 56%, 100% { opacity: 0; } }
+
+/* ---------- 17. matrix rain ----------
+ * The canvas is built and driven by assets/js/custom.js, which only runs on
+ * the home page and section landings. Everything visual about it is here.
+ *
+ * Placement: `inset: 0` with position fixed pins it to the viewport, and
+ * z-index 0 puts it in the same layer as the page bloom in §4.2. It is a
+ * real child of <body> while that bloom is a ::before, so it paints just
+ * above the bloom and — because #R-body carries z-index 1 — below every
+ * piece of content. Nothing here can reach the text.
+ *
+ * Opacity: the glyph colour already carries a low alpha in --wf-rain, and
+ * this multiplies it down again. Two knobs on purpose. The token sets how
+ * the rain looks per variant; this sets how far back it sits, which is the
+ * same answer in all three. Read the pair as "faint, then fainter" — if the
+ * body copy on a section landing ever looks washed, this is the number to
+ * cut, not the token.
+ *
+ * The glyph colour itself never appears in this file or in the JS: the
+ * script reads --wf-rain off <html> at run time, so the rain follows the
+ * variant and goes near-invisible in daylight. */
+.wf-rain {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .22;
+}
+
+/* Belt and braces. The script already returns before it builds the canvas
+   under prefers-reduced-motion, so this rule normally has nothing to hide.
+   It is here for the case the script is changed and that guard is not: a
+   stray canvas then renders nothing instead of animating. */
+@media (prefers-reduced-motion: reduce) {
+  .wf-rain { display: none; }
+}
