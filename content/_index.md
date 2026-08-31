@@ -11,7 +11,7 @@ type = "home"
 
 # The recurring weekly meeting. Shown in the panel under the hero.
 [params.meeting]
-  day   = "Mondays & Thursday"
+  day   = "Tuesdays & Thursdays"
   time  = "5:00 – 7:00 PM"
   room  = "CM 22"
   note  = "CM 22 is in the Computer Center on the Boca Raton campus, between the library and Fleming Hall. Every week during the fall and spring semesters."
@@ -41,10 +41,10 @@ type = "home"
 
 [params.schedule]
   semester = "Fall 2026"
-  note     = "Mondays, Thursdays 5–7 PM in CM 22. Topics can shift — check Discord."
+  note     = "Tuesdays, Thursdays 5–7 PM in CM 22. Topics can shift — check Discord."
 
 [[params.sessions]]
-  date  = "2026-08-31"
+  date  = "2026-09-01"
   title = "First meeting: What we do as a club"
   track = "general"
   lead  = "Officers"
