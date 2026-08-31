@@ -243,22 +243,29 @@ content/            every page. Directory structure == URL structure == nav.
   projects/         member projects and guides
   toolbox/          links, cheat sheets, AI pages
   meta/             authoring guide, TODO — docs about the wiki itself
-assets/css/         custom.css (structural) + theme-hacker*.css (palette tokens)
+assets/css/         custom.css (structural) + theme-*.css (palette tokens)
+                    + chroma-*.css (syntax highlighting, one per variant)
 assets/images/      the owl mark — three forms, two grounds each
-assets/js/          custom.js — theme toggle and scramble-reveal
+assets/js/          custom.js — variant cycle, scramble-reveal, matrix rain
 layouts/            template overrides: home page partials, shortcodes
 themes/relearn/     git submodule — NEVER edit
 public/             generated output — NEVER hand-edit
+.github/workflows/  CI — builds the site on every PR and push to main
 ```
+
+The submodule is not optional. A fresh clone has an empty `themes/relearn/`
+and Hugo will build a site with no layouts rather than fail. Run
+`git submodule update --init` first.
 
 ### Key config files
 
 | File | Purpose |
 | ---- | ------- |
-| `hugo.toml` | Site config, the two theme variants, sidebar menus, shortcuts |
+| `hugo.toml` | Site config, the three theme variants, sidebar menus, shortcuts |
 | `i18n/en.toml` | UI string overrides (e.g. the sidebar's "Quick Links" title) |
 | `assets/css/theme-hacker.css` | Dark palette — tokens only |
 | `assets/css/theme-hacker-light.css` | Light palette — must define the SAME token set |
+| `assets/css/theme-cyber.css` | Neon green palette — must define the SAME token set |
 | `assets/css/custom.css` | Structure. No colour literals; every value is a `--wf-*` token |
 
 `baseURL` in `hugo.toml` is still the placeholder `https://example.org/`. It
@@ -312,6 +319,33 @@ exception is `assets/images/logo.svg`, which renders outside the page where CSS
 variables do not exist, so its colors are hardcoded and must be kept in sync by
 hand.
 
+The same rule covers `assets/js/custom.js`. Anything the script paints reads
+its colour from a `--wf-*` token at run time, via `getComputedStyle` on
+`<html>`. A hex value there is worse than one in custom.css, because it breaks
+every variant at once and no stylesheet can override it.
+
+### Adding a theme variant
+
+There are three: `hacker` (dark, the first-visit default), `hacker-light`, and
+`cyber`. Adding a fourth means all five of these, in order:
+
+1. `assets/css/theme-<id>.css` — tokens only. It must define **every** token
+   the other variants define. Only one variant sheet is live at a time, so a
+   token you leave out is not inherited from `hacker`; it is undefined, and
+   whatever consumes it falls back to a browser default. Diff the token names
+   against `theme-hacker.css` before you call it done.
+2. `assets/css/chroma-<name>.css`, if you set `--CODE-theme: <name>` — the
+   per-variant syntax-highlighting sheet. A name with no matching file is a
+   build error.
+3. `hugo.toml`, `params.themeVariant` — append it. Keep `hacker` first: entry
+   zero is what a first-time visitor gets.
+4. `assets/js/custom.js` — add it to `CYCLE`, with the Font Awesome icon for
+   its destination, and add that icon to `ICONS`. The two lists are not
+   derived from `hugo.toml`.
+5. Icons must ship with the theme's bundled Font Awesome **Free** build
+   (`themes/relearn/assets/fonts/fontawesome/css/all.min.css`). A Pro-only
+   class renders as an empty box, silently.
+
 ### The meeting schedule
 
 Lives in `content/_index.md` front matter as `[[params.sessions]]` blocks with
@@ -347,3 +381,16 @@ hugo --quiet     # must exit clean: zero errors, zero warnings
 A page that builds is not a page that works. Confirm your new page actually
 rendered under `public/` at the URL you expect, and that any link you wrote
 resolves to a real built page.
+
+`.github/workflows/build.yml` runs the same check on every pull request and
+every push to main, and fails if `hugo --quiet` prints anything. It does not
+use `--panicOnWarning`: a plain `hugo` run emits deprecation warnings from the
+Relearn submodule, which are not this repo's to fix and must not fail a PR.
+
+### Where the built CSS goes
+
+There is no `public/css/theme-cyber.css`. Relearn inlines every variant into
+one `public/css/format-html.min.css`, each wrapped in
+`:root[data-r-theme-variant='<id>']`. To check a variant shipped, grep that
+file for its identifier — looking for a per-variant stylesheet will always
+come up empty and tell you nothing.
