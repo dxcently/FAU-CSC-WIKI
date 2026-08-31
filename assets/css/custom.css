@@ -193,18 +193,10 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   padding: var(--wf-pad);
   border: 1px solid var(--wf-edge);
   border-radius: var(--wf-radius);
-  /* The inner edge glows, exactly the shape .wf-row.is-today uses for the
-     current meeting (section 10): a heavily negative spread, so the light
-     sits ON the border and dies before it reaches the middle. There it is
-     --wf-bloom-now because it means "now"; here it is --wf-bloom-edge, which
-     carries the same alpha in the variant's own colour — the geometry was
-     always identical, the source was too weak to read.
-     The outer halo is pulled back so the two do not double up. */
+  /* No box-shadow here. Section 9.4 re-declares .wf-panel with the same
+     specificity and comes later, so it owns every panel shadow — a value
+     set here is dead code that silently does nothing. */
   background: var(--wf-fill);
-  box-shadow:
-    inset 0 0 40px -18px var(--wf-bloom-edge),
-    inset 0 1px 0 var(--wf-inset),
-    0 0 14px -9px var(--wf-glow);
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
   color: var(--wf-text);
@@ -754,9 +746,15 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
 /* 9.4 panels — resting halo, hover halo, and the red "now" halo */
 .wf-panel {
   box-shadow:
+    /* The inner edge, same geometry .wf-row.is-today uses for the current
+       meeting: inset with a heavily negative spread, so the light sits ON
+       the border and dies before the middle. This lives HERE and not in 6.1
+       because this section is last and re-declares the selector — anything
+       set on .wf-panel earlier in the file loses to it. */
+    inset 0 0 40px -18px var(--wf-bloom-edge),
     inset 0 1px 0 var(--wf-inset),
     0 0 0 1px var(--wf-hairline),
-    0 0 28px -8px var(--wf-bloom);
+    0 0 20px -10px var(--wf-bloom);
 }
 .wf-panel--link:hover,
 .wf-panel--link:focus-visible {
@@ -830,39 +828,6 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
 }
 .wf-dot {
   box-shadow: 0 0 8px var(--wf-red-text), 0 0 18px var(--wf-bloom-now);
-}
-
-/* ---------- 9.7 daylight, the opposite treatment ----------
- * The dark variants say "lit screen" with blur and alpha. Light mode says
- * the same thing by being harsh: one fully opaque offset shadow, no blur —
- * on SURFACES only. Not on type: the headings are already near-black, and a
- * dark shadow under dark letterforms read as misregistered print.
- *
- * Only h2 takes it. h2 is the blue one, so a black offset separates; h1 is
- * already near-black and would repeat that mistake, and anything smaller
- * turns to mud at that size. Red is NOT used here — red means "now" on this
- * site and spending it on every card and heading emptied it of meaning.
- *
- * .wf-kicker is listed because text-shadow INHERITS: the kicker is a span
- * inside the h2, so it picked the offset up and rendered doubled. */
-:root[data-r-theme-variant='hacker-light'] #R-body-inner h2 {
-  text-shadow: 2px 1px 0 var(--wf-hard);
-}
-/* h1 is near-black, so it takes the inverse of h2's: blue under black where
-   h2 is black under blue. Same 2px/1px offset, so the two read as one
-   treatment rather than two decisions. */
-:root[data-r-theme-variant='hacker-light'] #R-body-inner h1 {
-  text-shadow: 2px 1px 0 var(--wf-chrome);
-}
-:root[data-r-theme-variant='hacker-light'] #R-body-inner :is(h3, h4, h5, h6),
-:root[data-r-theme-variant='hacker-light'] .wf-kicker {
-  text-shadow: none;
-}
-:root[data-r-theme-variant='hacker-light'] .wf-panel {
-  box-shadow: inset 0 0 40px -18px var(--wf-bloom-edge), 4px 4px 0 var(--wf-hard);
-}
-:root[data-r-theme-variant='hacker-light'] .wf-meetbar {
-  box-shadow: 4px 4px 0 var(--wf-hard);
 }
 
 /* ---------- 10. motion ----------

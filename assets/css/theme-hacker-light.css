@@ -60,22 +60,20 @@
   /* ---- bloom, reinterpreted as shadow. Same token names, opposite physics:
      on a dark ground these are light spilling outward, on paper they are the
      object casting down. Alphas are low — paper does not glow. ---- */
-  --wf-bloom:         rgba( 13, 38, 66, .18 );
-  --wf-bloom-wide:    rgba( 13, 38, 66, .07 );
+  --wf-bloom:         rgba( 11, 95, 196, .22 );
+  --wf-bloom-wide:    rgba( 11, 95, 196, .13 );
   /* Saturated blue at the same alpha --wf-bloom-now carries, not the .18
      navy of --wf-bloom: a dark at low alpha does not read as light on
      paper, which is why the card edge looked flat next to the today row. */
-  --wf-bloom-edge:    rgba( 11, 95, 196, .30 );
+  --wf-bloom-edge:    rgba( 11, 95, 196, .34 );
   --wf-bloom-now:     rgba( 204,  0,  0, .30 );
-  --wf-bloom-text:    transparent;  /* no halo on headlines in daylight */
+  /* Daylight uses the same language as the dark variants, in blue and
+     softer: you cannot glow on paper, so the halo reads as a tinted soft
+     shadow. Structure, not a hard offset. */
+  --wf-bloom-text:    rgba( 11, 95, 196, .20 );
   /* daylight gets the opposite of a halo: one hard, fully opaque offset
      shadow. No blur, no alpha — the harsh-contrast counterpart to the
      CRT bloom the dark variants carry. */
-  /* Black. It is only ever cast by the blue h2 and by card offsets, both of
-     which it separates from cleanly on paper. Not red: red is the "now"
-     marker on this site, and putting it on every card border emptied that
-     signal out. */
-  --wf-hard:          #0A121A;
   --wf-fill:          rgba( 255, 255, 255, .82 );  /* translucent panel fill */
 
   /* ---- washes, insets and hairlines used by custom.css ---- */
