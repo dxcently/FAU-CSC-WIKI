@@ -193,15 +193,16 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   padding: var(--wf-pad);
   border: 1px solid var(--wf-edge);
   border-radius: var(--wf-radius);
-  /* The wash hugs the card's inner edges as a ring instead of pouring in
-     from one corner: an inset spread of the same token. The middle of the
-     card stays clean under its content and the light lives at the frame,
-     where the border and the ticks already are. */
+  /* The inner edge glows, exactly the shape .wf-row.is-today uses for the
+     current meeting (section 10): a heavily negative spread, so the light
+     sits ON the border and dies before it reaches the middle. There it is
+     --wf-bloom-now because it means "now"; here it is --wf-bloom.
+     The outer halo is pulled back so the two do not double up. */
   background: var(--wf-fill);
   box-shadow:
-    inset 0 0 26px var(--wf-wash-hi),
+    inset 0 0 40px -18px var(--wf-bloom),
     inset 0 1px 0 var(--wf-inset),
-    0 0 18px -6px var(--wf-glow);
+    0 0 14px -9px var(--wf-glow);
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
   color: var(--wf-text);
@@ -833,16 +834,24 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
  * The dark variants say "lit screen" with blur and alpha. Light mode says
  * the same thing by being harsh: one fully opaque offset shadow, no blur —
  * on SURFACES only. Not on type: the headings are already near-black, and a
- * dark shadow under dark letterforms read as misregistered print. In red it
- * separates from both the near-black h1 and the blue h2, so headings carry
- * it again. Hover keeps the shared behaviour from 6.1; a variant changes how
- * cards sit, not how they respond. */
-:root[data-r-theme-variant='hacker-light'] #R-body-inner :is(h1, h2, h3) {
+ * dark shadow under dark letterforms read as misregistered print.
+ *
+ * Only h2 takes it. h2 is the blue one, so a black offset separates; h1 is
+ * already near-black and would repeat that mistake, and anything smaller
+ * turns to mud at that size. Red is NOT used here — red means "now" on this
+ * site and spending it on every card and heading emptied it of meaning.
+ *
+ * .wf-kicker is listed because text-shadow INHERITS: the kicker is a span
+ * inside the h2, so it picked the offset up and rendered doubled. */
+:root[data-r-theme-variant='hacker-light'] #R-body-inner h2 {
   text-shadow: 2px 2px 0 var(--wf-hard);
 }
+:root[data-r-theme-variant='hacker-light'] #R-body-inner :is(h1, h3, h4, h5, h6),
+:root[data-r-theme-variant='hacker-light'] .wf-kicker {
+  text-shadow: none;
+}
 :root[data-r-theme-variant='hacker-light'] .wf-panel {
-  border-color: var(--wf-hard);
-  box-shadow: inset 0 0 26px var(--wf-wash-hi), 4px 4px 0 var(--wf-hard);
+  box-shadow: inset 0 0 40px -18px var(--wf-bloom), 4px 4px 0 var(--wf-hard);
 }
 :root[data-r-theme-variant='hacker-light'] .wf-meetbar {
   box-shadow: 4px 4px 0 var(--wf-hard);
