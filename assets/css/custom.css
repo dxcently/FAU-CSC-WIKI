@@ -196,11 +196,13 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   /* The inner edge glows, exactly the shape .wf-row.is-today uses for the
      current meeting (section 10): a heavily negative spread, so the light
      sits ON the border and dies before it reaches the middle. There it is
-     --wf-bloom-now because it means "now"; here it is --wf-bloom.
+     --wf-bloom-now because it means "now"; here it is --wf-bloom-edge, which
+     carries the same alpha in the variant's own colour — the geometry was
+     always identical, the source was too weak to read.
      The outer halo is pulled back so the two do not double up. */
   background: var(--wf-fill);
   box-shadow:
-    inset 0 0 40px -18px var(--wf-bloom),
+    inset 0 0 40px -18px var(--wf-bloom-edge),
     inset 0 1px 0 var(--wf-inset),
     0 0 14px -9px var(--wf-glow);
   -webkit-backdrop-filter: blur(2px);
@@ -846,12 +848,18 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
 :root[data-r-theme-variant='hacker-light'] #R-body-inner h2 {
   text-shadow: 2px 1px 0 var(--wf-hard);
 }
-:root[data-r-theme-variant='hacker-light'] #R-body-inner :is(h1, h3, h4, h5, h6),
+/* h1 is near-black, so it takes the inverse of h2's: blue under black where
+   h2 is black under blue. Same 2px/1px offset, so the two read as one
+   treatment rather than two decisions. */
+:root[data-r-theme-variant='hacker-light'] #R-body-inner h1 {
+  text-shadow: 2px 1px 0 var(--wf-chrome);
+}
+:root[data-r-theme-variant='hacker-light'] #R-body-inner :is(h3, h4, h5, h6),
 :root[data-r-theme-variant='hacker-light'] .wf-kicker {
   text-shadow: none;
 }
 :root[data-r-theme-variant='hacker-light'] .wf-panel {
-  box-shadow: inset 0 0 40px -18px var(--wf-bloom), 4px 4px 0 var(--wf-hard);
+  box-shadow: inset 0 0 40px -18px var(--wf-bloom-edge), 4px 4px 0 var(--wf-hard);
 }
 :root[data-r-theme-variant='hacker-light'] .wf-meetbar {
   box-shadow: 4px 4px 0 var(--wf-hard);
