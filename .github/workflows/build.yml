@@ -1,0 +1,82 @@
+# Build gate for the wiki.
+#
+# The pass condition is SILENCE. AGENTS.md ("Verify before you report") makes
+# `hugo --quiet` the check: quiet suppresses the ordinary progress banner but
+# NOT warnings, so a link or image pointing at a page that does not exist
+# still prints the source file and the bad target. If the command prints
+# anything at all, something in content/ is broken and this job fails.
+#
+# Deliberately NOT --panicOnWarning. Hugo 0.158 deprecated some template
+# functions the Relearn submodule still calls, so a plain `hugo` run emits
+# theme-side deprecation warnings that are not this repo's to fix. Turning
+# those into failures would red-flag every PR for someone else's code. The
+# grep on captured output below is the narrower gate: it fails on what the
+# repo controls.
+#
+# No deploy step here on purpose. Publishing is handled separately and it
+# passes the real baseURL as a flag, which is why hugo.toml keeps the
+# example.org placeholder.
+name: build
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  hugo:
+    runs-on: ubuntu-latest
+    env:
+      # Matches the deploy box. The Relearn submodule's theme.toml sets a
+      # 0.141.0 minimum; pinning an exact version instead of "latest" means a
+      # Hugo release cannot break the build on a day nobody touched the repo.
+      HUGO_VERSION: 0.164.0
+
+    steps:
+      - name: Check out the wiki
+        uses: actions/checkout@v4
+        with:
+          # themes/relearn is a git submodule. Without this the checkout is an
+          # empty directory, `theme = 'relearn'` resolves to nothing, and Hugo
+          # cheerfully builds a site with no layouts instead of failing.
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Install Hugo ${{ env.HUGO_VERSION }}
+        run: |
+          # extended: the theme compiles SCSS. deb over the tarball so dpkg
+          # reports a bad download instead of leaving a half-unpacked binary.
+          curl -sSLo /tmp/hugo.deb \
+            "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb"
+          sudo dpkg -i /tmp/hugo.deb
+          hugo version
+
+      - name: Build
+        run: |
+          # Capture rather than pipe: a pipeline reports the exit status of
+          # the LAST command, so `hugo | tee` would swallow a Hugo failure.
+          set -o pipefail
+          hugo --quiet 2>&1 | tee /tmp/hugo.log
+          if [ -s /tmp/hugo.log ]; then
+            echo "::error::hugo --quiet printed output; silence is the pass condition (see AGENTS.md)"
+            exit 1
+          fi
+          echo "hugo --quiet was silent."
+
+      - name: Check the build produced pages
+        run: |
+          # A clean exit is not a built site: a missing submodule or an empty
+          # content/ can both exit 0. Assert the home page exists and that the
+          # variant stylesheets actually made it into the output.
+          test -f public/index.html
+          # Glob the filename and allow optional quotes around the value: both
+          # depend on whether Hugo minified the sheet, which is a build-mode
+          # detail this check has no reason to care about.
+          for variant in hacker hacker-light cyber; do
+            grep -qE "data-r-theme-variant=['\"]?${variant}['\"]?[],]" public/css/format-html*.css \
+              || { echo "::error::variant '$variant' is missing from the built CSS"; exit 1; }
+          done
+          echo "public/ has a home page and all three theme variants."
