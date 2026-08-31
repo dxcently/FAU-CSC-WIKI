@@ -192,8 +192,14 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   display: block;
   padding: var(--wf-pad);
   border: 1px solid var(--wf-edge);
-  border-radius: var(--wf-radius);
+  /* The lit edge, same shape .wf-meetbar uses for the current meeting: a
+     solid 3px rule with a wash falling away from it. There it is red because
+     it means "now"; here it is the chrome colour because it means "a card".
+     One motif, two jobs, which is what makes the page read as one thing. */
+  border-left: 3px solid var(--wf-chrome);
+  border-radius: 0 var(--wf-radius) var(--wf-radius) 0;
   background:
+    linear-gradient(90deg, var(--wf-wash-hi), transparent 62%),
     linear-gradient(158deg, var(--wf-wash) 0%, transparent 58%),
     var(--wf-fill);
   box-shadow:
@@ -217,7 +223,7 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   border-style: solid;
   transition: border-color .18s ease;
 }
-.wf-panel::before { top: -1px;    left: -1px;  border-width: 1px 0 0 1px; }
+.wf-panel::before { top: -1px;    left: -1px;  border-width: 1px 0 0 0; }
 .wf-panel::after  { bottom: -1px; right: -1px; border-width: 0 1px 1px 0; }
 
 /* interactive variant — hover/focus is a "here" state, so it goes RED */
@@ -453,14 +459,18 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   opacity: var(--wf-stage-art);
   filter: drop-shadow(0 0 6px var(--wf-stage-glow));
 }
-/* Mobile: the owl stops being a side illustration and becomes a watermark
+/* Narrow OR short: the owl stops being a side illustration and becomes a
+   watermark. The height clause is what catches a landscape phone, where the
+   hero is wide enough to keep the side placement but far too short for it —
+   the mark ran past the panel and got sliced by overflow:hidden.
+   Mobile: the owl stops being a side illustration and becomes a watermark
    behind the copy. .wf-hero already sets position:relative and
    overflow:hidden, so the mark can overflow the panel and be cropped — which
    reads better than shrinking a 284-unit drawing into a phone column.
    .wf-hero-copy is z-index 3 and this is 2, so the text stays on top.
    Opacity scales off the same per-variant token instead of introducing a
    second one, so a variant that retunes the owl retunes the watermark too. */
-@media screen and (max-width: 47.999rem) {
+@media screen and (max-width: 47.999rem), screen and (max-height: 34rem) {
   .wf-hero-art {
     right: auto; left: 50%; top: 50%;
     transform: translate(-50%, -50%);
@@ -695,6 +705,14 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   box-shadow: 0 0 7px var(--wf-bloom), 0 0 20px var(--wf-bloom-wide);
 }
 #R-body-inner :is(h2, h3) { text-shadow: 0 0 18px var(--wf-bloom-wide); }
+/* Type below heading level still carries light. Paragraph copy does NOT —
+   that exclusion is the whole point of section 9 and a halo there costs
+   legibility. In daylight --wf-bloom-wide is a near-transparent dark, so
+   this rule quietly does nothing there. */
+#R-body-inner :is(h4, h5, h6),
+#R-body-inner strong,
+#R-body-inner a:not(.btn):not(.anchor),
+#R-sidebar a { text-shadow: 0 0 12px var(--wf-bloom-wide); }
 #R-body-inner h2 { border-bottom-color: var(--wf-edge); }
 
 /* 9.2 hairlines: a rule is a lit filament, not a pencil line */
@@ -789,6 +807,28 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
 }
 .wf-dot {
   box-shadow: 0 0 8px var(--wf-red-text), 0 0 18px var(--wf-bloom-now);
+}
+
+/* ---------- 9.7 daylight, the opposite treatment ----------
+ * The dark variants say "lit screen" with blur and alpha. Light mode says
+ * the same thing by being harsh: one fully opaque offset shadow, no blur,
+ * on headings and on every card. Variant-scoped in this file rather than
+ * tokenised away, the same way section 12 scopes the paired images — the
+ * shape of the shadow differs per variant, not just its colour. */
+:root[data-r-theme-variant='hacker-light'] #R-body-inner :is(h1, h2, h3) {
+  text-shadow: 2px 2px 0 var(--wf-hard);
+}
+:root[data-r-theme-variant='hacker-light'] .wf-panel {
+  border-color: var(--wf-hard);
+  box-shadow: 4px 4px 0 var(--wf-hard);
+}
+:root[data-r-theme-variant='hacker-light'] .wf-panel--link:hover,
+:root[data-r-theme-variant='hacker-light'] .wf-panel--link:focus-visible {
+  box-shadow: 6px 6px 0 var(--wf-hard);
+  transform: translate(-2px, -2px);
+}
+:root[data-r-theme-variant='hacker-light'] .wf-meetbar {
+  box-shadow: 4px 4px 0 var(--wf-hard);
 }
 
 /* ---------- 10. motion ----------
@@ -1023,7 +1063,7 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
 }
 @keyframes wf-blink { 0%, 55% { opacity: 1; } 56%, 100% { opacity: 0; } }
 
-/* ---------- 17. matrix rain ----------
+/* ---------- 17. matrix rain — CYBER VARIANT ONLY ----------
  * The canvas is built and driven by assets/js/custom.js, which only runs on
  * the home page and section landings. Everything visual about it is here.
  *

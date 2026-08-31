@@ -48,9 +48,10 @@
      Never on paragraph text — a halo there costs legibility and buys
      nothing. Each is a spread of a colour already in the palette. ---- */
   --wf-bloom:         rgba( 30, 144, 255, .55 );  /* tight ring on linework */
-  --wf-bloom-wide:    rgba( 30, 144, 255, .22 );  /* wide outer halo */
+  --wf-bloom-wide:    rgba( 30, 144, 255, .30 );  /* wide outer halo */
   --wf-bloom-now:     rgba( 255, 77, 77, .55 );   /* the red "here" halo */
-  --wf-bloom-text:    rgba( 232, 244, 255, .32 ); /* white headline halo */
+  --wf-bloom-text:    rgba( 232, 244, 255, .44 ); /* white headline halo */
+  --wf-hard:          transparent;  /* dark variants glow instead */
   --wf-fill:          rgba(  6, 16, 13, .72 );    /* translucent panel fill */
 
   /* ---- washes, insets and hairlines used by custom.css ----

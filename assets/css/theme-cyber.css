@@ -71,9 +71,10 @@
      nothing. Alphas run slightly under the `hacker` values because the
      source colour is brighter; matching them numerically would smear. ---- */
   --wf-bloom:         rgba(  0, 255,  65, .45 );  /* tight ring on linework */
-  --wf-bloom-wide:    rgba(  0, 255,  65, .18 );  /* wide outer halo */
+  --wf-bloom-wide:    rgba(  0, 255,  65, .30 );  /* wide outer halo */
   --wf-bloom-now:     rgba( 255,  77,  77, .55 ); /* the red "here" halo */
-  --wf-bloom-text:    rgba( 159, 255, 192, .30 ); /* white headline halo */
+  --wf-bloom-text:    rgba( 159, 255, 192, .45 ); /* headline halo */
+  --wf-hard:          transparent;  /* dark variants glow instead */
   --wf-fill:          rgba(  3,  18,  12, .74 );  /* translucent panel fill */
 
   /* ---- washes, insets and hairlines used by custom.css ----

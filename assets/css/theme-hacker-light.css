@@ -64,6 +64,10 @@
   --wf-bloom-wide:    rgba( 13, 38, 66, .07 );
   --wf-bloom-now:     rgba( 204,  0,  0, .30 );
   --wf-bloom-text:    transparent;  /* no halo on headlines in daylight */
+  /* daylight gets the opposite of a halo: one hard, fully opaque offset
+     shadow. No blur, no alpha — the harsh-contrast counterpart to the
+     CRT bloom the dark variants carry. */
+  --wf-hard:          #16202B;
   --wf-fill:          rgba( 255, 255, 255, .82 );  /* translucent panel fill */
 
   /* ---- washes, insets and hairlines used by custom.css ---- */
