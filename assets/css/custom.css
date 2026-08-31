@@ -844,7 +844,7 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
  * .wf-kicker is listed because text-shadow INHERITS: the kicker is a span
  * inside the h2, so it picked the offset up and rendered doubled. */
 :root[data-r-theme-variant='hacker-light'] #R-body-inner h2 {
-  text-shadow: 2px 2px 0 var(--wf-hard);
+  text-shadow: 2px 1px 0 var(--wf-hard);
 }
 :root[data-r-theme-variant='hacker-light'] #R-body-inner :is(h1, h3, h4, h5, h6),
 :root[data-r-theme-variant='hacker-light'] .wf-kicker {
