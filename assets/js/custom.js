@@ -341,17 +341,35 @@
 
   document.addEventListener('visibilitychange', function () {
     if (document.hidden) stop();
-    else start();
+    else sync();
   });
 
   /* The variant can change under us — repaint with the new token. */
-  document.addEventListener('themeVariantLoaded', readColour);
+  /* Cyber only. The rain is that variant's own signature, not a site-wide
+     effect: in dark it fought the blue linework and in daylight it was a
+     grey haze behind body copy. The other two variants get the lit panel
+     edge instead (section 6.1), which is static and reads at any size.
+
+     Gated here rather than in the Hugo partial because the variant is a
+     client-side choice — the template cannot know it, and the reader can
+     change it without a page load. */
+  function isCyber() {
+    return document.documentElement.dataset.rThemeVariant === 'cyber';
+  }
+
+  function sync() {
+    if (!isCyber()) { stop(); canvas.style.display = 'none'; return; }
+    canvas.style.display = '';
+    readColour();
+    start();
+  }
+
+  document.addEventListener('themeVariantLoaded', sync);
 
   function init() {
     document.body.appendChild(canvas);
-    readColour();
     resize();
-    start();
+    sync();
   }
 
   if (document.readyState !== 'loading') init();
