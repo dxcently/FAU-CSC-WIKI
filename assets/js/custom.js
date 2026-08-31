@@ -189,3 +189,156 @@
   if (document.readyState !== 'loading') observeAll();
   else document.addEventListener('DOMContentLoaded', observeAll);
 })();
+
+/* --------------------------------------------------------------------
+ * Matrix rain
+ *
+ * A full-viewport texture behind the page: columns of glyphs falling at
+ * different speeds, each with a short fading tail. Opted in per page by
+ * custom-footer.html, which sets data-wf-rain on <html> for the home page
+ * and section landings only. NOT on leaf pages — body copy stays clean.
+ *
+ * It is a TEXTURE, NOT A FEATURE. Everything below is arranged so it
+ * cannot become one:
+ *
+ *   1. NO COLOUR LIVES HERE. The glyph colour is read from the --wf-rain
+ *      custom property at run time, so the rain repaints with the variant
+ *      and is near-invisible in the light one. A hex literal in this file
+ *      would defeat all three variants at once.
+ *   2. REDUCED MOTION RENDERS NOTHING. Not a slower rain, not a static
+ *      one — no canvas is created at all. Someone who asked the OS to stop
+ *      animations did not ask for a quieter animation.
+ *   3. THE FRAME RATE IS CAPPED. An uncapped rAF loop would repaint a
+ *      full-screen canvas 120 times a second on a high-refresh display to
+ *      animate something nobody is looking at. FPS below is the budget.
+ *   4. HIDDEN TABS STOP. visibilitychange cancels the loop. Browsers
+ *      already throttle background rAF, but "throttled" is not "off" and
+ *      this costs nothing to do properly.
+ *
+ * The canvas is built here rather than in the template because it carries
+ * no content: an empty <canvas> in the HTML is markup a reader's screen
+ * reader has to skip for a decoration that may never render.
+ * -------------------------------------------------------------------- */
+(function () {
+  'use strict';
+
+  if (!document.documentElement.dataset.wfRain) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var FPS = 12;              /* a texture does not need 60 */
+  var FONT = 15;             /* glyph cell, px */
+  var TAIL = 9;              /* glyphs behind the head, fading out */
+  var GLYPHS = '01<>[]{}/\\|=+*^?#$%&ABCDEF';
+
+  var canvas = document.createElement('canvas');
+  canvas.className = 'wf-rain';
+  /* Decoration. It says nothing, so it says nothing to a screen reader. */
+  canvas.setAttribute('aria-hidden', 'true');
+
+  var ctx = canvas.getContext('2d');
+  if (!ctx) return;          /* no 2d context — no rain, no error */
+
+  var columns = [];
+  var w = 0, h = 0, dpr = 1;
+  var colour = '';
+  var raf = 0;
+  var last = 0;
+
+  /* The one place a colour enters this file, and it comes from CSS.
+     getComputedStyle is called on <html>, which is where the variant
+     attribute sits and therefore where --wf-rain resolves. */
+  function readColour() {
+    colour = getComputedStyle(document.documentElement)
+      .getPropertyValue('--wf-rain').trim();
+  }
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);   /* 3x buys nothing here */
+    w = window.innerWidth;
+    h = window.innerHeight;
+    canvas.width = Math.floor(w * dpr);
+    canvas.height = Math.floor(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.font = FONT + 'px ' + 'ui-monospace, monospace';
+    ctx.textBaseline = 'top';
+
+    var count = Math.ceil(w / FONT);
+    columns = [];
+    for (var i = 0; i < count; i++) {
+      columns.push({
+        /* stagger the start above the fold so they do not arrive as a
+           single rank marching down the screen */
+        y: -Math.random() * h,
+        speed: FONT * (0.5 + Math.random() * 0.9)
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = colour;
+    for (var i = 0; i < columns.length; i++) {
+      var col = columns[i];
+      var x = i * FONT;
+      for (var t = 0; t < TAIL; t++) {
+        var y = col.y - t * FONT;
+        if (y < -FONT || y > h) continue;
+        /* globalAlpha multiplies the token's own alpha, so the tail fades
+           without this file ever constructing a colour of its own */
+        ctx.globalAlpha = (1 - t / TAIL) * (t === 0 ? 1 : 0.65);
+        ctx.fillText(GLYPHS[(Math.random() * GLYPHS.length) | 0], x, y);
+      }
+      col.y += col.speed;
+      if (col.y - TAIL * FONT > h) {
+        col.y = -Math.random() * FONT * 12;
+        col.speed = FONT * (0.5 + Math.random() * 0.9);
+      }
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function tick(now) {
+    raf = requestAnimationFrame(tick);
+    if (now - last < 1000 / FPS) return;
+    last = now;
+    draw();
+  }
+
+  function start() {
+    if (raf) return;
+    last = 0;
+    raf = requestAnimationFrame(tick);
+  }
+
+  function stop() {
+    if (!raf) return;
+    cancelAnimationFrame(raf);
+    raf = 0;
+  }
+
+  /* One timer, reset on every resize event: a drag across the screen fires
+     dozens of them and each one reallocates every column. */
+  var resizeTimer = 0;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(resize, 150);
+  });
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) stop();
+    else start();
+  });
+
+  /* The variant can change under us — repaint with the new token. */
+  document.addEventListener('themeVariantLoaded', readColour);
+
+  function init() {
+    document.body.appendChild(canvas);
+    readColour();
+    resize();
+    start();
+  }
+
+  if (document.readyState !== 'loading') init();
+  else document.addEventListener('DOMContentLoaded', init);
+})();

@@ -1,14 +1,27 @@
-{{- /* Opt-in flag for the scramble-reveal effect in assets/js/custom.js.
+{{- /* Opt-in flags for the two page effects in assets/js/custom.js.
 
-     On for the home page and section landing pages — the places people scan.
-     Deliberately OFF for leaf pages: watching a heading resolve is a nice
-     arrival, and a distraction when you are three screens into a reference
-     page trying to read.
+     Both are ON for the home page and section landing pages — the places
+     people scan — and OFF for leaf pages. A section landing is a signpost
+     you look at; a leaf page is a document you read, and neither a
+     resolving heading nor falling glyphs behind body copy helps you read.
 
-     Override per page with `scramble = true` / `scramble = false` in front
+     "Section landing page" here means every _index.md render, nested ones
+     included (/learn/, and also /learn/linux/). Hugo gives them all
+     Kind == "section" and they all do the same job.
+
+     Override per page with `scramble = true` / `rain = false` in front
      matter. isset is load-bearing — `false` and "not set" are different. */ -}}
-{{- $on := or .IsHome (eq .Kind "section") }}
-{{- if isset .Params "scramble" }}{{ $on = .Params.scramble }}{{ end }}
-{{- if $on }}
-<script>document.documentElement.dataset.wfScramble = "1";</script>
+{{- $landing := or .IsHome (eq .Kind "section") }}
+
+{{- $scramble := $landing }}
+{{- if isset .Params "scramble" }}{{ $scramble = .Params.scramble }}{{ end }}
+
+{{- $rain := $landing }}
+{{- if isset .Params "rain" }}{{ $rain = .Params.rain }}{{ end }}
+
+{{- if or $scramble $rain }}
+<script>
+{{- if $scramble }}document.documentElement.dataset.wfScramble = "1";{{ end }}
+{{- if $rain }}document.documentElement.dataset.wfRain = "1";{{ end }}
+</script>
 {{- end }}
