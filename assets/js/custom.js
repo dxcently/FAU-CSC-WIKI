@@ -18,11 +18,18 @@
 (function () {
   'use strict';
 
-  /* Each step names the variant it moves TO, plus the icon and label for
-     that destination — the icon shows where the button TAKES you, not
-     where you are. Font Awesome Free only; the theme bundles FA Free
-     7.1.0 and a class it does not ship renders as an empty box.
-     fa-terminal reads as a screen, which is what `cyber` is. */
+  /* One entry per variant, in cycle order. The icon names the variant you
+     are IN; the label names the one the button moves you TO.
+
+     It used to paint the destination icon instead, which reads backwards:
+     sitting in dark mode you saw a sun and had no way to tell whether that
+     meant "you are in light" or "tap for light". With two variants you
+     could guess; with three you cannot. The icon is now state and the
+     tooltip is the action, which is the only split that stays legible.
+
+     Font Awesome Free only; the theme bundles FA Free 7.1.0 and a class it
+     does not ship renders as an empty box. fa-terminal reads as a screen,
+     which is what `cyber` is. */
   var CYCLE = [
     { id: 'hacker',       icon: 'fa-moon',     label: 'Switch to dark' },
     { id: 'hacker-light', icon: 'fa-sun',      label: 'Switch to light' },
@@ -44,20 +51,24 @@
      localStorage, or a variant was removed from hugo.toml — lands on index
      -1, and -1 + 1 is 0, so the cycle restarts at the default rather than
      dead-ending. */
-  function next() {
-    var here = current();
-    var at = -1;
+  function indexOf(id) {
     for (var i = 0; i < CYCLE.length; i++) {
-      if (CYCLE[i].id === here) { at = i; break; }
+      if (CYCLE[i].id === id) return i;
     }
-    return CYCLE[(at + 1) % CYCLE.length];
+    return -1;
   }
 
+  /* An unknown variant — someone hand-set localStorage, or a variant was
+     removed from hugo.toml — gives -1. next() steps that to 0, restarting
+     at the default; here() clamps it to 0 so the button still paints. */
+  function next() { return CYCLE[(indexOf(current()) + 1) % CYCLE.length]; }
+  function here() { return CYCLE[Math.max(indexOf(current()), 0)]; }
+
   function paintToggle() {
-    var to = next();
+    var at = here(), to = next();
     document.querySelectorAll('.wf-variant-toggle i').forEach(function (icon) {
       icon.classList.remove.apply(icon.classList, ICONS);
-      icon.classList.add(to.icon);
+      icon.classList.add(at.icon);
     });
     document.querySelectorAll('.wf-variant-toggle button, .wf-variant-toggle a')
       .forEach(function (el) {

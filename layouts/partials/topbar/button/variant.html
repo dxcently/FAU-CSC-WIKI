@@ -2,13 +2,14 @@
 
      The theme's own switcher is a <select> in the sidebar footer — fine for a
      long variant list, heavy for three. This is one button that steps through
-     dark -> light -> cyber -> dark and swaps its own icon to show where it
-     takes you next.
+     dark -> light -> cyber -> dark. Its icon shows the variant you are IN;
+     the tooltip says where tapping takes you.
 
      The `icon` below is what renders server-side, before any script runs.
-     assets/js/custom.js replaces it on load with the icon for the actual
-     destination, so a half-stroke circle is the right neutral placeholder —
-     it means "some other variant" and is never wrong for one frame.
+     Since the icon is now state, the honest placeholder is the icon of the
+     DEFAULT variant — a first-time visitor lands in `hacker` and sees the
+     moon it will keep. A returning visitor on another variant gets one
+     frame of moon before custom.js repaints.
 
      The `hint` is likewise a static fallback. The script overwrites title and
      aria-label with the specific destination ("Switch to cyber"), so this
@@ -22,7 +23,7 @@
 {{- partial "topbar/func/button.html" (dict
   "page" .page
   "class" "topbar-button-variant wf-variant-toggle"
-  "icon" "circle-half-stroke"
+  "icon" "moon"
   "onempty" "show"
   "hint" "Switch colour scheme: dark, light, cyber"
 )}}
