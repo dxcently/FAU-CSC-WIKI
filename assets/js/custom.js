@@ -2,7 +2,12 @@
  * Loaded with `defer` by the theme's custom-header.html partial. */
 
 /* --------------------------------------------------------------------
- * Dark / light toggle (topbar button)
+ * Variant cycle (topbar button)
+ *
+ * Three variants, one button: hacker -> hacker-light -> cyber -> hacker.
+ * The order matches params.themeVariant in hugo.toml. Adding a fourth
+ * variant means adding it to CYCLE below AND to that config — the two
+ * lists are not derived from each other.
  *
  * Goes through window.relearn.changeVariant rather than setting the data
  * attribute directly: that function also writes localStorage and fires
@@ -13,31 +18,57 @@
 (function () {
   'use strict';
 
-  var DARK = 'hacker';
-  var LIGHT = 'hacker-light';
+  /* Each step names the variant it moves TO, plus the icon and label for
+     that destination — the icon shows where the button TAKES you, not
+     where you are. Font Awesome Free only; the theme bundles FA Free
+     7.1.0 and a class it does not ship renders as an empty box.
+     fa-terminal reads as a screen, which is what `cyber` is. */
+  var CYCLE = [
+    { id: 'hacker',       icon: 'fa-moon',     label: 'Switch to dark' },
+    { id: 'hacker-light', icon: 'fa-sun',      label: 'Switch to light' },
+    { id: 'cyber',        icon: 'fa-terminal', label: 'Switch to cyber' }
+  ];
+  /* Every icon the cycle can paint. The swap removes ALL of them before it
+     adds one, so a stale icon cannot stack under the new one. Keep this in
+     sync with CYCLE, and keep fa-circle-half-stroke: that is the icon the
+     Hugo partial renders server-side, before this code runs. */
+  var ICONS = ['fa-moon', 'fa-sun', 'fa-terminal', 'fa-circle-half-stroke'];
+
+  var DEFAULT = CYCLE[0].id;
 
   function current() {
-    return document.documentElement.dataset.rThemeVariant || DARK;
+    return document.documentElement.dataset.rThemeVariant || DEFAULT;
+  }
+
+  /* Where the button goes from here. An unknown variant — someone hand-set
+     localStorage, or a variant was removed from hugo.toml — lands on index
+     -1, and -1 + 1 is 0, so the cycle restarts at the default rather than
+     dead-ending. */
+  function next() {
+    var here = current();
+    var at = -1;
+    for (var i = 0; i < CYCLE.length; i++) {
+      if (CYCLE[i].id === here) { at = i; break; }
+    }
+    return CYCLE[(at + 1) % CYCLE.length];
   }
 
   function paintToggle() {
-    var dark = current() !== LIGHT;
-    var label = dark ? 'Switch to light' : 'Switch to dark';
+    var to = next();
     document.querySelectorAll('.wf-variant-toggle i').forEach(function (icon) {
-      icon.classList.remove('fa-moon', 'fa-sun', 'fa-circle-half-stroke');
-      /* the icon shows where the button TAKES you, not where you are */
-      icon.classList.add(dark ? 'fa-sun' : 'fa-moon');
+      icon.classList.remove.apply(icon.classList, ICONS);
+      icon.classList.add(to.icon);
     });
     document.querySelectorAll('.wf-variant-toggle button, .wf-variant-toggle a')
       .forEach(function (el) {
-        el.setAttribute('title', label);
-        el.setAttribute('aria-label', label);
+        el.setAttribute('title', to.label);
+        el.setAttribute('aria-label', to.label);
       });
   }
 
   window.wfToggleVariant = function () {
     if (!window.relearn || !window.relearn.changeVariant) return;
-    window.relearn.changeVariant(current() === LIGHT ? DARK : LIGHT);
+    window.relearn.changeVariant(next().id);
     paintToggle();
   };
 
