@@ -1,0 +1,29 @@
+{{- /* Theme override, copied from themes/relearn/layouts/_default/article.html
+     with ONE addition: the next-page card between the content and the
+     footline. It lives here rather than in custom-comments.html because that
+     hook renders OUTSIDE #R-body-inner — a card there escapes the content
+     column and none of the wf- styling reaches it.
+
+     pageNext is the same cached helper the topbar arrow uses, so the two can
+     never point at different pages. On the last page it returns nothing and
+     the card simply does not render. Keep this file in sync if the theme's
+     article.html changes shape. */ -}}
+<article class="default">
+  <header class="headline">
+    {{- partial "content-header.html" . }}
+  </header>
+{{ partial "heading-pre.html" . }}{{ partial "heading.html" . }}{{ partial "heading-post.html" . }}
+
+{{ partial "article-content.html" . }}
+{{- $next := partialCached "_relearn/pageNext.gotmpl" . .Path }}
+{{- with $next }}
+  <a class="wf-panel wf-panel--link wf-next" href="{{ .RelPermalink }}">
+    <span class="wf-next__kicker">Next</span>
+    <span class="wf-next__title">{{ .Title }}</span>
+    {{- with .Description }}<span class="wf-next__desc">{{ . }}</span>{{ end }}
+  </a>
+{{- end }}
+  <footer class="footline">
+    {{- partial "content-footer.html" . }}
+  </footer>
+</article>

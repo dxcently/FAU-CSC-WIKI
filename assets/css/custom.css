@@ -338,6 +338,29 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
 }
 .wf-panel--link:hover .wf-card-title { color: var(--wf-text-strong); }
 
+/* ---------- 6.4b next-page card ----------
+ * Every page hands off to the one after it. The target comes from the
+ * theme's own pageNext helper (layouts/_default/article.html), the same
+ * logic behind the topbar arrow, so the card and the arrow cannot disagree.
+ * The wf- class prefix keeps it out of the prose-link underline rule. */
+.wf-next {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  margin: 3rem 0 0;
+  text-decoration: none;
+}
+.wf-next__kicker {
+  font-family: var(--wf-font-mono);
+  font-size: .6875rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--wf-chrome);
+}
+.wf-next__title { color: var(--wf-text-strong); font-weight: 700; }
+.wf-next__desc  { color: var(--wf-text-muted); font-size: .9375rem; }
+
 /* ---------- 6.5 quick links ---------- */
 .wf-quicklinks {
   display: flex;
