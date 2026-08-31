@@ -24,7 +24,8 @@ stands alone and needs a container — an avatar, a sticker, a slide corner.
 {{< mark-preview dark="/images/logo.svg" light="/images/shield-light.svg" width="200" alt="Club owl mark inside a shield" >}}
 
 Downloads: **[for dark backgrounds](/images/logo.svg)** ·
-**[for light backgrounds](/images/shield-light.svg)**
+**[for light backgrounds](/images/shield-light.svg)** ·
+**[green](/images/logo-green.svg)**
 
 The shield is the only form that carries its own base, so either version
 survives on either background — the light one just sits better on paper.
@@ -37,7 +38,8 @@ next to text, where a second border would just add clutter.
 {{< mark-preview dark="/images/owl-mark.svg" light="/images/owl-mark-light.svg" width="260" alt="Club owl head without the shield" >}}
 
 Downloads: **[for dark backgrounds](/images/owl-mark.svg)** ·
-**[for light backgrounds](/images/owl-mark-light.svg)**
+**[for light backgrounds](/images/owl-mark-light.svg)** ·
+**[green](/images/owl-mark-green.svg)**
 
 ## Full owl
 
@@ -48,7 +50,8 @@ a poster, a slide, a shirt back, a Discord banner.
 {{< mark-preview dark="/images/owl-full.svg" light="/images/owl-full-light.svg" width="220" alt="The full club owl with wings and talons" >}}
 
 Downloads: **[for dark backgrounds](/images/owl-full.svg)** ·
-**[for light backgrounds](/images/owl-full-light.svg)**
+**[for light backgrounds](/images/owl-full-light.svg)** ·
+**[green](/images/owl-full-green.svg)**
 
 ---
 
@@ -105,10 +108,13 @@ lives everywhere else: code blocks, headings, the roadmap's shared core.
 | File | What it is |
 | ---- | ---------- |
 | `assets/images/logo.svg` | Shield, dark ground. Also the sidebar logo. |
+| `assets/images/logo-green.svg` | Shield, green. Matches the cyber theme variant. |
 | `assets/images/shield-light.svg` | Shield, light ground. |
 | `assets/images/owl-mark.svg` | Bare head, dark ground. |
+| `assets/images/owl-mark-green.svg` | Bare head, green. |
 | `assets/images/owl-mark-light.svg` | Bare head, light ground. |
 | `assets/images/owl-full.svg` | Full owl — head, wings, breast, talons. |
+| `assets/images/owl-full-green.svg` | Full owl, green. |
 | `assets/images/owl-full-light.svg` | Full owl, light ground. |
 | `layouts/partials/home/owl-wireframe.html` | The large animated-scale hero version on the home page. This is the master geometry. |
 

@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-12 4 284 168" fill="none">
+  <!-- FAU Cyber Security Club — owl head, no shield.
+       Colors hardcoded: chrome #00C853, red #FF4D4D, white #CFFFE0, because
+       this file renders outside the page where the CSS palette tokens do not exist.
+       Same geometry as the hero in layouts/partials/home/owl-wireframe.html;
+       strokes are heavier so the head survives being scaled down. -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- facial disc: bevel band between silhouette and plate, then the plate -->
+    <path fill="#00C853" fill-opacity=".09" fill-rule="evenodd"
+          d="M130 36 L110 30 L88 26 L2 58 L40 112 L130 158 L220 112 L258 58 L172 26 L150 30 Z
+             M130 55 L98 48 L40 64 L67 101 L130 124 L193 101 L220 64 L162 48 Z"/>
+    <path fill="#00C853" fill-opacity=".14"
+          d="M130 55 L98 48 L40 64 L67 101 L130 124 L193 101 L220 64 L162 48 Z"/>
+    <!-- chin -->
+    <path fill="#CFFFE0" fill-opacity=".13"
+          d="M67 101 L130 124 L193 101 L130 132 Z"/>
+    <path stroke="#00C853" stroke-width="3" opacity=".85"
+          d="M130 36 L110 30 L88 26 L2 58 L40 112 L130 158 L220 112 L258 58 L172 26 L150 30 Z"/>
+    <path stroke="#00C853" stroke-width="2.5" opacity=".6"
+          d="M130 55 L98 48 L40 64 L67 101 L130 124 L193 101 L220 64 L162 48 Z"/>
+    <!-- bevel connectors: each outer vertex to its inner twin -->
+    <g stroke="#00C853" stroke-width="1.6" opacity=".32">
+      <path d="M130 36 L130 55"/>
+      <path d="M88 26 L98 48"/>
+      <path d="M2 58 L40 64"/>
+      <path d="M40 112 L67 101"/>
+      <path d="M220 112 L193 101"/>
+      <path d="M258 58 L220 64"/>
+      <path d="M172 26 L162 48"/>
+    </g>
+    <!-- chin facets -->
+    <g stroke="#00C853" stroke-width="1.6" opacity=".4">
+      <path d="M67 101 L130 132"/>
+      <path d="M193 101 L130 132"/>
+    </g>
+    <!-- beak -->
+    <path fill="#00C853" fill-opacity=".6"
+          d="M130 82 L114 104 L130 162 L146 104 Z"/>
+    <path fill="#CFFFE0" fill-opacity=".28"
+          d="M130 94 L121 105 L130 144 L139 105 Z"/>
+    <!-- eyes: outline is broken along the TOP edge, where the brow crosses -->
+    <path fill="#00C853" fill-opacity=".16" d="M40 64 L123 82 L103 110 L59 88 Z"/>
+    <path fill="#00C853" fill-opacity=".16" d="M220 64 L137 82 L157 110 L201 88 Z"/>
+    <g stroke="#00C853" stroke-width="2.5" opacity=".9">
+      <path d="M40 64 L59 88 L103 110 L123 82"/>
+      <path d="M40 64 L63 69"/>
+      <path d="M123 82 L103 78"/>
+      <path d="M220 64 L201 88 L157 110 L137 82"/>
+      <path d="M220 64 L197 69"/>
+      <path d="M137 82 L157 78"/>
+    </g>
+    <path fill="#CFFFE0" fill-opacity=".92" d="M62 68.77 L112 79.61 L99 97 Z"/>
+    <path fill="#CFFFE0" fill-opacity=".92" d="M198 68.77 L148 79.61 L161 97 Z"/>
+    <!-- forehead: nested V plates, lit from the upper left -->
+    <g stroke="#00C853" stroke-width="1.2" opacity=".9">
+      <path fill="#00C853" fill-opacity=".42" d="M112 40 L130 52 L130 60 L112 48 Z"/>
+      <path fill="#00C853" fill-opacity=".20" d="M148 40 L130 52 L130 60 L148 48 Z"/>
+      <path fill="#00C853" fill-opacity=".42" d="M118 62 L130 71 L130 77 L118 68 Z"/>
+      <path fill="#00C853" fill-opacity=".20" d="M142 62 L130 71 L130 77 L142 68 Z"/>
+    </g>
+    <!-- brow shadow plates -->
+    <path fill="#00C853" fill-opacity=".34" stroke="#00C853" stroke-width="1.5"
+          d="M40 64 L63 58 L98 72 L130 82 Z"/>
+    <path fill="#00C853" fill-opacity=".34" stroke="#00C853" stroke-width="1.5"
+          d="M220 64 L197 58 L162 72 L130 82 Z"/>
+    <!-- brows: inner edge runs down the beak's outer edge to its midpoint -->
+    <path fill="#FF4D4D" fill-opacity=".95"
+          d="M130 82 L96 60 L52 44 L-2 14 L28 38 L6 44 L54 54 L98 72 L122 93 Z"/>
+    <path fill="#FF4D4D" fill-opacity=".95"
+          d="M130 82 L164 60 L208 44 L262 14 L232 38 L254 44 L206 54 L162 72 L138 93 Z"/>
+  </g>
+</svg>
