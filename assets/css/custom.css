@@ -453,7 +453,21 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   opacity: var(--wf-stage-art);
   filter: drop-shadow(0 0 6px var(--wf-stage-glow));
 }
-@media screen and (max-width: 47.999rem) { .wf-hero-art { display: none; } }
+/* Mobile: the owl stops being a side illustration and becomes a watermark
+   behind the copy. .wf-hero already sets position:relative and
+   overflow:hidden, so the mark can overflow the panel and be cropped — which
+   reads better than shrinking a 284-unit drawing into a phone column.
+   .wf-hero-copy is z-index 3 and this is 2, so the text stays on top.
+   Opacity scales off the same per-variant token instead of introducing a
+   second one, so a variant that retunes the owl retunes the watermark too. */
+@media screen and (max-width: 47.999rem) {
+  .wf-hero-art {
+    right: auto; left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    width: min(30rem, 125%);
+    opacity: calc(var(--wf-stage-art) * .2);
+  }
+}
 
 .wf-hero-copy { position: relative; z-index: 3; max-width: 40rem; }
 .wf-hero-kicker {
