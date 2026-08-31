@@ -909,6 +909,9 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
 #R-body-inner .wf-mark .wf-mark__light { display: none; }
 :root[data-r-theme-variant='hacker-light'] #R-body-inner .wf-mark .wf-mark__dark  { display: none; }
 :root[data-r-theme-variant='hacker-light'] #R-body-inner .wf-mark .wf-mark__light { display: block; }
+#R-body-inner .wf-mark .wf-mark__green { display: none; }
+:root[data-r-theme-variant='cyber'] #R-body-inner .wf-mark .wf-mark__dark  { display: none; }
+:root[data-r-theme-variant='cyber'] #R-body-inner .wf-mark .wf-mark__green { display: block; }
 
 /* Same trick for the sidebar shield. It needs its own rules because the
    sidebar is outside #R-body-inner, and the `img` in the selector is
@@ -917,6 +920,9 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
 #R-logo .logo-image img.wf-logo__light { display: none; }
 :root[data-r-theme-variant='hacker-light'] #R-logo .logo-image img.wf-logo__dark  { display: none; }
 :root[data-r-theme-variant='hacker-light'] #R-logo .logo-image img.wf-logo__light { display: block; }
+#R-logo .logo-image img.wf-logo__green { display: none; }
+:root[data-r-theme-variant='cyber'] #R-logo .logo-image img.wf-logo__dark  { display: none; }
+:root[data-r-theme-variant='cyber'] #R-logo .logo-image img.wf-logo__green { display: block; }
 
 /* ---------- 13. schedule room column ----------
  * Most weeks are in the usual room, so the column reads as quiet metadata.

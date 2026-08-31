@@ -19,6 +19,7 @@
      malformed media attribute, `(prefers-color-scheme: light")`. Keeping this
      file outside the logo-* pattern leaves one clean favicon. */ -}}
 {{- $light := resources.Get "/images/shield-light.svg" | default $dark }}
+{{- $green := resources.Get "/images/logo-green.svg" | default $dark }}
 <a id="R-logo" class="R-default direction-row" href="{{ partial "permalink.gotmpl" (dict "to" site.Home) }}">
   <span class="logo-image default-animation">
     {{- with $dark }}
@@ -26,6 +27,9 @@
     {{- end }}
     {{- with $light }}
     <img class="wf-logo__light" src="{{ .RelPermalink }}" alt="" aria-hidden="true">
+    {{- end }}
+    {{- with $green }}
+    <img class="wf-logo__green" src="{{ .RelPermalink }}" alt="" aria-hidden="true">
     {{- end }}
   </span>
   <span class="logo-title default-animation">{{ site.Title }}</span>

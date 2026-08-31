@@ -21,7 +21,7 @@ topbar and watch them swap.
 The full lockup: the owl inside a layered shield frame. Use this when the mark
 stands alone and needs a container — an avatar, a sticker, a slide corner.
 
-{{< mark-preview dark="/images/logo.svg" light="/images/shield-light.svg" width="200" alt="Club owl mark inside a shield" >}}
+{{< mark-preview dark="/images/logo.svg" light="/images/shield-light.svg" green="/images/logo-green.svg" width="200" alt="Club owl mark inside a shield" >}}
 
 Downloads: **[for dark backgrounds](/images/logo.svg)** ·
 **[for light backgrounds](/images/shield-light.svg)** ·
@@ -35,7 +35,7 @@ survives on either background — the light one just sits better on paper.
 The face on its own, no frame. Use this when it sits on an existing panel or
 next to text, where a second border would just add clutter.
 
-{{< mark-preview dark="/images/owl-mark.svg" light="/images/owl-mark-light.svg" width="260" alt="Club owl head without the shield" >}}
+{{< mark-preview dark="/images/owl-mark.svg" light="/images/owl-mark-light.svg" green="/images/owl-mark-green.svg" width="260" alt="Club owl head without the shield" >}}
 
 Downloads: **[for dark backgrounds](/images/owl-mark.svg)** ·
 **[for light backgrounds](/images/owl-mark-light.svg)** ·
@@ -47,7 +47,7 @@ The whole bird — head, folded wings, breast and talons. This is the version on
 the home page. Use it where there is vertical room and the mark is the subject:
 a poster, a slide, a shirt back, a Discord banner.
 
-{{< mark-preview dark="/images/owl-full.svg" light="/images/owl-full-light.svg" width="220" alt="The full club owl with wings and talons" >}}
+{{< mark-preview dark="/images/owl-full.svg" light="/images/owl-full-light.svg" green="/images/owl-full-green.svg" width="220" alt="The full club owl with wings and talons" >}}
 
 Downloads: **[for dark backgrounds](/images/owl-full.svg)** ·
 **[for light backgrounds](/images/owl-full-light.svg)** ·
