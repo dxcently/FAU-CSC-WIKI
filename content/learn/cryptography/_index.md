@@ -63,3 +63,7 @@ design a cryptographic algorithm. Nobody should be doing that outside of
 academic research — that is exactly the mistake covered in the second page.
 The goal here is smaller and more useful: read a system, know what protects
 it, and know what to ask when someone tells you it is "encrypted."
+
+---
+
+{{< section-grid >}}

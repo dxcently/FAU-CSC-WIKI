@@ -52,3 +52,7 @@ Software on Linux does not usually come from a website with a download button. I
 High level: this is how you install the tools you actually came here for, such as nmap or Wireshark, with one command instead of a manual hunt across the internet.
 
 Low level: the package manager also tracks **dependencies** — other pieces of software your tool needs to run — and installs those automatically. Every Linux distribution ships one. The command differs (`apt`, `dnf`, `pacman`), but the idea stays the same.
+
+---
+
+{{< section-grid >}}

@@ -74,3 +74,7 @@ second is what you build on top of it.
 
 If you want to help shape this, this is a good place to show up and ask
 questions. See [Projects & Guides](/projects/) for how to get involved.
+
+---
+
+{{< section-grid >}}

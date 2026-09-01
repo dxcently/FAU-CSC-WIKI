@@ -16,11 +16,13 @@
 {{ partial "heading-pre.html" . }}{{ partial "heading.html" . }}{{ partial "heading-post.html" . }}
 
 {{ partial "article-content.html" . }}
-{{- /* Topic tiles, then the next card. Scoped to descendants of /learn/: the
-     hub itself renders the descriptive section-grid in its own body, and the
-     rest of the site is reference material with no reading order to show. */ -}}
+{{- /* Sibling tiles, then the next card. Only on LEAF pages inside /learn/: a
+     section index renders descriptive section-grid cards of its own children
+     in its body (specializations renders tiles there instead), so injecting
+     tiles here too would double them up. Everything outside /learn/ is
+     reference material with no reading order to show. */ -}}
 {{- with site.GetPage "/learn" }}
-  {{- if $.IsDescendant . }}{{ partial "topic-cards.html" (dict "page" $) }}{{ end }}
+  {{- if and ($.IsDescendant .) (not $.IsSection) }}{{ partial "topic-cards.html" (dict "page" $) }}{{ end }}
 {{- end }}
 {{- $next := partialCached "_relearn/pageNext.gotmpl" . .Path }}
 {{- with $next }}

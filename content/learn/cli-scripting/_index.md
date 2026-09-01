@@ -83,3 +83,7 @@ reference: [Python for Security](python-scripting/).
 Learn shell fluency first — you use it every session. Add Bash scripting
 the first time retyping something gets annoying. Reach for Python the
 first time Bash's text-munging starts fighting you.
+
+---
+
+{{< section-grid >}}

@@ -80,3 +80,6 @@ uniquely needs: how to attack and defend agent systems themselves.
 - [Automating Security Work](automation/) — pipelines, verification, and
   what never goes into a prompt.
 
+---
+
+{{< section-grid >}}

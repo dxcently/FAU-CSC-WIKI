@@ -70,3 +70,7 @@ config, or writing anything more involved than a plain page.
   — shortcodes, front matter options, and theme config.
 - [Markdown cheatsheet](https://github.com/im-luka/markdown-cheatsheet?tab=readme-ov-file#paragraph)
   — syntax reference if you are new to Markdown.
+
+---
+
+{{< section-grid >}}

@@ -72,3 +72,7 @@ actually looks like the first few times. On your lab VM, start a capture,
 load a web page, and watch the packets appear.
 
 Tool details and example commands: [Networking Tools](tools/).
+
+---
+
+{{< section-grid >}}

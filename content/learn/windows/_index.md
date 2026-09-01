@@ -53,3 +53,7 @@ If you have not set up a VM yet, start at [Virtual Machines](/learn/virtual-mach
 
 > [!info] How the Club Uses This
 > TODO: Add how FAU CSC uses this in practice — CCDC prep, a standing lab domain, CyberPatriot image walkthroughs, etc.
+
+---
+
+{{< section-grid >}}

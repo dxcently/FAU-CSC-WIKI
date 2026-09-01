@@ -46,3 +46,7 @@ High level: this is your undo button. Break the VM on purpose, misconfigure it, 
 Low level: the hypervisor usually does not copy the whole disk again for each snapshot. It saves only the changes made after the snapshot, then discards those changes on restore. That is why restoring is fast even on a large disk.
 
 This is the whole reason VMs exist for security practice: freedom to break things on purpose and lose nothing. Read [Why Virtual Machines](./why-vms) for the full case.
+
+---
+
+{{< section-grid >}}
