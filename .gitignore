@@ -9,3 +9,7 @@ public/
 
 # Hugo's build lock
 .hugo_build.lock
+
+# never commit local secrets
+.env
+*.env
