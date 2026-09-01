@@ -19,9 +19,9 @@ page, fix something, or see what is still unfinished, it starts here.
 
 ## Who maintains this
 
-Wiki upkeep and edits: **@solitude_freak** on the
-[Discord](http://discord.gg/2Yun8WAUuy). Ping them if a page is wrong, a link
-is dead, or you want commit access.
+Wiki upkeep and edits: **@dxcently** on the
+[Discord](http://discord.gg/2Yun8WAUuy), or email **kho2025@fau.edu**. Ping them
+if a page is wrong, a link is dead, or you want commit access.
 
 For anything about the club itself rather than the wiki, contact details are
 on the [home page](/).
