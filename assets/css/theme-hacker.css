@@ -97,7 +97,7 @@
   --wf-stage:            #030A08;
   --wf-stage-fg:         #E8F4FF;
   --wf-stage-chrome:     #1E90FF;
-  --wf-stage-accent:     #00BB00;
+  --wf-stage-accent:     #00FF41;  /* bright phosphor — hero tagline/caret, matched to cyber */
   --wf-stage-red:        #FF4D4D;
   /* the owl's eyes, beak ridge and chin. Its own token because
      --wf-stage-fg is also the hero HEADLINE, which must stay
