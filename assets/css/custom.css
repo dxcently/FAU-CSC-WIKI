@@ -1218,3 +1218,11 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
    setting by drawing the field once and never starting the animation loop,
    so the texture survives and only the motion goes. Hiding the canvas
    outright removed the effect entirely for anyone with the setting on. */
+
+/* The rain reads through the transparent content behind the hero, but the
+   hero's own fog and bottom scrim (§7, painted IN FRONT of the ground inside
+   the hero) sit over it and wash the glyphs out — which is why lowering only
+   --wf-stage was not enough. Thin the whole fog layer for cyber so the rain
+   comes through; the copy is centred and carries its own glow, and the scrim,
+   even at this opacity, still darkens the lower band. Cyber + home only. */
+:root[data-r-theme-variant='cyber'] .wf-hero-fog { opacity: .35; }

@@ -129,7 +129,7 @@
      hero ground), and dropping its alpha lets the matrix-rain canvas behind
      #R-body show through the hero. The fog scrim still darkens the lower band
      where the copy sits, so text stays legible while the rain reads up top. */
-  --wf-stage:            rgba(  1,   8,   5, .15 );
+  --wf-stage:            rgba(  1,   8,   5, .10 );
   --wf-stage-fg:         #9FFFC0;
   --wf-stage-chrome:     #00C853;
   --wf-stage-accent:     #00FF41;
