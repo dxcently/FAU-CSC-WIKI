@@ -22,7 +22,7 @@
 <ul class="wf-grid wf-grid--{{ $cols }}">
 {{- range $items }}
   <li>
-    <a class="wf-panel wf-panel--link" href="{{ .RelPermalink }}">
+    <a class="wf-panel wf-panel--link wf-scanlines" href="{{ .RelPermalink }}">
       {{- with .Params.icon }}<i class="{{ . }}" aria-hidden="true"></i>{{ end }}
       <span class="wf-card-title">{{ .LinkTitle }}</span>
       <span class="wf-card-desc">{{ .Description | default (.Summary | plainify | truncate 140) }}</span>

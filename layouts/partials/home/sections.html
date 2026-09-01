@@ -3,7 +3,7 @@
 <ul class="wf-grid">
 {{- range sort $secs "Weight" }}
   <li>
-    <a class="wf-panel wf-panel--link" href="{{ .RelPermalink }}">
+    <a class="wf-panel wf-panel--link wf-scanlines" href="{{ .RelPermalink }}">
       <i class="{{ .Params.icon | default "fa-solid fa-folder" }}" aria-hidden="true"></i>
       <span class="wf-card-title">{{ .LinkTitle }}</span>
       <span class="wf-card-desc">{{ .Description }}</span>
