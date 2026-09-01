@@ -125,7 +125,11 @@
      block on a phone, and an opaque ground made it a lid over the matrix
      rain. The canvas is fixed behind all content, so opening the hero is
      what lets the rain read at all on a narrow screen. */
-  --wf-stage:            rgba(  1,   8,   5, .50 );
+  /* Low on purpose: this is the only thing --wf-stage paints (the home
+     hero ground), and dropping its alpha lets the matrix-rain canvas behind
+     #R-body show through the hero. The fog scrim still darkens the lower band
+     where the copy sits, so text stays legible while the rain reads up top. */
+  --wf-stage:            rgba(  1,   8,   5, .15 );
   --wf-stage-fg:         #9FFFC0;
   --wf-stage-chrome:     #00C853;
   --wf-stage-accent:     #00FF41;
