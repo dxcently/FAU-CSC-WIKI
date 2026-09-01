@@ -1,5 +1,8 @@
 {{- /* Theme override. The trail is drawn as a filesystem path —
-     /home/csc/learn/linux/permissions/ — instead of a chevron list of titles.
+     /home/csc/learn/linux/permissions/ — instead of a chevron list of titles,
+     and every segment is a link to its own directory, the way a file
+     manager's path bar works. The current page links to itself and is marked
+     aria-current.
 
      Segments are URL slugs, not titles, because a directory is named by its
      folder and "Permissions & Users" is not a folder name. The site root is
@@ -7,9 +10,10 @@
      that is the single place where the name is the subject rather than a
      location.
 
-     Emits the same <li> and schema.org microdata the theme's version does, so
-     the structured breadcrumb list survives, and still honours dirOnly (the
-     children shortcode plainifies this into a parent label). */ -}}
+     Hrefs are .RelPermalink (clean "/learn/linux/" directory URLs) rather than
+     the theme's permalink helper, which appends index.html. Emits the same
+     schema.org microdata the theme's version does, and still honours dirOnly
+     (the children shortcode plainifies this into a parent label). */ -}}
 {{- $page := .page }}
 {{- if .dirOnly }}{{ $page = $page.Parent }}{{ end }}
 {{- with $page }}
@@ -18,15 +22,14 @@
     {{- $last := sub (len $trail) 1 }}
     {{- range $i, $p := $trail }}
       {{- $isLast := eq $i $last }}
-      {{- $link := not $isLast }}
-      {{- $url := partial "permalink.gotmpl" (dict "to" $p) }}
+      {{- $url := $p.RelPermalink }}
       {{- /* The root prints as /home/csc everywhere except on itself. */ -}}
       {{- $label := cond $p.IsHome (cond $isLast site.Title "/home/csc") (path.Base $p.RelPermalink) }}
       {{- /* Trailing -}} on purpose: theme CSS sets .breadcrumbs li to
            inline-block, so a newline between two <li> renders as a space and
            the path comes out as "/home/csc/ learn/ linux/". */ -}}
       {{- $slash := cond (and $p.IsHome $isLast) "" "/" -}}
-            <li{{ if $.schema }} itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"{{ end }} class="">{{ if $link }}<a{{ if $.schema }} itemprop="item"{{ end }} href="{{ $url }}">{{ end }}<span{{ if $.schema }} itemprop="name"{{ end }}>{{ $label }}</span>{{ if $link }}</a>{{ end }}{{ if $.schema }}<meta itemprop="position" content="{{ add $i 1 }}">{{ end }}{{ $slash }}</li>
+            <li{{ if $.schema }} itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"{{ end }} class=""><a{{ if $.schema }} itemprop="item"{{ end }} href="{{ $url }}"{{ if $isLast }} aria-current="page"{{ end }}><span{{ if $.schema }} itemprop="name"{{ end }}>{{ $label }}</span></a>{{ if $.schema }}<meta itemprop="position" content="{{ add $i 1 }}">{{ end }}{{ $slash }}</li>
     {{- end }}
   {{- end }}
 {{- end }}

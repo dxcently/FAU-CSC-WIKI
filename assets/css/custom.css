@@ -414,8 +414,24 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
 #R-topbar .topbar-breadcrumbs a span { color: var(--wf-text-muted); }
 #R-topbar .topbar-breadcrumbs a:hover span,
 #R-topbar .topbar-breadcrumbs a:focus-visible span { color: var(--wf-chrome-hi); }
-/* the leaf — the page you are on — is the one lit segment */
-#R-topbar .topbar-breadcrumbs li:last-child { color: var(--wf-text-strong); }
+/* the leaf — the page you are on — is the one lit segment, even though it is
+   now a self-link like every other. */
+#R-topbar .topbar-breadcrumbs li:last-child > a span { color: var(--wf-text-strong); }
+
+/* Every segment is a link now, so the theme's mobile rule — which clips any
+   breadcrumb <li> containing an <a> down to a11y-only — would hide the WHOLE
+   path. Undo it: the path is compact, so it stays visible and scrolls
+   sideways if a deep page runs long. */
+@media screen and (max-width: 47.999rem) {
+  #R-topbar .topbar-breadcrumbs { overflow-x: auto; text-align: left; }
+  #R-topbar .topbar-breadcrumbs li:has(> a) {
+    position: static;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
+    transform: none;
+  }
+}
 
 /* ---------- 6.5 quick links ---------- */
 .wf-quicklinks {
