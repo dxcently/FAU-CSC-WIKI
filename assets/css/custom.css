@@ -821,6 +821,11 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   margin-top: .5rem;
 }
 .wf-ann__empty { margin-top: 1.25rem; }
+/* No corner ticks on the announcement panels. They are a feed, not a card —
+   the brackets read as chrome on something that should sit quiet. Targets any
+   panel inside the section, so the populated list and the empty state agree. */
+.wf-ann .wf-panel::before,
+.wf-ann .wf-panel::after { display: none; }
 
 
 /* ---------- 9. bloom ----------
