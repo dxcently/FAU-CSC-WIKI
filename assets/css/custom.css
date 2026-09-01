@@ -475,8 +475,18 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   filter: drop-shadow(0 0 6px var(--wf-stage-glow));
 }
 /* The shield ships at its own intrinsic size; the wireframe it replaced was
-   an inline svg that filled its box for free. */
-.wf-hero-art img { display: block; width: 100%; height: auto; }
+   an inline svg that filled its box for free. It is 334x244, a LANDSCAPE
+   mark, so width alone does not bound it — max-height does, and object-fit
+   centres whatever is left over rather than anchoring it to a corner.
+   .wf-hero is min-height 19rem less 3rem padding top and bottom, so 12rem
+   is the tallest the mark can be beside the copy without being clipped. */
+.wf-hero-art img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 12rem;
+  object-fit: contain;
+}
 /* Narrow OR short: the owl stops being a side illustration and becomes a
    watermark. The height clause is what catches a landscape phone, where the
    hero is wide enough to keep the side placement but far too short for it —
@@ -492,9 +502,13 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   .wf-hero-art {
     right: auto; left: 50%; top: 50%;
     transform: translate(-50%, -50%);
-    width: min(30rem, 125%);
+    /* Contained, not cropped. The line-art owl was a portrait drawing that
+       could overflow and still read; the shield is a closed landscape shape
+       whose outline IS the mark, so slicing its edges off just looks broken. */
+    width: min(22rem, 86%);
     opacity: calc(var(--wf-stage-art) * .2);
   }
+  .wf-hero-art img { max-height: 13rem; }
 }
 
 .wf-hero-copy { position: relative; z-index: 3; max-width: 40rem; }
@@ -731,6 +745,13 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
 #R-body-inner strong,
 #R-body-inner a:not(.btn):not(.anchor),
 #R-sidebar a { text-shadow: 0 0 12px var(--wf-bloom-wide); }
+/* Subheadings and labels. These are <p> and <span>, not heading elements, so
+   none of the rules above reached them and card titles sat flat on a page
+   where every real heading glowed. Token-driven like the rest, so daylight
+   picks up its soft blue rather than a second rule. */
+.wf-card-title,
+.wf-kicker,
+.wf-next__kicker { text-shadow: 0 0 14px var(--wf-bloom-wide); }
 #R-body-inner h2 { border-bottom-color: var(--wf-edge); }
 
 /* 9.2 hairlines: a rule is a lit filament, not a pencil line */
