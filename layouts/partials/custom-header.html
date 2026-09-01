@@ -3,18 +3,22 @@
      verbatim (it is what loads custom.css and custom.js — do not drop it).
      Keep the copied half in sync if the theme's version changes. */ -}}
 
-{{- /* The browser tab shows the page's filesystem path — the same
-     /home/csc/learn/linux/permissions/ the breadcrumb draws — instead of the
-     human title. The server <title> in baseof.html is untouched, so the RSS
+{{- /* The browser tab shows the page's filesystem path — ~/csc/learn/linux/filesystem.md,
+     the same path the breadcrumb draws with /home shortened to ~ — instead of
+     the human title. The server <title> in baseof.html is untouched, so the RSS
      feed, OpenGraph card and schema.org metadata all keep the real,
      reversed-onto-site-name title; this rewrites only what the tab displays,
      client-side, and only away from home. Home keeps the full club name.
-     Computed server-side from .RelPermalink, so it cannot drift from the
-     breadcrumb's slugs. */ -}}
+     Computed server-side from .RelPermalink and .IsSection so it renders the
+     same <slug>.md the breadcrumb does — a section is its own dir plus a
+     self-named index file — and cannot drift from it. */ -}}
 {{- if not .IsHome }}
+    {{- $rel := .RelPermalink }}
+    {{- $slug := path.Base $rel }}
+    {{- $file := cond .IsSection (printf "%s%s.md" $rel $slug) (printf "%s.md" (strings.TrimSuffix "/" $rel)) }}
     {{- /* No jsonify: html/template already quotes and escapes a string
          interpolated into JS context, so encoding it first double-wraps it. */ -}}
-    <script>document.title = {{ printf "/home/csc%s" .RelPermalink }};</script>
+    <script>document.title = {{ printf "~/csc%s" $file }};</script>
 {{- end }}
 
 <!-- compat way of adding custom scripts in old Hugo documentation -->
