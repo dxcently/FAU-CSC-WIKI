@@ -952,10 +952,15 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
 }
 /* Inner edge glow on the hero — the same treatment the cards carry in 9.4,
    same geometry: inset with a heavy negative spread so the light sits on the
-   border and dies before the middle. Dark modes only. --wf-bloom-edge is a
-   real .34 in daylight, and on a lit surface this size that reads as haze
-   rather than a defined edge, so light keeps the plain border. */
-:root:not([data-r-theme-variant='hacker-light']) .wf-hero {
+   border and dies before the middle. It lives on .wf-hero-fog, not .wf-hero:
+   a shadow on the hero paints UNDER its child layers, and the fog's near-opaque
+   bottom scrim then covers the bottom edge, so only three sides glowed. On the
+   fog the glow paints above that scrim (a box-shadow draws over its own
+   element's background) and still sits below the owl and copy, so all four
+   edges glow and the text stays on top. Dark modes only — --wf-bloom-edge is a
+   real .34 in daylight and on a lit surface this size reads as haze, so light
+   keeps the plain border. */
+:root:not([data-r-theme-variant='hacker-light']) .wf-hero-fog {
   box-shadow: inset 0 0 40px -18px var(--wf-bloom-edge);
 }
 .wf-hero-kicker { text-shadow: 0 0 16px var(--wf-stage-glow-wide); }
