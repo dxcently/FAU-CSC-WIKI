@@ -758,6 +758,7 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--wf-red-text);
+  text-shadow: 0 0 12px var(--wf-bloom-now);
 }
 .wf-meetbar__item strong { color: var(--wf-text-strong); }
 .wf-meetbar__sep  { color: var(--wf-edge); }
@@ -823,7 +824,10 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
 #R-body-inner > .flex-block-wrapper article h1::after {
   box-shadow: 0 0 7px var(--wf-bloom), 0 0 20px var(--wf-bloom-wide);
 }
-#R-body-inner :is(h2, h3) { text-shadow: 0 0 18px var(--wf-bloom-wide); }
+/* h2 is blue text and h3 is green text (relearn maps H3 to --wf-primary), so
+   they take differently-coloured halos rather than one blue bloom for both. */
+#R-body-inner h2 { text-shadow: 0 0 18px var(--wf-bloom-wide); }
+#R-body-inner h3 { text-shadow: 0 0 18px var(--wf-bloom-green); }
 /* Type below heading level still carries light. Paragraph copy does NOT —
    that exclusion is the whole point of section 9 and a halo there costs
    legibility. In daylight --wf-bloom-wide is a near-transparent dark, so

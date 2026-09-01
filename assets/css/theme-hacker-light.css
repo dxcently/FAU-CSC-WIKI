@@ -62,6 +62,7 @@
      object casting down. Alphas are low — paper does not glow. ---- */
   --wf-bloom:         rgba( 11, 95, 196, .22 );
   --wf-bloom-wide:    rgba( 11, 95, 196, .13 );
+  --wf-bloom-green:   rgba( 10, 107,  44, .13 );  /* green halo, faint in daylight */
   /* Saturated blue at the same alpha --wf-bloom-now carries, not the .18
      navy of --wf-bloom: a dark at low alpha does not read as light on
      paper, which is why the card edge looked flat next to the today row. */

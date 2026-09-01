@@ -72,6 +72,7 @@
      source colour is brighter; matching them numerically would smear. ---- */
   --wf-bloom:         rgba(  0, 255,  65, .45 );  /* tight ring on linework */
   --wf-bloom-wide:    rgba(  0, 255,  65, .30 );  /* wide outer halo */
+  --wf-bloom-green:   rgba(  0, 255,  65, .30 );  /* green halo (green scheme) */
   --wf-bloom-edge:    rgba(  0, 255,  65, .55 );  /* card inner-edge glow */
   --wf-bloom-now:     rgba( 255,  77,  77, .55 ); /* the red "here" halo */
   --wf-bloom-text:    rgba( 159, 255, 192, .45 ); /* headline halo */

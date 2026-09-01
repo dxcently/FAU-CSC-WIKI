@@ -49,6 +49,7 @@
      nothing. Each is a spread of a colour already in the palette. ---- */
   --wf-bloom:         rgba( 30, 144, 255, .55 );  /* tight ring on linework */
   --wf-bloom-wide:    rgba( 30, 144, 255, .30 );  /* wide outer halo */
+  --wf-bloom-green:   rgba(  0, 187,   0, .35 );  /* green halo — green h3 subheadings */
   --wf-bloom-edge:    rgba( 30, 144, 255, .55 );  /* card inner-edge glow */
   --wf-bloom-now:     rgba( 255, 77, 77, .55 );   /* the red "here" halo */
   --wf-bloom-text:    rgba( 232, 244, 255, .44 ); /* white headline halo */
