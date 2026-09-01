@@ -356,6 +356,49 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
 .wf-next__title { color: var(--wf-text-strong); font-weight: 700; }
 .wf-next__desc  { color: var(--wf-text-muted); font-size: .9375rem; }
 
+/* ---------- 6.4c square topic tiles ----------
+ * The section's contents as square cards, on every page inside /learn/.
+ * Icon and title only: a description in a 1:1 tile just makes it a small
+ * rectangle, and the descriptions already do their work on the hub's wider
+ * cards. Rendered by layouts/partials/topic-cards.html. */
+.wf-topics { display: block; margin: 3rem 0 0; }
+.wf-topics__kicker {
+  font-family: var(--wf-font-mono);
+  font-size: .6875rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--wf-chrome);
+}
+.wf-topics .wf-grid { margin: .75rem 0 0; }
+.wf-grid--tiles { grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr)); }
+
+/* Two-class selectors throughout: 6.4's .wf-grid .wf-panel rules set the
+   column flow, the icon size and the padding, and a bare .wf-tile would lose
+   to them. */
+.wf-grid .wf-tile {
+  aspect-ratio: 1 / 1;
+  align-items: center;
+  justify-content: center;
+  gap: .55rem;
+  padding: .875rem;
+  text-align: center;
+}
+.wf-grid .wf-tile > i { font-size: 1.75rem; margin: 0; }
+.wf-grid .wf-tile .wf-card-title {
+  font-size: .875rem;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+/* The page you are standing on: brighter ground, lit ticks, not a link. Red is
+   deliberately not used — the sidebar already spends this page's one red on
+   the same "here", and two in a viewport is one too many. */
+.wf-tile--here {
+  background: var(--wf-wash-hi);
+  border-color: var(--wf-edge-tick);
+}
+
 /* ---------- 6.5 quick links ---------- */
 .wf-quicklinks {
   display: flex;
@@ -751,7 +794,8 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
    picks up its soft blue rather than a second rule. */
 .wf-card-title,
 .wf-kicker,
-.wf-next__kicker { text-shadow: 0 0 14px var(--wf-bloom-wide); }
+.wf-next__kicker,
+.wf-topics__kicker { text-shadow: 0 0 14px var(--wf-bloom-wide); }
 #R-body-inner h2 { border-bottom-color: var(--wf-edge); }
 
 /* 9.2 hairlines: a rule is a lit filament, not a pencil line */

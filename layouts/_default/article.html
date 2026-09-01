@@ -1,8 +1,9 @@
 {{- /* Theme override, copied from themes/relearn/layouts/_default/article.html
-     with ONE addition: the next-page card between the content and the
-     footline. It lives here rather than in custom-comments.html because that
-     hook renders OUTSIDE #R-body-inner — a card there escapes the content
-     column and none of the wf- styling reaches it.
+     with two additions between the content and the footline: the topic tiles
+     and the next-page card. They live here rather than in
+     custom-comments.html because that hook renders OUTSIDE #R-body-inner — a
+     card there escapes the content column and none of the wf- styling reaches
+     it.
 
      pageNext is the same cached helper the topbar arrow uses, so the two can
      never point at different pages. On the last page it returns nothing and
@@ -15,6 +16,12 @@
 {{ partial "heading-pre.html" . }}{{ partial "heading.html" . }}{{ partial "heading-post.html" . }}
 
 {{ partial "article-content.html" . }}
+{{- /* Topic tiles, then the next card. Scoped to descendants of /learn/: the
+     hub itself renders the descriptive section-grid in its own body, and the
+     rest of the site is reference material with no reading order to show. */ -}}
+{{- with site.GetPage "/learn" }}
+  {{- if $.IsDescendant . }}{{ partial "topic-cards.html" (dict "page" $) }}{{ end }}
+{{- end }}
 {{- $next := partialCached "_relearn/pageNext.gotmpl" . .Path }}
 {{- with $next }}
   <a class="wf-panel wf-panel--link wf-next" href="{{ .RelPermalink }}">

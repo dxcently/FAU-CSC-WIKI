@@ -1,0 +1,6 @@
+{{- /* Square topic tiles on demand. Bare, it lists the current page's own
+       children; for="/learn" points it at another section. The tiles under
+       /learn/ are rendered by article.html and need no shortcode. */ -}}
+{{- $section := .Page }}
+{{- with .Get "for" }}{{ $section = site.GetPage . }}{{ end }}
+{{- partial "topic-cards.html" (dict "page" $.Page "section" $section) }}

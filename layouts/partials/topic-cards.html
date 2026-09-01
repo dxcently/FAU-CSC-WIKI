@@ -1,0 +1,46 @@
+{{- /* The section's own contents as a row of square tiles. Called two ways:
+
+     1. automatically from layouts/_default/article.html, for every page that
+        is a DESCENDANT of /learn/ — so a topic page shows its section's
+        topics, and a section page shows its own. The /learn/ hub is excluded
+        there: its body renders the wider section-grid cards, which carry the
+        descriptions that introduce each section for the first time.
+     2. as the topic-cards shortcode, which points the same tiles at another
+        section from any page.
+
+     Order is Weight — the same order the sidebar and the roadmap use, so the
+     tiles cannot disagree with either. Filters match section-grid's.
+
+     ctx: page    the page being rendered; its own tile is not a link
+          section optional override of whose pages to list */ -}}
+{{- $page := .page }}
+{{- $section := .section }}
+{{- if not $section }}{{ $section = cond $page.IsSection $page $page.Parent }}{{ end }}
+{{- with $section }}
+  {{- $items := where .Pages "Params.hidden" "!=" true }}
+  {{- $items = where $items "Params.homecard" "!=" false }}
+  {{- $items = sort $items "Weight" }}
+  {{- if gt (len $items) 1 }}
+<nav class="wf-topics" aria-label="{{ .LinkTitle }}">
+  <span class="wf-topics__kicker">{{ .LinkTitle }}</span>
+  <ul class="wf-grid wf-grid--tiles">
+    {{- range $items }}
+    {{- $icon := .Params.icon | default "fa-solid fa-file-lines" }}
+    <li>
+      {{- if eq .RelPermalink $page.RelPermalink }}
+      <div class="wf-panel wf-tile wf-tile--here" aria-current="page">
+        <i class="{{ $icon }}" aria-hidden="true"></i>
+        <span class="wf-card-title">{{ .LinkTitle }}</span>
+      </div>
+      {{- else }}
+      <a class="wf-panel wf-panel--link wf-tile" href="{{ .RelPermalink }}">
+        <i class="{{ $icon }}" aria-hidden="true"></i>
+        <span class="wf-card-title">{{ .LinkTitle }}</span>
+      </a>
+      {{- end }}
+    </li>
+    {{- end }}
+  </ul>
+</nav>
+  {{- end }}
+{{- end }}
