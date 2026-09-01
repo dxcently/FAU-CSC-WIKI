@@ -10,6 +10,17 @@ html, body { background-color: var(--wf-bg); }
 #R-body-inner {
   background: var(--wf-bg);
 }
+/* The matrix rain (§17) is a fixed canvas behind body, but this fill sits
+   between it and every page's content and is opaque everywhere on purpose —
+   readable ground for the other two variants and for every leaf/section page
+   in this one. The ONLY place the rain is meant to show through is the cyber
+   home hero, so the hole is scoped exactly there: transparent only when
+   BOTH the variant is cyber AND we are on the page that renders .wf-hero
+   (.wf-home is the home-template body class), which every leaf and section
+   page keeps solid. */
+:root[data-r-theme-variant='cyber'] #R-body-inner:has(.wf-home) {
+  background: transparent;
+}
 
 /* 4.2 the page ground gets one very soft blue bloom at the top so the layout
  * reads as "space with depth" rather than a flat sheet. Fixed attachment, one
