@@ -418,18 +418,28 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
    now a self-link like every other. */
 #R-topbar .topbar-breadcrumbs li:last-child > a span { color: var(--wf-text-strong); }
 
-/* Every segment is a link now, so the theme's mobile rule — which clips any
-   breadcrumb <li> containing an <a> down to a11y-only — would hide the WHOLE
-   path. Undo it: the path is compact, so it stays visible and scrolls
-   sideways if a deep page runs long. */
+/* On a narrow topbar the full path has nowhere to go and the segments overlap.
+   Collapse to just the current directory, the way a file manager's path bar
+   does when it runs out of room: hide every segment but the last, and stand a
+   leading "…/" in front of it to say the path continues above. The theme's own
+   mobile rule clips any <li> with a link down to a11y-only — every crumb is a
+   link now, so that would blank the trail; the last-child reset below undoes it
+   for the one segment we keep. */
 @media screen and (max-width: 47.999rem) {
-  #R-topbar .topbar-breadcrumbs { overflow-x: auto; text-align: left; }
-  #R-topbar .topbar-breadcrumbs li:has(> a) {
+  #R-topbar .topbar-breadcrumbs { text-align: left; }
+  #R-topbar .topbar-breadcrumbs li:not(:last-child) { display: none; }
+  #R-topbar .topbar-breadcrumbs li:last-child {
     position: static;
     height: auto;
     overflow: visible;
     clip-path: none;
     transform: none;
+  }
+  /* …/ only when there is a path above the cwd — not on the home page, whose
+     single crumb is both first and last. */
+  #R-topbar .topbar-breadcrumbs li:last-child:not(:first-child)::before {
+    content: "…/";
+    color: var(--wf-text-muted);
   }
 }
 
