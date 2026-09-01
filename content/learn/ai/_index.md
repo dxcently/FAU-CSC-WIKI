@@ -44,41 +44,23 @@ gets to opt out, so learn how it works.
 
 ---
 
-## The Pages
+## You Are Still Accountable
 
-**[Fundamentals for the AI Era](fundamentals/)** — what to actually learn,
-and why the rest of the roadmap got more valuable, not less. Draws on Andrej
-Karpathy's teaching material and framings, his case for small locally
-runnable models, and Matt Pocock's argument that engineering fundamentals are
-what make agents useful.
+IBM put it on a training slide in 1979: *a computer can never be held
+accountable, therefore a computer must never make a management decision.*
+Nothing since has made it less true.
 
-**[Agentic Graphs](agentic-graphs/)** — the vocabulary for describing a
-system built from many model calls. Nodes, edges, state, and cycles. The
-named patterns, when to reach for each, and the honest failure modes.
+A model will draft the plan, write the script, and read the logs for you. It
+will not answer for any of it. When the pipeline wipes the wrong target, when
+the agent follows an instruction buried in a page it was told to read, when a
+summary quietly drops the one line that mattered — that lands on you. The tool
+is not in the room when it goes wrong.
 
-**[Harnesses & the Agent Loop](harnesses-and-loops/)** — the mechanism
-underneath all of it. What a harness is, what it owns, why stop conditions
-are not optional, and the named tools people actually run — with their
-licences, because "open source" is claimed more often than it is true.
-
-**[Knowledge Bases as Agent Context](knowledge-bases/)** — knowledge graphs
-against vector retrieval in plain terms, and what document structure actually
-helps an agent. This wiki is the worked example.
-
-**[AI on Both Sides](blue-and-red/)** — defensive and offensive application,
-scoped to systems you are authorized to touch, plus the part a security club
-uniquely needs: how to attack and defend agent systems themselves.
-
----
-
-## Then the Practical Half
-
-- [Choosing an AI Model](choosing-a-model/) — the selection criteria that
-  actually matter, including local against hosted.
-- [AI Workflows & Agents](workflows/) — hands-on patterns for CTFs and
-  hardening reviews.
-- [Automating Security Work](automation/) — pipelines, verification, and
-  what never goes into a prompt.
+So the rule underneath this whole section: stay in control of your systems and
+understand what is happening inside them. Not trust the model, not trust the
+output — understand it well enough to catch it when it is wrong. It is the same
+reason your fundamentals matter, from the other direction: a decision you
+cannot check is a decision you have already handed away.
 
 ---
 
