@@ -1,97 +1,90 @@
 #!/usr/bin/env python3
-"""Sync the newest club Discord announcements into data/announcements.json.
+"""Sync the club Discord's newest announcements into the wiki.
 
-Reads DISCORD_BOT_TOKEN and DISCORD_CHANNEL_ID from the environment — never the
-repo. Keeps the newest messages that carry text, softens @everyone/@here so the
-homepage does not shout, trims each to a teaser (full text stays a click away in
-Discord), and writes the {date, author, text, url} shape the panel expects.
-Commits and pushes only when the output changed, so the timer stays quiet while
-nothing is posted. Run with --dry-run to print the JSON without touching git.
+Reads DISCORD_BOT_TOKEN and DISCORD_CHANNEL_ID from the environment — never from
+the repo. Pulls the channel's recent messages, keeps the newest few that carry
+text, softens Discord-only artifacts (@everyone/@here pings, raw mention and
+custom-emoji tokens) into text that reads on a public page, and writes
+data/announcements.json in the {date, author, text, url} shape the home panel
+renders. Commits as the bot and pushes to main only when the result changed, so
+an unchanged channel produces no commit.
+
+Meant to run from a dedicated checkout (see the systemd unit): it commits and
+pushes, and rebases onto main first so a concurrent push does not wedge it.
 """
 import json, os, re, subprocess, sys, urllib.request
 
-API = "https://discord.com/api/v10"
-SHOW, WINDOW, MAXLEN = 5, 30, 240
-OUT = "data/announcements.json"
+API  = "https://discord.com/api/v10"
+WANT = 5     # announcements to publish
+SCAN = 40    # messages to look through to find WANT with text
+OUT  = "data/announcements.json"
 
-TOKEN = os.environ.get("DISCORD_BOT_TOKEN")
-CHANNEL = os.environ.get("DISCORD_CHANNEL_ID")
-DRY = "--dry-run" in sys.argv
-
+token   = os.environ.get("DISCORD_BOT_TOKEN")
+channel = os.environ.get("DISCORD_CHANNEL_ID")
+if not (token and channel):
+    sys.exit("DISCORD_BOT_TOKEN and DISCORD_CHANNEL_ID must be set")
 
 def api(path):
     req = urllib.request.Request(API + path, headers={
-        "Authorization": f"Bot {TOKEN}",
-        # Discord 403s the default Python-urllib UA; it wants a DiscordBot one.
-        "User-Agent": "DiscordBot (https://github.com/dxcently/fau-cyber-security-club-wiki, 1.0)",
+        "Authorization": f"Bot {token}",
+        # Discord's edge 403s the default Python-urllib UA; their API wants a
+        # descriptive one.
+        "User-Agent": "fau-csc-announcements (+https://fau-cyber-wiki-test.necoconeco.net, 1.0)",
     })
     with urllib.request.urlopen(req, timeout=20) as r:
         return json.load(r)
 
+def clean(t):
+    t = re.sub(r"@(everyone|here)\b", "", t)          # drop pings
+    t = re.sub(r"<#\d+>|<@&\d+>|<@!?\d+>", "", t)      # channel / role / user mentions
+    t = re.sub(r"<a?:(\w+):\d+>", r":\1:", t)          # custom emoji -> :name:
+    # Discord markdown that would show as literal punctuation on the panel
+    t = re.sub(r"\*\*(.+?)\*\*", r"\1", t, flags=re.S)  # **bold**
+    t = re.sub(r"__(.+?)__", r"\1", t, flags=re.S)          # __underline__
+    t = re.sub(r"~~(.+?)~~", r"\1", t, flags=re.S)          # ~~strike~~
+    t = re.sub(r"`([^`]+)`", r"\1", t)                       # `code`
+    t = re.sub(r"(?m)^\s{0,3}#{1,3}\s+", "", t)            # # headings
+    t = re.sub(r"(?m)^\s{0,3}>\s?", "", t)                 # > quotes
+    t = re.sub(r"[ \t]+", " ", t)
+    t = re.sub(r"\n{3,}", "\n\n", t)
+    return t.strip()
 
-def clean(text):
-    text = text.replace("@everyone", "everyone").replace("@here", "here")
-    text = re.sub(r"<a?(:\w+:)\d+>", r"\1", text)   # custom emoji -> :name:
-    text = re.sub(r"<[@#][!&]?\d+>", "", text)       # raw id mentions -> drop
-    text = re.sub(r"\s*\n\s*", " ", text)             # newlines -> spaces
-    text = re.sub(r"\s{2,}", " ", text).strip()
-    if len(text) > MAXLEN:
-        text = text[:MAXLEN].rsplit(" ", 1)[0].rstrip() + "\u2026"
-    return text
+guild = api(f"/channels/{channel}")["guild_id"]
+items = []
+for m in api(f"/channels/{channel}/messages?limit={SCAN}"):   # newest first
+    if m.get("type") not in (0, 19):                          # skip system messages
+        continue
+    text = clean(m.get("content", ""))
+    if not text:                                              # skip image-only / empty
+        continue
+    a = m["author"]
+    items.append({
+        "date":   m["timestamp"],
+        "author": a.get("global_name") or a["username"],
+        "text":   text,
+        "url":    f"https://discord.com/channels/{guild}/{channel}/{m['id']}",
+    })
+    if len(items) >= WANT:
+        break
 
+new = json.dumps(items, indent=2, ensure_ascii=False) + "\n"
+old = open(OUT, encoding="utf-8").read() if os.path.exists(OUT) else ""
+if new == old:
+    print("unchanged")
+    sys.exit(0)
 
-def build():
-    guild = api(f"/channels/{CHANNEL}")["guild_id"]
-    out = []
-    for m in api(f"/channels/{CHANNEL}/messages?limit={WINDOW}"):   # newest first
-        if m.get("type") not in (0, 19):     # skip system / join / pin
-            continue
-        text = clean(m.get("content", ""))
-        if not text:                          # skip image-only / empty
-            continue
-        a = m["author"]
-        out.append({
-            "date": m["timestamp"],
-            "author": a.get("global_name") or a.get("username"),
-            "text": text,
-            "url": f"https://discord.com/channels/{guild}/{CHANNEL}/{m['id']}",
-        })
-        if len(out) >= SHOW:
-            break
-    return json.dumps(out, indent=2, ensure_ascii=False) + "\n", len(out)
+if "--dry-run" in sys.argv:            # preview the JSON, touch nothing
+    print(new)
+    sys.exit(0)
 
+os.makedirs(os.path.dirname(OUT), exist_ok=True)
+open(OUT, "w", encoding="utf-8").write(new)
 
-def git(*args):
-    subprocess.run(["git", *args], check=True)
-
-
-def main():
-    if not TOKEN or not CHANNEL:
-        sys.exit("DISCORD_BOT_TOKEN / DISCORD_CHANNEL_ID not set in the environment")
-    os.chdir(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    payload, n = build()
-    if DRY:
-        sys.stdout.write(payload)
-        return
-    # sync to main so the push is a fast-forward. Safe: the timer runs in its own
-    # dedicated clone, nothing here is hand-edited.
-    git("fetch", "--quiet", "origin", "main")
-    git("reset", "--quiet", "--hard", "origin/main")
-    old = open(OUT, encoding="utf-8").read() if os.path.exists(OUT) else ""
-    if payload == old:
-        print("no change"); return
-    os.makedirs(os.path.dirname(OUT), exist_ok=True)
-    with open(OUT, "w", encoding="utf-8") as f:
-        f.write(payload)
-    git("add", OUT)
-    if subprocess.run(["git", "diff", "--cached", "--quiet"]).returncode == 0:
-        print("no staged change"); return
-    git("-c", "user.name=fau-csc-wiki-announcements",
-        "-c", "user.email=announcements@necoconeco.net",
-        "commit", "--quiet", "-m", "announcements: sync from Discord")
-    git("-c", "credential.helper=!gh auth git-credential", "push", "--quiet", "origin", "HEAD:main")
-    print(f"pushed {n} announcements")
-
-
-if __name__ == "__main__":
-    main()
+ident = ["-c", "user.name=csc-announcements-bot",
+         "-c", "user.email=csc-announcements-bot@users.noreply.github.com"]
+push  = ["-c", "credential.helper=!gh auth git-credential"]
+subprocess.run(["git", "add", OUT], check=True)
+subprocess.run(["git", *ident, "commit", "-q", "-m", "announcements: sync from Discord"], check=True)
+subprocess.run(["git", "pull", "--rebase", "--quiet", "origin", "main"], check=True)
+subprocess.run(["git", *push, "push", "-q", "origin", "HEAD:main"], check=True)
+print(f"published {len(items)} announcement(s)")

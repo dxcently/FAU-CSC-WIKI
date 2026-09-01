@@ -13,3 +13,9 @@ public/
 # never commit local secrets
 .env
 *.env
+
+# Secrets never belong in this public repo. The announcements bot token lives
+# outside it (~/.config/fau-announcements/env); these are a backstop.
+.env
+*.env
+secrets/
