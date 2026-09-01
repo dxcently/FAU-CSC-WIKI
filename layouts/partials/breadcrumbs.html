@@ -1,35 +1,50 @@
-{{- /* Theme override. The trail is drawn as a filesystem path —
-     /home/csc/learn/linux/permissions/ — instead of a chevron list of titles,
-     and every segment is a link to its own directory, the way a file
-     manager's path bar works. The current page links to itself and is marked
-     aria-current.
+{{- /* Theme override. The trail is drawn as a filesystem path — every page
+     rendered as the .md file it lives in — instead of a chevron list of
+     titles. A leaf page is <slug>.md; a section is its own folder PLUS a
+     self-named index file, so /learn/linux/ reads /home/csc/learn/linux/linux.md
+     and its child reads /home/csc/learn/linux/filesystem.md. Ancestor sections
+     stay folders, and every segment links to its own directory the way a file
+     manager's path bar works. The current page's file segment links to itself
+     and is marked aria-current.
 
-     Segments are URL slugs, not titles, because a directory is named by its
-     folder and "Permissions & Users" is not a folder name. The site root is
-     the one exception: on the home page it prints the club's full name, since
-     that is the single place where the name is the subject rather than a
-     location.
+     Folder/file names are URL slugs, not titles, because a directory is named
+     by its folder and "Permissions & Users" is not a folder name. The site
+     root is the one exception: it prints /home/csc, or the club's full name on
+     the home page itself, where the name is the subject rather than a location.
 
      Hrefs are .RelPermalink (clean "/learn/linux/" directory URLs) rather than
-     the theme's permalink helper, which appends index.html. Emits the same
-     schema.org microdata the theme's version does, and still honours dirOnly
-     (the children shortcode plainifies this into a parent label). */ -}}
+     the theme's permalink helper, which appends index.html. Emits schema.org
+     BreadcrumbList microdata over the real trail (the extra index-file crumb a
+     section adds is visual only), and still honours dirOnly (the children
+     shortcode plainifies this into a parent label). */ -}}
 {{- $page := .page }}
 {{- if .dirOnly }}{{ $page = $page.Parent }}{{ end }}
 {{- with $page }}
   {{- if not (partial "_relearn/pageIsSpecial.gotmpl" .) }}
     {{- $trail := .Ancestors.Reverse | append . }}
     {{- $last := sub (len $trail) 1 }}
+    {{- /* A current section emits two crumbs (its folder, then its <slug>.md
+         index file), so build the list first. schema ListItems cover the real
+         trail only; the extra file crumb is schema=false with no position. */ -}}
+    {{- $crumbs := slice }}
     {{- range $i, $p := $trail }}
       {{- $isLast := eq $i $last }}
       {{- $url := $p.RelPermalink }}
-      {{- /* The root prints as /home/csc everywhere except on itself. */ -}}
-      {{- $label := cond $p.IsHome (cond $isLast site.Title "/home/csc") (path.Base $p.RelPermalink) }}
-      {{- /* Trailing -}} on purpose: theme CSS sets .breadcrumbs li to
-           inline-block, so a newline between two <li> renders as a space and
-           the path comes out as "/home/csc/ learn/ linux/". */ -}}
-      {{- $slash := cond (and $p.IsHome $isLast) "" "/" -}}
-            <li{{ if $.schema }} itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"{{ end }} class=""><a{{ if $.schema }} itemprop="item"{{ end }} href="{{ $url }}"{{ if $isLast }} aria-current="page"{{ end }}><span{{ if $.schema }} itemprop="name"{{ end }}>{{ $label }}</span></a>{{ if $.schema }}<meta itemprop="position" content="{{ add $i 1 }}">{{ end }}{{ $slash }}</li>
+      {{- $slug := path.Base $p.RelPermalink }}
+      {{- $pos := add $i 1 }}
+      {{- if $p.IsHome }}
+        {{- $crumbs = $crumbs | append (dict "url" $url "label" (cond $isLast site.Title "/home/csc") "current" $isLast "schema" $.schema "pos" $pos "slash" (cond $isLast "" "/")) }}
+      {{- else if not $isLast }}
+        {{- $crumbs = $crumbs | append (dict "url" $url "label" $slug "current" false "schema" $.schema "pos" $pos "slash" "/") }}
+      {{- else if $p.IsSection }}
+        {{- $crumbs = $crumbs | append (dict "url" $url "label" $slug "current" false "schema" $.schema "pos" $pos "slash" "/") }}
+        {{- $crumbs = $crumbs | append (dict "url" $url "label" (printf "%s.md" $slug) "current" true "schema" false "pos" 0 "slash" "") }}
+      {{- else }}
+        {{- $crumbs = $crumbs | append (dict "url" $url "label" (printf "%s.md" $slug) "current" true "schema" $.schema "pos" $pos "slash" "") }}
+      {{- end }}
     {{- end }}
+    {{- /* One line, no whitespace between <li>: .breadcrumbs li is inline-block,
+         so a newline between two would render as a space and split the path. */ -}}
+    {{- range $c := $crumbs }}<li{{ if $c.schema }} itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"{{ end }} class=""><a{{ if $c.schema }} itemprop="item"{{ end }} href="{{ $c.url }}"{{ if $c.current }} aria-current="page"{{ end }}><span{{ if $c.schema }} itemprop="name"{{ end }}>{{ $c.label }}</span></a>{{ if $c.schema }}<meta itemprop="position" content="{{ $c.pos }}">{{ end }}{{ $c.slash }}</li>{{ end -}}
   {{- end }}
 {{- end }}
