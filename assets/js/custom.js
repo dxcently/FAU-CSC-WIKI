@@ -375,3 +375,58 @@
   if (document.readyState !== 'loading') init();
   else document.addEventListener('DOMContentLoaded', init);
 })();
+
+
+/* --------------------------------------------------------------------
+ * Breadcrumb fit
+ *
+ * The topbar path is a single clipped line. When the full path is wider
+ * than the slot it has, drop leading segments one at a time — the root
+ * end (leftmost) first — and stand a "…/" in their place, keeping the
+ * current directory and as much of its tail as fits. When the whole path
+ * fits, it shows with no ellipsis. Runs on load and on resize; every
+ * crumb is restored first, so widening the window brings segments back.
+ *
+ * scrollWidth > clientWidth is a real overflow test here because the ol
+ * carries the theme's .breadcrumbs rule (width:100%, min-width:0,
+ * overflow:hidden) and is a flex child bounded by the fixed topbar areas
+ * on either side. Reading scrollWidth after each class change forces the
+ * reflow that makes the next read accurate.
+ * -------------------------------------------------------------------- */
+(function () {
+  'use strict';
+
+  var CUT = 'wf-crumb-cut';        /* a dropped segment (display:none)     */
+  var MARK = 'wf-crumbs-truncated'; /* on the ol -> the leading "…/" shows */
+
+  function fit() {
+    var ol = document.querySelector('#R-topbar .topbar-breadcrumbs');
+    if (!ol) return;
+    var li = ol.querySelectorAll('li');
+    if (li.length < 2) return;      /* home alone -> nothing to trim */
+
+    /* back to the full path first, so a wider window re-shows segments */
+    ol.classList.remove(MARK);
+    for (var i = 0; i < li.length; i++) li[i].classList.remove(CUT);
+    if (ol.scrollWidth <= ol.clientWidth) return;   /* it fits — done */
+
+    /* overflowing: show the …/ and hide leading crumbs until it fits,
+       never the last one (the current directory) */
+    ol.classList.add(MARK);
+    for (var j = 0; j < li.length - 1; j++) {
+      li[j].classList.add(CUT);
+      if (ol.scrollWidth <= ol.clientWidth) break;
+    }
+  }
+
+  var raf = 0;
+  function schedule() {
+    if (raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(fit);
+  }
+
+  window.addEventListener('resize', schedule);
+  window.addEventListener('load', fit);   /* web font settles -> widths move */
+  if (document.readyState !== 'loading') fit();
+  else document.addEventListener('DOMContentLoaded', fit);
+})();
