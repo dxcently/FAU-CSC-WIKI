@@ -288,3 +288,5 @@ end of this map and the start of the actual fun.
 
 Every stage above is a section in [Learn](/learn/). Go straight there when you
 know what you are looking for.
+
+{{< topic-cards for="/learn" >}}
