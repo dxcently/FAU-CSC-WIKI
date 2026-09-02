@@ -982,10 +982,17 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
    bottom scrim then covers the bottom edge, so only three sides glowed. On the
    fog the glow paints above that scrim (a box-shadow draws over its own
    element's background) and still sits below the owl and copy, so all four
-   edges glow and the text stays on top. Dark modes only — --wf-bloom-edge is a
-   real .34 in daylight and on a lit surface this size reads as haze, so light
-   keeps the plain border. */
-:root:not([data-r-theme-variant='hacker-light']) .wf-hero-fog {
+   edges glow and the text stays on top. This works where the fog is fully
+   opaque: dark and light both carry the glow here. Cyber is handled below. */
+:root:not([data-r-theme-variant='cyber']) .wf-hero-fog {
+  box-shadow: inset 0 0 40px -18px var(--wf-bloom-edge);
+}
+/* Cyber thins the whole fog layer to .35 for rain show-through (the opacity
+   rule below), which would drop the fog-borne glow to a third of its strength.
+   So cyber carries the glow on the un-dimmed hero container instead. The
+   dark/light scrim reasoning does not apply here — cyber's fog is translucent,
+   so a container shadow reads on all four edges. */
+:root[data-r-theme-variant='cyber'] .wf-hero {
   box-shadow: inset 0 0 40px -18px var(--wf-bloom-edge);
 }
 .wf-hero-kicker { text-shadow: 0 0 16px var(--wf-stage-glow-wide); }
