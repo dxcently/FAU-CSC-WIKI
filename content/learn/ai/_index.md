@@ -16,10 +16,6 @@ loop, how knowledge gets in front of one, what happens when the same
 technology is pointed at you — and then which model to pick, how to wire one
 into a script, and what never goes in a prompt.
 
-The split used to be conceptual pages here and how-to pages in the Toolbox.
-That was a bad seam: nobody reads about the agent loop and then goes hunting
-in a different section for how to run one.
-
 ---
 
 ## Why This Is Here
