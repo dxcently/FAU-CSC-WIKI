@@ -585,7 +585,7 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   filter: drop-shadow(0 0 6px var(--wf-stage-glow));
 }
 /* The shield ships at its own intrinsic size; the wireframe it replaced was
-   an inline svg that filled its box for free. It is 334x244, a LANDSCAPE
+   an inline svg that filled its box for free. It is 334x278, a LANDSCAPE
    mark, so width alone does not bound it — max-height does, and object-fit
    centres whatever is left over rather than anchoring it to a corner.
    .wf-hero is min-height 19rem less 3rem padding top and bottom, so 12rem
