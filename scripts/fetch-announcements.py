@@ -15,7 +15,7 @@ pushes, and rebases onto main first so a concurrent push does not wedge it.
 import json, os, re, subprocess, sys, urllib.request
 
 API  = "https://discord.com/api/v10"
-WANT = 5     # announcements to publish
+WANT = 10    # announcements to publish
 SCAN = 40    # messages to look through to find WANT with text
 OUT  = "data/announcements.json"
 

@@ -801,7 +801,14 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
 
 /* ---------- 7.6 announcements ---------- */
 .wf-ann { margin: 3rem 0 0; }
-.wf-ann__feed { margin-top: 1.25rem; }
+.wf-ann__feed {
+  margin-top: 1.25rem;
+  /* Bound the feed so a long backlog scrolls inside the panel instead of
+     stretching the home page. The thin themed scrollbar comes from the
+     global scrollbar-color rule in 4.5 — no separate scrollbar styling. */
+  max-height: 26rem;
+  overflow-y: auto;
+}
 .wf-ann__list {
   list-style: none;
   margin: 0;

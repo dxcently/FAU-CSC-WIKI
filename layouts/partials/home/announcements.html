@@ -21,19 +21,41 @@
   </h2>
 
   {{- if $items }}
+  {{- /* A burst of Discord messages from one person is ONE announcement, not
+         five. Collapse consecutive posts by the same author into a single card.
+         Data is newest-first; a group's texts accumulate newest-first and are
+         reversed to read oldest-first inside the card, so the announcement runs
+         top-to-bottom in the order it was written. */ -}}
+  {{- $items = first 10 $items }}
+  {{- $groups := slice }}
+  {{- range $i, $it := $items }}
+    {{- $entry := dict "date" $it.date "text" $it.text "url" $it.url }}
+    {{- if and (gt $i 0) (eq $it.author (index $items (sub $i 1)).author) }}
+      {{- $li := sub (len $groups) 1 }}
+      {{- $g := index $groups $li }}
+      {{- $g = merge $g (dict "texts" (append $entry $g.texts)) }}
+      {{- $groups = append $g (first $li $groups) }}
+    {{- else }}
+      {{- $groups = append (dict "author" $it.author "texts" (slice $entry)) $groups }}
+    {{- end }}
+  {{- end }}
   <div class="wf-panel wf-scanlines wf-ann__feed">
     <ul class="wf-ann__list">
-      {{- range first 5 $items }}
+      {{- range $groups }}
+      {{- $ordered := .texts | collections.Reverse }}
+      {{- $start := index $ordered 0 }}
       <li class="wf-ann__item">
         <p class="wf-kicker wf-ann__meta">
-          {{- with .date }}
+          {{- with $start.date }}
           <time datetime="{{ . }}">{{ dateFormat "Mon Jan 2" (time.AsTime .) }}</time>
           {{- end }}
           {{- with .author }}<span>· {{ . }}</span>{{ end }}
-          {{- with .url }}<a class="wf-ann__link" href="{{ . }}" rel="external">Open in Discord →</a>{{ end }}
+          {{- with $start.url }}<a class="wf-ann__link" href="{{ . }}" rel="external">Open in Discord →</a>{{ end }}
         </p>
+        {{- range $ordered }}
         {{- $text := .text | htmlEscape | replaceRE `(https?://[^\s<>"]*[^\s<>".,:;!?)\]])` `<a href="$1" rel="external">$1</a>` }}
         <p class="wf-ann__text">{{ $text | safeHTML }}</p>
+        {{- end }}
       </li>
       {{- end }}
     </ul>
