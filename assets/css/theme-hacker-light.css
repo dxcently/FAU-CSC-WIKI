@@ -138,7 +138,6 @@
      unevenly. Repeating lines add the same amount everywhere. */
   --wf-stage-scan:       rgba( 11, 95, 196, .06 );
   --wf-stage-edge:       rgba( 11, 95, 196, .28 );
-  --wf-stage-tick:       rgba( 11, 95, 196, .65 );
   --wf-stage-grid:       rgba( 11, 95, 196, .13 );
   --wf-stage-fog-a:      rgba( 11, 95, 196, .09 );
   /* Both fog lights are BLUE. This one is aimed at 82% 50%, which is
