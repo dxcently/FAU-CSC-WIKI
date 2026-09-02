@@ -1,24 +1,17 @@
 {{- /*
-  ANNOUNCEMENTS — scaffolding for live Discord posts.
+  ANNOUNCEMENTS — the club's Discord posts, mirrored onto the home page.
 
-  Renders from `data/announcements.json`, which nothing writes yet. The shape
-  each entry must have:
+  Renders `data/announcements.json`, written by scripts/fetch-announcements.py
+  on a timer. That script holds the bot token on the build host; this repo and
+  the built page never see it. Entry shape:
 
-      [
-        { "date": "2026-09-04T18:30:00Z",
-          "author": "shaamad",
-          "text": "CTF team meets in CM 22 tonight.",
-          "url": "https://discord.com/channels/..." }
-      ]
+      [ { "date": "...", "author": "...", "text": "...", "url": "..." } ]
 
-  To make it live, something must produce that file before `hugo` runs — a
-  small bot or scheduled job that reads an announcements channel and writes
-  the JSON into data/. The site does not call Discord itself: Hugo builds
-  static output, and a browser-side call would need a token the public page
-  must never hold.
+  The feed is ONE panel with the messages listed inside it, separated by
+  hairlines — a card per message read as five competing boxes.
 
-  Until that exists this block renders a placeholder, so the section's shape
-  and styling are already in place when the feed turns up.
+  Post text is plain text from Discord. It is escaped first and only then are
+  URLs wrapped in anchors, so a post can never inject markup into the page.
 */ -}}
 {{- $items := site.Data.announcements }}
 <section class="wf-ann" aria-labelledby="wf-ann-label">
@@ -28,30 +21,29 @@
   </h2>
 
   {{- if $items }}
-  <ul class="wf-ann__list">
-    {{- range first 5 $items }}
-    <li class="wf-panel wf-scanlines wf-ann__item">
-      <p class="wf-kicker">
-        {{- with .date }}
-        <time datetime="{{ . }}">{{ dateFormat "Mon Jan 2" (time.AsTime .) }}</time>
-        {{- end }}
-        {{- with .author }} · {{ . }}{{ end }}
-      </p>
-      <p class="wf-ann__text">{{ .text }}</p>
-      {{- with .url }}<a class="wf-ann__link" href="{{ . }}" rel="external">Open in Discord →</a>{{ end }}
-    </li>
-    {{- end }}
-  </ul>
+  <div class="wf-panel wf-scanlines wf-ann__feed">
+    <ul class="wf-ann__list">
+      {{- range first 5 $items }}
+      <li class="wf-ann__item">
+        <p class="wf-kicker wf-ann__meta">
+          {{- with .date }}
+          <time datetime="{{ . }}">{{ dateFormat "Mon Jan 2" (time.AsTime .) }}</time>
+          {{- end }}
+          {{- with .author }}<span>· {{ . }}</span>{{ end }}
+          {{- with .url }}<a class="wf-ann__link" href="{{ . }}" rel="external">Open in Discord →</a>{{ end }}
+        </p>
+        {{- $text := .text | htmlEscape | replaceRE `(https?://[^\s<>"]*[^\s<>".,:;!?)\]])` `<a href="$1" rel="external">$1</a>` }}
+        <p class="wf-ann__text">{{ $text | safeHTML }}</p>
+      </li>
+      {{- end }}
+    </ul>
+  </div>
   {{- else }}
   <div class="wf-panel wf-scanlines wf-ann__empty">
     <p class="wf-ann__text">
       Nothing piped in yet. Announcements are posted in
       <a href="http://discord.gg/2Yun8WAUuy" rel="external">the Discord</a> —
       this panel will mirror them once the feed is wired up.
-    </p>
-    <p class="wf-note">
-      Setup notes for whoever builds it are in the comment at the top of
-      <code>layouts/partials/home/announcements.html</code>.
     </p>
   </div>
   {{- end }}
