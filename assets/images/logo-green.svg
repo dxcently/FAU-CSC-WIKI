@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-36 -38 334 278">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-36 -38 334 326">
   <!-- Standalone owl head icon, derived from the approved hero mark
        (layouts/partials/home/owl-wireframe.html). Colors are HARDCODED
        because this file renders outside the page where the
@@ -9,29 +9,29 @@
        sweeping to a point below the chin — encloses the brow tips and chin.
        Needed on light browser chrome where the blue linework washes out;
        blends into the site's own dark surfaces. -->
-  <!-- Shield: nested frames scaled toward the owl's centre (130,87), so the
+  <!-- Shield: nested frames scaled toward the owl's centre (130,123), so the
        rings read as one hollow frame receding to a vanishing point behind the
        mark. The radial fill anchors that same point. -->
   <defs>
-    <radialGradient id="wf-shield" cx="130" cy="87" r="200"
+    <radialGradient id="wf-shield" cx="130" cy="123" r="200"
                     gradientUnits="userSpaceOnUse">
       <stop offset="0"   stop-color="#04231A"/>
       <stop offset=".55" stop-color="#03120C"/>
       <stop offset="1"   stop-color="#010805"/>
     </radialGradient>
   </defs>
-  <path d="M-30 -20 L-16 -32 L276 -32 L292 -20 L292 56 L272 130 L200 197 L130 232 L60 197 L-12 130 L-30 56 Z" fill="url(#wf-shield)"/>
-  <path d="M-30 -20 L-16 -32 L276 -32 L292 -20 L292 56 L272 130 L200 197 L130 232 L60 197 L-12 130 L-30 56 Z" fill="none" stroke="#00C853"
+  <path d="M-30 -20 L-16 -32 L276 -32 L292 -20 L292 56 L272 151 L200 236 L130 280 L60 236 L-12 151 L-30 56 Z" fill="url(#wf-shield)"/>
+  <path d="M-30 -20 L-16 -32 L276 -32 L292 -20 L292 56 L272 151 L200 236 L130 280 L60 236 L-12 151 L-30 56 Z" fill="none" stroke="#00C853"
         stroke-opacity=".55" stroke-width="4" stroke-linejoin="round"/>
-  <path d="M-17 -11 L-4 -22 L264 -22 L279 -11 L279 58 L261 127 L194 188 L130 220 L66 188 L-1 127 L-17 58 Z" fill="none" stroke="#00C853"
+  <path d="M-17 -9 L-4 -20 L264 -20 L279 -9 L279 61 L261 149 L194 227 L130 267 L66 227 L-1 149 L-17 61 Z" fill="none" stroke="#00C853"
         stroke-opacity=".34" stroke-width="2.5" stroke-linejoin="round"/>
-  <path d="M-4 -3 L7 -13 L253 -13 L266 -3 L266 61 L249 123 L189 179 L130 209 L71 179 L11 123 L-4 61 Z" fill="none" stroke="#00C853"
+  <path d="M-4 3 L7 -7 L253 -7 L266 3 L266 67 L249 147 L189 218 L130 255 L71 218 L11 147 L-4 67 Z" fill="none" stroke="#00C853"
         stroke-opacity=".20" stroke-width="2" stroke-linejoin="round"/>
-  <path d="M8 6 L19 -3 L241 -3 L253 6 L253 63 L238 120 L183 171 L130 197 L77 171 L22 120 L8 63 Z" fill="none" stroke="#00C853"
+  <path d="M8 14 L19 5 L241 5 L253 14 L253 72 L238 144 L183 209 L130 242 L77 209 L22 144 L8 72 Z" fill="none" stroke="#00C853"
         stroke-opacity=".11" stroke-width="1.6" stroke-linejoin="round"/>
 
   <!-- owl mark, matching the approved hero geometry -->
-  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 36)">
     <!-- facial disc: bevel band between silhouette and plate, then the plate -->
     <path fill="#00C853" fill-opacity=".09" fill-rule="evenodd"
           d="M130 36 L110 30 L88 26 L2 58 L40 112 L130 158 L220 112 L258 58 L172 26 L150 30 Z
