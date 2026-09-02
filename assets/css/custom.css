@@ -402,13 +402,19 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   overflow-wrap: anywhere;
 }
 
-/* The page you are standing on: brighter ground, lit ticks, not a link. Red is
-   deliberately not used — the sidebar already spends this page's one red on
-   the same "here", and two in a viewport is one too many. */
+/* The page you are standing on: the current-page tile now carries the card's
+   "selected" red — a red edge and red corner brackets walked to the opposite
+   corners, the same end state a card reaches on hover — held static, since this
+   tile is not a link. No blue accent; the red alone marks "here". */
 .wf-tile--here {
   background: var(--wf-wash-hi);
-  border-color: var(--wf-edge-tick);
+  border-color: var(--wf-edge-now);
 }
+.wf-tile--here::before,
+.wf-tile--here::after { border-color: var(--wf-red-text); }
+/* Brackets sit where the card's hover animation lands them — the far corners. */
+.wf-tile--here::before { left: calc(100% - 9px); transform: rotate(90deg); }
+.wf-tile--here::after  { right: calc(100% - 9px); transform: rotate(90deg); }
 
 /* ---------- 6.4d the breadcrumb is a path ----------
  * layouts/partials/breadcrumbs.html prints the trail as
