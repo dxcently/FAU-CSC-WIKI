@@ -545,8 +545,14 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   content: ""; position: absolute; width: 14px; height: 14px; z-index: 3;
   border-color: var(--wf-stage-tick); border-style: solid; pointer-events: none;
 }
-.wf-hero::before { top: -1px; left: -1px;    border-width: 1px 0 0 1px; }
-.wf-hero::after  { bottom: -1px; right: -1px; border-width: 0 1px 1px 0; }
+/* .wf-panel sits flush (top/left: -1px) because it has no border-radius to
+   clip against. .wf-hero has overflow:hidden + border-radius (required for
+   the rotated grid layer), so a tick hung 1px outside the box gets clipped
+   by the corner curve — the two arms are cut unevenly right where they meet,
+   and the L reads as two disconnected strokes. Anchored flush at 0 instead,
+   fully inside the rounded box, past the curve. */
+.wf-hero::before { top: 0; left: 0;     border-width: 1px 0 0 1px; }
+.wf-hero::after  { bottom: 0; right: 0; border-width: 0 1px 1px 0; }
 
 /* layer 1: the receding floor grid */
 .wf-hero-grid {
