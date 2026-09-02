@@ -46,7 +46,7 @@ The model never runs anything. It emits a request — "call `read_file` with
 this path" — and the harness executes it, then feeds the result back as
 another message. The model sees the outcome and decides what to do next.
 
-In the API this is explicit. Anthropic's tool-use protocol has the model
+In a hosted API this is explicit. The tool-use protocol has the model
 return a `stop_reason`, and the loop is literally:
 
 ```python
@@ -212,8 +212,8 @@ opinion, and projects move.
 | Tool | Licence | Runs where | Model choice | Note |
 | --- | --- | --- | --- | --- |
 | [opencode](https://opencode.ai/) | MIT | Terminal, desktop, IDE | Any provider | |
-| [Codex CLI](https://github.com/openai/codex) | Apache-2.0 | Terminal, IDE, cloud | OpenAI only | The 2025 agent, not the 2021 model of the same name |
-| [Claude Code](https://github.com/anthropics/claude-code) | **Proprietary** | Terminal, IDE, CI | Anthropic only | "All rights reserved" — not open source |
+| [Codex CLI](https://github.com/openai/codex) | Apache-2.0 | Terminal, IDE, cloud | One provider only | The 2025 agent, not the 2021 model of the same name |
+| Vendor-proprietary CLI harnesses | **Proprietary** | Terminal, IDE, CI | That vendor only | Closed source, locked to one provider; several vendors ship one |
 | [hermes-agent](https://github.com/NousResearch/hermes-agent) | MIT | Terminal, chat apps, sandboxes | Any provider | The harness, not the Hermes models |
 | [OpenClaw](https://github.com/openclaw/openclaw) | MIT* | Self-hosted gateway, chat apps | Any provider | A chat-platform assistant, not a coding agent |
 | [Aider](https://github.com/Aider-AI/aider) | Apache-2.0 | Terminal | Any provider | |
@@ -226,9 +226,9 @@ opinion, and projects move.
 as non-standard because of an appended third-party-notices clause.
 
 **This wiki is a live example.** It is a [Hugo](https://gohugo.io/) site, and
-it was restructured and largely written using Claude Code — one of the
-harnesses in that table, driving a loop exactly like the one at the top of
-this page: read a file, edit it, run the build, read the errors, try again.
+it was restructured and largely written using an agentic coding harness — the
+kind in that table, driving a loop exactly like the one at the top of this
+page: read a file, edit it, run the build, read the errors, try again.
 The build output *is* the verification signal. See
 [How this wiki is built](/meta/) for the honest version, including why the
 club still recommends the open-source options for anything you want to

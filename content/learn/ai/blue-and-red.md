@@ -128,8 +128,8 @@ Two primary sources, both from NIST, both worth reading in full.
 
 In a January 2025 technical blog on agent hijacking evaluations, NIST tested
 one commercial assistant model using **AgentDojo**, an open-source evaluation
-framework from ETH Zurich that puts an agent in simulated environments where
-the data it reads contains malicious embedded instructions. The model showed
+framework from ETH Zurich. AgentDojo puts an agent in simulated environments
+where the data it reads contains malicious embedded instructions. The model showed
 an 11% success rate for previously tested hijacking attacks and an 81% success
 rate for new attacks developed specifically against it. Separately, repeating
 an attack 25 times instead of once raised the average success rate from 57% to
@@ -142,9 +142,9 @@ defense measured on a single attempt looks far better than it will perform
 against an attacker who gets to try repeatedly.
 
 In March 2026, NIST's CAISI published results from a large-scale red-teaming
-competition run with the UK AI Security Institute, covering 13 frontier models
-across tool-use, coding and computer-use agent scenarios, with more than
-250,000 attack attempts from more than 400 participants. They found at least
+competition run with the UK AI Security Institute. It covered 13 frontier
+models across tool-use, coding and computer-use agent scenarios, with more
+than 250,000 attack attempts from more than 400 participants. They found at least
 one successful attack against all of the target models. They also found that
 attack success did not correlate cleanly with general model capability, and
 that attacks developed against more robust models tended to transfer to less

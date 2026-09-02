@@ -11,9 +11,10 @@ and they are a new attack surface. Both statements are true at the same time.
 Neither one cancels the other out.
 
 This section covers what a **large language model** (LLM) is, what an agent
-system is made of, what runs the loop, how knowledge gets in front of one,
-what happens when the same technology is pointed at you — and then which
-model to pick, how to wire one into a script, and what never goes in a prompt.
+system is made of, what runs the loop, and how knowledge gets in front of one.
+It covers what happens when the same technology is pointed at you. Then the
+practical half: which model to pick, how to wire one into a script, and what
+never goes in a prompt.
 
 ---
 
