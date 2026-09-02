@@ -10,7 +10,7 @@ icon = "fa-solid fa-door-open"
 
 ---
 
-Welcome to the FAU Cyber Security Club Wiki! This is where you find quick
+Welcome to the FAU Cybersecurity Club Wiki! This is where you find quick
 information about the club, current events, and the guides that get you from "I
 don't know anything" to actually doing the work.
 

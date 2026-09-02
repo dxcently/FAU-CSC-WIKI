@@ -8,7 +8,7 @@
      not black. On a dark ground they are the brightest thing in the
      mark; inverting them all the way to ink made the eyes read as
      holes, and put the one non-palette colour in the drawing. -->
-  <!-- FAU Cyber Security Club — full owl: head, wings, breast and talons.
+  <!-- FAU Cybersecurity Club — full owl: head, wings, breast and talons.
        Colors hardcoded: chrome #0B5FC4, red #CC0000, white #0847A0.
        Same geometry as the hero in layouts/partials/home/owl-wireframe.html;
        stroke widths are heavier here so the mark survives being scaled down. -->

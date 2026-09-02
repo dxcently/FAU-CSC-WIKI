@@ -8,7 +8,7 @@
      not black. On a dark ground they are the brightest thing in the
      mark; inverting them all the way to ink made the eyes read as
      holes, and put the one non-palette colour in the drawing. -->
-  <!-- FAU Cyber Security Club — owl head, no shield.
+  <!-- FAU Cybersecurity Club — owl head, no shield.
        Colors hardcoded: chrome #0B5FC4, red #CC0000, white #0847A0, because
        this file renders outside the page where the CSS palette tokens do not exist.
        Same geometry as the hero in layouts/partials/home/owl-wireframe.html;

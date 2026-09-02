@@ -1,6 +1,6 @@
 # Wiki Page Workflow
 
-You are adding or updating content in the FAU Cyber Security Club wiki at `/home/khoa/Projects/cybersec-wiki`.
+You are adding or updating content in the FAU Cybersecurity Club wiki at `/home/khoa/Projects/cybersec-wiki`.
 
 This is a Hugo static site using the Relearn theme. Content lives under `content/` as Markdown files.
 

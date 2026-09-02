@@ -1,7 +1,7 @@
 # TODO: placeholder — set the real baseURL before deploying
 baseURL = 'https://example.org/'
 languageCode = 'en-us'
-title = 'FAU Cyber Security Club'
+title = 'FAU Cybersecurity Club'
 theme = 'relearn'
 
 # Social links menu

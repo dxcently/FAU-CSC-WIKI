@@ -1,4 +1,4 @@
-/* FAU Cyber Security Club — site behaviour.
+/* FAU Cybersecurity Club — site behaviour.
  * Loaded with `defer` by the theme's custom-header.html partial. */
 
 /* --------------------------------------------------------------------

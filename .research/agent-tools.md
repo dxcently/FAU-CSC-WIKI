@@ -1,6 +1,6 @@
 # Coding-agent harnesses — research notes
 
-Compiled 2026-08-29 for FAU Cyber Security Club president's request. Research
+Compiled 2026-08-29 for FAU Cybersecurity Club president's request. Research
 only — no site content was touched.
 
 **Methodology note (read this first):** initial `WebSearch` and `WebFetch`

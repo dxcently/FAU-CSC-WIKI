@@ -32,7 +32,7 @@ pass condition.
 
 ## Part 1 — FAU policy compliance
 
-The FAU Cyber Security Club is a Registered Student Organization (RSO), not
+The FAU Cybersecurity Club is a Registered Student Organization (RSO), not
 an arm of the university. Its members are FAU students bound by FAU's
 regulations. The wiki is public. Write like both of those facts are true on
 every page.

@@ -1,12 +1,12 @@
 +++
-title = "FAU Cyber Security Club"
+title = "FAU Cybersecurity Club"
 type = "home"
 
 [params.hero]
   kicker  = "Florida Atlantic University"
   # No "FAU" here on purpose — the kicker directly above already spells the
   # university out in full. Falls back to the site title if you delete it.
-  title   = "Cyber Security Club"
+  title   = "Cybersecurity Club"
   tagline = "Learn it. Break it. Defend it."
 
 # The recurring weekly meeting. Shown in the panel under the hero.
