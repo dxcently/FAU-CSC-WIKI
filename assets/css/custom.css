@@ -806,7 +806,7 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   /* Bound the feed so a long backlog scrolls inside the panel instead of
      stretching the home page. The thin themed scrollbar comes from the
      global scrollbar-color rule in 4.5 — no separate scrollbar styling. */
-  max-height: 26rem;
+  max-height: 32rem;
   overflow-y: auto;
 }
 .wf-ann__list {

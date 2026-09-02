@@ -16,7 +16,7 @@ import json, os, re, subprocess, sys, urllib.request
 
 API  = "https://discord.com/api/v10"
 WANT = 10    # announcements to publish
-SCAN = 40    # messages to look through to find WANT with text
+SCAN = 100   # Discord's per-request max; scan enough to always find WANT text posts
 OUT  = "data/announcements.json"
 
 token   = os.environ.get("DISCORD_BOT_TOKEN")
