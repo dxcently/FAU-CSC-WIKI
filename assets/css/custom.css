@@ -997,9 +997,15 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
    rule below), which would drop the fog-borne glow to a third of its strength.
    So cyber carries the glow on the un-dimmed hero container instead. The
    dark/light scrim reasoning does not apply here — cyber's fog is translucent,
-   so a container shadow reads on all four edges. */
+   so a container shadow reads on all four edges.
+   The hero also carries 14px corner ticks (§6.1) that the fog-borne dark/
+   light glow, sitting on a z-index:1 layer under them, never touches. A
+   container box-shadow paints above the ticks, so the spread has to stay
+   shallow — the same -6px the card hover glow uses in 9.4, not the deeper
+   -18px the bloom-edge treatment in 9.6 uses on plain rectangular panels
+   with no ticks to clear. */
 :root[data-r-theme-variant='cyber'] .wf-hero {
-  box-shadow: inset 0 0 40px -18px var(--wf-bloom-edge);
+  box-shadow: inset 0 0 22px -6px var(--wf-bloom-edge);
 }
 .wf-hero-kicker { text-shadow: 0 0 16px var(--wf-stage-glow-wide); }
 .wf-hero-title {
