@@ -519,7 +519,9 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   display: flex;
   align-items: center;
   padding: 3rem 2rem;
-  margin: 0 0 2.5rem;
+  /* Top matches the existing bottom value — the hero sits centred in its
+     own gap rather than flush under the topbar on one side only. */
+  margin: 2.5rem 0 2.5rem;
   border: 1px solid var(--wf-stage-edge);
   border-radius: var(--wf-radius);
   /* Ground plus scanlines. 1px line every 4px, so the texture covers a
