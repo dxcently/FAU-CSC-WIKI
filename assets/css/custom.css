@@ -403,12 +403,20 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
 }
 
 /* The page you are standing on: the current-page tile now carries the card's
-   "selected" red — a red edge and red corner brackets walked to the opposite
-   corners, the same end state a card reaches on hover — held static, since this
-   tile is not a link. No blue accent; the red alone marks "here". */
+   "selected" red — red edge, red corner brackets walked to the opposite
+   corners, and the red halo — the same end state a card reaches on hover, held
+   static, since this tile is not a link. The halo has to be set here too: with
+   only border and brackets changed, the tile kept inheriting the resting blue
+   box-shadow, so the "here" surface glowed blue while a hovered one glows red.
+   Same four layers as the hover state (9.4), switched to the -now reds. */
 .wf-tile--here {
   background: var(--wf-wash-hi);
   border-color: var(--wf-edge-now);
+  box-shadow:
+    inset 0 0 40px -18px var(--wf-bloom-now),
+    inset 0 1px 0 var(--wf-inset-now),
+    0 0 0 1px var(--wf-hairline-now),
+    0 0 34px -8px var(--wf-bloom-now);
 }
 .wf-tile--here::before,
 .wf-tile--here::after { border-color: var(--wf-red-text); }
