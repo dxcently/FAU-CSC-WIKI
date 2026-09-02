@@ -405,18 +405,12 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
 /* The page you are standing on: the current-page tile now carries the card's
    "selected" red — red edge, red corner brackets walked to the opposite
    corners, and the red halo — the same end state a card reaches on hover, held
-   static, since this tile is not a link. The halo has to be set here too: with
-   only border and brackets changed, the tile kept inheriting the resting blue
-   box-shadow, so the "here" surface glowed blue while a hovered one glows red.
-   Same four layers as the hover state (9.4), switched to the -now reds. */
+   static, since this tile is not a link. The halo is NOT set here — 9.4
+   re-declares .wf-panel at equal specificity later in the file and would
+   overwrite it, so it lives with the other panel shadows in 9.4. */
 .wf-tile--here {
   background: var(--wf-wash-hi);
   border-color: var(--wf-edge-now);
-  box-shadow:
-    inset 0 0 40px -18px var(--wf-bloom-now),
-    inset 0 1px 0 var(--wf-inset-now),
-    0 0 0 1px var(--wf-hairline-now),
-    0 0 34px -8px var(--wf-bloom-now);
 }
 .wf-tile--here::before,
 .wf-tile--here::after { border-color: var(--wf-red-text); }
@@ -939,6 +933,19 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
     inset 3px 0 0 var(--wf-red),
     inset 0 0 40px -18px var(--wf-bloom-now),
     0 0 30px -9px var(--wf-bloom-now);
+}
+/* The current-page tile glows like a hovered card, held static. Same four
+   layers as .wf-panel--link:hover above, including the outward bloom — that
+   outer layer is the spill that makes a hovered card read as lit, and without
+   it the tile looked flat-red next to a hovered neighbour. Set in 9.4, not in
+   6.x with the tile's border and brackets, because this section re-declares
+   .wf-panel last and wins. */
+.wf-tile--here {
+  box-shadow:
+    inset 0 0 40px -18px var(--wf-bloom-now),
+    inset 0 1px 0 var(--wf-inset-now),
+    0 0 0 1px var(--wf-hairline-now),
+    0 0 34px -8px var(--wf-bloom-now);
 }
 /* The corner ticks get NO halo. An outer box-shadow on a 10px square paints a
    lit ring around it, and the unlit square inside that ring reads as a solid
