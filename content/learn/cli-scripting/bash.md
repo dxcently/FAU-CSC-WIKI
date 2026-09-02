@@ -128,6 +128,82 @@ chmod +x script.sh
 
 ---
 
+## Scripts That Fail Loudly
+
+A script that keeps going after an error does damage quietly. Make it stop.
+
+```bash
+#!/bin/bash
+set -euo pipefail
+# -e           exit on the first failed command
+# -u           treat an unset variable as an error, not as empty text
+# -o pipefail  a pipeline fails if any stage fails, not only the last one
+```
+
+Quote every variable. An unquoted variable splits on spaces and expands wildcards like `*`. This is the most common bash bug there is.
+
+```bash
+file="my notes.txt"
+cat $file      # runs: cat my notes.txt   -> two files, both missing
+cat "$file"    # runs: cat "my notes.txt" -> correct
+```
+
+Every command returns an exit code. Zero is success. Anything else is failure. Chain on it.
+
+```bash
+grep -q "root" /etc/passwd && echo "found" || echo "missing"
+some_command; echo "exit code was $?"
+```
+
+Run [shellcheck](https://www.shellcheck.net/) on every script before you trust it. It catches quoting mistakes, unset variables, and wrong test syntax that bash itself never warns you about.
+
+```bash
+shellcheck script.sh
+```
+
+---
+
+## The Text Toolkit
+
+Most CTF work is text processing. Learn these five and you stop writing Python for jobs a one-liner does.
+
+```bash
+cut -d':' -f1 /etc/passwd             # column 1, split on ':'
+awk -F: '{print $1, $7}' /etc/passwd  # columns 1 and 7
+sed 's/old/new/g' file.txt            # replace every 'old' with 'new'
+sort -u file.txt                      # sort and drop duplicates
+tr 'a-z' 'A-Z' < file.txt             # translate characters
+
+# combined: the top talkers in a web log
+awk '{print $1}' access.log | sort | uniq -c | sort -rn | head
+```
+
+Two glue tools you will use every day:
+
+```bash
+find / -name "*.conf" 2>/dev/null | xargs grep -l "password"   # run a command on every result
+nmap -sV 10.10.10.5 | tee scan.txt                              # see the output AND save it
+```
+
+The [GNU coreutils manual](https://www.gnu.org/software/coreutils/manual/) is the reference for all of these.
+
+---
+
+## Shell Reflexes
+
+These are not script commands. They are habits that save minutes every hour.
+
+```bash
+# Ctrl-R            search your history backwards as you type
+history | grep nmap   # find that command you ran an hour ago
+sudo !!               # rerun the last command as root
+cd -                  # jump back to the previous directory
+```
+
+Your history is saved to `~/.bash_history`. On a CTF box, it is the first place to look for credentials that were typed into commands.
+
+---
+
 ## In CTF Environments
 
 Bash is the glue that holds CTF tooling together. You rarely use one tool in isolation — you pipe output between them.

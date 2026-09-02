@@ -54,6 +54,8 @@ Choose based on what you need:
 
 Start with NAT. Switch to host-only or internal when you set up attack/defend lab environments.
 
+The lab recipe: put the attacker VM and the target VM on the same host-only or internal network, so they see each other and nothing else. Give the attacker a second adapter on NAT when it needs to download tools. Inside a VM, `ip a` shows which network it landed on, and `ip r` shows whether it has a gateway. Two VMs that cannot see each other are almost always on different adapter types.
+
 ---
 
 ## Step 4 — Take a Snapshot
@@ -61,6 +63,8 @@ Start with NAT. Switch to host-only or internal when you set up attack/defend la
 Before you install anything or run any tools, take a snapshot. Name it something useful like `clean-install`.
 
 When things break — and they will — revert and start from a known good state.
+
+Take one more before every experiment: an unknown binary, a CTF file, a script from a writeup. Snapshot, run it, revert. A snapshot is not a backup. It lives on the same disk as the VM, so it does not survive the disk.
 
 ---
 

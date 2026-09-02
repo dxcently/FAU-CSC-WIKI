@@ -63,7 +63,35 @@ A port is a number from 0–65535. It tells the OS which application should rece
 | 5432 | PostgreSQL |
 | 8080 | HTTP alt / web proxies |
 
-Services above 1024 can be used by any process. Finding unexpected services on high ports is a common finding in pentests.
+Any process can use ports above 1024. Finding unexpected services on high ports is a common finding in pentests.
+
+---
+
+## Why Can't I Reach It
+
+Four questions answer most connectivity problems. Ask them in order.
+
+**Is the service listening on the right address?** A service bound to `127.0.0.1` accepts connections only from the same machine. Bound to `0.0.0.0`, it accepts connections from anywhere.
+
+```bash
+ss -tulnp        # the Local Address column shows 127.0.0.1:port or 0.0.0.0:port
+```
+
+**Is there a route?** Your machine needs a default gateway to reach any other network.
+
+```bash
+ip r             # look for "default via <gateway>"
+```
+
+**Is it TCP or UDP?** They are different protocols that share the same port numbers. `nmap` scans TCP unless you ask for UDP.
+
+```bash
+nmap -sU -p 53,161 10.10.10.5    # UDP scan: slow, and it needs root
+```
+
+**Is something in between dropping it?** A firewall drops packets silently. `ping` fails, `nmap` says "host down", and nothing is wrong with the host. See `nmap -Pn` on the [tools](tools/) page.
+
+One more: a VM on NAT networking can reach out, but nothing can reach in. That is the hypervisor, not the target. See [Virtual Machines](/learn/virtual-machines/).
 
 ---
 

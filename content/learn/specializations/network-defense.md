@@ -74,6 +74,42 @@ iptables -L -n -v
 
 ---
 
+## The First Ten Minutes on a Box
+
+You inherit a machine in a competition or an incident. Before you change anything, find out who is on it and what is listening.
+
+```bash
+w                              # who is logged in right now, and from where
+last -a | head                 # recent logins
+ss -tulnp                      # every listening port and the process behind it
+ps -ef --forest                # the process tree. A shell under a service is wrong.
+find / -mmin -30 -type f 2>/dev/null | grep -v '^/proc'   # files changed in the last 30 minutes
+crontab -l; ls /etc/cron*      # scheduled persistence
+```
+
+Take a baseline so you can prove what changed later:
+
+```bash
+sha256sum /etc/passwd /etc/shadow /etc/sudoers > baseline.txt
+```
+
+Read the SSH log before you touch the firewall. Who is failing to log in tells you who is trying.
+
+```bash
+journalctl -u ssh --since "1 hour ago" | grep -i fail
+```
+
+Block an address at the host firewall when you must, with the tool the system already has:
+
+```bash
+sudo nft add rule inet filter input ip saddr 203.0.113.9 drop    # nftables
+sudo iptables -A INPUT -s 203.0.113.9 -j DROP                    # older systems
+```
+
+Reference: the [nftables wiki](https://wiki.nftables.org/).
+
+---
+
 ## CCDC Context
 
 CCDC (Collegiate Cyber Defense Competition) is an attack/defend competition. Blue teams defend infrastructure against red teams of professional penetration testers.

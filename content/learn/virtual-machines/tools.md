@@ -35,7 +35,7 @@ VMware Workstation runs on Windows and Linux. VMware Fusion runs on macOS. Both 
 
 ### UTM (macOS)
 
-The best option for Apple Silicon Macs. Runs ARM and x86 VMs using QEMU under the hood.
+The best option for Apple Silicon Macs. Runs ARM and x86 VMs on QEMU.
 
 - Free
 - Native Apple Silicon support

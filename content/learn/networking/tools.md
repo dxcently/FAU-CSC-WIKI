@@ -67,6 +67,15 @@ nmap -A 192.168.1.1           # aggressive — OS, scripts, traceroute
 
 - [nmap documentation](https://nmap.org/docs.html)
 
+Two flags beginners learn the hard way:
+
+```bash
+nmap -Pn 10.10.10.5           # skip the ping check. A firewall that drops ICMP makes nmap say "host down" when it is up.
+nmap -oA scan 10.10.10.5      # save all three output formats at once (scan.nmap, scan.gnmap, scan.xml)
+```
+
+If nmap says a host is down and you know it is up, `-Pn` is the fix. Always save output with `-oA`. You will want to grep it later, and you will not want to scan again.
+
 ---
 
 ## Wireshark
@@ -112,6 +121,69 @@ dig google.com              # A record (IP)
 dig google.com MX           # mail server records
 dig google.com ANY          # all records
 nslookup google.com         # simpler alternative
+```
+
+---
+
+## nc / ncat
+
+Netcat. Reads and writes raw TCP or UDP. It is the tool for "is that port open, and what does it say?"
+
+```bash
+nc -zv 10.10.10.5 22 80 443    # test whether ports are open, no data sent
+nc 10.10.10.5 80               # connect and talk to the service by hand
+nc -lvnp 4444                  # listen on a port and wait for a connection
+```
+
+Connect to port 80, type `GET / HTTP/1.0`, and press Enter twice. You just spoke HTTP without a browser. That is **banner grabbing**: the first thing a service says tells you what it is.
+
+The listener is how a reverse shell arrives. Your lab VM listens, the CTF box connects back. Use it only on machines you are authorized to test. The [ncat guide](https://nmap.org/ncat/guide/) covers the rest.
+
+---
+
+## ip
+
+The modern replacement for `ifconfig`, `route`, and `arp`. If a guide tells you to run `ifconfig`, the guide is old. Learn `ip`.
+
+```bash
+ip a                     # addresses on every interface (long form: ip addr)
+ip r                     # routing table. The "default via" line is your gateway.
+ip n                     # neighbours: the ARP table, IP addresses to MAC addresses
+ip -br a                 # brief, one line per interface
+```
+
+`ip r` answers "why can't my VM reach anything": there is no default route, or it is the wrong one. Reference: [ip(8)](https://man7.org/linux/man-pages/man8/ip.8.html).
+
+---
+
+## /etc/hosts
+
+CTF boxes use names like `target.htb` that no DNS server knows. Map the name yourself.
+
+```bash
+echo "10.10.10.5 target.htb" | sudo tee -a /etc/hosts
+```
+
+When a web app redirects you to a hostname and the page never loads, this is why. Add the name and try again.
+
+---
+
+## Moving Files Between Machines
+
+You will need to get a tool onto a box, or a file off it. The fastest way is a one-line web server.
+
+```bash
+python3 -m http.server 8000     # serve the current directory on port 8000
+# on the other machine:
+wget http://10.10.14.5:8000/linpeas.sh
+curl -O http://10.10.14.5:8000/linpeas.sh
+```
+
+Over SSH, when you have credentials:
+
+```bash
+scp file.txt user@10.10.10.5:/tmp/       # copy to the box
+scp user@10.10.10.5:/tmp/loot.txt .      # copy from the box
 ```
 
 ---

@@ -121,6 +121,38 @@ grep "error" file.txt    # search for pattern
 
 ---
 
+## Identify Before You Trust
+
+The extension is a suggestion. The bytes are the truth.
+
+```bash
+file mystery.bin       # what a file actually is, read from its contents
+file *                 # every file in the directory
+xxd file | head        # hex dump. The first bytes (the "magic number") name the format.
+strings file | less    # printable text hidden inside a binary
+```
+
+A CTF file named `photo.jpg` that `file` calls a ZIP archive is the challenge telling you what to do next.
+
+Hidden files start with a dot. `ls` skips them. `ls -la` does not, and neither should you. Reference: [file(1)](https://man7.org/linux/man-pages/man1/file.1.html).
+
+---
+
+## Disk, Links, and Environment
+
+```bash
+df -h                          # free space per filesystem
+du -sh * | sort -rh | head     # what is using the space, biggest first
+ln -s /real/path linkname      # a symbolic link: a pointer to another path
+readlink -f linkname           # where a link actually points
+tree -L 2                      # the directory as a picture, two levels deep
+env                            # every environment variable. Secrets get left here.
+```
+
+Two directories are writable by everyone on almost every Linux system: `/tmp` and `/dev/shm`. When you cannot write anywhere else, you can write there. `/dev/shm` lives in RAM and is gone after a reboot.
+
+---
+
 ## In CTF Environments
 
 On a Linux CTF box (HackTheBox, TryHackMe, etc.), filesystem enumeration is your first move after getting a shell.

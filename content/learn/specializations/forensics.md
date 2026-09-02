@@ -48,6 +48,29 @@ In the real world, this is what happens after a breach. In CTFs, it shows up as 
 
 ---
 
+## Never Touch the Original
+
+Evidence you modify is evidence you destroyed. Every step below is read-only.
+
+```bash
+sha256sum disk.img                              # hash it first. Hash it again at the end. They must match.
+mkdir /mnt/evidence
+sudo mount -o ro,loop disk.img /mnt/evidence    # read-only mount. Nothing you do can write to it.
+```
+
+Then ask each file what it is before you trust its name:
+
+```bash
+file suspicious.bin
+exiftool photo.jpg        # metadata: camera, GPS, timestamps, editing software
+binwalk firmware.bin      # files embedded inside other files
+stat document.pdf         # access, modify, and change times
+```
+
+Timestamps answer "when". The three in `stat` are modify (content changed), change (metadata changed), and access (read). An access time newer than the modify time means someone opened the file after the last edit. References: [exiftool](https://exiftool.org/), [binwalk](https://github.com/ReFirmLabs/binwalk).
+
+---
+
 ## Getting Started
 
 For memory forensics: download a memory sample from the [Volatility samples page](https://github.com/volatilityfoundation/volatility/wiki/Memory-Samples) and practice running plugins against it.

@@ -66,6 +66,8 @@ su - username           # switch to another user (needs their password)
 > [!warning] sudo -l is a Privilege Escalation Step
 > On a compromised system, `sudo -l` is one of the first things you run. It shows what commands you can execute as root without a password. Misconfigured sudo entries are a common path to root.
 
+The rules live in `/etc/sudoers`. Edit it only with `visudo`, which checks the syntax before it saves, so a typo cannot lock you out. A line with `NOPASSWD:` lets a command run as root with no password. When `sudo -l` shows one on a CTF box, that line is the way to root.
+
 ---
 
 ## Special Permissions: SUID/SGID
@@ -78,6 +80,41 @@ find / -perm -2000 2>/dev/null    # find SGID binaries
 ```
 
 A SUID binary owned by root that can be manipulated by a low-privilege user is a classic privilege escalation vector. [GTFOBins](https://gtfobins.github.io/) catalogs these.
+
+---
+
+## The Defaults You Did Not Set
+
+A new file is `644` and a new directory is `755`, and you never asked for that. The **umask** decides. It subtracts permissions from the maximum.
+
+```bash
+umask          # print it. Usually 022.
+umask 077      # new files: owner only, for this shell
+```
+
+`/tmp` is writable by everyone, yet you cannot delete another user's file there. That is the **sticky bit**: in a shared directory, only a file's owner can remove it.
+
+```bash
+ls -ld /tmp             # drwxrwxrwt. The trailing t is the sticky bit.
+chmod +t shared_dir
+```
+
+---
+
+## Beyond rwx
+
+Two mechanisms hide permissions that `ls -l` does not show. When root cannot delete a file, look here.
+
+```bash
+lsattr file.txt               # extended attributes. 'i' means immutable.
+sudo chattr +i file.txt       # nobody can modify or delete it, not even root
+sudo chattr -i file.txt       # until you remove the flag
+
+getfacl file.txt              # access control list: per-user rules beyond owner, group, and other
+setfacl -m u:alice:rw file.txt
+```
+
+A `+` at the end of `ls -l` output (`-rw-r--r--+`) means an ACL is present. Read it before you trust the nine characters. Reference: [chattr(1)](https://man7.org/linux/man-pages/man1/chattr.1.html).
 
 ---
 
