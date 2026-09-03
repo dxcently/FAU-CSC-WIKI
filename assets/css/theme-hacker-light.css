@@ -107,7 +107,7 @@
      not the literal: over paper the composite darkness is alpha x how far the
      colour sits below the ground, so moving the blue itself buys almost
      nothing at this alpha. */
-  --wf-life:          rgba( 140, 130, 240, .17 );
+  --wf-life:          rgba( 140, 130, 240, .20 );
   /* text selection, as a solid block the way a terminal draws it */
   /* light cast by the shield into the sidebar header. Stronger on the
      light variant: a white sidebar gives the mark nothing to sit in,

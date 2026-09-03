@@ -1204,6 +1204,15 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
       var(--wf-scan) 0 1px,
       transparent 1px 4px),
     linear-gradient(158deg, var(--wf-wash) 0%, transparent 58%);
+  /* The stripe period is 4 CSS px and the line is 1. On a display whose
+     device pixel ratio is not a whole number those land on fractional device
+     pixels, so the browser antialiases the pattern differently at every
+     scroll offset and the beat against the pixel grid reads as bands at some
+     other angle — moire, not a repaint. Promoting the element rasterizes the
+     pattern once into its own layer, after which scrolling only translates
+     it. The stacking context this creates is harmless here: the only things
+     a scanlined surface positions are its own corner ticks. */
+  will-change: transform;
 }
 
 /* 14.1 selection reads as a solid block, the way a terminal draws it */
@@ -1287,16 +1296,8 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
  * The glyph colour itself never appears in this file or in the JS: the
  * script reads --wf-rain off <html> at run time, so the rain follows the
  * variant and goes near-invisible in daylight. */
-/* Own compositing layer. An overflow scroller further up the page (the
-   announcements feed, §7.6) sitting over a fixed element drops the fixed
-   layer out of composited scrolling, so every scroll frame repaints this
-   canvas on the main thread and the screen flickers. Only visible in cyber,
-   because that is the one variant where the ground is transparent and the
-   canvas is actually behind the content. translateZ pins it to the GPU and
-   scrolling stops touching it. */
 .wf-rain {
   position: fixed;
-  transform: translateZ(0);
   inset: 0;
   /* A canvas is a replaced element: `inset: 0` does not stretch it, its CSS
      size defaults to its backing size (viewport × devicePixelRatio). At 1x
@@ -1332,10 +1333,8 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
  *
  * Sits well behind the rain's .42: cells are solid blocks where glyphs are
  * strokes, so the same alpha reads as a much heavier field. */
-/* Same layer promotion as .wf-rain — see the note there. */
 .wf-life {
   position: fixed;
-  transform: translateZ(0);
   inset: 0;
   width: 100%;
   height: 100%;
