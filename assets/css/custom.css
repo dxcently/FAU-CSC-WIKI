@@ -212,8 +212,9 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
      specificity and comes later, so it owns every panel shadow — a value
      set here is dead code that silently does nothing. */
   background: var(--wf-fill);
-  -webkit-backdrop-filter: blur(2px);
-  backdrop-filter: blur(2px);
+  /* No backdrop-filter. The ground is opaque everywhere but the cyber home,
+     so a blur here did nothing there — and on the cyber home it re-sampled
+     the live rain canvas every scroll frame, which flickered. */
   color: var(--wf-text);
   transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
 }
@@ -267,8 +268,6 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
 
 #R-body-inner .box:not(.cstyle.transparent) {
   border-radius: var(--wf-radius);
-  -webkit-backdrop-filter: blur(2px);
-  backdrop-filter: blur(2px);
 }
 #R-body-inner .box > .box-label {
   font-family: var(--wf-font-mono);
@@ -1291,6 +1290,12 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
 .wf-rain {
   position: fixed;
   inset: 0;
+  /* A canvas is a replaced element: `inset: 0` does not stretch it, its CSS
+     size defaults to its backing size (viewport × devicePixelRatio). At 1x
+     that coincides with the viewport; zoomed out it covers a fraction of it
+     and the right/bottom went bare. Size it explicitly. */
+  width: 100%;
+  height: 100%;
   z-index: 0;
   pointer-events: none;
   opacity: .42;
