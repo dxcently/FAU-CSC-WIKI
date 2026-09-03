@@ -254,6 +254,18 @@
 
   var columns = [];
   var w = 0, h = 0, dpr = 1;
+  /* MOBILE TOOLBAR. A phone browser hides its URL bar once you scroll past
+     the first screen, which changes window.innerHeight and fires `resize`
+     mid-scroll — repeatedly, as the bar slides in and out. Rebuilding the
+     field on that event restarts every column, which is the flicker: it
+     starts halfway down the page, comes and goes while you scroll, and stops
+     the moment you do. Width is what actually changes on a real resize or a
+     rotation; a height-only change under this threshold is the toolbar and
+     is ignored. The canvas keeps the tallest height seen so the strip the
+     toolbar uncovers is already painted. */
+  var TOOLBAR = 160;         /* px of height change to treat as chrome, not a resize */
+  var lastW = 0, lastH = 0;
+
   var colour = '';
   var raf = 0;
   var last = 0;
@@ -267,9 +279,14 @@
   }
 
   function resize() {
+    var vw = window.innerWidth, vh = window.innerHeight;
+    if (vw === lastW && Math.abs(vh - lastH) < TOOLBAR) return;
+    lastW = vw;
+    lastH = vh;
+
     dpr = Math.min(window.devicePixelRatio || 1, 2);   /* 3x buys nothing here */
-    w = window.innerWidth;
-    h = window.innerHeight;
+    w = vw;
+    h = Math.max(vh, h);
     canvas.width = Math.floor(w * dpr);
     canvas.height = Math.floor(h * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -480,6 +497,18 @@
   if (!ctx) return;
 
   var cols = 0, rows = 0, cell = CELL;
+  /* MOBILE TOOLBAR. A phone browser hides its URL bar once you scroll past
+     the first screen, which changes window.innerHeight and fires `resize`
+     mid-scroll — repeatedly, as the bar slides in and out. Rebuilding the
+     field on that event restarts every column, which is the flicker: it
+     starts halfway down the page, comes and goes while you scroll, and stops
+     the moment you do. Width is what actually changes on a real resize or a
+     rotation; a height-only change under this threshold is the toolbar and
+     is ignored. The canvas keeps the tallest height seen so the strip the
+     toolbar uncovers is already painted. */
+  var TOOLBAR = 160;         /* px of height change to treat as chrome, not a resize */
+  var lastW = 0, lastH = 0;
+
   var cells, next, age;      /* Uint8Array grids; age fades the freshly dead */
   var colour = '';
   var raf = 0, last = 0;
@@ -503,6 +532,9 @@
        let the next resize event size it. */
     var w = window.innerWidth, h = window.innerHeight;
     if (w < 1 || h < 1) { cols = rows = 0; return; }
+    if (w === lastW && Math.abs(h - lastH) < TOOLBAR) return;
+    lastW = w;
+    lastH = h = Math.max(h, lastH);
 
     /* Grow the cell until the grid fits the budget. sqrt because both axes
        scale together: doubling the cell quarters the count. */
