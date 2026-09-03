@@ -60,7 +60,12 @@
      what lets a second variant repaint the whole site from this file alone. */
   --wf-wash:          rgba( 30, 144, 255, .055 ); /* faint blue tint fill */
   --wf-wash-hi:       rgba( 30, 144, 255, .10 );  /* the same, stronger */
-  --wf-wash-alt:      rgba(  0, 187,   0, .055 ); /* the green ground bloom */
+  /* The top-left ground bloom. Blue, not green: this variant already spends
+     green on identity (code, labels, h3) and the bloom sitting behind the
+     headline read as a second, competing accent. Lifted blue rather than the
+     structure blue in --wf-wash, so the two radials do not flatten into one
+     wash. */
+  --wf-wash-alt:      rgba( 127, 196, 255, .07 );  /* the blue ground bloom */
   --wf-wash-row:      rgba( 30, 144, 255, .05 );  /* table row hover */
   --wf-now-wash:      rgba( 204,   0,   0, .07 ); /* the one red row */
   --wf-inset:         rgba( 30, 144, 255, .20 );  /* top inner highlight */
