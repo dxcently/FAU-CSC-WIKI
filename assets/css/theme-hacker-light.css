@@ -96,6 +96,9 @@
      and paper cannot. This is the token doing that job — the JS is the same
      code in every variant. */
   --wf-rain:          rgba( 11, 95, 196, .10 );
+  /* the Game of Life on the board (§18). Daylight: cells are solid blocks,
+     so this sits below the rain's alpha, not at it. */
+  --wf-life:          rgba( 11, 95, 196, .07 );
   /* text selection, as a solid block the way a terminal draws it */
   /* light cast by the shield into the sidebar header. Stronger on the
      light variant: a white sidebar gives the mark nothing to sit in,

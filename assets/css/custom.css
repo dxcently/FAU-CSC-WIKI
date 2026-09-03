@@ -1318,9 +1318,12 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
  * Same placement as the rain: fixed to the viewport, z-index 0, under
  * #R-body. Built and driven by assets/js/custom.js when <html> carries
  * data-wf-life, which custom-footer.html sets only for a page with
- * `life = true` in front matter. Colour comes from --wf-rain at run time,
- * so it follows the variant like the rain does. Sits a step further back
- * than the rain: cells are solid blocks, glyphs are strokes. */
+ * `life = true` in front matter. Colour comes from --wf-life at run time, so
+ * it follows the variant — and it is a separate token from --wf-rain because
+ * hacker runs the field in red while its rain stays green.
+ *
+ * Sits well behind the rain's .42: cells are solid blocks where glyphs are
+ * strokes, so the same alpha reads as a much heavier field. */
 .wf-life {
   position: fixed;
   inset: 0;
@@ -1328,5 +1331,5 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   height: 100%;
   z-index: 0;
   pointer-events: none;
-  opacity: .28;
+  opacity: .18;
 }

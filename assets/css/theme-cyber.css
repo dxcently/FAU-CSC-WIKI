@@ -98,6 +98,8 @@
      the alpha is the only thing standing between "faint CRT" and
      "unreadable page", so keep it low. */
   --wf-rain:          rgba(  0, 255,  65, .70 );
+  /* the Game of Life on the board (§18). Cyber keeps the phosphor. */
+  --wf-life:          rgba(  0, 255,  65, .70 );
   /* text selection, as a solid block the way a terminal draws it */
   /* light cast by the shield into the sidebar header. Stronger on the
      light variant: a white sidebar gives the mark nothing to sit in,

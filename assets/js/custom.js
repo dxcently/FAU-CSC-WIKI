@@ -437,7 +437,7 @@
  * The board's background: Conway's Life on a toroidal grid the size of the
  * viewport, one generation at a time. Opted in per page by custom-footer.html
  * setting data-wf-life on <html>. Same four rules as the rain, same reasons:
- * colour from --wf-rain at run time, reduced motion draws one generation and
+ * colour from --wf-life at run time, reduced motion draws one generation and
  * never steps, the generation rate is capped, hidden tabs stop.
  *
  * Life dies: most random seeds settle into still lifes and blinkers in a few
@@ -471,7 +471,7 @@
 
   function readColour() {
     colour = getComputedStyle(document.documentElement)
-      .getPropertyValue('--wf-rain').trim().replace(/\s+/g, ' ');
+      .getPropertyValue('--wf-life').trim().replace(/\s+/g, ' ');
   }
 
   function seed(fraction, keep) {
