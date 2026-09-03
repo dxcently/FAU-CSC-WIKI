@@ -444,6 +444,21 @@
  * hundred generations. When the population goes flat for a while, a random
  * sprinkle is dropped onto the field instead of a wipe, so the old structures
  * stay and something new grows through them.
+ *
+ * WHAT CANNOT GROW. Nothing here accumulates: the three grids are allocated
+ * once per resize and swapped, never appended to, and a "sprinkle" flips bits
+ * inside the existing grid rather than adding cells. A glider gun would still
+ * only ever fill the fixed field. The two costs that DO scale with the
+ * viewport are bounded on purpose:
+ *
+ *   MAX_CELLS  caps the grid. Past it the cell size grows instead of the
+ *              array, so a 6K display gets bigger cells, not a longer loop.
+ *              The per-generation work is O(cells) and runs on the main
+ *              thread, so this is a frame-time budget as much as a memory one.
+ *   dpr 1      the canvas backing store is width x height x dpr^2 x 4 bytes.
+ *              The rain needs a retina store because glyphs are strokes;
+ *              these are axis-aligned blocks, so 1x costs a quarter of the
+ *              memory and looks the same.
  * -------------------------------------------------------------------- */
 (function () {
   'use strict';
@@ -452,10 +467,11 @@
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var GPS = 7;               /* generations per second */
-  var CELL = 14;             /* px, before devicePixelRatio */
-  var SEED = 0.16;           /* fraction of cells alive at start */
+  var CELL = 14;             /* px, the floor; grows to honour MAX_CELLS */
+  var MAX_CELLS = 20000;     /* ~1080p at 14px. See the header note. */
+  var SEED = 0.07;           /* fraction of cells alive at start */
   var FLAT = 40;             /* generations of unchanged population = stuck */
-  var SPRINKLE = 0.04;       /* fraction re-seeded when stuck */
+  var SPRINKLE = 0.03;       /* fraction re-seeded when stuck */
 
   var canvas = document.createElement('canvas');
   canvas.className = 'wf-life';
@@ -463,7 +479,7 @@
   var ctx = canvas.getContext('2d');
   if (!ctx) return;
 
-  var cols = 0, rows = 0, dpr = 1;
+  var cols = 0, rows = 0, cell = CELL;
   var cells, next, age;      /* Uint8Array grids; age fades the freshly dead */
   var colour = '';
   var raf = 0, last = 0;
@@ -482,21 +498,36 @@
   }
 
   function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    /* A hidden or not-yet-laid-out viewport reports 0. Allocating a 0-cell
+       grid leaves draw() with nothing and step() dividing by zero; bail and
+       let the next resize event size it. */
     var w = window.innerWidth, h = window.innerHeight;
-    canvas.width = Math.floor(w * dpr);
-    canvas.height = Math.floor(h * dpr);
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    cols = Math.ceil(w / CELL);
-    rows = Math.ceil(h / CELL);
-    cells = new Uint8Array(cols * rows);
-    next = new Uint8Array(cols * rows);
-    age = new Uint8Array(cols * rows);
+    if (w < 1 || h < 1) { cols = rows = 0; return; }
+
+    /* Grow the cell until the grid fits the budget. sqrt because both axes
+       scale together: doubling the cell quarters the count. */
+    cell = CELL;
+    var want = Math.ceil(w / cell) * Math.ceil(h / cell);
+    if (want > MAX_CELLS) cell = Math.ceil(cell * Math.sqrt(want / MAX_CELLS));
+
+    cols = Math.ceil(w / cell);
+    rows = Math.ceil(h / cell);
+
+    /* 1x backing store: these are blocks, not glyphs. */
+    canvas.width = Math.floor(w);
+    canvas.height = Math.floor(h);
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+
+    var n = cols * rows;
+    cells = new Uint8Array(n);
+    next = new Uint8Array(n);
+    age = new Uint8Array(n);
     seed(SEED, false);
     lastPop = -1; flat = 0;
   }
 
   function step() {
+    if (!cols) return;
     var pop = 0;
     for (var y = 0; y < rows; y++) {
       var up = ((y + rows - 1) % rows) * cols, mid = y * cols, dn = ((y + 1) % rows) * cols;
@@ -524,13 +555,14 @@
   }
 
   function draw() {
-    ctx.clearRect(0, 0, cols * CELL, rows * CELL);
+    if (!cols) return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = colour;
     for (var i = 0; i < cells.length; i++) {
       var a = cells[i] ? 1 : age[i] / 6;   /* dead: .5, .33, .17, gone */
       if (!a) continue;
       ctx.globalAlpha = a;
-      ctx.fillRect((i % cols) * CELL + 1, ((i / cols) | 0) * CELL + 1, CELL - 2, CELL - 2);
+      ctx.fillRect((i % cols) * cell + 1, ((i / cols) | 0) * cell + 1, cell - 2, cell - 2);
     }
     ctx.globalAlpha = 1;
   }
