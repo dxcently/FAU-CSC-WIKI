@@ -18,7 +18,7 @@ We strongly encourage an open environment of learning, so _NEVER_ be afraid to
 ask questions. It is ok if you don't know something — remember that we are all
 learning. And the best way to learn is to fail!
 
-![The GIF didn't load lol](https://github.com/dxcently/fau-cyber-security-club-wiki/blob/main/assets/error_220.gif?raw=true)
+![The GIF didn't load lol](https://github.com/dxcently/FAU-CSC-WIKI/blob/main/assets/error_220.gif?raw=true)
 
 _It is hard to write a simple definition of something as varied as hacking, but
 I think what these activities have in common is playfulness, cleverness, and

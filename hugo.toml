@@ -15,7 +15,7 @@ theme = 'relearn'
   [[menus.shortcuts]]
     name = "<i class='fab fa-fw fa-github'></i> GitHub"
     identifier = "github"
-    url = "https://github.com/dxcently/fau-cyber-security-club-wiki"
+    url = "https://github.com/dxcently/FAU-CSC-WIKI"
     weight = 20
 
   [[menus.shortcuts]]

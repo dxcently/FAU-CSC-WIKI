@@ -123,6 +123,6 @@ Pick a couple of these and actually check them — don't just bookmark and forge
 
 ## FAU / Club
 
-- **[Club Wiki Repo](https://github.com/dxcently/fau-cyber-security-club-wiki)** — the source for this site. Found a broken link or a gap? Open a pull request.
+- **[Club Wiki Repo](https://github.com/dxcently/FAU-CSC-WIKI)** — the source for this site. Found a broken link or a gap? Open a pull request.
 - **[Discord](http://discord.gg/2Yun8WAUuy)** — where the club actually talks day to day. Join this before anything else on this page.
 - **[Owl Central](https://fau.campuslabs.com/engage/organization/cybersecurity)** — the official FAU org page: meeting times, events, and how to officially join.

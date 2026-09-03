@@ -29,8 +29,8 @@ will review and merge it.
 ### 1. Fork and clone the repo
 
 ```bash
-git clone https://github.com/dxcently/fau-cyber-security-club-wiki.git
-cd fau-cyber-security-club-wiki
+git clone https://github.com/dxcently/FAU-CSC-WIKI.git
+cd FAU-CSC-WIKI
 ```
 
 ### 2. Create your file
