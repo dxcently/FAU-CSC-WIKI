@@ -52,10 +52,32 @@ type = "home"
 
 [[params.sessions]]
   date  = "2026-09-03"
-  title = "Join us for a meeting with a guest speaker from <insert when we get it>"
+  title = "Guest speakers: Carl Froggett & Rooke Young"
   track = "learn, network"
-  lead  = "Guest Speaker"
+  lead  = "Career trends (5-6) + blue team threats (6-7)"
+  room  = "CM 22 Room 125"
   link  = "https://fau.campuslabs.com/engage/organization/cybersecurity"
+
+[[params.sessions]]
+  date  = "2026-09-03"
+  title = "Cyber Lab"
+  track = "build"
+  lead  = "10 AM work session, goal: done by October"
+  room  = "CM 22 Room 150"
+
+[[params.sessions]]
+  date  = "2026-09-10"
+  title = "Cyber Lab"
+  track = "build"
+  lead  = "10 AM work session, goal: done by October"
+  room  = "CM 22 Room 150"
+
+[[params.sessions]]
+  date  = "2026-09-17"
+  title = "Cyber Lab"
+  track = "build"
+  lead  = "10 AM work session, goal: done by October"
+  room  = "CM 22 Room 150"
 +++
 
 ## Contact
