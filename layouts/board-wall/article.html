@@ -1,0 +1,67 @@
+{{- /*
+  BOARD — the notice board landing page (type = "board-wall": every page under board/ inherits "board" as its type and would pick this template up too), assembled the same
+  way the home page is: one section per feed, newest club news first.
+  Each block reuses the announcements panel (.wf-ann) so it needs no CSS of
+  its own. The sub-pages carry the full lists; this page is the wall.
+*/ -}}
+<article class="wf-board">
+  <header class="headline">
+    {{- partial "content-header.html" . }}
+  </header>
+
+  <h1>{{ .Title }}</h1>
+  {{ partial "article-content.html" . }}
+
+  {{- /* Club news: newest three pages under board/news/. */ -}}
+  {{- $news := site.GetPage "/board/news" }}
+  <section class="wf-ann" aria-labelledby="wf-board-news">
+    <h2 id="wf-board-news">Club news <span class="wf-kicker">latest</span></h2>
+    {{- with $news }}
+    {{- $posts := first 3 .RegularPagesRecursive.ByDate.Reverse }}
+    {{- if $posts }}
+    <ul class="wf-grid wf-grid--3">
+      {{- range $posts }}
+      <li>
+        <a class="wf-panel wf-panel--link wf-scanlines" href="{{ .RelPermalink }}">
+          <span class="wf-kicker">{{ .Date.Format "Jan 2, 2006" }}</span>
+          <span class="wf-card-title">{{ .LinkTitle }}</span>
+          <span class="wf-card-desc">{{ .Description }}</span>
+        </a>
+      </li>
+      {{- end }}
+    </ul>
+    {{- else }}
+    <p class="wf-note">Nothing yet. First comp, first story.</p>
+    {{- end }}
+    {{- end }}
+  </section>
+
+  {{- /* Conferences: the page's own body, inline. */ -}}
+  {{- with site.GetPage "/board/conferences" }}
+  <section class="wf-ann" aria-labelledby="wf-board-conf">
+    <h2 id="wf-board-conf">Conferences <span class="wf-kicker">where we show up</span></h2>
+    <div class="wf-panel wf-scanlines">
+      {{ .Content }}
+    </div>
+  </section>
+  {{- end }}
+
+  <section class="wf-ann" aria-labelledby="wf-board-jobs">
+    <h2 id="wf-board-jobs">Jobs &amp; internships <span class="wf-kicker"><a href="{{ "/board/postings/" | relURL }}">all →</a></span></h2>
+    {{ partial "board-feed.html" (dict "data" "postings" "limit" 5) }}
+  </section>
+
+  <section class="wf-ann" aria-labelledby="wf-board-cyber">
+    <h2 id="wf-board-cyber">Cyber news <span class="wf-kicker">every six hours</span></h2>
+    {{ partial "board-feed.html" (dict "data" "cyber-news") }}
+  </section>
+
+  <section class="wf-ann" aria-labelledby="wf-board-guest">
+    <h2 id="wf-board-guest">Guestbook <span class="wf-kicker"><a href="{{ "/board/guestbook/" | relURL }}">sign →</a></span></h2>
+    {{ partial "board-feed.html" (dict "data" "guestbook" "limit" 5) }}
+  </section>
+
+  <footer class="footline">
+    {{- partial "content-footer.html" . }}
+  </footer>
+</article>

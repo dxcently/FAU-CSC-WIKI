@@ -1,11 +1,11 @@
 +++
 title = "Cyber News"
-weight = 5
-description = "Nine security headlines: the three newest each from The Hacker News, Krebs on Security, and BleepingComputer, refreshed every six hours."
+weight = 4
+description = "Nine headlines, three feeds, every six hours."
 icon = "fa-solid fa-rss"
 +++
 
-Headlines only, three per source, pulled every six hours. Read the source.
-More feeds are on the [Staying Current](/toolbox/links/#staying-current) list.
+Headlines from The Hacker News, Krebs, and BleepingComputer. Read the source.
+More feeds under [Staying Current](/toolbox/links/#staying-current).
 
 {{< board-feed data="cyber-news" >}}

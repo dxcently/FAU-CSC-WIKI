@@ -1,11 +1,10 @@
 +++
 title = "Club News"
-weight = 4
-description = "What happened: competition results, big events, and milestones. One page per story."
+weight = 1
+description = "What we did and how it went."
 icon = "fa-solid fa-newspaper"
 +++
 
-Results and write-ups after competitions and big events. Empty until the
-first one lands.
+One page per story. Nothing yet — first comp, first story.
 
 {{< section-grid >}}
