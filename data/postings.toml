@@ -1,0 +1,22 @@
+# JOB AND INTERNSHIP POSTINGS — edit this file by hand.
+#
+# Copy a posting out of Discord, or add a new one. One [[items]] block each.
+# The Jobs and Internships pages read this file; a posting whose `expires`
+# date has passed is not shown, so nothing needs deleting.
+#
+#   kind     "job" or "internship" — picks which page it appears on
+#   title    the role
+#   org      the company or agency
+#   text     one or two plain sentences: location, pay if known, who to ask
+#   url      where to apply
+#   expires  "YYYY-MM-DD" — the closing date the posting gives
+#   date     "YYYY-MM-DD" — when it was posted (optional)
+#
+# [[items]]
+#   kind    = "internship"
+#   title   = "SOC Analyst Intern, Summer 2027"
+#   org     = "Example Corp"
+#   text    = "Boca Raton, paid. Posted in Discord by an officer."
+#   url     = "https://example.com/careers/123"
+#   expires = "2026-10-15"
+#   date    = "2026-09-03"
