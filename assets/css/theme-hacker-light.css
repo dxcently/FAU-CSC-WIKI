@@ -80,7 +80,12 @@
   /* ---- washes, insets and hairlines used by custom.css ---- */
   --wf-wash:          rgba( 11, 95, 196, .045 );
   --wf-wash-hi:       rgba( 11, 95, 196, .07 );
-  --wf-wash-alt:      rgba( 10, 107, 44, .05 );
+  /* Periwinkle. The top-left ground bloom and the board's Game of Life cells
+     are the SAME hue on purpose — the field reads as the bloom given
+     structure rather than as a second colour on the page. Change one, change
+     the other. Neither carries text, so this hue is exempt from the contrast
+     floor the rest of this file is measured against. */
+  --wf-wash-alt:      rgba( 140, 130, 240, .10 );
   --wf-wash-row:      rgba( 11, 95, 196, .05 );
   --wf-now-wash:      rgba( 204,  0,  0, .06 );
   --wf-inset:         rgba( 255, 255, 255, .90 );  /* highlight is WHITE here */
@@ -102,7 +107,7 @@
      not the literal: over paper the composite darkness is alpha x how far the
      colour sits below the ground, so moving the blue itself buys almost
      nothing at this alpha. */
-  --wf-life:          rgba( 11, 95, 196, .15 );
+  --wf-life:          rgba( 140, 130, 240, .17 );
   /* text selection, as a solid block the way a terminal draws it */
   /* light cast by the shield into the sidebar header. Stronger on the
      light variant: a white sidebar gives the mark nothing to sit in,

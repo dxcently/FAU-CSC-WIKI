@@ -1287,8 +1287,16 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
  * The glyph colour itself never appears in this file or in the JS: the
  * script reads --wf-rain off <html> at run time, so the rain follows the
  * variant and goes near-invisible in daylight. */
+/* Own compositing layer. An overflow scroller further up the page (the
+   announcements feed, §7.6) sitting over a fixed element drops the fixed
+   layer out of composited scrolling, so every scroll frame repaints this
+   canvas on the main thread and the screen flickers. Only visible in cyber,
+   because that is the one variant where the ground is transparent and the
+   canvas is actually behind the content. translateZ pins it to the GPU and
+   scrolling stops touching it. */
 .wf-rain {
   position: fixed;
+  transform: translateZ(0);
   inset: 0;
   /* A canvas is a replaced element: `inset: 0` does not stretch it, its CSS
      size defaults to its backing size (viewport × devicePixelRatio). At 1x
@@ -1324,8 +1332,10 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
  *
  * Sits well behind the rain's .42: cells are solid blocks where glyphs are
  * strokes, so the same alpha reads as a much heavier field. */
+/* Same layer promotion as .wf-rain — see the note there. */
 .wf-life {
   position: fixed;
+  transform: translateZ(0);
   inset: 0;
   width: 100%;
   height: 100%;
