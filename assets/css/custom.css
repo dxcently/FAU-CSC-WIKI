@@ -1199,8 +1199,42 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   font-weight: 700;
 }
 @media screen and (max-width: 47.999rem) {
-  /* narrow screens: the topic and the date are what matter, drop the track */
+  /* NARROW SCREENS: STOP BEING A TABLE.
+   * Five columns on a 390px phone leaves the title about twelve characters
+   * wide, which wraps a session name one word per line and makes a two-line
+   * row eight lines tall. Below 48rem each row becomes a stacked block: the
+   * date and status read as one kicker line, the title gets the full width,
+   * and the room follows it. Same markup, same source order — only the
+   * display changes, so the desktop table is untouched. */
+  .wf-table,
+  .wf-table tbody,
+  .wf-table tr,
+  .wf-table td { display: block; width: auto; }
+
+  .wf-table thead { display: none; }
+
+  .wf-row {
+    padding: .75rem 0 .75rem .75rem;
+    border-bottom: 1px solid var(--wf-edge-soft);
+  }
+  .wf-row:last-child { border-bottom: 0; }
+
+  .wf-table td { padding: 0; border: 0; }
   .wf-table .wf-track { display: none; }
+
+  /* date and status share a line: both are short, and together they are the
+     "when, and is it still on" the row is skimmed for. */
+  .wf-table .wf-date { width: auto; display: inline; }
+  .wf-table .wf-state { display: inline; margin-left: .5rem; }
+
+  .wf-table .wf-title {
+    margin-top: .25rem;
+    line-height: 1.45;
+  }
+  /* the lead is a separate thought at this width, not a trailing clause */
+  .wf-table .wf-title .wf-note { display: block !important; margin-top: .125rem; }
+
+  .wf-table .wf-room { margin-top: .25rem; white-space: normal; }
 }
 
 
