@@ -77,6 +77,9 @@
   --wf-bloom-now:     rgba( 255,  77,  77, .72 ); /* the red "here" halo */
   --wf-bloom-text:    rgba( 159, 255, 192, .45 ); /* headline halo */
   --wf-fill:          rgba(  3,  18,  12, .74 );  /* translucent panel fill */
+  /* The same fill, already flattened over --wf-bg. Used where a panel must
+     not let the page ground through — see §4.1's note on the cyber home. */
+  --wf-fill-solid:    #020F0A;
 
   /* ---- washes, insets and hairlines used by custom.css ----
      These exist so custom.css holds no colour literals of its own, which is

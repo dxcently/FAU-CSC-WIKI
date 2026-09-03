@@ -26,6 +26,21 @@ html, body { background-color: var(--wf-bg); }
    the wall's content sits in panels. */
 #R-body-inner:has(.wf-board) { background: transparent; }
 
+/* The hole above is the whole home page, but the rain is only ever meant
+   behind the HERO. Every panel below it fills with --wf-fill, which is
+   translucent, so on this one page the live canvas showed through the cards
+   and the announcements feed. Two periodic patterns — the rain's glyph grid
+   fixed to the viewport, the panel's 4px stripe scrolling with the page —
+   beat against each other and the interference reads as scanlines at an
+   angle neither of them has, moving as you scroll.
+   --wf-fill-solid is that same fill already flattened over the ground, so
+   these panels look exactly as they do on every other page and the canvas
+   stops reaching them. Cyber only: it is the only variant with both a
+   transparent ground and a canvas. */
+:root[data-r-theme-variant='cyber'] .wf-home .wf-panel {
+  background-color: var(--wf-fill-solid);
+}
+
 /* 4.2 the page ground gets one very soft blue bloom at the top so the layout
  * reads as "space with depth" rather than a flat sheet. Fixed attachment, one
  * paint, no cost. */
@@ -1204,15 +1219,6 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
       var(--wf-scan) 0 1px,
       transparent 1px 4px),
     linear-gradient(158deg, var(--wf-wash) 0%, transparent 58%);
-  /* The stripe period is 4 CSS px and the line is 1. On a display whose
-     device pixel ratio is not a whole number those land on fractional device
-     pixels, so the browser antialiases the pattern differently at every
-     scroll offset and the beat against the pixel grid reads as bands at some
-     other angle — moire, not a repaint. Promoting the element rasterizes the
-     pattern once into its own layer, after which scrolling only translates
-     it. The stacking context this creates is harmless here: the only things
-     a scanlined surface positions are its own corner ticks. */
-  will-change: transform;
 }
 
 /* 14.1 selection reads as a solid block, the way a terminal draws it */
