@@ -28,6 +28,7 @@ target you do not own or have written permission to touch.
 - **[pwn.college](https://pwn.college)** — a full binary exploitation curriculum with an in-browser environment. Go here once ready for pwn beyond basics.
 - **[CryptoHack](https://cryptohack.org)** — cryptography challenges that teach the math by making you break it.
 - **[crackmes.one](https://crackmes.one)** — reverse-engineering challenges ranked by difficulty, for practicing on small disposable binaries.
+- **[cypat.guide](https://cypat.guide)** — the community CyberPatriot prep guide: Linux and Windows hardening, checklists, and scripts. The starting point for the CyberPatriot and CCDC track.
 
 ## Learning Platforms & Courses
 
@@ -36,6 +37,7 @@ target you do not own or have written permission to touch.
 - **[Professor Messer](https://www.professormesser.com)** — free video courses for Security+ and Network+. Start here before paying for anything.
 - **[Cisco Networking Academy](https://www.netacad.com)** — free networking fundamentals, useful before Security+ if ports and subnets still feel shaky.
 - **[Antisyphon Training](https://www.antisyphontraining.com)** — pay-what-you-can live training from working practitioners, red and blue both.
+- **[UC Irvine Cyber Bootcamp](https://drive.google.com/drive/folders/1vxvuqwHb7-5-OxNGUOANXyeEsf_eM2zd)** — a free bootcamp from UCI's cyber club, shared as a Drive folder. Officers recommend it for getting into cyber and for competition prep.
 
 ## Reference & Cheat Sheets
 
@@ -116,10 +118,8 @@ Pick a couple of these and actually check them — don't just bookmark and forge
 
 ## Career & Certifications
 
-- **[CompTIA Security+](https://www.comptia.org/certifications/security)** — the standard entry-level cert. Vendor-neutral, widely recognized by HR filters.
-- **[Offensive Security (OSCP)](https://www.offsec.com)** — a certification that tests actual hands-on exploitation, not multiple choice. Respected because it's hard.
-- **[(ISC)² CISSP](https://www.isc2.org)** — a management-and-breadth cert for more senior roles. Not your first cert as a student.
-- **[GIAC](https://www.giac.org)** — certifications tied to SANS courses, deep and specific per topic. Expensive; the material is excellent.
+Moved to its own page: **[Certifications](/toolbox/certifications/)** — which
+certs matter, in what order, and the free material to study for them.
 
 ## FAU / Club
 

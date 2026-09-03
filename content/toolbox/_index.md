@@ -23,6 +23,8 @@ This section contains:
 
 - **[Links](/toolbox/links/)** — curated external tools, learning platforms,
   and references we actually use and recommend.
+- **[Certifications](/toolbox/certifications/)** — which certs matter for a
+  student, in what order, and the free material to study for them.
 - **[Cheat Sheets](/toolbox/cheatsheets/)** — quick reference for the
   commands, ports, and triage steps you look up constantly.
 <!-- The angle brackets are REQUIRED: this filename has spaces, and a
