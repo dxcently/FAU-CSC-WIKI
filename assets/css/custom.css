@@ -21,6 +21,10 @@ html, body { background-color: var(--wf-bg); }
 :root[data-r-theme-variant='cyber'] #R-body-inner:has(.wf-home) {
   background: transparent;
 }
+/* The board (§18) opens the same hole in every variant: its Game of Life
+   uses the --wf-rain token, which is near-invisible in daylight already, and
+   the wall's content sits in panels. */
+#R-body-inner:has(.wf-board) { background: transparent; }
 
 /* 4.2 the page ground gets one very soft blue bloom at the top so the layout
  * reads as "space with depth" rather than a flat sheet. Fixed attachment, one
@@ -1304,3 +1308,20 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
    comes through; the copy is centred and carries its own glow, and the scrim,
    even at this opacity, still darkens the lower band. Cyber + home only. */
 :root[data-r-theme-variant='cyber'] .wf-hero-fog { opacity: .35; }
+
+/* ---------- 18. game of life — THE BOARD ----------
+ * Same placement as the rain: fixed to the viewport, z-index 0, under
+ * #R-body. Built and driven by assets/js/custom.js when <html> carries
+ * data-wf-life, which custom-footer.html sets only for a page with
+ * `life = true` in front matter. Colour comes from --wf-rain at run time,
+ * so it follows the variant like the rain does. Sits a step further back
+ * than the rain: cells are solid blocks, glyphs are strokes. */
+.wf-life {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .28;
+}

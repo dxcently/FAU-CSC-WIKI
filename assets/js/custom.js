@@ -430,3 +430,146 @@
   if (document.readyState !== 'loading') fit();
   else document.addEventListener('DOMContentLoaded', fit);
 })();
+
+/* ---------------------------------------------------------------------
+ * Game of Life
+ *
+ * The board's background: Conway's Life on a toroidal grid the size of the
+ * viewport, one generation at a time. Opted in per page by custom-footer.html
+ * setting data-wf-life on <html>. Same four rules as the rain, same reasons:
+ * colour from --wf-rain at run time, reduced motion draws one generation and
+ * never steps, the generation rate is capped, hidden tabs stop.
+ *
+ * Life dies: most random seeds settle into still lifes and blinkers in a few
+ * hundred generations. When the population goes flat for a while, a random
+ * sprinkle is dropped onto the field instead of a wipe, so the old structures
+ * stay and something new grows through them.
+ * -------------------------------------------------------------------- */
+(function () {
+  'use strict';
+
+  if (!document.documentElement.dataset.wfLife) return;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var GPS = 7;               /* generations per second */
+  var CELL = 14;             /* px, before devicePixelRatio */
+  var SEED = 0.16;           /* fraction of cells alive at start */
+  var FLAT = 40;             /* generations of unchanged population = stuck */
+  var SPRINKLE = 0.04;       /* fraction re-seeded when stuck */
+
+  var canvas = document.createElement('canvas');
+  canvas.className = 'wf-life';
+  canvas.setAttribute('aria-hidden', 'true');
+  var ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  var cols = 0, rows = 0, dpr = 1;
+  var cells, next, age;      /* Uint8Array grids; age fades the freshly dead */
+  var colour = '';
+  var raf = 0, last = 0;
+  var lastPop = -1, flat = 0;
+
+  function readColour() {
+    colour = getComputedStyle(document.documentElement)
+      .getPropertyValue('--wf-rain').trim().replace(/\s+/g, ' ');
+  }
+
+  function seed(fraction, keep) {
+    for (var i = 0; i < cells.length; i++) {
+      if (!keep) cells[i] = 0;
+      if (Math.random() < fraction) cells[i] = 1;
+    }
+  }
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var w = window.innerWidth, h = window.innerHeight;
+    canvas.width = Math.floor(w * dpr);
+    canvas.height = Math.floor(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    cols = Math.ceil(w / CELL);
+    rows = Math.ceil(h / CELL);
+    cells = new Uint8Array(cols * rows);
+    next = new Uint8Array(cols * rows);
+    age = new Uint8Array(cols * rows);
+    seed(SEED, false);
+    lastPop = -1; flat = 0;
+  }
+
+  function step() {
+    var pop = 0;
+    for (var y = 0; y < rows; y++) {
+      var up = ((y + rows - 1) % rows) * cols, mid = y * cols, dn = ((y + 1) % rows) * cols;
+      for (var x = 0; x < cols; x++) {
+        var l = (x + cols - 1) % cols, r = (x + 1) % cols;
+        var n = cells[up + l] + cells[up + x] + cells[up + r]
+              + cells[mid + l] + cells[mid + r]
+              + cells[dn + l] + cells[dn + x] + cells[dn + r];
+        var i = mid + x;
+        var alive = cells[i] ? (n === 2 || n === 3) : n === 3;
+        next[i] = alive ? 1 : 0;
+        /* age counts down after death so a cell fades over three frames */
+        age[i] = alive ? 3 : (age[i] ? age[i] - 1 : 0);
+        pop += alive;
+      }
+    }
+    var t = cells; cells = next; next = t;
+
+    if (pop === lastPop) flat++; else flat = 0;
+    lastPop = pop;
+    if (flat >= FLAT || pop < cells.length * 0.01) {
+      seed(SPRINKLE, true);
+      flat = 0;
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, cols * CELL, rows * CELL);
+    ctx.fillStyle = colour;
+    for (var i = 0; i < cells.length; i++) {
+      var a = cells[i] ? 1 : age[i] / 6;   /* dead: .5, .33, .17, gone */
+      if (!a) continue;
+      ctx.globalAlpha = a;
+      ctx.fillRect((i % cols) * CELL + 1, ((i / cols) | 0) * CELL + 1, CELL - 2, CELL - 2);
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function tick(now) {
+    raf = requestAnimationFrame(tick);
+    if (now - last < 1000 / GPS) return;
+    last = now;
+    readColour();              /* the variant can change under us */
+    step();
+    draw();
+  }
+
+  function start() {
+    if (reduced) { readColour(); draw(); return; }
+    if (raf) return;
+    last = 0;
+    raf = requestAnimationFrame(tick);
+  }
+
+  function stop() {
+    if (!raf) return;
+    cancelAnimationFrame(raf);
+    raf = 0;
+  }
+
+  var resizeTimer = 0;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () { resize(); if (reduced) draw(); }, 150);
+  });
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) stop(); else start();
+  });
+
+  function mount() {
+    document.body.appendChild(canvas);
+    resize();
+    start();
+  }
+  if (document.body) mount(); else document.addEventListener('DOMContentLoaded', mount);
+})();

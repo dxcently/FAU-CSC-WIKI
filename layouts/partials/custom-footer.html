@@ -9,8 +9,8 @@
      included (/learn/, and also /learn/linux/). Hugo gives them all
      Kind == "section" and they all do the same job.
 
-     Override per page with `scramble = true` / `rain = false` in front
-     matter. isset is load-bearing — `false` and "not set" are different. */ -}}
+     Override per page with `scramble = true` / `rain = false` / `life = true`
+     in front matter. isset is load-bearing — `false` and "not set" are different. */ -}}
 {{- $landing := or .IsHome (eq .Kind "section") }}
 
 {{- $scramble := $landing }}
@@ -19,9 +19,16 @@
 {{- $rain := $landing }}
 {{- if isset .Params "rain" }}{{ $rain = .Params.rain }}{{ end }}
 
-{{- if or $scramble $rain }}
+{{- /* Game of Life is the board's own texture: OFF everywhere unless a page
+     sets `life = true`. A page that turns it on should set `rain = false`
+     too — one texture at a time. */ -}}
+{{- $life := false }}
+{{- if isset .Params "life" }}{{ $life = .Params.life }}{{ end }}
+
+{{- if or $scramble $rain $life }}
 <script>
 {{- if $scramble }}document.documentElement.dataset.wfScramble = "1";{{ end }}
 {{- if $rain }}document.documentElement.dataset.wfRain = "1";{{ end }}
+{{- if $life }}document.documentElement.dataset.wfLife = "1";{{ end }}
 </script>
 {{- end }}
