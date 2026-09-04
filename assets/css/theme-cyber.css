@@ -89,7 +89,7 @@
   --wf-wash-alt:      rgba(  0, 200,  83, .05 );  /* the mid-green ground bloom */
   --wf-wash-row:      rgba(  0, 255,  65, .045 ); /* table row hover */
   --wf-now-wash:      rgba( 204,   0,   0, .07 ); /* the one red row */
-  --wf-inset:         rgba(  0, 255,  65, .18 );  /* top inner highlight */
+  --wf-inset:         rgba(  0, 255,  65, .09 );  /* top inner highlight */
   --wf-inset-now:     rgba( 204,   0,   0, .20 );
   --wf-hairline:      rgba(  0, 255,  65, .05 );  /* 1px outer ring */
   --wf-hairline-now:  rgba( 255,  77,  77, .12 );

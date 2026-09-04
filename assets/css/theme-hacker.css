@@ -68,7 +68,7 @@
   --wf-wash-alt:      rgba( 127, 196, 255, .07 );  /* the blue ground bloom */
   --wf-wash-row:      rgba( 30, 144, 255, .05 );  /* table row hover */
   --wf-now-wash:      rgba( 204,   0,   0, .07 ); /* the one red row */
-  --wf-inset:         rgba( 30, 144, 255, .20 );  /* top inner highlight */
+  --wf-inset:         rgba( 30, 144, 255, .10 );  /* top inner highlight */
   --wf-inset-now:     rgba( 204,   0,   0, .20 );
   --wf-hairline:      rgba( 30, 144, 255, .05 );  /* 1px outer ring */
   --wf-hairline-now:  rgba( 255,  77,  77, .12 );
