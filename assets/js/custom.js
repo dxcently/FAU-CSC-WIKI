@@ -448,6 +448,58 @@
   else document.addEventListener('DOMContentLoaded', fit);
 })();
 
+/* --------------------------------------------------------------------
+ * Sidebar: swipe from the left edge to open (mobile)
+ *
+ * Only the open half — the theme's own flyout already closes on a tap
+ * outside it or Escape (theme.js wires #R-body-overlay to closeNav()),
+ * so duplicating that as a swipe-left would be a second way to do a
+ * thing that already works.
+ *
+ * Edge-started on purpose: arming only within EDGE px of the left border
+ * means the gesture can never begin over page content, so it cannot
+ * steal a horizontal drag from a wide table or a mermaid diagram (both
+ * scroll inside themselves per 6.3) anywhere else on the page.
+ *
+ * Same breakpoint the hamburger button itself uses (48rem) — past that
+ * width the sidebar is a static column, not a flyout, and opening it
+ * would be a no-op at best.
+ * -------------------------------------------------------------------- */
+(function () {
+  'use strict';
+
+  var EDGE = 24;      /* px from the left edge the swipe must start within */
+  var MIN_DX = 60;     /* px of rightward travel required to count as a swipe */
+  var MAX_DY = 50;     /* px of vertical drift still read as "horizontal" */
+
+  var mq = window.matchMedia('(max-width: 47.999rem)');
+  var startX = 0, startY = 0, tracking = false;
+
+  function onStart(e) {
+    if (!mq.matches || e.touches.length !== 1) return;
+    if (document.body.classList.contains('sidebar-flyout')) return;
+    var t = e.touches[0];
+    if (t.clientX > EDGE) return;
+    startX = t.clientX;
+    startY = t.clientY;
+    tracking = true;
+  }
+
+  function onEnd(e) {
+    if (!tracking) return;
+    tracking = false;
+    var t = e.changedTouches[0];
+    var dx = t.clientX - startX;
+    var dy = Math.abs(t.clientY - startY);
+    if (dx > MIN_DX && dy < MAX_DY && typeof openNav === 'function') openNav();
+  }
+
+  /* passive: neither handler calls preventDefault, so the page's own
+     scroll/pan is never blocked while this listens. */
+  document.addEventListener('touchstart', onStart, { passive: true });
+  document.addEventListener('touchend', onEnd, { passive: true });
+})();
+
 /* ---------------------------------------------------------------------
  * Game of Life
  *
