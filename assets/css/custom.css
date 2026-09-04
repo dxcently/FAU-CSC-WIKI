@@ -1219,13 +1219,22 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   }
   .wf-row:last-child { border-bottom: 0; }
 
-  .wf-table td { padding: 0; border: 0; }
+  /* Carries the ID so it outweighs the base `#R-body-inner :is(th, td)` in
+     6.3, which otherwise keeps its cell padding and hairline on every stacked
+     cell — four rules across one block, and a background that bleeds into the
+     line above and below. The row owns the padding at this width, not the
+     cells. */
+  #R-body-inner .wf-table td { padding: 0; border: 0; }
   .wf-table .wf-track { display: none; }
 
-  /* date and status share a line: both are short, and together they are the
-     "when, and is it still on" the row is skimmed for. */
-  .wf-table .wf-date { width: auto; display: inline; }
-  .wf-table .wf-state { display: inline; margin-left: .5rem; }
+  /* Date and status share a line, and the row is a flex line-breaker to get
+     it: source order puts title and room between them, so `order` is what
+     pairs them up. */
+  .wf-row { display: flex; flex-wrap: wrap; align-items: baseline; }
+  .wf-table .wf-date  { width: auto; order: 1; }
+  .wf-table .wf-state { order: 2; margin-left: .5rem; text-align: left; }
+  .wf-table .wf-title { order: 3; flex: 1 0 100%; }
+  .wf-table .wf-room  { order: 4; flex: 1 0 100%; }
 
   .wf-table .wf-title {
     margin-top: .25rem;
