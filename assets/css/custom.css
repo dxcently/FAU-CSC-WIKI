@@ -254,9 +254,7 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
 .wf-panel--link:hover,
 .wf-panel--link:focus-visible {
   border-color: var(--wf-edge-now);
-  box-shadow:
-    inset 0 1px 0 var(--wf-inset-now),
-    0 0 22px -6px var(--wf-glow-now);
+  box-shadow: 0 0 22px -6px var(--wf-glow-now);
   transform: translateY(-2px);
 }
 .wf-panel--link:hover::before, .wf-panel--link:focus-visible::before,
@@ -856,7 +854,6 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
      verbatim, so the schedule is lit exactly as bright as every card. */
   box-shadow:
     inset 0 0 40px -18px var(--wf-bloom-edge),
-    inset 0 1px 0 var(--wf-inset),
     0 0 0 1px var(--wf-hairline),
     0 0 20px -10px var(--wf-bloom);
 }
@@ -976,9 +973,12 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
        meeting: inset with a heavily negative spread, so the light sits ON
        the border and dies before the middle. This lives HERE and not in 6.1
        because this section is last and re-declares the selector — anything
-       set on .wf-panel earlier in the file loses to it. */
+       set on .wf-panel earlier in the file loses to it.
+       No `inset 0 1px 0` top lip: stacked under the border and the hairline
+       ring, it made the top edge three lines thick where the other three were
+       one. The hero carries the edge glow alone and that is the reference.
+       .wf-panel--flat keeps the lip — there it is the only treatment. */
     inset 0 0 40px -18px var(--wf-bloom-edge),
-    inset 0 1px 0 var(--wf-inset),
     0 0 0 1px var(--wf-hairline),
     0 0 20px -10px var(--wf-bloom);
 }
@@ -988,7 +988,6 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
     /* Same inner edge as the resting card, switched to the red bloom. A
        selected surface should change colour, not lose the treatment. */
     inset 0 0 40px -18px var(--wf-bloom-now),
-    inset 0 1px 0 var(--wf-inset-now),
     0 0 0 1px var(--wf-hairline-now),
     0 0 34px -8px var(--wf-bloom-now);
 }
@@ -1007,7 +1006,6 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
 .wf-tile--here {
   box-shadow:
     inset 0 0 40px -18px var(--wf-bloom-now),
-    inset 0 1px 0 var(--wf-inset-now),
     0 0 0 1px var(--wf-hairline-now),
     0 0 34px -8px var(--wf-bloom-now);
 }
