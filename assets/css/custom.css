@@ -830,6 +830,11 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
    and beats against the stripes — the same interference §4.1 flattens the
    panels for. */
 .wf-sched__pane { position: relative; }
+/* The pane box has to BE the table box or the overlay aligns to the wrong
+   edges: the theme gives every table a 1rem margin top and bottom and a grey
+   1px border of its own, so the halo lit an empty band above and below the
+   rows and drew a second frame inside the first. */
+.wf-sched__pane > .wf-table { margin: 0; border: 0; }
 .wf-sched__pane::after {
   content: "";
   position: absolute;
