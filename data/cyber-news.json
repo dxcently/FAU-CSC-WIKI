@@ -1,39 +1,39 @@
 [
   {
-    "date": "2026-09-03T23:32:47+05:30",
+    "date": "2026-09-04T14:18:45+05:30",
     "source": "The Hacker News",
-    "title": "ThreatsDay: CEO Phishing Kits, 5K Dropbox Account Hacks, OAuth Traps + 17 More Stories",
-    "url": "https://thehackernews.com/2026/09/threatsday-ceo-phishing-kits-5k-dropbox.html"
+    "title": "Over 440,000 Exploit Attempts Target Super Forms and Elementor Pro RCE Flaws",
+    "url": "https://thehackernews.com/2026/09/over-440000-exploit-attempts-target.html"
   },
   {
-    "date": "2026-09-03T21:22:07+05:30",
+    "date": "2026-09-04T13:05:14+05:30",
     "source": "The Hacker News",
-    "title": "Critical Cisco Nexus 9000 Flaw Lets Unauthenticated Remote Attackers Run Code as Root",
-    "url": "https://thehackernews.com/2026/09/critical-cisco-nexus-9000-flaw-lets.html"
+    "title": "Plex Urges Immediate Updates After Patching Multiple Undisclosed Security Flaws",
+    "url": "https://thehackernews.com/2026/09/plex-urges-immediate-updates-after.html"
   },
   {
-    "date": "2026-09-03T20:56:47+05:30",
+    "date": "2026-09-04T12:48:47+05:30",
     "source": "The Hacker News",
-    "title": "BraZetsu Malware Turns Compromised Windows Hosts Into Criminal Marketplace Inventory",
-    "url": "https://thehackernews.com/2026/09/brazetsu-malware-turns-compromised.html"
+    "title": "Google Releases Chrome Update to Patch Actively Exploited V8 Zero-Day",
+    "url": "https://thehackernews.com/2026/09/google-releases-chrome-update-to-patch.html"
   },
   {
-    "date": "2026-09-03T18:01:37-04:00",
+    "date": "2026-09-04T09:22:01-04:00",
     "source": "BleepingComputer",
-    "title": "French hospital fined €500,000 after breach exposes data of 727,000",
-    "url": "https://www.bleepingcomputer.com/news/security/french-hospital-fined-500-000-after-breach-exposes-data-of-727-000/"
+    "title": "New CrowdStrike 'FalconFlank' zero-day grants SYSTEM privileges",
+    "url": "https://www.bleepingcomputer.com/news/security/new-crowdstrike-falconflank-zero-day-grants-system-privileges/"
   },
   {
-    "date": "2026-09-03T16:04:24-04:00",
+    "date": "2026-09-04T08:22:30-04:00",
     "source": "BleepingComputer",
-    "title": "Coder's registry infrastructure compromised to push malicious modules",
-    "url": "https://www.bleepingcomputer.com/news/security/coders-registry-infrastructure-compromised-to-push-malicious-modules/"
+    "title": "Exchange Online outage causes email delays, 'Server busy' errors",
+    "url": "https://www.bleepingcomputer.com/news/microsoft/exchange-online-outage-causes-email-delays-server-busy-errors/"
   },
   {
-    "date": "2026-09-03T14:28:12-04:00",
+    "date": "2026-09-04T07:48:17-04:00",
     "source": "BleepingComputer",
-    "title": "HPE patches critical ArubaOS-CX remote code execution flaw",
-    "url": "https://www.bleepingcomputer.com/news/security/hpe-patches-critical-arubaos-cx-remote-code-execution-flaw/"
+    "title": "Google warns of new Chrome zero-day flaw exploited in attacks",
+    "url": "https://www.bleepingcomputer.com/news/security/google-warns-of-new-chrome-zero-day-flaw-exploited-in-attacks/"
   },
   {
     "date": "2026-09-01T22:40:28+00:00",
