@@ -239,7 +239,7 @@
      field is still drawn, once, and never animates. */
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  var FPS = 12;              /* a texture does not need 60 */
+  var FPS = 30;              /* a texture does not need 60 */
   var FONT = 15;             /* glyph cell, px */
   var TAIL = 9;              /* glyphs behind the head, fading out */
   var GLYPHS = '01<>[]{}/\\|=+*^?#$%&ABCDEF';
@@ -486,7 +486,7 @@
   var GPS = 7;               /* generations per second */
   var CELL = 14;             /* px, the floor; grows to honour MAX_CELLS */
   var MAX_CELLS = 20000;     /* ~1080p at 14px. See the header note. */
-  var SEED = 0.07;           /* fraction of cells alive at start */
+  var SEED = 0.10;           /* fraction of cells alive at start */
   var FLAT = 40;             /* generations of unchanged population = stuck */
   var SPRINKLE = 0.03;       /* fraction re-seeded when stuck */
 
