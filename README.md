@@ -1,0 +1,124 @@
+# FAU Cyber Security Club Wiki
+
+The official wiki for the FAU Cyber Security Club at [csc.fau.edu](https://csc.fau.edu). 
+
+This platform uses a **database-less (DB-less)** static architecture coupled with an **event-streaming agentic CI/CD pipeline** and an **interactive Web UI chat harness (Agora/Melete)** for real-time maintenance and direct site updates.
+
+---
+
+## 🏛️ Architecture Overview
+
+```
+                          ┌──────────────────────────┐
+                          │    External Streams      │
+                          │  (Discord, RSS Feeds)    │
+                          └────────────┬─────────────┘
+                                       │ (Scheduled sync)
+                                       ▼
+┌──────────────────┐      ┌──────────────────────────┐      ┌─────────────────────┐
+│  Web UI (Agora)  │─────▶│  Melete Agent Pipeline   │─────▶│  GitHub Repository  │
+│  Chat Interface  │◀─────│  (Autonomous Code/Sync)  │◀─────│  (Git as SSOT)       │
+└──────────────────┘      └────────────┬─────────────┘      └──────────┬──────────┘
+                                       │                               │
+                                       ▼ (Deploy & Sync)               ▼ (CI Gate)
+                          ┌──────────────────────────┐      ┌─────────────────────┐
+                          │ Live Webroot / Apache    │      │ GitHub Actions      │
+                          │ (/srv/www/csc-wiki)      │      │ (hugo --quiet gate) │
+                          └──────────────────────────┘      └─────────────────────┘
+```
+
+### 1. Database-less (DB-less) Core
+* **Static Site Generator:** Built with [Hugo Extended](https://gohugo.io/) and the Relearn theme.
+* **Git as the Single Source of Truth:** No SQL/NoSQL database or CMS backend. Every page is pure Markdown with TOML front matter under `content/`.
+* **Zero Runtime Overhead:** Apache serves pre-rendered HTML, CSS, JS, and media directly from `/srv/www/csc-wiki`.
+* **Client-side Search:** Lunr-powered instant client-side search generated at build time.
+
+### 2. Event-Streaming Agentic CI/CD Pipeline
+* **Continuous Ingestion:** Scheduled agent runs and streaming scripts poll external feeds (Discord announcements channel, Cyber News RSS) and commit formatted Markdown updates directly into the repository.
+* **Autonomous Agents (Melete/Pi):** AI agents perform autonomous code tasks, schema checks, styling updates, and content generation.
+* **Strict Build Gate (GitHub Actions):** Enforces a "silence is the pass condition" policy (`hugo --quiet`). Any broken links, missing shortcodes, or bad image paths immediately fail the gate before code reaches production.
+
+### 3. Custom Web UI Chat Box (Agora Interface)
+* **Direct Natural-Language Updates:** Club operators can update pages, add events, tweak stylesheets, or trigger builds simply by chatting with the assistant in the Agora control panel.
+* **Safe Sandbox Testing:** Edits are tested and validated in isolated agent sessions with instant Hugo validation before syncing to live paths.
+* **Private Preview App:** Changes can be previewed at `https://apps.necoconeco.net/csc-wiki/` before going live to the public site.
+
+---
+
+## 🚀 How to Operate the Site
+
+You can manage and deploy the wiki using either the **Web UI Chat Interface** or **Manual CLI Deployment**.
+
+---
+
+### Method A: Via Web UI (Agora Chat)
+
+The fastest way to manage content, news, or site logic:
+
+1. **Open the Agora Web UI** chat session.
+2. **Issue instructions in natural language**, such as:
+   * *"Add a new workshop page under Learn for Wireshark basics."*
+   * *"Pull latest Discord announcements and rebuild the site."*
+   * *"Update the executive board listing with the new officers."*
+   * *"Deploy the latest main branch to live."*
+3. The agent validates syntax, verifies the build with `hugo --quiet`, commits/deploys, and confirms status back to you in chat.
+
+---
+
+### Method B: Manual CLI Deployment (No `sudo` Required)
+
+The webroot `/srv/www/csc-wiki` is preconfigured with `administrator:www-data` ownership and sticky permissions. You can pull, build, and deploy without root privileges.
+
+#### 1. Standard Deploy Cycle
+```bash
+# Navigate to the wiki directory
+cd ~/FAU-CSC-WIKI
+
+# 1. Pull latest commits from GitHub
+git pull
+
+# 2. Build static assets with Hugo
+hugo
+
+# 3. Rsync directly to the Apache webroot
+rsync -rtv --delete public/ /srv/www/csc-wiki/
+```
+
+#### 2. Local Development & Preview
+To write content locally with live browser reloading:
+```bash
+# Start local Hugo development server
+hugo server
+
+# Browse to http://localhost:1313
+```
+
+---
+
+## 📝 Content Conventions
+
+Pages are organized under section folders inside `content/`:
+* `start/` — Getting started guides
+* `learn/` — Educational resources & tutorials
+* `compete/` — CTF & competition writeups
+* `lab/` — Club lab infrastructure & guides
+* `toolbox/` — Recommended security tools
+* `projects/` — Club projects & repos
+* `board/` — Officer & advisor roster
+* `meta/` — Site policies & operations
+
+### Example Markdown Page
+```toml
++++
+title = "Network Forensics with Zeek"
+weight = 4
+description = "Introduction to analyzing network traffic with Zeek."
+icon = "fa-solid fa-network-wired"
++++
+
+## Overview
+Write your Markdown content here...
+```
+
+* `weight` controls page ordering in sidebar menus.
+* `icon` accepts any valid [Font Awesome](https://fontawesome.com/) icon class.
