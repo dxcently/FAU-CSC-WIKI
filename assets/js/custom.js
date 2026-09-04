@@ -239,7 +239,7 @@
      field is still drawn, once, and never animates. */
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  var FPS = 30;              /* a texture does not need 60 */
+  var FPS = 24;              /* a texture does not need 60 */
   var FONT = 15;             /* glyph cell, px */
   var TAIL = 9;              /* glyphs behind the head, fading out */
   var GLYPHS = '01<>[]{}/\\|=+*^?#$%&ABCDEF';
