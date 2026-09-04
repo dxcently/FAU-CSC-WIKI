@@ -832,6 +832,7 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   position: absolute;
   inset: 0;
   pointer-events: none;
+  border-radius: inherit;   /* stripes stop at the rounded corner, not past it */
   background-image:
     repeating-linear-gradient(to bottom,
       var(--wf-scan) 0 1px,
@@ -846,8 +847,14 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
    ticks are that class's ::before/::after and the overlay above is our
    ::after. */
 .wf-sched__pane {
+  /* The halo needs an edge to sit on — a panel's glow reads because it hugs
+     a lit border, so this carries the border and radius even though it keeps
+     no padding. The spread is shallower than 9.4's -18px: that value lights
+     about 22px, which is a third of a card and a twentieth of this. */
+  border: 1px solid var(--wf-edge);
+  border-radius: var(--wf-radius);
   box-shadow:
-    inset 0 0 40px -18px var(--wf-bloom-edge),
+    inset 0 0 60px -8px var(--wf-bloom-edge),
     inset 0 1px 0 var(--wf-inset),
     0 0 0 1px var(--wf-hairline),
     0 0 20px -10px var(--wf-bloom);
