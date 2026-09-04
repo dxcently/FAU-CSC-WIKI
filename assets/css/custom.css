@@ -763,7 +763,27 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   height: auto;          /* shield is taller-than-square; let it keep its ratio */
   display: block;
 }
-#R-logo.direction-row { align-items: center; gap: .6rem; }
+#R-logo.direction-row {
+  align-items: center;
+  gap: .6rem;
+}
+#R-logo.R-default .logo-title {
+  font-size: 1.55rem;
+  white-space: nowrap;
+  word-break: keep-all;
+  text-wrap: nowrap;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+@media screen and (max-width: 59.999rem) {
+  #R-logo.R-default .logo-title {
+    font-size: 1.25rem;
+  }
+  #R-logo .logo-image img {
+    width: 2.75rem;
+  }
+}
 
 /* ---------- 7.4 weekly meeting bar ---------- */
 /* Reference info, read once: one compact row, not a panel. It stays visually
