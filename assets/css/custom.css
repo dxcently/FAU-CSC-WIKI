@@ -852,11 +852,10 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   /* The halo rides the same layer: 9.4's four panel layers, drawn on the
      overlay rather than the pane, so the glow lands ABOVE the row washes
      instead of under them. One shape, one border, one edge to hug — and the
-     glow goes around the whole surface, not around each row. The spread is
-     shallower than 9.4's -18px: that value lights about 22px, a third of a
-     card and a twentieth of this. */
+     glow goes around the whole surface, not around each row. Values are 9.4's
+     verbatim, so the schedule is lit exactly as bright as every card. */
   box-shadow:
-    inset 0 0 60px -8px var(--wf-bloom-edge),
+    inset 0 0 40px -18px var(--wf-bloom-edge),
     inset 0 1px 0 var(--wf-inset),
     0 0 0 1px var(--wf-hairline),
     0 0 20px -10px var(--wf-bloom);
