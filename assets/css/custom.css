@@ -818,6 +818,10 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   .wf-schedule--lead > h2 { font-size: 1.5rem; }
 }
 
+/* The pane holds the rows; the section's own margin already spaces it, so it
+   sits flush and the heading keeps its underline as the only thing above. */
+.wf-sched__pane { margin-top: 1.25rem; padding: .35rem var(--wf-pad); }
+
 /* ---------- 7.6 announcements ---------- */
 .wf-ann { margin: 3rem 0 0; }
 .wf-ann__feed {
@@ -1229,8 +1233,10 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
 
   /* Date and status share a line, and the row is a flex line-breaker to get
      it: source order puts title and room between them, so `order` is what
-     pairs them up. */
-  .wf-row { display: flex; flex-wrap: wrap; align-items: baseline; }
+     pairs them up. Selector carries .wf-table because the `display: block`
+     group above is `.wf-table tr` — a bare `.wf-row` loses to it and the row
+     stays a block. */
+  .wf-table tr.wf-row { display: flex; flex-wrap: wrap; align-items: baseline; }
   .wf-table .wf-date  { width: auto; order: 1; }
   .wf-table .wf-state { order: 2; margin-left: .5rem; text-align: left; }
   .wf-table .wf-title { order: 3; flex: 1 0 100%; }

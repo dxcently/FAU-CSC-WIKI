@@ -37,11 +37,15 @@
   {{- end }}
 {{- end }}
 
-<section class="wf-schedule wf-schedule--lead wf-scanlines" aria-labelledby="wf-schedule-label">
+<section class="wf-schedule wf-schedule--lead" aria-labelledby="wf-schedule-label">
   <h2 id="wf-schedule-label">
     Semester schedule
     {{- with $sched.semester }}<span class="wf-kicker">{{ . }}</span>{{ end }}
   </h2>
+  {{- /* The pane is a panel, same as the announcements feed: the texture
+         belongs on the surface the rows sit on, not on the section behind
+         the heading. */ -}}
+  <div class="wf-panel wf-scanlines wf-sched__pane">
   <table class="wf-table">
     <thead class="sr-only">
       <tr><th scope="col">Date</th><th scope="col">Topic</th>
@@ -86,6 +90,7 @@
     {{- end }}
     </tbody>
   </table>
+  </div>
   {{- with $sched.note }}<p class="wf-note">{{ . }}</p>{{ end }}
 </section>
 {{- end }}
