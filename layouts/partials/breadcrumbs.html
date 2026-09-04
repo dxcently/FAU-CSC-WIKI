@@ -9,8 +9,7 @@
 
      Folder/file names are URL slugs, not titles, because a directory is named
      by its folder and "Permissions & Users" is not a folder name. The site
-     root is the one exception: it prints /home/csc, or the club's full name on
-     the home page itself, where the name is the subject rather than a location.
+     root prints /home/csc, with the home page itself rendering /home/csc/home.md.
 
      Hrefs are .RelPermalink (clean "/learn/linux/" directory URLs) rather than
      the theme's permalink helper, which appends index.html. Emits schema.org
@@ -33,7 +32,12 @@
       {{- $slug := path.Base $p.RelPermalink }}
       {{- $pos := add $i 1 }}
       {{- if $p.IsHome }}
-        {{- $crumbs = $crumbs | append (dict "url" $url "label" (cond $isLast site.Title "/home/csc") "current" $isLast "schema" $.schema "pos" $pos "slash" (cond $isLast "" "/")) }}
+        {{- if $isLast }}
+          {{- $crumbs = $crumbs | append (dict "url" $url "label" "/home/csc" "current" false "schema" $.schema "pos" $pos "slash" "/") }}
+          {{- $crumbs = $crumbs | append (dict "url" $url "label" "home.md" "current" true "schema" false "pos" 0 "slash" "") }}
+        {{- else }}
+          {{- $crumbs = $crumbs | append (dict "url" $url "label" "/home/csc" "current" false "schema" $.schema "pos" $pos "slash" "/") }}
+        {{- end }}
       {{- else if not $isLast }}
         {{- $crumbs = $crumbs | append (dict "url" $url "label" $slug "current" false "schema" $.schema "pos" $pos "slash" "/") }}
       {{- else if $p.IsSection }}
