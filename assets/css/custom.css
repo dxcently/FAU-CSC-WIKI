@@ -313,6 +313,9 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   text-transform: uppercase;
   border-bottom: 1px solid var(--wf-edge);
 }
+/* The theme stripes every even row with a grey literal. Our rows carry their
+   own state colour, so a stripe underneath it is a second, meaningless band. */
+#R-body-inner tbody > tr:nth-child(even) > td { background-color: transparent; }
 #R-body-inner tbody tr:hover { background: var(--wf-wash-row); }
 /* wide tables must scroll inside themselves, never the page */
 #R-body-inner .table-wrapper, #R-body-inner table { overflow-x: auto; display: block; }
@@ -832,7 +835,8 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  border-radius: inherit;   /* stripes stop at the rounded corner, not past it */
+  border: 1px solid var(--wf-edge);
+  border-radius: var(--wf-radius);
   background-image:
     repeating-linear-gradient(to bottom,
       var(--wf-scan) 0 1px,
@@ -840,19 +844,12 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   /* Stripes only. `.wf-scanlines` also carries a 158deg wash that fades out
      by 58% of the element, which on a surface this tall reads as shading
      across the rows. */
-}
-/* The halo goes around the pane, not around each row: the same four layers
-   9.4 gives every panel, minus the border, radius and corner ticks that made
-   this read as a card. Lives here rather than borrowing .wf-panel because the
-   ticks are that class's ::before/::after and the overlay above is our
-   ::after. */
-.wf-sched__pane {
-  /* The halo needs an edge to sit on — a panel's glow reads because it hugs
-     a lit border, so this carries the border and radius even though it keeps
-     no padding. The spread is shallower than 9.4's -18px: that value lights
-     about 22px, which is a third of a card and a twentieth of this. */
-  border: 1px solid var(--wf-edge);
-  border-radius: var(--wf-radius);
+  /* The halo rides the same layer: 9.4's four panel layers, drawn on the
+     overlay rather than the pane, so the glow lands ABOVE the row washes
+     instead of under them. One shape, one border, one edge to hug — and the
+     glow goes around the whole surface, not around each row. The spread is
+     shallower than 9.4's -18px: that value lights about 22px, a third of a
+     card and a twentieth of this. */
   box-shadow:
     inset 0 0 60px -8px var(--wf-bloom-edge),
     inset 0 1px 0 var(--wf-inset),
