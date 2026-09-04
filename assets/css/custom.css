@@ -836,6 +836,21 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
     repeating-linear-gradient(to bottom,
       var(--wf-scan) 0 1px,
       transparent 1px 4px);
+  /* Stripes only. `.wf-scanlines` also carries a 158deg wash that fades out
+     by 58% of the element, which on a surface this tall reads as shading
+     across the rows. */
+}
+/* The halo goes around the pane, not around each row: the same four layers
+   9.4 gives every panel, minus the border, radius and corner ticks that made
+   this read as a card. Lives here rather than borrowing .wf-panel because the
+   ticks are that class's ::before/::after and the overlay above is our
+   ::after. */
+.wf-sched__pane {
+  box-shadow:
+    inset 0 0 40px -18px var(--wf-bloom-edge),
+    inset 0 1px 0 var(--wf-inset),
+    0 0 0 1px var(--wf-hairline),
+    0 0 20px -10px var(--wf-bloom);
 }
 :root[data-r-theme-variant='cyber'] .wf-home .wf-sched__pane {
   background-color: var(--wf-fill-solid);
