@@ -42,10 +42,9 @@
     Semester schedule
     {{- with $sched.semester }}<span class="wf-kicker">{{ . }}</span>{{ end }}
   </h2>
-  {{- /* The pane is a panel, same as the announcements feed: the texture
-         belongs on the surface the rows sit on, not on the section behind
-         the heading. */ -}}
-  <div class="wf-panel wf-scanlines wf-sched__pane">
+  {{- /* Not a panel: the pane exists only to give the scanline overlay
+         something to cover. See 7.5. */ -}}
+  <div class="wf-sched__pane">
   <table class="wf-table">
     <thead class="sr-only">
       <tr><th scope="col">Date</th><th scope="col">Topic</th>

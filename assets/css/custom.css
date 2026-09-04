@@ -818,9 +818,28 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   .wf-schedule--lead > h2 { font-size: 1.5rem; }
 }
 
-/* The pane holds the rows; the section's own margin already spaces it, so it
-   sits flush and the heading keeps its underline as the only thing above. */
-.wf-sched__pane { margin-top: 1.25rem; padding: .35rem var(--wf-pad); }
+/* The scanlines go ON the schedule, not around it: an overlay drawn after the
+   rows, flush to their edges. `.wf-scanlines` is a background-image, so it
+   would land under the row washes and behind the heading — a pseudo-element
+   is what puts the texture above the content. No border, padding or radius:
+   this is not a panel, it is a film over one.
+   The cyber home fills it because the rain otherwise shows through the rows
+   and beats against the stripes — the same interference §4.1 flattens the
+   panels for. */
+.wf-sched__pane { position: relative; }
+.wf-sched__pane::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(to bottom,
+      var(--wf-scan) 0 1px,
+      transparent 1px 4px);
+}
+:root[data-r-theme-variant='cyber'] .wf-home .wf-sched__pane {
+  background-color: var(--wf-fill-solid);
+}
 
 /* ---------- 7.6 announcements ---------- */
 .wf-ann { margin: 3rem 0 0; }
