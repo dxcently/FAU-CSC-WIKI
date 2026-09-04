@@ -27,18 +27,26 @@ This platform uses a **database-less (DB-less)** static architecture coupled wit
                           └──────────────────────────┘      └─────────────────────┘
 ```
 
-### 1. Database-less (DB-less) Core
-* **Static Site Generator:** Built with [Hugo Extended](https://gohugo.io/) and the Relearn theme.
+### 1. Database-less (DB-less) Core with Hugo & Relearn
+* **Static Site Generator:** Powered by [Hugo Extended](https://gohugo.io/) for high-speed, zero-runtime-dependency static site generation.
+* **Documentation Theme:** Built upon the [Hugo Relearn Theme](https://themes.gohugo.io/themes/hugo-theme-relearn/), tailored for structured documentation, technical knowledge bases, and multi-tier club guides.
 * **Git as the Single Source of Truth:** No SQL/NoSQL database or CMS backend. Every page is pure Markdown with TOML front matter under `content/`.
 * **Zero Runtime Overhead:** Apache serves pre-rendered HTML, CSS, JS, and media directly from `/srv/www/csc-wiki`.
 * **Client-side Search:** Lunr-powered instant client-side search generated at build time.
 
-### 2. Event-Streaming Agentic CI/CD Pipeline
+### 2. How Hugo is Used in This Wiki
+* **Custom Theme Variants:** Customized Relearn variants (`hacker`, `hacker-light`, `cyber`) configured in `hugo.toml` (`params.themeVariant`), allowing users to toggle visual styles with persistent `localStorage` states.
+* **Chroma Syntax Highlighting:** Configured with `markup.highlight.noClasses = false` to emit semantic CSS classes mapped to custom theme stylesheets (`chroma-hacker.css`, `chroma-cyber.css`).
+* **Layout & Partial Overrides:** Tailored templates under `layouts/` to build custom homepage components (interactive owl wireframe canvas, terminal hero, live announcements, meeting schedules, and section grids).
+* **Modular Shortcodes:** Reusable shortcodes (`{{< section-grid >}}`, `{{< topic-cards >}}`, `{{< board-feed >}}`, `{{< mark-preview >}}`) for dynamic content presentation without inline HTML.
+* **Build Validation & Diagnostics:** Configured with `params.link.errorlevel = 'warning'` and `params.image.errorlevel = 'warning'` to pinpoint dead links and missing assets during compilation.
+
+### 3. Event-Streaming Agentic CI/CD Pipeline
 * **Continuous Ingestion:** Scheduled agent runs and streaming scripts poll external feeds (Discord announcements channel, Cyber News RSS) and commit formatted Markdown updates directly into the repository.
 * **Autonomous Agents (Melete/Pi):** AI agents perform autonomous code tasks, schema checks, styling updates, and content generation.
 * **Strict Build Gate (GitHub Actions):** Enforces a "silence is the pass condition" policy (`hugo --quiet`). Any broken links, missing shortcodes, or bad image paths immediately fail the gate before code reaches production.
 
-### 3. Custom Web UI Chat Box (Agora Interface)
+### 4. Custom Web UI Chat Box (Agora Interface)
 * **Direct Natural-Language Updates:** Club operators can update pages, add events, tweak stylesheets, or trigger builds simply by chatting with the assistant in the Agora control panel.
 * **Safe Sandbox Testing:** Edits are tested and validated in isolated agent sessions with instant Hugo validation before syncing to live paths.
 * **Private Preview App:** Changes can be previewed at `https://apps.necoconeco.net/csc-wiki/` before going live to the public site.
