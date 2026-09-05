@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-09-05T13:01:53+05:30",
+    "source": "The Hacker News",
+    "title": "Attackers Exploit PaperCut Flaws to Steal Credentials From Schools and Universities",
+    "url": "https://thehackernews.com/2026/09/attackers-exploit-papercut-flaws-to.html"
+  },
+  {
     "date": "2026-09-04T21:27:15+05:30",
     "source": "The Hacker News",
     "title": "Phishing Campaign Sends Millions of Emails Using Invisible Unicode to Evade Filters",
@@ -10,12 +16,6 @@
     "source": "The Hacker News",
     "title": "PostgreSQL Fixes 12-Year-Old Logical Decoding Flaw Enabling Replication-Role Code Execution",
     "url": "https://thehackernews.com/2026/09/postgresql-fixes-12-year-old-logical.html"
-  },
-  {
-    "date": "2026-09-04T20:21:13+05:30",
-    "source": "The Hacker News",
-    "title": "New Ted Backdoor Hides Inside Victims' Own HAProxy Builds to Intercept Web Traffic",
-    "url": "https://thehackernews.com/2026/09/new-ted-backdoor-hides-inside-victims.html"
   },
   {
     "date": "2026-09-04T12:56:45-04:00",
