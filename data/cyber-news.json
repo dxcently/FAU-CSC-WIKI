@@ -1,15 +1,27 @@
 [
   {
-    "date": "2026-09-05T13:25:10+05:30",
+    "date": "2026-09-05T22:22:33+05:30",
     "source": "The Hacker News",
-    "title": "Thousands of OpenAI Agents Quietly Turned an Abandoned Wiki Into Their Coordination Channel",
-    "url": "https://thehackernews.com/2026/09/thousands-of-openai-agents-quietly.html"
+    "title": "Attackers Breached JetBrains Cadence via Unpatched TeamCity, Extracting AWS Credentials",
+    "url": "https://thehackernews.com/2026/09/attackers-breached-jetbrains-cadence.html"
   },
   {
-    "date": "2026-09-05T13:01:53+05:30",
+    "date": "2026-09-05T21:35:08+05:30",
     "source": "The Hacker News",
-    "title": "Attackers Exploit PaperCut Flaws to Steal Credentials From Schools and Universities",
-    "url": "https://thehackernews.com/2026/09/attackers-exploit-papercut-flaws-to.html"
+    "title": "Critical VMware Workstation and Fusion Flaw Lets VM Admins Execute Host Code",
+    "url": "https://thehackernews.com/2026/09/critical-vmware-workstation-and-fusion.html"
+  },
+  {
+    "date": "2026-09-05T19:47:02+05:30",
+    "source": "The Hacker News",
+    "title": "Trezor Says ShipMonk Breach Exposed 67,000 U.S. Customers' Data It Said Was Deleted",
+    "url": "https://thehackernews.com/2026/09/trezor-says-shipmonk-breach-exposed.html"
+  },
+  {
+    "date": "2026-09-05T10:29:13-04:00",
+    "source": "BleepingComputer",
+    "title": "Over 5,400 hacked sites serve ClickFix payloads stored on the blockchain",
+    "url": "https://www.bleepingcomputer.com/news/security/over-5-400-hacked-sites-serve-clickfix-payloads-stored-on-the-blockchain/"
   },
   {
     "date": "2026-09-05T07:11:50-04:00",
@@ -18,22 +30,10 @@
     "url": "https://www.bleepingcomputer.com/news/security/openai-admits-it-didnt-disclose-rogue-ai-wiki-hijacking-incident/"
   },
   {
-    "date": "2026-09-04T21:27:15+05:30",
-    "source": "The Hacker News",
-    "title": "Phishing Campaign Sends Millions of Emails Using Invisible Unicode to Evade Filters",
-    "url": "https://thehackernews.com/2026/09/phishing-campaign-sends-millions-of.html"
-  },
-  {
     "date": "2026-09-04T12:56:45-04:00",
     "source": "BleepingComputer",
     "title": "IDScan sued over alleged data breach affecting 153 million drivers",
     "url": "https://www.bleepingcomputer.com/news/security/idscan-sued-over-alleged-data-breach-affecting-153-million-drivers/"
-  },
-  {
-    "date": "2026-09-04T11:25:59-04:00",
-    "source": "BleepingComputer",
-    "title": "Critical Citrix NetScaler auth bypass now leveraged in attacks",
-    "url": "https://www.bleepingcomputer.com/news/security/hackers-target-critical-citrix-netscaler-auth-bypass-in-attacks/"
   },
   {
     "date": "2026-09-01T22:40:28+00:00",
