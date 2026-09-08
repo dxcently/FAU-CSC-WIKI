@@ -135,19 +135,22 @@ Write your Markdown content here...
 
 ## 🔄 Discord Sync
 
-Three stdlib-only Python scripts under `scripts/` keep the board and home
-page current. Each is meant to run on a timer from a dedicated checkout on
-the deploy box: it fetches, writes its output file under `data/`, commits as
-a bot account, and pushes to `main` only when the result changed. None of
-them touch git or the network from CI — `.github/workflows/scripts.yml`
-only byte-compiles the scripts and runs `tests/` (stdlib `unittest`) against
-their pure text-handling helpers, with no Discord token and no live feed.
+Four stdlib-only Python scripts under `scripts/` keep the board, home page,
+and schedule current. Each is meant to run on a timer from a dedicated
+checkout on the deploy box: it pulls from its source (Discord, an RSS feed,
+or — for `fetch-schedule-queue.py` — a local queue file, no network at all),
+writes its output file under `data/`, commits as a bot account, and pushes
+to `main` only when the result changed. None of them touch git or the
+network from CI — `.github/workflows/scripts.yml` only byte-compiles the
+scripts and runs `tests/` (stdlib `unittest`) against their pure
+text-handling helpers, with no Discord token and no live feed.
 
 | Script | Writes | Env vars |
 | --- | --- | --- |
 | `fetch-announcements.py` | `data/announcements.json` | `DISCORD_BOT_TOKEN`, `DISCORD_CHANNEL_ID` |
 | `fetch-postings.py` | `data/discord-postings.json` | `DISCORD_BOT_TOKEN`, `DISCORD_JOBS_CHANNEL_ID`, `DISCORD_OFFICER_CHANNEL_ID` (optional), `DISCORD_OFFICER_ROLE_IDS` (optional) |
 | `fetch-cyber-news.py` | `data/cyber-news.json` | none — reads public RSS feeds |
+| `fetch-schedule-queue.py` | `data/discord-schedule.json` | `SCHEDULE_QUEUE_PATH` |
 
 `DISCORD_OFFICER_CHANNEL_ID` is optional: when set, `fetch-postings.py` also
 posts a warning to that channel for each unparseable `deadline:` line,
@@ -182,3 +185,18 @@ to; `layouts/partials/board-feed.html` merges it with
 `discord-postings.json` at render time, so both feed the same board
 sections. See [`content/meta/discord-sync.md`](content/meta/discord-sync.md)
 for the officer-facing version of this workflow.
+
+`data/discord-schedule.json` is bot-owned like the files above, but with a
+different lifecycle: it never rebuilds from scratch. `fetch-postings.py`
+re-derives its whole output from Discord's live reaction state on every run,
+but a schedule entry has no equivalent live state to re-scan — there is only
+a one-shot queue drain — so `discord-schedule.json` only ever grows.
+Correcting or removing an entry means hand-editing that file directly, the
+same way `content/_index.md`'s `[[params.sessions]]` is hand-edited today.
+`layouts/partials/home/schedule.html` merges both sources before sorting.
+
+`fetch-schedule-queue.py` does not talk to Discord's API and needs no bot
+token. It reads `SCHEDULE_QUEUE_PATH`, a local file that something outside
+this repo appends one JSON object to per line, validates each line, appends
+the valid ones to `discord-schedule.json`, and truncates the queue file once
+that write succeeds.
