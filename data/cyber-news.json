@@ -18,6 +18,12 @@
     "url": "https://thehackernews.com/2026/09/freeipa-flaw-chain-lets-anonymous.html"
   },
   {
+    "date": "2026-09-08T10:55:20-04:00",
+    "source": "BleepingComputer",
+    "title": "SAP warns of maximum severity 'OVERPASS' kernel vulnerability",
+    "url": "https://www.bleepingcomputer.com/news/security/sap-warns-of-maximum-severity-overpass-kernel-vulnerability/"
+  },
+  {
     "date": "2026-09-08T10:40:32-04:00",
     "source": "BleepingComputer",
     "title": "OpenAI says GPT-6 Astra can find zero-days, but is also harder to monitor",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Adobe fixes critical Magento zero-day exploited to backdoor servers",
     "url": "https://www.bleepingcomputer.com/news/security/adobe-fixes-critical-magento-zero-day-exploited-to-backdoor-servers/"
-  },
-  {
-    "date": "2026-09-08T08:40:48-04:00",
-    "source": "BleepingComputer",
-    "title": "Webinar: The forgotten Google Workspace access that can lead to a breach",
-    "url": "https://www.bleepingcomputer.com/news/security/webinar-the-forgotten-google-workspace-access-that-can-lead-to-a-breach/"
   },
   {
     "date": "2026-09-01T22:40:28+00:00",
