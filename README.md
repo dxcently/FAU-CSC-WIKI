@@ -193,10 +193,25 @@ but a schedule entry has no equivalent live state to re-scan — there is only
 a one-shot queue drain — so `discord-schedule.json` only ever grows.
 Correcting or removing an entry means hand-editing that file directly, the
 same way `content/_index.md`'s `[[params.sessions]]` is hand-edited today.
-`layouts/partials/home/schedule.html` merges both sources before sorting.
+`layouts/partials/home/schedule.html` merges both sources before sorting,
+and shows the id (see below) as a quiet inline note for any row that has
+one — a hand-written front-matter session never has one and shows nothing.
 
 `fetch-schedule-queue.py` does not talk to Discord's API and needs no bot
 token. It reads `SCHEDULE_QUEUE_PATH`, a local file that something outside
-this repo appends one JSON object to per line, validates each line, appends
-the valid ones to `discord-schedule.json`, and truncates the queue file once
-that write succeeds.
+this repo appends one JSON object to per line, one of two shapes:
+
+* An add (`op` absent, or `op: "add"`) — validates the line and appends it
+  to `discord-schedule.json` with a freshly assigned `id` (highest `id`
+  already in the list, plus one; an entry with no `id` counts as zero).
+* An update (`op: "update"`) — looks an entry up by that `id` in
+  `discord-schedule.json` and merges validated fields into it in place.
+  Zero or more-than-one match drops the line with a warning instead of
+  guessing; an update can never touch `id` itself.
+
+Either way the queue is validated the same way regardless of who sent it,
+and a bad line is dropped with a warning rather than aborting the rest of
+the queue. Because `id` is assigned only here and only for bot-owned
+entries, an update can never reach `content/_index.md`'s hand-written
+`[[params.sessions]]` — that file has no `id` field and this script does
+not read it. Once a full write succeeds, the queue file is truncated.
