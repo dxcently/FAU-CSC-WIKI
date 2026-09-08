@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "date": "2027-01-01",
+    "title": "Test",
+    "track": "test",
+    "lead": "dx",
+    "room": "261",
+    "link": "https://csc.dau.edu",
+    "id": 1
+  }
+]
