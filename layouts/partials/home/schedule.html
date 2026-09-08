@@ -82,10 +82,6 @@
           {{- $sn.title -}}
           {{- with $sn.link }}</a>{{ end }}
           {{- with $sn.lead }} <span class="wf-note" style="display:inline">— {{ . }}</span>{{ end }}
-          {{- /* Only a bot-added entry has an id; a hand-written front-matter
-                 session has none and renders nothing here — same quiet
-                 fallback as the room override below. */ -}}
-          {{- with $sn.id }} <span class="wf-note" style="display:inline">#{{ . }}</span>{{ end }}
         </td>
         {{- $room := $sn.room | default $defaultRoom }}
         <td class="wf-room{{ if and $sn.room (ne $sn.room $defaultRoom) }} is-moved-room{{ end }}">
@@ -97,6 +93,13 @@
           {{- else if eq $state "next" }}NEXT
           {{- else if eq $state "cancelled" }}CANCELLED
           {{- else if eq $state "moved" }}MOVED{{ end -}}
+          {{- /* Anchored to the row's own corner, not inline with the title
+                 -- .wf-row is the positioning context (see custom.css), so
+                 this lands bottom-right of the whole posting regardless of
+                 which cell it is structurally nested in. Only a bot-added
+                 entry has an id; a hand-written front-matter session has
+                 none and renders nothing here. */ -}}
+          {{- with $sn.id }}<span class="wf-id">#{{ . }}</span>{{ end }}
         </td>
       </tr>
     {{- end }}

@@ -700,6 +700,19 @@ body #R-body-inner a[class*="wf-"] :is(span, i) {
   font-size: .6875rem; font-weight: 700; letter-spacing: .14em;
   text-align: right; white-space: nowrap;
 }
+/* The row itself is the positioning context for .wf-id below -- not
+   .wf-state -- so the corner anchor lands on the whole posting in both
+   the desktop table row and the mobile flex-reflowed card (7.x), which
+   use the same .wf-row element but different internal layouts. */
+.wf-row { position: relative; }
+.wf-row .wf-id {
+  position: absolute;
+  right: .25rem; bottom: .15rem;
+  z-index: 1;
+  font-size: .625rem;
+  color: var(--wf-text-muted);
+  white-space: nowrap;
+}
 .wf-row.is-done    { opacity: .45; }
 .wf-row.is-done .wf-title { text-decoration: line-through; }
 .wf-row.is-cancelled { opacity: .45; }
