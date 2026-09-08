@@ -190,13 +190,20 @@ for the officer-facing version of this workflow.
 different lifecycle: it never rebuilds from scratch. `fetch-postings.py`
 re-derives its whole output from Discord's live reaction state on every run,
 but a schedule entry has no equivalent live state to re-scan — there is only
-a one-shot queue drain — so `discord-schedule.json` only ever grows.
-Correcting or removing an entry means hand-editing that file directly, the
-same way `content/_index.md`'s `[[params.sessions]]` is hand-edited today.
-`layouts/partials/home/schedule.html` merges both sources before sorting.
+a one-shot queue drain — so `discord-schedule.json` only ever grows or gets
+edited in place through the queue, never rebuilt. Removing an entry outright
+still means hand-editing that file directly, the same way `content/_index.md`'s
+`[[params.sessions]]` is hand-edited today. `layouts/partials/home/schedule.html`
+merges both sources before sorting.
 
 `fetch-schedule-queue.py` does not talk to Discord's API and needs no bot
 token. It reads `SCHEDULE_QUEUE_PATH`, a local file that something outside
-this repo appends one JSON object to per line, validates each line, appends
-the valid ones to `discord-schedule.json`, and truncates the queue file once
-that write succeeds.
+this repo appends one JSON object to per line, validates each line, and
+truncates the queue file once its write succeeds. Each line's `op` says what
+to do: `add` (or no `op` at all) appends a new entry; `update` looks up an
+entry already in `discord-schedule.json` by an exact `date`+`title` match and
+merges validated fields into it, dropping the line with a warning instead of
+guessing when zero or more than one entry matches. Either way, the queue can
+only ever touch `discord-schedule.json` — it never reads or writes
+`content/_index.md`'s hand-edited `[[params.sessions]]` front matter, so an
+`update` aimed at a front-matter-only session simply finds no match.
