@@ -1,9 +1,11 @@
 {{- /*
-  Semester schedule. Source of truth is the home page's own front matter
-  (content/_index.md → [params.schedule] and [[params.sessions]]), so the
-  club edits the calendar as Markdown and the page applies it.
+  Semester schedule. Two sources feed it: the home page's own front matter
+  (content/_index.md → [params.schedule] and [[params.sessions]]), hand-
+  edited by the club, and data/discord-schedule.json, appended to by
+  scripts/fetch-schedule-queue.py from a Discord slash command. Both use the
+  same row shape and are merged before the sort below runs.
 
-  Row state is derived from the date. `status` in front matter only overrides.
+  Row state is derived from the date. `status` only overrides.
   Dates are "YYYY-MM-DD" strings, so lexicographic compare is chronological.
 */ -}}
 {{- $sched := .Params.schedule | default dict }}
@@ -11,7 +13,14 @@
        are in the usual place; the ones that are not are why this column
        exists — a different building, or "Online". */ -}}
 {{- $defaultRoom := (.Params.meeting | default dict).room | default "" }}
-{{- $sessions := sort (.Params.sessions | default slice) "date" }}
+{{- /* Hyphenated data filename, so a dot access (site.Data.discord-schedule)
+       would not parse — same indexed-access pattern board-feed.html uses.
+       Defaults to an empty slice so a checkout without the file still
+       builds. */ -}}
+{{- $discordSessions := index hugo.Data "discord-schedule" | default slice }}
+{{- $allSessions := .Params.sessions | default slice }}
+{{- range $discordSessions }}{{ $allSessions = $allSessions | append . }}{{ end }}
+{{- $sessions := sort $allSessions "date" }}
 {{- with $sessions }}
 {{- $today := now.Format "2006-01-02" }}
 
