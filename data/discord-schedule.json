@@ -1,11 +1,12 @@
 [
   {
-    "date": "2027-01-01",
-    "title": "Test",
+    "date": "2027-01-02",
+    "title": "Test update",
     "track": "test",
-    "lead": "dx",
-    "room": "261",
-    "link": "https://csc.dau.edu",
-    "id": 1
+    "lead": "Khoa",
+    "room": "4",
+    "link": "https://csc.fau.edu",
+    "id": 1,
+    "status": "moved"
   }
 ]
