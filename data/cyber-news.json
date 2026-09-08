@@ -1,5 +1,17 @@
 [
   {
+    "date": "2026-09-08T14:43:47+05:30",
+    "source": "The Hacker News",
+    "title": "Adobe Patches Magento Zero-Day Exploited to Deploy Rust Backdoor and PHP Web Shell",
+    "url": "https://thehackernews.com/2026/09/adobe-patches-magento-zero-day.html"
+  },
+  {
+    "date": "2026-09-08T14:13:51+05:30",
+    "source": "The Hacker News",
+    "title": "BengalSEO Poisons Bing Search Results to Deliver MayaBot and Tech Support Scams",
+    "url": "https://thehackernews.com/2026/09/bengalseo-poisons-bing-search-results.html"
+  },
+  {
     "date": "2026-09-08T12:30:43+05:30",
     "source": "The Hacker News",
     "title": "Grindr to Pay £26 Million to Settle U.K. Claims Over HIV Status Data Sharing",
@@ -10,18 +22,6 @@
     "source": "BleepingComputer",
     "title": "220 million traveler records exposed in Vietnam-linked APIS leak",
     "url": "https://www.bleepingcomputer.com/news/security/220-million-traveler-records-exposed-in-vietnam-linked-apis-leak/"
-  },
-  {
-    "date": "2026-09-07T23:42:09+05:30",
-    "source": "The Hacker News",
-    "title": "PEEP Turns Chrome and Edge Into Post-Compromise Backdoors for Host Command Execution",
-    "url": "https://thehackernews.com/2026/09/peep-turns-chrome-and-edge-into-post.html"
-  },
-  {
-    "date": "2026-09-07T21:21:56+05:30",
-    "source": "The Hacker News",
-    "title": "Fake IT Calls Target Executives in Microsoft 365 Data Theft and Extortion Attacks",
-    "url": "https://thehackernews.com/2026/09/microsoft-365-attackers-use-help-desk.html"
   },
   {
     "date": "2026-09-07T12:50:29-04:00",
