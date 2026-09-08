@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-09-08T16:52:07+05:30",
+    "source": "The Hacker News",
+    "title": "FreeIPA Flaw Chain Lets Anonymous Clients Create Reusable Administrator Credentials",
+    "url": "https://thehackernews.com/2026/09/freeipa-flaw-chain-lets-anonymous.html"
+  },
+  {
     "date": "2026-09-08T14:43:47+05:30",
     "source": "The Hacker News",
     "title": "Adobe Patches Magento Zero-Day Exploited to Deploy Rust Backdoor and PHP Web Shell",
@@ -10,12 +16,6 @@
     "source": "The Hacker News",
     "title": "BengalSEO Poisons Bing Search Results to Deliver MayaBot and Tech Support Scams",
     "url": "https://thehackernews.com/2026/09/bengalseo-poisons-bing-search-results.html"
-  },
-  {
-    "date": "2026-09-08T12:30:43+05:30",
-    "source": "The Hacker News",
-    "title": "Grindr to Pay £26 Million to Settle U.K. Claims Over HIV Status Data Sharing",
-    "url": "https://thehackernews.com/2026/09/grindr-to-pay-26-million-to-settle-uk.html"
   },
   {
     "date": "2026-09-08T03:35:50-04:00",
