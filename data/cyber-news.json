@@ -18,6 +18,12 @@
     "url": "https://thehackernews.com/2026/09/alby-hub-critical-flaw-could-let.html"
   },
   {
+    "date": "2026-09-09T10:01:11-04:00",
+    "source": "BleepingComputer",
+    "title": "MFA's Weakest Link: Account Recovery Is the New Attack Path",
+    "url": "https://www.bleepingcomputer.com/news/security/mfas-weakest-link-account-recovery-is-the-new-attack-path/"
+  },
+  {
     "date": "2026-09-09T06:11:29-04:00",
     "source": "BleepingComputer",
     "title": "Over 36,000 exposed Plex servers vulnerable to recent flaws",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Man gets 15 years for extorting women with AI-generated porn videos",
     "url": "https://www.bleepingcomputer.com/news/security/man-gets-15-years-in-prison-for-cyberstalking-and-sextortion/"
-  },
-  {
-    "date": "2026-09-09T03:30:15-04:00",
-    "source": "BleepingComputer",
-    "title": "New Microsoft Defender 'ShieldCrash' zero-day grants SYSTEM access",
-    "url": "https://www.bleepingcomputer.com/news/security/new-microsoft-defender-shieldcrash-zero-day-grants-system-access/"
   },
   {
     "date": "2026-09-08T21:44:22+00:00",
