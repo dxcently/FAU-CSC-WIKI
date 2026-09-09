@@ -1,15 +1,21 @@
 [
   {
-    "date": "2026-09-09T10:11:29+05:30",
+    "date": "2026-09-09T14:41:03+05:30",
     "source": "The Hacker News",
-    "title": "Microsoft Patches Record 974 Flaws, Including Two Exploited Windows Zero-Days",
-    "url": "https://thehackernews.com/2026/09/microsoft-patches-record-974-flaws.html"
+    "title": "Chrome V8 Zero-Day Exploited in the Wild Enables Code Execution Inside Sandbox",
+    "url": "https://thehackernews.com/2026/09/chrome-v8-zero-day-exploited-in-wild.html"
   },
   {
-    "date": "2026-09-09T09:57:51+05:30",
+    "date": "2026-09-09T13:49:32+05:30",
     "source": "The Hacker News",
-    "title": "N-able N-central Pre-Auth RCE Flaw Exploited in the Wild",
-    "url": "https://thehackernews.com/2026/09/n-able-n-central-pre-auth-rce-flaw.html"
+    "title": "New cPanel Flaw Lets a Hosting Account With Mail Privileges Run Code as Root",
+    "url": "https://thehackernews.com/2026/09/new-cpanel-flaw-lets-hosting-account.html"
+  },
+  {
+    "date": "2026-09-09T13:06:49+05:30",
+    "source": "The Hacker News",
+    "title": "F5 BIG-IP APM Malware Injects a PHP Web Shell Into Memory, Evading Disk Scans",
+    "url": "https://thehackernews.com/2026/09/f5-big-ip-apm-malware-injects-php-web.html"
   },
   {
     "date": "2026-09-09T04:44:22-04:00",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Google warns of new Chrome zero-day bug exploited in attacks",
     "url": "https://www.bleepingcomputer.com/news/security/google-patches-seventh-chrome-zero-day-exploited-in-attacks-this-year/"
-  },
-  {
-    "date": "2026-09-08T21:50:23+05:30",
-    "source": "The Hacker News",
-    "title": "Slim Spider Steals Crypto Custody Secrets From Brazilian Financial Institution",
-    "url": "https://thehackernews.com/2026/09/slim-spider-steals-crypto-custody.html"
   },
   {
     "date": "2026-09-08T21:44:22+00:00",
