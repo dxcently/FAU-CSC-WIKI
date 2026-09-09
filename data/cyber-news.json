@@ -12,6 +12,12 @@
     "url": "https://krebsonsecurity.com/2026/09/microsoft-plugs-nearly-1000-security-holes/"
   },
   {
+    "date": "2026-09-08T21:16:27-04:00",
+    "source": "BleepingComputer",
+    "title": "Microsoft adds age-awareness APIs that can tell if users are children, teens, or adults",
+    "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-adds-age-awareness-apis-that-can-tell-if-users-are-children-teens-or-adults/"
+  },
+  {
     "date": "2026-09-08T20:24:30+05:30",
     "source": "The Hacker News",
     "title": "Liquid Hackers Return 3,400 Bitcoin Taken via Elements Bug, Still Holding $47M in BTC",
@@ -34,12 +40,6 @@
     "source": "BleepingComputer",
     "title": "The EU CRA's Real Question: What Shipped, and When Did You Know?",
     "url": "https://www.bleepingcomputer.com/news/security/the-eu-cras-real-question-what-shipped-and-when-did-you-know/"
-  },
-  {
-    "date": "2026-09-08T16:08:55-04:00",
-    "source": "BleepingComputer",
-    "title": "Hackers breach F5 BIG-IP APM devices to deploy Linux rootkit",
-    "url": "https://www.bleepingcomputer.com/news/security/hackers-breach-f5-big-ip-apm-devices-to-deploy-linux-rootkit/"
   },
   {
     "date": "2026-09-01T22:40:28+00:00",
