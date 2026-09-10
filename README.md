@@ -190,16 +190,21 @@ for the officer-facing version of this workflow.
 different lifecycle: it never rebuilds from scratch. `fetch-postings.py`
 re-derives its whole output from Discord's live reaction state on every run,
 but a schedule entry has no equivalent live state to re-scan — there is only
-a one-shot queue drain — so `discord-schedule.json` only ever grows.
-Correcting or removing an entry means hand-editing that file directly, the
-same way `content/_index.md`'s `[[params.sessions]]` is hand-edited today.
+a one-shot queue drain — so `discord-schedule.json` only ever grows on its
+own; an `op: "update"` or `op: "delete"` line can still change or remove an
+entry by id (see below), and hand-editing the file directly always works
+too. Every session on the site now lives in this one file, each with an
+id — the hand-written `content/_index.md` `[[params.sessions]]` blocks that
+used to hold the schedule were migrated in. That front-matter mechanism
+remains only as an escape hatch for a one-off hand entry, which gets no id
+and so can't be reached by update or delete.
 `layouts/partials/home/schedule.html` merges both sources before sorting,
 and shows the id (see below) as a quiet inline note for any row that has
 one — a hand-written front-matter session never has one and shows nothing.
 
 `fetch-schedule-queue.py` does not talk to Discord's API and needs no bot
 token. It reads `SCHEDULE_QUEUE_PATH`, a local file that something outside
-this repo appends one JSON object to per line, one of two shapes:
+this repo appends one JSON object to per line, one of three shapes:
 
 * An add (`op` absent, or `op: "add"`) — validates the line and appends it
   to `discord-schedule.json` with a freshly assigned `id` (highest `id`
@@ -208,10 +213,14 @@ this repo appends one JSON object to per line, one of two shapes:
   `discord-schedule.json` and merges validated fields into it in place.
   Zero or more-than-one match drops the line with a warning instead of
   guessing; an update can never touch `id` itself.
+* A delete (`op: "delete"`) — looks an entry up by that `id`, same lookup
+  as an update, and removes it. Zero or more-than-one match drops the line
+  with a warning instead of guessing, same as update.
 
 Either way the queue is validated the same way regardless of who sent it,
 and a bad line is dropped with a warning rather than aborting the rest of
 the queue. Because `id` is assigned only here and only for bot-owned
-entries, an update can never reach `content/_index.md`'s hand-written
-`[[params.sessions]]` — that file has no `id` field and this script does
-not read it. Once a full write succeeds, the queue file is truncated.
+entries, an update or delete can never reach `content/_index.md`'s
+hand-written `[[params.sessions]]` — that file has no `id` field and this
+script does not read it. Once a full write succeeds, the queue file is
+truncated.

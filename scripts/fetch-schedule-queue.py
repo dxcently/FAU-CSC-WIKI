@@ -10,10 +10,14 @@ built yet.
 
 Unlike data/discord-postings.json, which fetch-postings.py rebuilds wholesale
 from Discord's live reaction state on every run, data/discord-schedule.json
-only ever grows: there is no live state to re-scan, only whatever the queue
-hands off since the last drain. Correcting or removing an entry means hand-
-editing that JSON file directly, same as content/_index.md's
-[[params.sessions]] today.
+only ever grows on its own: there is no live state to re-scan, only whatever
+the queue hands off since the last drain. Correcting or removing an entry
+still means hand-editing that JSON file directly if the id isn't known, but
+an `op: "update"` or `op: "delete"` line, addressed by id, reaches it too.
+Every session on the site lives in this one file with an id now — the
+hand-written content/_index.md [[params.sessions]] blocks were migrated in;
+that front-matter mechanism remains only as a hand-entry escape hatch that
+gets no id and so can never be reached by an update or delete.
 
 A queue line is one JSON object, distinguished by an `op` key. `op` absent
 means "add", same as before this script had an `op` at all:
