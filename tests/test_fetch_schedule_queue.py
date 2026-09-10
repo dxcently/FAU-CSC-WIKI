@@ -22,6 +22,10 @@ def update_line(id, fields=None, **extra):
     return json.dumps({"op": "update", "id": id, "fields": fields or {}, **extra})
 
 
+def delete_line(id, **extra):
+    return json.dumps({"op": "delete", "id": id, **extra})
+
+
 class TestParseLine(unittest.TestCase):
     def test_date_only_line(self):
         got, err = parse_line(entry())
@@ -222,17 +226,66 @@ class TestDrainUpdate(unittest.TestCase):
         self.assertEqual(merged[0]["room"], "CM 22 Room 125")
 
     def test_unrecognized_op_is_dropped_with_warning(self):
-        line = json.dumps({"op": "delete", "id": 3})
+        line = json.dumps({"op": "archive", "id": 3})
         merged, warnings = drain([line], [{"date": "2026-09-05", "title": "X", "id": 3}])
         self.assertEqual(len(merged), 1)
         self.assertEqual(len(warnings), 1)
-        self.assertIn("delete", warnings[0][1])
+        self.assertIn("archive", warnings[0][1])
 
     def test_missing_or_non_integer_id_is_dropped_with_warning(self):
         current = [{"date": "2026-09-05", "title": "X", "id": 3}]
         lines = [
             json.dumps({"op": "update", "fields": {"room": "CM 22"}}),
             json.dumps({"op": "update", "id": "3", "fields": {"room": "CM 22"}}),
+        ]
+        merged, warnings = drain(lines, current)
+        self.assertEqual(merged, current)
+        self.assertEqual(len(warnings), 2)
+
+
+class TestDrainDelete(unittest.TestCase):
+    def test_delete_matching_one_entry_removes_it(self):
+        current = [
+            {"date": "2026-09-05", "title": "A", "id": 3},
+            {"date": "2026-09-10", "title": "B", "id": 4},
+        ]
+        merged, warnings = drain([delete_line(3)], current)
+        self.assertEqual(warnings, [])
+        self.assertEqual(len(merged), 1)
+        self.assertEqual([e["date"] for e in merged], ["2026-09-10"])
+        self.assertEqual(merged[0], {"date": "2026-09-10", "title": "B", "id": 4})
+
+    def test_delete_matching_zero_entries_is_dropped(self):
+        current = [{"date": "2026-09-05", "title": "A", "id": 3}]
+        merged, warnings = drain([delete_line(99)], current)
+        self.assertEqual(merged, current)
+        self.assertEqual(len(warnings), 1)
+        self.assertIn("99", warnings[0][1])
+
+    def test_delete_matching_multiple_entries_is_dropped(self):
+        current = [
+            {"date": "2026-09-05", "title": "A", "id": 3},
+            {"date": "2026-09-06", "title": "B", "id": 3},
+        ]
+        merged, warnings = drain([delete_line(3)], current)
+        self.assertEqual(merged, current)
+        self.assertEqual(len(warnings), 1)
+        self.assertIn("multiple", warnings[0][1])
+
+    def test_add_then_delete_same_entry_in_one_drain_call(self):
+        lines = [
+            entry(date="2026-09-05", title="Guest talk"),
+            delete_line(1),
+        ]
+        merged, warnings = drain(lines, [])
+        self.assertEqual(warnings, [])
+        self.assertEqual(merged, [])
+
+    def test_missing_or_non_integer_id_is_dropped_with_warning(self):
+        current = [{"date": "2026-09-05", "title": "X", "id": 3}]
+        lines = [
+            json.dumps({"op": "delete"}),
+            json.dumps({"op": "delete", "id": "3"}),
         ]
         merged, warnings = drain(lines, current)
         self.assertEqual(merged, current)
