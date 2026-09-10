@@ -12,6 +12,12 @@
     "url": "https://thehackernews.com/2026/09/google-play-early-access-abused-to-push.html"
   },
   {
+    "date": "2026-09-10T17:40:43-04:00",
+    "source": "BleepingComputer",
+    "title": "New Android malware encrypts files, steals data, and harasses victims",
+    "url": "https://www.bleepingcomputer.com/news/security/new-android-malware-encrypts-files-steals-data-and-harasses-victims/"
+  },
+  {
     "date": "2026-09-10T17:15:05+05:30",
     "source": "The Hacker News",
     "title": "Check Point Discloses Two 9.8-Rated VPN Certificate Flaws Enabling Unauthenticated RCE",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Surfshark VPN says hackers breached internal testing, proxy servers",
     "url": "https://www.bleepingcomputer.com/news/security/surfshark-vpn-says-hackers-breached-internal-testing-proxy-servers/"
-  },
-  {
-    "date": "2026-09-10T15:07:33-04:00",
-    "source": "BleepingComputer",
-    "title": "Microsoft Excel KB5002914 update breaks copy and paste for some users",
-    "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-excel-kb5002914-update-breaks-copy-and-paste-for-some-users/"
   },
   {
     "date": "2026-09-08T21:44:22+00:00",
