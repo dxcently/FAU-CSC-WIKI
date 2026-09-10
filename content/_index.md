@@ -17,10 +17,18 @@ type = "home"
   note  = "CM 22 is in the Computer Center on the Boca Raton campus, between the library and Fleming Hall. Every week during the fall and spring semesters."
 
 # ---------------------------------------------------------------------------
-# SEMESTER SCHEDULE — this is the part you edit every week.
+# SEMESTER SCHEDULE — managed through Discord, not hand-edited here.
 #
-# Add one [[params.sessions]] block per meeting. Keep dates as "YYYY-MM-DD"
-# strings. The site works out the state of every row from the date on its own:
+# Every session on the schedule now lives in data/discord-schedule.json, one
+# JSON entry per row with an id, written by scripts/fetch-schedule-queue.py
+# from the Discord /schedule commands (add / update / delete, by the id
+# shown on each row). See README.md's Discord Sync section for how that
+# pipeline works.
+#
+# [[params.sessions]] below still works as an escape hatch for a one-off
+# hand entry, and is merged with the bot-owned file at render time. Keep
+# dates as "YYYY-MM-DD" strings. The site works out the state of every row
+# from the date on its own:
 #
 #   date is in the past      -> done      (dimmed, struck through)
 #   date is today            -> TODAY     (red bar)
@@ -36,48 +44,15 @@ type = "home"
 # room, another building, or "Online" — and that cell is highlighted so it
 # does not get skimmed past.
 #
-# Order does not matter. Rows are sorted by date when the page builds.
+# A hand-entered [[params.sessions]] row here gets no id, so it can never
+# be reached by a Discord /schedule command — only data/discord-schedule.json
+# entries can. Order does not matter either way. Rows are sorted by date
+# when the page builds.
 # ---------------------------------------------------------------------------
 
 [params.schedule]
   semester = "Fall 2026"
   note     = "Tuesdays, Thursdays 5–7 PM in CM 22. Topics can shift — check Discord."
-
-[[params.sessions]]
-  date  = "2026-09-01"
-  title = "First meeting: What we do as a club"
-  track = "general"
-  lead  = "Officers"
-  link  = "https://fau.campuslabs.com/engage/organization/cybersecurity"
-
-[[params.sessions]]
-  date  = "2026-09-03"
-  title = "Guest speakers: Carl Froggett & Rooke Young"
-  track = "learn, network"
-  lead  = "Career trends (5-6) + blue team threats (6-7)"
-  room  = "CM 22 Room 125"
-  link  = "https://fau.campuslabs.com/engage/organization/cybersecurity"
-
-[[params.sessions]]
-  date  = "2026-09-03"
-  title = "Cyber Lab"
-  track = "build"
-  lead  = "10 AM work session, goal: done by October"
-  room  = "CM 22 Room 150"
-
-[[params.sessions]]
-  date  = "2026-09-10"
-  title = "Cyber Lab"
-  track = "build"
-  lead  = "10 AM work session, goal: done by October"
-  room  = "CM 22 Room 150"
-
-[[params.sessions]]
-  date  = "2026-09-17"
-  title = "Cyber Lab"
-  track = "build"
-  lead  = "10 AM work session, goal: done by October"
-  room  = "CM 22 Room 150"
 +++
 
 ## Contact
