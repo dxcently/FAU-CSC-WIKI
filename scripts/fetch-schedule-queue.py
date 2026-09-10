@@ -10,10 +10,14 @@ built yet.
 
 Unlike data/discord-postings.json, which fetch-postings.py rebuilds wholesale
 from Discord's live reaction state on every run, data/discord-schedule.json
-only ever grows: there is no live state to re-scan, only whatever the queue
-hands off since the last drain. Correcting or removing an entry means hand-
-editing that JSON file directly, same as content/_index.md's
-[[params.sessions]] today.
+only ever grows on its own: there is no live state to re-scan, only whatever
+the queue hands off since the last drain. Correcting or removing an entry
+still means hand-editing that JSON file directly if the id isn't known, but
+an `op: "update"` or `op: "delete"` line, addressed by id, reaches it too.
+Every session on the site lives in this one file with an id now — the
+hand-written content/_index.md [[params.sessions]] blocks were migrated in;
+that front-matter mechanism remains only as a hand-entry escape hatch that
+gets no id and so can never be reached by an update or delete.
 
 A queue line is one JSON object, distinguished by an `op` key. `op` absent
 means "add", same as before this script had an `op` at all:
@@ -50,23 +54,36 @@ means "add", same as before this script had an `op` at all:
   change `id` — an "id" key inside `fields` is dropped with a warning, not
   applied, same as any other invalid key.
 
-  content/_index.md's hand-written [[params.sessions]] never gets an id —
-  this script does not read that file and never will — so an update by id
-  can only ever reach a bot-owned entry in data/discord-schedule.json.
-  That front-matter file stays exclusively hand-edited, same as
-  data/postings.toml is for jobs; it is a structural boundary, not a rule
-  this script has to enforce by checking anything.
+`op: "delete"` looks like:
+
+  {"op": "delete", "id": 7, "added_by": "...", "added_at": "..."}
+
+  `id` is required and must look up exactly one entry already in the
+  running list, same lookup `update` uses. Zero matches or more than one
+  both drop the line with a warning naming the id and the reason, and
+  change nothing. A missing or non-integer `id` is dropped with a warning,
+  same as `update`. A delete removes the matched entry from the running
+  list outright, so an add followed by a delete of that same just-assigned
+  id, in the same queue file, resolves to the entry not being present at
+  all in the result.
+
+content/_index.md's hand-written [[params.sessions]] never gets an id —
+this script does not read that file and never will — so an update or
+delete by id can only ever reach a bot-owned entry in
+data/discord-schedule.json. That front-matter file stays exclusively
+hand-edited, same as data/postings.toml is for jobs; it is a structural
+boundary, not a rule this script has to enforce by checking anything.
 
 Any other `op` value is invalid and drops the line with a warning naming
 the bad op.
 
 A line that fails to parse, whose date is missing or invalid (add), or
-whose id is missing or not an integer (update), is dropped with one stderr
-line naming the problem and the raw line — never raised, so one bad line
-does not abort the rest of the queue. Queue lines are processed strictly in
-file order against a single running list, so an add followed by an update
-to that same just-added entry, in the same queue file, resolves correctly.
-The list is sorted by date only once, at the end.
+whose id is missing or not an integer (update/delete), is dropped with one
+stderr line naming the problem and the raw line — never raised, so one bad
+line does not abort the rest of the queue. Queue lines are processed
+strictly in file order against a single running list, so an add followed
+by an update or delete of that same just-added entry, in the same queue
+file, resolves correctly. The list is sorted by date only once, at the end.
 
 Commits and pushes only when data/discord-schedule.json actually changes,
 using the same git identity / rebase-onto-main / gh credential-helper
@@ -196,11 +213,38 @@ def _validate_update_fields(fields_raw, warnings, line):
     return valid
 
 
-def _apply_update(raw, merged, warnings, line):
-    """Apply one op="update" line to `merged` in place, or warn and change nothing."""
+def _require_id(raw, op, warnings, line):
+    """raw["id"] as a non-bool int, or None with a warning appended.
+
+    Shared by update and delete — both require the same shape of `id`.
+    """
     id_val = raw.get("id")
     if not isinstance(id_val, int) or isinstance(id_val, bool):
-        warnings.append((line, "update requires an integer id"))
+        warnings.append((line, f"{op} requires an integer id"))
+        return None
+    return id_val
+
+
+def _find_one_by_id(id_val, merged, warnings, line):
+    """The single entry in `merged` matching `id_val`, or None with a warning.
+
+    Shared by update and delete — both treat zero or multiple matches as
+    ambiguous and change nothing.
+    """
+    matches = [e for e in merged if e.get("id") == id_val]
+    if not matches:
+        warnings.append((line, f"no entry with id {id_val}"))
+        return None
+    if len(matches) > 1:
+        warnings.append((line, f"multiple entries with id {id_val}"))
+        return None
+    return matches[0]
+
+
+def _apply_update(raw, merged, warnings, line):
+    """Apply one op="update" line to `merged` in place, or warn and change nothing."""
+    id_val = _require_id(raw, "update", warnings, line)
+    if id_val is None:
         return
     # fields.id is rejected inside _validate_update_fields, but the whole
     # id lookup below still needs to run against whatever fields survive.
@@ -208,16 +252,23 @@ def _apply_update(raw, merged, warnings, line):
     if not valid_fields:
         warnings.append((line, "no valid fields to apply"))
         return
-    matches = [e for e in merged if e.get("id") == id_val]
-    if not matches:
-        warnings.append((line, f"no entry with id {id_val}"))
-        return
-    if len(matches) > 1:
-        warnings.append((line, f"multiple entries with id {id_val}"))
+    match = _find_one_by_id(id_val, merged, warnings, line)
+    if match is None:
         return
     # A plain dict update: fields only ever sets or overwrites a key, it
     # never clears one back to absent. No clear mechanism is provided.
-    matches[0].update(valid_fields)
+    match.update(valid_fields)
+
+
+def _apply_delete(raw, merged, warnings, line):
+    """Apply one op="delete" line to `merged` in place, or warn and change nothing."""
+    id_val = _require_id(raw, "delete", warnings, line)
+    if id_val is None:
+        return
+    match = _find_one_by_id(id_val, merged, warnings, line)
+    if match is None:
+        return
+    merged[:] = [e for e in merged if e is not match]
 
 
 def drain(lines, current):
@@ -251,6 +302,8 @@ def drain(lines, current):
             merged.append(entry)
         elif op == "update":
             _apply_update(raw, merged, warnings, line)
+        elif op == "delete":
+            _apply_delete(raw, merged, warnings, line)
         else:
             warnings.append((line, f"unrecognized op {op!r}"))
     merged.sort(key=lambda e: e["date"])
