@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-09-10T04:08:16-04:00",
+    "source": "BleepingComputer",
+    "title": "Microsoft fixes bug that wiped Windows desktop settings",
+    "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-fixes-bug-that-wiped-windows-desktop-settings/"
+  },
+  {
     "date": "2026-09-10T02:56:33-04:00",
     "source": "BleepingComputer",
     "title": "Trezor warns users of email provider breach, phishing attacks",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Cisco confirms CVE-2026-20079 Secure FMC flaw exploited in attacks",
     "url": "https://www.bleepingcomputer.com/news/security/cisco-confirms-cve-2026-20079-secure-fmc-flaw-exploited-in-attacks/"
-  },
-  {
-    "date": "2026-09-09T17:30:36-04:00",
-    "source": "BleepingComputer",
-    "title": "AdaptHealth confirms 4.1 million people exposed in July cyberattack",
-    "url": "https://www.bleepingcomputer.com/news/security/adapthealth-confirms-41-million-people-exposed-in-july-cyberattack/"
   },
   {
     "date": "2026-09-08T21:44:22+00:00",
