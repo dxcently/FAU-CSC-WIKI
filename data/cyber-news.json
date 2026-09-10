@@ -1,5 +1,17 @@
 [
   {
+    "date": "2026-09-10T12:42:55+05:30",
+    "source": "The Hacker News",
+    "title": "Nearly 1 in 10 Exposed LiteLLM Gateways Accepted the Example \"sk-1234\" Admin Key",
+    "url": "https://thehackernews.com/2026/09/nearly-1-in-10-exposed-litellm-gateways.html"
+  },
+  {
+    "date": "2026-09-10T12:34:01+05:30",
+    "source": "The Hacker News",
+    "title": "Anthropic Discloses Fourth AI Hacking Incident Involving Claude Opus 4.6",
+    "url": "https://thehackernews.com/2026/09/anthropic-ai-models-breached-real.html"
+  },
+  {
     "date": "2026-09-10T04:08:16-04:00",
     "source": "BleepingComputer",
     "title": "Microsoft fixes bug that wiped Windows desktop settings",
@@ -16,18 +28,6 @@
     "source": "The Hacker News",
     "title": "U.S. Disrupts Xinbi Guarantee Scam Marketplace, Freezes $52.8 Million in Crypto",
     "url": "https://thehackernews.com/2026/09/us-disrupts-xinbi-guarantee-scam.html"
-  },
-  {
-    "date": "2026-09-09T22:04:05+05:30",
-    "source": "The Hacker News",
-    "title": "Four Spy Groups Used the Same Chrome and Windows Exploit Kit Within a Week",
-    "url": "https://thehackernews.com/2026/09/four-spy-groups-used-same-chrome-and.html"
-  },
-  {
-    "date": "2026-09-09T19:53:55+05:30",
-    "source": "The Hacker News",
-    "title": "Infostealer Logs Expose Replayable AI Tokens That Can Bypass MFA",
-    "url": "https://thehackernews.com/2026/09/infostealer-logs-expose-replayable-ai.html"
   },
   {
     "date": "2026-09-09T17:40:44-04:00",
