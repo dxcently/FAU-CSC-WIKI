@@ -18,6 +18,12 @@
     "url": "https://thehackernews.com/2026/09/your-critical-vulnerabilities-might-not.html"
   },
   {
+    "date": "2026-09-11T12:29:44-04:00",
+    "source": "BleepingComputer",
+    "title": "Artifactory flaws chained in attacks deploying backdoor malware",
+    "url": "https://www.bleepingcomputer.com/news/security/artifactory-flaws-chained-in-attacks-deploying-backdoor-malware/"
+  },
+  {
     "date": "2026-09-11T10:01:11-04:00",
     "source": "BleepingComputer",
     "title": "How Threat Actors Are Turning Trusted AI Platforms Into an Attack Surface",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "GitLab urges users to patch max severity path traversal flaw",
     "url": "https://www.bleepingcomputer.com/news/security/gitlab-urges-users-to-patch-max-severity-path-traversal-flaw/"
-  },
-  {
-    "date": "2026-09-11T05:39:37-04:00",
-    "source": "BleepingComputer",
-    "title": "Microsoft fixes Teams, Outlook launch failures on ARM Windows PCs",
-    "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-fixes-teams-outlook-launch-failures-on-arm-windows-pcs/"
   },
   {
     "date": "2026-09-08T21:44:22+00:00",
