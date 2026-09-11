@@ -18,6 +18,12 @@
     "url": "https://thehackernews.com/2026/09/china-linked-unc3569-exploited-sogou.html"
   },
   {
+    "date": "2026-09-11T10:01:11-04:00",
+    "source": "BleepingComputer",
+    "title": "How Threat Actors Are Turning Trusted AI Platforms Into an Attack Surface",
+    "url": "https://www.bleepingcomputer.com/news/security/how-threat-actors-are-turning-trusted-ai-platforms-into-an-attack-surface/"
+  },
+  {
     "date": "2026-09-11T07:15:22-04:00",
     "source": "BleepingComputer",
     "title": "GitLab urges users to patch max severity path traversal flaw",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Microsoft fixes Teams, Outlook launch failures on ARM Windows PCs",
     "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-fixes-teams-outlook-launch-failures-on-arm-windows-pcs/"
-  },
-  {
-    "date": "2026-09-11T03:55:15-04:00",
-    "source": "BleepingComputer",
-    "title": "Trezor: 347,000 users targeted in phishing attacks after Brevo breach",
-    "url": "https://www.bleepingcomputer.com/news/security/trezor-347-000-users-targeted-in-phishing-attacks-after-brevo-breach/"
   },
   {
     "date": "2026-09-08T21:44:22+00:00",
