@@ -18,6 +18,12 @@
     "url": "https://thehackernews.com/2026/09/claude-used-to-automate-exploitation.html"
   },
   {
+    "date": "2026-09-11T16:19:09-04:00",
+    "source": "BleepingComputer",
+    "title": "Hackers abused Claude to extract secrets from 1.8M Android apps",
+    "url": "https://www.bleepingcomputer.com/news/security/hackers-abused-claude-to-extract-secrets-from-18m-android-apps/"
+  },
+  {
     "date": "2026-09-11T15:00:29-04:00",
     "source": "BleepingComputer",
     "title": "Florida confirms DMV database breached via stolen police account",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Passkey-themed phishing attacks lead to Microsoft 365 data theft",
     "url": "https://www.bleepingcomputer.com/news/security/passkey-themed-phishing-attacks-lead-to-microsoft-365-data-theft/"
-  },
-  {
-    "date": "2026-09-11T12:29:44-04:00",
-    "source": "BleepingComputer",
-    "title": "Artifactory flaws chained in attacks deploying backdoor malware",
-    "url": "https://www.bleepingcomputer.com/news/security/artifactory-flaws-chained-in-attacks-deploying-backdoor-malware/"
   },
   {
     "date": "2026-09-08T21:44:22+00:00",
