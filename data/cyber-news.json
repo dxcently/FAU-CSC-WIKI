@@ -18,6 +18,12 @@
     "url": "https://thehackernews.com/2026/09/papercut-replaces-emergency-patches.html"
   },
   {
+    "date": "2026-09-11T07:15:22-04:00",
+    "source": "BleepingComputer",
+    "title": "GitLab urges users to patch max severity path traversal flaw",
+    "url": "https://www.bleepingcomputer.com/news/security/gitlab-urges-users-to-patch-max-severity-path-traversal-flaw/"
+  },
+  {
     "date": "2026-09-11T05:39:37-04:00",
     "source": "BleepingComputer",
     "title": "Microsoft fixes Teams, Outlook launch failures on ARM Windows PCs",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Trezor: 347,000 users targeted in phishing attacks after Brevo breach",
     "url": "https://www.bleepingcomputer.com/news/security/trezor-347-000-users-targeted-in-phishing-attacks-after-brevo-breach/"
-  },
-  {
-    "date": "2026-09-11T02:48:37-04:00",
-    "source": "BleepingComputer",
-    "title": "Conti ransomware gang member sentenced to 4 years in prison",
-    "url": "https://www.bleepingcomputer.com/news/security/conti-ransomware-gang-member-sentenced-to-four-years-in-prison/"
   },
   {
     "date": "2026-09-08T21:44:22+00:00",
