@@ -1,33 +1,33 @@
 [
   {
+    "date": "2026-09-11T13:01:05+05:30",
+    "source": "The Hacker News",
+    "title": "Attackers Chain JFrog Artifactory Flaws to Gain Admin Control and Plant Backdoors",
+    "url": "https://thehackernews.com/2026/09/attackers-chain-jfrog-artifactory-flaws.html"
+  },
+  {
+    "date": "2026-09-11T12:44:09+05:30",
+    "source": "The Hacker News",
+    "title": "China-Linked UNC3569 Exploited Sogou Input Method Flaw to Deploy GRAYRABBIT Backdoor",
+    "url": "https://thehackernews.com/2026/09/china-linked-unc3569-exploited-sogou.html"
+  },
+  {
+    "date": "2026-09-11T12:16:18+05:30",
+    "source": "The Hacker News",
+    "title": "PaperCut Replaces Emergency Patches With Fixes for Two Actively Exploited Flaws",
+    "url": "https://thehackernews.com/2026/09/papercut-replaces-emergency-patches.html"
+  },
+  {
     "date": "2026-09-11T02:48:37-04:00",
     "source": "BleepingComputer",
     "title": "Conti ransomware gang member sentenced to 4 years in prison",
     "url": "https://www.bleepingcomputer.com/news/security/conti-ransomware-gang-member-sentenced-to-four-years-in-prison/"
   },
   {
-    "date": "2026-09-10T23:17:38+05:30",
-    "source": "The Hacker News",
-    "title": "ThreatsDay: 200 Android Flaws, Browser-Built Phishing, 119K Scam Shops + 23 More Stories",
-    "url": "https://thehackernews.com/2026/09/threatsday-200-android-flaws-browser.html"
-  },
-  {
-    "date": "2026-09-10T20:06:47+05:30",
-    "source": "The Hacker News",
-    "title": "Google Play Early Access Abused to Push Thousands of Deceptive Android Apps",
-    "url": "https://thehackernews.com/2026/09/google-play-early-access-abused-to-push.html"
-  },
-  {
     "date": "2026-09-10T17:40:43-04:00",
     "source": "BleepingComputer",
     "title": "New Android malware encrypts files, steals data, and harasses victims",
     "url": "https://www.bleepingcomputer.com/news/security/new-android-malware-encrypts-files-steals-data-and-harasses-victims/"
-  },
-  {
-    "date": "2026-09-10T17:15:05+05:30",
-    "source": "The Hacker News",
-    "title": "Check Point Discloses Two 9.8-Rated VPN Certificate Flaws Enabling Unauthenticated RCE",
-    "url": "https://thehackernews.com/2026/09/check-point-discloses-two-98-rated-vpn.html"
   },
   {
     "date": "2026-09-10T16:34:37-04:00",
