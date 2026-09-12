@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-09-12T21:24:45+05:30",
+    "source": "The Hacker News",
+    "title": "CISA Adds 5 Actively Exploited Artifactory, ScreenConnect, and RouterOS Flaws to KEV",
+    "url": "https://thehackernews.com/2026/09/cisa-adds-5-actively-exploited.html"
+  },
+  {
     "date": "2026-09-12T15:54:44+05:30",
     "source": "The Hacker News",
     "title": "When the Whole Company Adopts AI: What It Does to Your SOC",
@@ -16,12 +22,6 @@
     "source": "BleepingComputer",
     "title": "Dutch NCSC: Critical Check Point VPN flaws exploitation is imminent",
     "url": "https://www.bleepingcomputer.com/news/security/dutch-ncsc-critical-check-point-vpn-flaws-exploitation-is-imminent/"
-  },
-  {
-    "date": "2026-09-11T22:00:18+05:30",
-    "source": "The Hacker News",
-    "title": "GitLab CVSS 10 File-Read Flaw Draws In-the-Wild Probes After Disclosure",
-    "url": "https://thehackernews.com/2026/09/gitlab-cvss-10-file-read-flaw-draws-in.html"
   },
   {
     "date": "2026-09-11T16:19:09-04:00",
