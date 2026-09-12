@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-09-12T15:54:44+05:30",
+    "source": "The Hacker News",
+    "title": "When the Whole Company Adopts AI: What It Does to Your SOC",
+    "url": "https://thehackernews.com/2026/09/when-whole-company-adopts-ai-what-it.html"
+  },
+  {
     "date": "2026-09-12T14:37:56+05:30",
     "source": "The Hacker News",
     "title": "OpenAI Agents Linked to RubyGems Campaign That Gained RCE on RubyDoc Servers",
@@ -10,12 +16,6 @@
     "source": "The Hacker News",
     "title": "GitLab CVSS 10 File-Read Flaw Draws In-the-Wild Probes After Disclosure",
     "url": "https://thehackernews.com/2026/09/gitlab-cvss-10-file-read-flaw-draws-in.html"
-  },
-  {
-    "date": "2026-09-11T21:45:29+05:30",
-    "source": "The Hacker News",
-    "title": "Anthropic Says Seven China-Based AI Labs Ran Industrial-Scale Claude Distillation Attacks",
-    "url": "https://thehackernews.com/2026/09/anthropic-says-seven-china-based-ai.html"
   },
   {
     "date": "2026-09-11T16:19:09-04:00",
