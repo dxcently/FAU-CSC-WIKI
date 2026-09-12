@@ -1,5 +1,23 @@
 [
   {
+    "date": "2026-09-11T22:00:18+05:30",
+    "source": "The Hacker News",
+    "title": "GitLab CVSS 10 File-Read Flaw Draws In-the-Wild Probes After Disclosure",
+    "url": "https://thehackernews.com/2026/09/gitlab-cvss-10-file-read-flaw-draws-in.html"
+  },
+  {
+    "date": "2026-09-11T21:45:29+05:30",
+    "source": "The Hacker News",
+    "title": "Anthropic Says Seven China-Based AI Labs Ran Industrial-Scale Claude Distillation Attacks",
+    "url": "https://thehackernews.com/2026/09/anthropic-says-seven-china-based-ai.html"
+  },
+  {
+    "date": "2026-09-11T19:59:47+05:30",
+    "source": "The Hacker News",
+    "title": "Claude Used to Automate Exploitation and Data Theft Across Multiple Victims",
+    "url": "https://thehackernews.com/2026/09/claude-used-to-automate-exploitation.html"
+  },
+  {
     "date": "2026-09-11T16:19:09-04:00",
     "source": "BleepingComputer",
     "title": "Hackers abused Claude to extract secrets from 1.8M Android apps",
