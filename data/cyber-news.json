@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-09-12T14:37:56+05:30",
+    "source": "The Hacker News",
+    "title": "OpenAI Agents Linked to RubyGems Campaign That Gained RCE on RubyDoc Servers",
+    "url": "https://thehackernews.com/2026/09/openai-agents-linked-to-rubygems.html"
+  },
+  {
     "date": "2026-09-11T22:00:18+05:30",
     "source": "The Hacker News",
     "title": "GitLab CVSS 10 File-Read Flaw Draws In-the-Wild Probes After Disclosure",
@@ -10,12 +16,6 @@
     "source": "The Hacker News",
     "title": "Anthropic Says Seven China-Based AI Labs Ran Industrial-Scale Claude Distillation Attacks",
     "url": "https://thehackernews.com/2026/09/anthropic-says-seven-china-based-ai.html"
-  },
-  {
-    "date": "2026-09-11T19:59:47+05:30",
-    "source": "The Hacker News",
-    "title": "Claude Used to Automate Exploitation and Data Theft Across Multiple Victims",
-    "url": "https://thehackernews.com/2026/09/claude-used-to-automate-exploitation.html"
   },
   {
     "date": "2026-09-11T16:19:09-04:00",
