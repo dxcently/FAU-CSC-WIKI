@@ -18,6 +18,12 @@
     "url": "https://thehackernews.com/2026/09/telegram-desktop-flaw-lets-hidden.html"
   },
   {
+    "date": "2026-09-14T15:51:04-04:00",
+    "source": "BleepingComputer",
+    "title": "Homebrew 7.0.0 gets built-in GUI, better security controls",
+    "url": "https://www.bleepingcomputer.com/news/security/homebrew-700-gets-built-in-gui-better-security-controls/"
+  },
+  {
     "date": "2026-09-14T15:03:51-04:00",
     "source": "BleepingComputer",
     "title": "Twitch extension with 30K installs exposes users’ OAuth tokens",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Hackers hijack HBO Max Reddit account to push malware in ClickFix ads",
     "url": "https://www.bleepingcomputer.com/news/security/hackers-hijack-hbo-max-reddit-account-to-push-malware-in-clickfix-ads/"
-  },
-  {
-    "date": "2026-09-14T12:15:58-04:00",
-    "source": "BleepingComputer",
-    "title": "Hackers target exposed Vite dev servers to steal AWS, Azure secrets",
-    "url": "https://www.bleepingcomputer.com/news/security/hackers-target-exposed-vite-dev-servers-to-steal-aws-azure-secrets/"
   },
   {
     "date": "2026-09-08T21:44:22+00:00",
