@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-09-14T12:54:39+05:30",
+    "source": "The Hacker News",
+    "title": "Malicious Twitch Browser Extension Leaks OAuth Tokens From Nearly 31,000 Users",
+    "url": "https://thehackernews.com/2026/09/malicious-twitch-browser-extension.html"
+  },
+  {
     "date": "2026-09-14T04:08:16-04:00",
     "source": "BleepingComputer",
     "title": "Microsoft: September updates break audio on some Windows PCs",
@@ -28,12 +34,6 @@
     "source": "The Hacker News",
     "title": "CISA Adds 5 Actively Exploited Artifactory, ScreenConnect, and RouterOS Flaws to KEV",
     "url": "https://thehackernews.com/2026/09/cisa-adds-5-actively-exploited.html"
-  },
-  {
-    "date": "2026-09-12T15:54:44+05:30",
-    "source": "The Hacker News",
-    "title": "When the Whole Company Adopts AI: What It Does to Your SOC",
-    "url": "https://thehackernews.com/2026/09/when-whole-company-adopts-ai-what-it.html"
   },
   {
     "date": "2026-09-08T21:44:22+00:00",
