@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-09-14T03:06:27-04:00",
+    "source": "BleepingComputer",
+    "title": "CISA: Hackers now exploit max severity GitLab flaw in attacks",
+    "url": "https://www.bleepingcomputer.com/news/security/cisa-hackers-now-exploit-max-severity-gitlab-flaw-in-attacks/"
+  },
+  {
     "date": "2026-09-13T15:41:48+05:30",
     "source": "The Hacker News",
     "title": "Attackers Use Passkey Phishing to Hijack Microsoft Cloud Accounts and Exfiltrate Data",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Dutch NCSC: Critical Check Point VPN flaws exploitation is imminent",
     "url": "https://www.bleepingcomputer.com/news/security/dutch-ncsc-critical-check-point-vpn-flaws-exploitation-is-imminent/"
-  },
-  {
-    "date": "2026-09-11T16:19:09-04:00",
-    "source": "BleepingComputer",
-    "title": "Hackers abused Claude to extract secrets from 1.8M Android apps",
-    "url": "https://www.bleepingcomputer.com/news/security/hackers-abused-claude-to-extract-secrets-from-18m-android-apps/"
   },
   {
     "date": "2026-09-08T21:44:22+00:00",
