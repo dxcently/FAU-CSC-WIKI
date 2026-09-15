@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-09-15T20:53:19+05:30",
+    "source": "The Hacker News",
+    "title": "BambooToken Malware Uses MQTT to Control Windows and Linux Systems",
+    "url": "https://thehackernews.com/2026/09/bambootoken-malware-uses-mqtt-to.html"
+  },
+  {
     "date": "2026-09-15T17:22:28+05:30",
     "source": "The Hacker News",
     "title": "Human Attacker Exploits Marimo RCE, Reaches SSH Bastion in Eight Seconds",
@@ -10,12 +16,6 @@
     "source": "The Hacker News",
     "title": "Attack Chains, Not Just Attack Surfaces: Why Testing Individual Techniques Misses the Point",
     "url": "https://thehackernews.com/2026/09/attack-chains-not-just-attack-surfaces.html"
-  },
-  {
-    "date": "2026-09-15T16:42:32+05:30",
-    "source": "The Hacker News",
-    "title": "Mass-Scanning Campaign Exploits Vite Flaw to Extract Cloud Credentials From Exposed Dev Servers",
-    "url": "https://thehackernews.com/2026/09/mass-scanning-campaign-exploits-vite.html"
   },
   {
     "date": "2026-09-15T11:00:00-04:00",
