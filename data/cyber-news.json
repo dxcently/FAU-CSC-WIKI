@@ -1,21 +1,21 @@
 [
   {
+    "date": "2026-09-15T11:41:11+05:30",
+    "source": "The Hacker News",
+    "title": "Cisco Secure Email Gateway Flaw Exploited in the Wild, Enables Root Command Execution",
+    "url": "https://thehackernews.com/2026/09/cisco-secure-email-gateway-flaw.html"
+  },
+  {
+    "date": "2026-09-15T11:01:05+05:30",
+    "source": "The Hacker News",
+    "title": "China-Linked Hackers Exploit Chrome-Windows Zero-Day Chain to Deploy GRIMWEDGE",
+    "url": "https://thehackernews.com/2026/09/china-linked-hackers-exploit-chrome.html"
+  },
+  {
     "date": "2026-09-14T23:32:13+05:30",
     "source": "The Hacker News",
     "title": "New DDRop Attack Breaks Intel TDX and AMD SEV-SNP Confidential Computing",
     "url": "https://thehackernews.com/2026/09/new-ddrop-attack-breaks-intel-tdx-and.html"
-  },
-  {
-    "date": "2026-09-14T23:31:49+05:30",
-    "source": "The Hacker News",
-    "title": "3BB Attacker Used MeshCentral Backdoor for Root Access, Targeted Subscriber Credentials",
-    "url": "https://thehackernews.com/2026/09/3bb-attacker-used-meshcentral-backdoor.html"
-  },
-  {
-    "date": "2026-09-14T23:28:16+05:30",
-    "source": "The Hacker News",
-    "title": "Telegram Desktop Flaw Lets Hidden JavaScript Exfiltrate Messages From HTML Exports",
-    "url": "https://thehackernews.com/2026/09/telegram-desktop-flaw-lets-hidden.html"
   },
   {
     "date": "2026-09-14T16:52:18-04:00",
