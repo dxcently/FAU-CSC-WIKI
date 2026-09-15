@@ -18,6 +18,12 @@
     "url": "https://thehackernews.com/2026/09/mass-scanning-campaign-exploits-vite.html"
   },
   {
+    "date": "2026-09-15T11:00:00-04:00",
+    "source": "BleepingComputer",
+    "title": "BambooToken malware controls Windows and Linux systems via MQTT",
+    "url": "https://www.bleepingcomputer.com/news/security/bambootoken-malware-controls-windows-and-linux-systems-via-mqtt/"
+  },
+  {
     "date": "2026-09-15T10:45:10-04:00",
     "source": "BleepingComputer",
     "title": "Hackers target WordPress sites via third-party WooCommerce plugin",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "What Zero-Day Response Should Be in the Post-Mythos Era",
     "url": "https://www.bleepingcomputer.com/news/security/what-zero-day-response-should-be-in-the-post-mythos-era/"
-  },
-  {
-    "date": "2026-09-15T08:16:32-04:00",
-    "source": "BleepingComputer",
-    "title": "CISA: Critical VMware RCE flaw now exploited by ransomware gangs",
-    "url": "https://www.bleepingcomputer.com/news/security/cisa-critical-vmware-vcenter-rce-flaw-now-exploited-by-ransomware-gangs/"
   },
   {
     "date": "2026-09-08T21:44:22+00:00",
