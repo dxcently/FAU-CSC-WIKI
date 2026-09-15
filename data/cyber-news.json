@@ -18,6 +18,12 @@
     "url": "https://thehackernews.com/2026/09/bambootoken-malware-uses-mqtt-to.html"
   },
   {
+    "date": "2026-09-15T17:37:35-04:00",
+    "source": "BleepingComputer",
+    "title": "Acronis warns of actively exploited flaw in its cPanel backup plugin",
+    "url": "https://www.bleepingcomputer.com/news/security/acronis-warns-of-actively-exploited-flaw-in-its-cpanel-backup-plugin/"
+  },
+  {
     "date": "2026-09-15T16:34:15-04:00",
     "source": "BleepingComputer",
     "title": "Malcious Admin Menu Editor Pro plugin backdoors 1,500 WordPress sites",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "CenterPoint Energy confirms customer data stolen in cyberattack",
     "url": "https://www.bleepingcomputer.com/news/security/centerpoint-energy-confirms-customer-data-stolen-in-cyberattack/"
-  },
-  {
-    "date": "2026-09-15T11:00:00-04:00",
-    "source": "BleepingComputer",
-    "title": "BambooToken malware controls Windows and Linux systems via MQTT",
-    "url": "https://www.bleepingcomputer.com/news/security/bambootoken-malware-controls-windows-and-linux-systems-via-mqtt/"
   },
   {
     "date": "2026-09-08T21:44:22+00:00",
