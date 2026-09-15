@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-09-16T00:24:14+05:30",
+    "source": "The Hacker News",
+    "title": "KREMLIN Banking Malware Hijacks Chrome and Edge to Steal Credentials and Session Tokens",
+    "url": "https://thehackernews.com/2026/09/kremlin-banking-malware-hijacks-chrome.html"
+  },
+  {
     "date": "2026-09-15T21:59:51+05:30",
     "source": "The Hacker News",
     "title": "Iranian Hackers Use Telegram-Controlled Malware to Spy on Dissidents and Journalists",
@@ -10,12 +16,6 @@
     "source": "The Hacker News",
     "title": "BambooToken Malware Uses MQTT to Control Windows and Linux Systems",
     "url": "https://thehackernews.com/2026/09/bambootoken-malware-uses-mqtt-to.html"
-  },
-  {
-    "date": "2026-09-15T17:22:28+05:30",
-    "source": "The Hacker News",
-    "title": "Human Attacker Exploits Marimo RCE, Reaches SSH Bastion in Eight Seconds",
-    "url": "https://thehackernews.com/2026/09/human-attacker-exploits-marimo-rce.html"
   },
   {
     "date": "2026-09-15T12:40:14-04:00",
