@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-09-15T12:22:16+05:30",
+    "source": "The Hacker News",
+    "title": "LiteSpeed Enterprise Flaw Could Let One Hosting Account Gain Root Access on a Shared Server",
+    "url": "https://thehackernews.com/2026/09/litespeed-enterprise-flaw-could-let-one.html"
+  },
+  {
     "date": "2026-09-15T11:41:11+05:30",
     "source": "The Hacker News",
     "title": "Cisco Secure Email Gateway Flaw Exploited in the Wild, Enables Root Command Execution",
@@ -16,12 +22,6 @@
     "source": "BleepingComputer",
     "title": "Cisco patches Secure Email Gateway zero-day exploited in attacks",
     "url": "https://www.bleepingcomputer.com/news/security/new-cisco-secure-email-zero-day-exploited-to-execute-commands-as-root/"
-  },
-  {
-    "date": "2026-09-14T23:32:13+05:30",
-    "source": "The Hacker News",
-    "title": "New DDRop Attack Breaks Intel TDX and AMD SEV-SNP Confidential Computing",
-    "url": "https://thehackernews.com/2026/09/new-ddrop-attack-breaks-intel-tdx-and.html"
   },
   {
     "date": "2026-09-14T16:52:18-04:00",
