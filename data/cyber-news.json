@@ -12,6 +12,12 @@
     "url": "https://thehackernews.com/2026/09/china-linked-hackers-exploit-chrome.html"
   },
   {
+    "date": "2026-09-15T03:31:09-04:00",
+    "source": "BleepingComputer",
+    "title": "Cisco patches Secure Email Gateway zero-day exploited in attacks",
+    "url": "https://www.bleepingcomputer.com/news/security/new-cisco-secure-email-zero-day-exploited-to-execute-commands-as-root/"
+  },
+  {
     "date": "2026-09-14T23:32:13+05:30",
     "source": "The Hacker News",
     "title": "New DDRop Attack Breaks Intel TDX and AMD SEV-SNP Confidential Computing",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Japan's Digital Agency says VPN flaw exposed 246,000 personnel records",
     "url": "https://www.bleepingcomputer.com/news/security/japans-digital-agency-says-vpn-flaw-exposed-246-000-personnel-records/"
-  },
-  {
-    "date": "2026-09-14T15:51:04-04:00",
-    "source": "BleepingComputer",
-    "title": "Homebrew 7.0.0 gets built-in GUI, better security controls",
-    "url": "https://www.bleepingcomputer.com/news/security/homebrew-700-gets-built-in-gui-better-security-controls/"
   },
   {
     "date": "2026-09-08T21:44:22+00:00",
