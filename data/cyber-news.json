@@ -18,6 +18,12 @@
     "url": "https://thehackernews.com/2026/09/mass-scanning-campaign-exploits-vite.html"
   },
   {
+    "date": "2026-09-15T08:16:32-04:00",
+    "source": "BleepingComputer",
+    "title": "CISA: Critical VMware RCE flaw now exploited by ransomware gangs",
+    "url": "https://www.bleepingcomputer.com/news/security/cisa-critical-vmware-vcenter-rce-flaw-now-exploited-by-ransomware-gangs/"
+  },
+  {
     "date": "2026-09-15T05:50:25-04:00",
     "source": "BleepingComputer",
     "title": "Suspected Black Axe gang leaders face cybercrime charges in the US",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Microsoft confirms KB5002914 Excel update breaks copy and paste",
     "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-september-kb5002914-security-update-breaks-excel-copy-and-paste/"
-  },
-  {
-    "date": "2026-09-15T03:31:09-04:00",
-    "source": "BleepingComputer",
-    "title": "Cisco patches Secure Email Gateway zero-day exploited in attacks",
-    "url": "https://www.bleepingcomputer.com/news/security/new-cisco-secure-email-zero-day-exploited-to-execute-commands-as-root/"
   },
   {
     "date": "2026-09-08T21:44:22+00:00",
