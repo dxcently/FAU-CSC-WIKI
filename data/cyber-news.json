@@ -12,6 +12,12 @@
     "url": "https://thehackernews.com/2026/09/active-exploitation-attempts-target.html"
   },
   {
+    "date": "2026-09-16T05:10:20-04:00",
+    "source": "BleepingComputer",
+    "title": "Windows Server 2022 reaches end of mainstream support next month",
+    "url": "https://www.bleepingcomputer.com/news/microsoft/windows-server-2022-reaches-end-of-mainstream-support-next-month/"
+  },
+  {
     "date": "2026-09-16T03:00:19-04:00",
     "source": "BleepingComputer",
     "title": "Google fixes actively exploited Android zero-day on Pixel devices",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Acronis warns of actively exploited flaw in its cPanel backup plugin",
     "url": "https://www.bleepingcomputer.com/news/security/acronis-warns-of-actively-exploited-flaw-in-its-cpanel-backup-plugin/"
-  },
-  {
-    "date": "2026-09-15T16:34:15-04:00",
-    "source": "BleepingComputer",
-    "title": "Malcious Admin Menu Editor Pro plugin backdoors 1,500 WordPress sites",
-    "url": "https://www.bleepingcomputer.com/news/security/malcious-admin-menu-editor-pro-plugin-backdoors-1-500-wordpress-sites/"
   },
   {
     "date": "2026-09-08T21:44:22+00:00",
