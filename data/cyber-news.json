@@ -1,21 +1,21 @@
 [
   {
+    "date": "2026-09-16T11:18:28+05:30",
+    "source": "The Hacker News",
+    "title": "Attackers Exploit WooCommerce Wholesale Lead Capture Flaw to Plant PHP Web Shells",
+    "url": "https://thehackernews.com/2026/09/attackers-exploit-woocommerce-wholesale.html"
+  },
+  {
+    "date": "2026-09-16T10:48:06+05:30",
+    "source": "The Hacker News",
+    "title": "Active Exploitation Attempts Target WSO2 API Manager JWT Bypass With Forged Admin Tokens",
+    "url": "https://thehackernews.com/2026/09/active-exploitation-attempts-target.html"
+  },
+  {
     "date": "2026-09-16T00:24:14+05:30",
     "source": "The Hacker News",
     "title": "KREMLIN Banking Malware Hijacks Chrome and Edge to Steal Credentials and Session Tokens",
     "url": "https://thehackernews.com/2026/09/kremlin-banking-malware-hijacks-chrome.html"
-  },
-  {
-    "date": "2026-09-15T21:59:51+05:30",
-    "source": "The Hacker News",
-    "title": "Iranian Hackers Use Telegram-Controlled Malware to Spy on Dissidents and Journalists",
-    "url": "https://thehackernews.com/2026/09/iranian-hackers-use-telegram-controlled.html"
-  },
-  {
-    "date": "2026-09-15T20:53:19+05:30",
-    "source": "The Hacker News",
-    "title": "BambooToken Malware Uses MQTT to Control Windows and Linux Systems",
-    "url": "https://thehackernews.com/2026/09/bambootoken-malware-uses-mqtt-to.html"
   },
   {
     "date": "2026-09-15T17:37:35-04:00",
