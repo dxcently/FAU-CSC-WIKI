@@ -1,15 +1,21 @@
 [
   {
-    "date": "2026-09-16T11:18:28+05:30",
+    "date": "2026-09-16T16:45:58+05:30",
     "source": "The Hacker News",
-    "title": "Attackers Exploit WooCommerce Wholesale Lead Capture Flaw to Plant PHP Web Shells",
-    "url": "https://thehackernews.com/2026/09/attackers-exploit-woocommerce-wholesale.html"
+    "title": "Google Patches Pixel Modem Flaw Amid Signs of Limited Targeted Exploitation",
+    "url": "https://thehackernews.com/2026/09/google-patches-pixel-modem-flaw-amid.html"
   },
   {
-    "date": "2026-09-16T10:48:06+05:30",
+    "date": "2026-09-16T16:45:48+05:30",
     "source": "The Hacker News",
-    "title": "Active Exploitation Attempts Target WSO2 API Manager JWT Bypass With Forged Admin Tokens",
-    "url": "https://thehackernews.com/2026/09/active-exploitation-attempts-target.html"
+    "title": "Threat Intelligence Alone Won't Close the Exploitation Gap",
+    "url": "https://thehackernews.com/2026/09/threat-intelligence-alone-wont-close.html"
+  },
+  {
+    "date": "2026-09-16T16:38:54+05:30",
+    "source": "The Hacker News",
+    "title": "Acronis cPanel Backup Plugin Vulnerability Exploited in Targeted Attacks",
+    "url": "https://thehackernews.com/2026/09/acronis-cpanel-backup-plugin.html"
   },
   {
     "date": "2026-09-16T07:14:28-04:00",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Google fixes actively exploited Android zero-day on Pixel devices",
     "url": "https://www.bleepingcomputer.com/news/security/google-fixes-actively-exploited-android-zero-day-on-pixel-devices/"
-  },
-  {
-    "date": "2026-09-16T00:24:14+05:30",
-    "source": "The Hacker News",
-    "title": "KREMLIN Banking Malware Hijacks Chrome and Edge to Steal Credentials and Session Tokens",
-    "url": "https://thehackernews.com/2026/09/kremlin-banking-malware-hijacks-chrome.html"
   },
   {
     "date": "2026-09-08T21:44:22+00:00",
