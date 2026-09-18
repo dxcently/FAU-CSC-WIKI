@@ -1,27 +1,27 @@
 [
   {
-    "date": "2026-09-17T18:00:00+05:30",
+    "date": "2026-09-17T23:38:28+05:30",
     "source": "The Hacker News",
-    "title": "Critical Unbound DNSSEC Validator Flaw Could Allow RCE via a Malicious DNS Zone",
-    "url": "https://thehackernews.com/2026/09/critical-unbound-dnssec-validator-flaw.html"
+    "title": "Critical Check Point Management Flaw Lets Unauthenticated Attackers Run Code as Root",
+    "url": "https://thehackernews.com/2026/09/critical-check-point-management-server.html"
+  },
+  {
+    "date": "2026-09-17T23:02:22+05:30",
+    "source": "The Hacker News",
+    "title": "ThreatsDay: Self-Rewriting Agents, 800+ Flaws Patched, Insider SIM Swaps and 22 More New Stories",
+    "url": "https://thehackernews.com/2026/09/threatsday-self-rewriting-agents-800.html"
+  },
+  {
+    "date": "2026-09-17T21:07:56+05:30",
+    "source": "The Hacker News",
+    "title": "Critical Docker Sandboxes Flaw Lets Malicious Guest Code Read and Modify macOS Host Files",
+    "url": "https://thehackernews.com/2026/09/critical-docker-sandboxes-flaw-lets.html"
   },
   {
     "date": "2026-09-17T17:50:26-04:00",
     "source": "BleepingComputer",
     "title": "New RatHat Android malware uses AI to automate device control",
     "url": "https://www.bleepingcomputer.com/news/security/new-rathat-android-malware-uses-ai-to-automate-device-control/"
-  },
-  {
-    "date": "2026-09-17T17:20:00+05:30",
-    "source": "The Hacker News",
-    "title": "Can You Prove a New CVE Is Exploitable Before Attackers Do? Learn How in This Webinar",
-    "url": "https://thehackernews.com/2026/09/can-you-prove-new-cve-is-exploitable.html"
-  },
-  {
-    "date": "2026-09-17T16:20:53+05:30",
-    "source": "The Hacker News",
-    "title": "CISO's Expert Guide to Agentic Pentesting for Websites",
-    "url": "https://thehackernews.com/2026/09/cisos-expert-guide-to-agentic.html"
   },
   {
     "date": "2026-09-17T14:55:12-04:00",
