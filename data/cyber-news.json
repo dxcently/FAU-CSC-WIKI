@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-09-18T22:26:19+05:30",
+    "source": "The Hacker News",
+    "title": "New WordPress Click2Shell Flaw Forces Theme Installs, Can Chain to Code Execution",
+    "url": "https://thehackernews.com/2026/09/new-wordpress-click2shell-flaw-forces.html"
+  },
+  {
     "date": "2026-09-18T20:54:16+05:30",
     "source": "The Hacker News",
     "title": "Transparent Tribe Deploys New Rust Backdoor Using Private GitHub Repositories for C2",
@@ -10,12 +16,6 @@
     "source": "The Hacker News",
     "title": "Microsoft Patches CVSS 10.0 Azure AI Foundry Flaw Enabling Unauthorized Privilege Escalation",
     "url": "https://thehackernews.com/2026/09/microsoft-patches-cvss-100-azure-ai.html"
-  },
-  {
-    "date": "2026-09-18T16:31:16+05:30",
-    "source": "The Hacker News",
-    "title": "An Abandoned CDN Domain Was Re-Registered. Thousands of Sites Still Call It.",
-    "url": "https://thehackernews.com/2026/09/an-abandoned-cdn-domain-was-re.html"
   },
   {
     "date": "2026-09-18T12:00:38-04:00",
