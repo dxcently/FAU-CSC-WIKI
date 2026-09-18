@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-09-18T14:48:03+05:30",
+    "source": "The Hacker News",
+    "title": "Claimed Bug Bounty Hunter Likely Used LLM to Build PhantomRaven npm Stealer",
+    "url": "https://thehackernews.com/2026/09/claimed-bug-bounty-hunter-likely-used.html"
+  },
+  {
     "date": "2026-09-18T11:47:25+05:30",
     "source": "The Hacker News",
     "title": "RatHat Android Malware Abuses ADB to Retain Shell Access After Uninstall",
@@ -16,12 +22,6 @@
     "source": "The Hacker News",
     "title": "Critical Check Point Management Flaw Lets Unauthenticated Attackers Run Code as Root",
     "url": "https://thehackernews.com/2026/09/critical-check-point-management-server.html"
-  },
-  {
-    "date": "2026-09-17T23:02:22+05:30",
-    "source": "The Hacker News",
-    "title": "ThreatsDay: Self-Rewriting Agents, 800+ Flaws Patched, Insider SIM Swaps and 22 More New Stories",
-    "url": "https://thehackernews.com/2026/09/threatsday-self-rewriting-agents-800.html"
   },
   {
     "date": "2026-09-17T17:50:26-04:00",
