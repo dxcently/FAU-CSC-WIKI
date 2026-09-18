@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-09-18T16:10:06+05:30",
+    "source": "The Hacker News",
+    "title": "WeaselBiscuit Stealer Spreads via 13 npm Packages to Harvest Chrome Extension Storage",
+    "url": "https://thehackernews.com/2026/09/weaselbiscuit-stealer-spreads-via-13.html"
+  },
+  {
     "date": "2026-09-18T14:48:03+05:30",
     "source": "The Hacker News",
     "title": "Claimed Bug Bounty Hunter Likely Used LLM to Build PhantomRaven npm Stealer",
@@ -22,12 +28,6 @@
     "source": "BleepingComputer",
     "title": "Microsoft fixes broken copy and paste for Excel 2016 users",
     "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-fixes-broken-copy-and-paste-for-excel-2016-users/"
-  },
-  {
-    "date": "2026-09-17T23:38:28+05:30",
-    "source": "The Hacker News",
-    "title": "Critical Check Point Management Flaw Lets Unauthenticated Attackers Run Code as Root",
-    "url": "https://thehackernews.com/2026/09/critical-check-point-management-server.html"
   },
   {
     "date": "2026-09-17T17:50:26-04:00",
