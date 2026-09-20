@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-09-20T08:00:00-04:00",
+    "source": "BleepingComputer",
+    "title": "Researchers escape OpenAI Codex sandbox to run commands on host",
+    "url": "https://www.bleepingcomputer.com/news/security/researchers-escape-openai-codex-sandbox-to-run-commands-on-host/"
+  },
+  {
     "date": "2026-09-20T00:06:53+05:30",
     "source": "The Hacker News",
     "title": "Claude Opus 5 Helped Researchers Take Over OpenAI Staff Accounts via Chained Flaws",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "North Korean WaterPlum hackers infected 30,000 devices worldwide",
     "url": "https://www.bleepingcomputer.com/news/security/north-korean-waterplum-hackers-infected-30-000-devices-worldwide/"
-  },
-  {
-    "date": "2026-09-19T09:48:32-04:00",
-    "source": "BleepingComputer",
-    "title": "ShinyHunters hacks Clop leak site, threatens to extort ransomware gang",
-    "url": "https://www.bleepingcomputer.com/news/security/shinyhunters-hacks-clop-leak-site-threatens-to-extort-ransomware-gang/"
   },
   {
     "date": "2026-09-16T18:14:22+00:00",
