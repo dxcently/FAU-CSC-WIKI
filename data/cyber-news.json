@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-09-20T10:11:21-04:00",
+    "source": "BleepingComputer",
+    "title": "Malicious npm packages evade install-script defenses at runtime",
+    "url": "https://www.bleepingcomputer.com/news/security/malicious-npm-packages-evade-install-script-defenses-at-runtime/"
+  },
+  {
     "date": "2026-09-20T08:00:00-04:00",
     "source": "BleepingComputer",
     "title": "Researchers escape OpenAI Codex sandbox to run commands on host",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "BragJack attacks hijack AI browser agents through malicious extensions",
     "url": "https://www.bleepingcomputer.com/news/security/bragjack-attacks-hijack-ai-browser-agents-through-malicious-extensions/"
-  },
-  {
-    "date": "2026-09-19T10:05:15-04:00",
-    "source": "BleepingComputer",
-    "title": "North Korean WaterPlum hackers infected 30,000 devices worldwide",
-    "url": "https://www.bleepingcomputer.com/news/security/north-korean-waterplum-hackers-infected-30-000-devices-worldwide/"
   },
   {
     "date": "2026-09-16T18:14:22+00:00",
