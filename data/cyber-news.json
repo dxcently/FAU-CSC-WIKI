@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-09-21T11:36:44+05:30",
+    "source": "The Hacker News",
+    "title": "Jade Sleet Linked to Indian IT Provider Breach With FLATROOF and ROOFDECK Backdoors",
+    "url": "https://thehackernews.com/2026/09/jade-sleet-linked-to-indian-it-provider.html"
+  },
+  {
     "date": "2026-09-20T10:11:21-04:00",
     "source": "BleepingComputer",
     "title": "Malicious npm packages evade install-script defenses at runtime",
@@ -22,12 +28,6 @@
     "source": "The Hacker News",
     "title": "Can You Prove a New CVE Is Exploitable Before Attackers Do? Learn How in This Webinar",
     "url": "https://thehackernews.com/2026/09/can-you-prove-new-cve-is-exploitable.html"
-  },
-  {
-    "date": "2026-09-19T18:58:41+05:30",
-    "source": "The Hacker News",
-    "title": "Identity Visibility in 2026: The Foundation of Identity Security",
-    "url": "https://thehackernews.com/2026/09/identity-visibility-in-2026-foundation.html"
   },
   {
     "date": "2026-09-19T10:56:31-04:00",
