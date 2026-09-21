@@ -1,15 +1,21 @@
 [
   {
+    "date": "2026-09-21T19:54:13+05:30",
+    "source": "The Hacker News",
+    "title": "⚡ Weekly Recap: Cisco 0-Day, AI Agent RCE, ClickFix Attacks, ClickFix Surge, and Browser Hijacks",
+    "url": "https://thehackernews.com/2026/09/weekly-recap-cisco-0-day-ai-agent-rce.html"
+  },
+  {
+    "date": "2026-09-21T19:45:40+05:30",
+    "source": "The Hacker News",
+    "title": "TASK#STOMP PowerShell Backdoor Steals Documents, Wi-Fi Passwords, and Clipboard Data",
+    "url": "https://thehackernews.com/2026/09/taskstomp-powershell-backdoor-steals.html"
+  },
+  {
     "date": "2026-09-21T14:09:38+05:30",
     "source": "The Hacker News",
     "title": "ClickFix Lures Deploy ChainScript RAT Using Polygon to Rotate C2 Infrastructure",
     "url": "https://thehackernews.com/2026/09/clickfix-lures-deploy-chainscript-rat.html"
-  },
-  {
-    "date": "2026-09-21T11:36:44+05:30",
-    "source": "The Hacker News",
-    "title": "Jade Sleet Linked to Indian IT Provider Breach With FLATROOF and ROOFDECK Backdoors",
-    "url": "https://thehackernews.com/2026/09/jade-sleet-linked-to-indian-it-provider.html"
   },
   {
     "date": "2026-09-21T10:02:12-04:00",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Microsoft: September updates break File History backup feature",
     "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-september-updates-break-file-history-backup-feature/"
-  },
-  {
-    "date": "2026-09-20T00:06:53+05:30",
-    "source": "The Hacker News",
-    "title": "Claude Opus 5 Helped Researchers Take Over OpenAI Staff Accounts via Chained Flaws",
-    "url": "https://thehackernews.com/2026/09/claude-opus-5-helped-researchers-take.html"
   },
   {
     "date": "2026-09-16T18:14:22+00:00",
