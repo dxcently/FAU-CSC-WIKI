@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-09-21T14:09:38+05:30",
+    "source": "The Hacker News",
+    "title": "ClickFix Lures Deploy ChainScript RAT Using Polygon to Rotate C2 Infrastructure",
+    "url": "https://thehackernews.com/2026/09/clickfix-lures-deploy-chainscript-rat.html"
+  },
+  {
     "date": "2026-09-21T11:36:44+05:30",
     "source": "The Hacker News",
     "title": "Jade Sleet Linked to Indian IT Provider Breach With FLATROOF and ROOFDECK Backdoors",
@@ -22,12 +28,6 @@
     "source": "The Hacker News",
     "title": "Claude Opus 5 Helped Researchers Take Over OpenAI Staff Accounts via Chained Flaws",
     "url": "https://thehackernews.com/2026/09/claude-opus-5-helped-researchers-take.html"
-  },
-  {
-    "date": "2026-09-19T18:58:48+05:30",
-    "source": "The Hacker News",
-    "title": "Can You Prove a New CVE Is Exploitable Before Attackers Do? Learn How in This Webinar",
-    "url": "https://thehackernews.com/2026/09/can-you-prove-new-cve-is-exploitable.html"
   },
   {
     "date": "2026-09-19T10:56:31-04:00",
