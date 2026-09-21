@@ -12,6 +12,12 @@
     "url": "https://thehackernews.com/2026/09/jade-sleet-linked-to-indian-it-provider.html"
   },
   {
+    "date": "2026-09-21T07:45:54-04:00",
+    "source": "BleepingComputer",
+    "title": "Microsoft: September updates break File History backup feature",
+    "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-september-updates-break-file-history-backup-feature/"
+  },
+  {
     "date": "2026-09-20T10:11:21-04:00",
     "source": "BleepingComputer",
     "title": "Malicious npm packages evade install-script defenses at runtime",
@@ -28,12 +34,6 @@
     "source": "The Hacker News",
     "title": "Claude Opus 5 Helped Researchers Take Over OpenAI Staff Accounts via Chained Flaws",
     "url": "https://thehackernews.com/2026/09/claude-opus-5-helped-researchers-take.html"
-  },
-  {
-    "date": "2026-09-19T10:56:31-04:00",
-    "source": "BleepingComputer",
-    "title": "BragJack attacks hijack AI browser agents through malicious extensions",
-    "url": "https://www.bleepingcomputer.com/news/security/bragjack-attacks-hijack-ai-browser-agents-through-malicious-extensions/"
   },
   {
     "date": "2026-09-16T18:14:22+00:00",
