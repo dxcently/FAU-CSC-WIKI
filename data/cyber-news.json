@@ -12,6 +12,12 @@
     "url": "https://thehackernews.com/2026/09/jade-sleet-linked-to-indian-it-provider.html"
   },
   {
+    "date": "2026-09-21T10:02:12-04:00",
+    "source": "BleepingComputer",
+    "title": "FBI's CJIS v6.1: What Security Teams Need to Know.",
+    "url": "https://www.bleepingcomputer.com/news/security/fbis-cjis-v61-what-security-teams-need-to-know/"
+  },
+  {
     "date": "2026-09-21T09:16:20-04:00",
     "source": "BleepingComputer",
     "title": "Microsoft reminds admins to migrate Entra ID users to passkeys",
@@ -22,12 +28,6 @@
     "source": "BleepingComputer",
     "title": "Microsoft: September updates break File History backup feature",
     "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-september-updates-break-file-history-backup-feature/"
-  },
-  {
-    "date": "2026-09-20T10:11:21-04:00",
-    "source": "BleepingComputer",
-    "title": "Malicious npm packages evade install-script defenses at runtime",
-    "url": "https://www.bleepingcomputer.com/news/security/malicious-npm-packages-evade-install-script-defenses-at-runtime/"
   },
   {
     "date": "2026-09-20T00:06:53+05:30",
