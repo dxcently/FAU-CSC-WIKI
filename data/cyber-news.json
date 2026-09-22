@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-09-22T15:08:18+05:30",
+    "source": "The Hacker News",
+    "title": "Malicious npm Package indexed-btree Hid Its Loader in Runtime Code Before Removal",
+    "url": "https://thehackernews.com/2026/09/malicious-npm-package-indexed-btree-hid.html"
+  },
+  {
     "date": "2026-09-22T13:22:03+05:30",
     "source": "The Hacker News",
     "title": "SideCopy Broadens India Targeting to Academia With ReverseRAT Spear-Phishing",
@@ -10,12 +16,6 @@
     "source": "The Hacker News",
     "title": "One Hidden Meta Muse Setting Could Let Attackers Turn the AI Assistant Into a Backdoor",
     "url": "https://thehackernews.com/2026/09/one-hidden-meta-muse-setting-could-let.html"
-  },
-  {
-    "date": "2026-09-22T11:33:14+05:30",
-    "source": "The Hacker News",
-    "title": "WordPress Comment2Shell Flaw Can Turn Anonymous Comment XSS Into RCE via Admin Session",
-    "url": "https://thehackernews.com/2026/09/wordpress-comment2shell-flaw-can-turn.html"
   },
   {
     "date": "2026-09-22T05:55:11-04:00",
