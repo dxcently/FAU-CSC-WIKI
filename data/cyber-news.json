@@ -1,21 +1,27 @@
 [
   {
-    "date": "2026-09-22T22:33:31+05:30",
+    "date": "2026-09-22T23:59:39+05:30",
     "source": "The Hacker News",
-    "title": "Microsoft Takes Down EvilTokens Device-Code Phishing Service Tied to 12,000 Inbox Compromises",
-    "url": "https://thehackernews.com/2026/09/microsoft-takes-down-eviltokens-device.html"
+    "title": "Check Point Warns of Management Server Zero-Day Exploited in Targeted Attacks",
+    "url": "https://thehackernews.com/2026/09/check-point-warns-of-management-server.html"
   },
   {
-    "date": "2026-09-22T22:11:12+05:30",
+    "date": "2026-09-22T23:33:10+05:30",
     "source": "The Hacker News",
-    "title": "Critical Bifrost AI Gateway Flaw Lets Attackers Run Commands Without Credentials",
-    "url": "https://thehackernews.com/2026/09/critical-bifrost-ai-gateway-flaw-lets.html"
+    "title": "WordPress Issues Patch for Critical Flaw That Can Enable Code Execution on Some Servers",
+    "url": "https://thehackernews.com/2026/09/wordpress-issues-patch-for-critical.html"
   },
   {
-    "date": "2026-09-22T21:44:04+05:30",
+    "date": "2026-09-22T23:28:15+05:30",
     "source": "The Hacker News",
-    "title": "Researcher Drops BigDiskBuster Zero-Day PoC That Blocks Microsoft Defender Updates",
-    "url": "https://thehackernews.com/2026/09/researcher-drops-bigdiskbuster-zero-day.html"
+    "title": "Malicious npm Package Poses as Twilio Bug-Bounty Probe, Can Exfiltrate Credentials",
+    "url": "https://thehackernews.com/2026/09/malicious-npm-package-poses-as-twilio.html"
+  },
+  {
+    "date": "2026-09-22T15:13:29-04:00",
+    "source": "BleepingComputer",
+    "title": "ShinyHunters claims FBI hack, data theft in PeopleSoft zero-day breach",
+    "url": "https://www.bleepingcomputer.com/news/security/shinyhunters-claims-fbi-hack-data-theft-in-peoplesoft-zero-day-breach/"
   },
   {
     "date": "2026-09-22T14:04:39-04:00",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Reducing shadow IT visibility gaps with Wazuh",
     "url": "https://www.bleepingcomputer.com/news/security/reducing-shadow-it-visibility-gaps-with-wazuh/"
-  },
-  {
-    "date": "2026-09-22T12:32:47-04:00",
-    "source": "BleepingComputer",
-    "title": "Check Point warns of Management Server zero-day exploited in attacks",
-    "url": "https://www.bleepingcomputer.com/news/security/check-point-patches-management-server-zero-day-exploited-in-attacks/"
   },
   {
     "date": "2026-09-16T18:14:22+00:00",
