@@ -18,6 +18,12 @@
     "url": "https://thehackernews.com/2026/09/researcher-drops-bigdiskbuster-zero-day.html"
   },
   {
+    "date": "2026-09-22T14:04:39-04:00",
+    "source": "BleepingComputer",
+    "title": "New ClosedQuorum Windows malware uses AI for attack decisions",
+    "url": "https://www.bleepingcomputer.com/news/security/new-closedquorum-windows-malware-uses-ai-for-attack-decisions/"
+  },
+  {
     "date": "2026-09-22T13:17:41-04:00",
     "source": "BleepingComputer",
     "title": "Reducing shadow IT visibility gaps with Wazuh",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Check Point warns of Management Server zero-day exploited in attacks",
     "url": "https://www.bleepingcomputer.com/news/security/check-point-patches-management-server-zero-day-exploited-in-attacks/"
-  },
-  {
-    "date": "2026-09-22T11:00:00-04:00",
-    "source": "BleepingComputer",
-    "title": "EvilTokens PhaaS disrupted after compromising 12,000 Microsoft accounts",
-    "url": "https://www.bleepingcomputer.com/news/security/eviltokens-phaas-disrupted-after-compromising-12-000-microsoft-accounts/"
   },
   {
     "date": "2026-09-16T18:14:22+00:00",
