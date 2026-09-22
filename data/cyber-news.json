@@ -18,6 +18,12 @@
     "url": "https://thehackernews.com/2026/09/zyxel-and-veeam-flaws-under-active.html"
   },
   {
+    "date": "2026-09-22T04:53:09-04:00",
+    "source": "BleepingComputer",
+    "title": "CISA orders feds to patch Zyxel flaw exploited for data theft",
+    "url": "https://www.bleepingcomputer.com/news/security/cisa-orders-feds-to-patch-actively-exploited-zyxel-flaw-by-thursday/"
+  },
+  {
     "date": "2026-09-21T17:18:49-04:00",
     "source": "BleepingComputer",
     "title": "BigCommerce alerts merchants of data breach linked to Ribon apps",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "CISA alerts of active exploitation of three Linux kernel flaws",
     "url": "https://www.bleepingcomputer.com/news/security/cisa-alerts-of-active-exploitation-of-three-linux-kernel-flaws/"
-  },
-  {
-    "date": "2026-09-21T14:23:11-04:00",
-    "source": "BleepingComputer",
-    "title": "WordPress Click2Shell flaw lets hackers execute PHP on the server",
-    "url": "https://www.bleepingcomputer.com/news/security/wordpress-click2shell-flaw-lets-hackers-execute-php-on-the-server/"
   },
   {
     "date": "2026-09-16T18:14:22+00:00",
