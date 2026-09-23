@@ -18,6 +18,12 @@
     "url": "https://thehackernews.com/2026/09/new-cpanel-flaw-lets-hosting-account_0272795595.html"
   },
   {
+    "date": "2026-09-23T12:20:54-04:00",
+    "source": "BleepingComputer",
+    "title": "Malicious AI agents steal 600K credit cards, infect 100+ sites with skimmers",
+    "url": "https://www.bleepingcomputer.com/news/security/malicious-ai-agents-steal-600k-credit-cards-infect-100-plus-sites-with-skimmers/"
+  },
+  {
     "date": "2026-09-23T10:35:26-04:00",
     "source": "BleepingComputer",
     "title": "InfraTrust report warns network management systems under attack",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "How One Kubernetes YAML Can Hand Over a GCP Organization",
     "url": "https://www.bleepingcomputer.com/news/security/how-one-kubernetes-yaml-can-hand-over-a-gcp-organization/"
-  },
-  {
-    "date": "2026-09-23T08:29:53-04:00",
-    "source": "BleepingComputer",
-    "title": "Arista patches actively exploited VeloCloud Orchestrator zero-day",
-    "url": "https://www.bleepingcomputer.com/news/security/arista-patches-actively-exploited-velocloud-orchestrator-zero-day/"
   },
   {
     "date": "2026-09-16T18:14:22+00:00",
