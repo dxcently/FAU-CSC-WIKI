@@ -18,6 +18,12 @@
     "url": "https://thehackernews.com/2026/09/critical-nextjs-imageresponse-flaw-can.html"
   },
   {
+    "date": "2026-09-23T07:18:13-04:00",
+    "source": "BleepingComputer",
+    "title": "Microsoft: September Windows updates break Always On VPN connections",
+    "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-september-2026-windows-updates-break-always-on-vpn-connections/"
+  },
+  {
     "date": "2026-09-23T04:20:05-04:00",
     "source": "BleepingComputer",
     "title": "Ryuk ransomware member sentenced to 24 months in prison",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "F5 patches BIG-IP APM zero-day flaw exploited in RCE attacks",
     "url": "https://www.bleepingcomputer.com/news/security/f5-warns-of-big-ip-apm-remote-code-execution-zero-day-exploited-in-attacks/"
-  },
-  {
-    "date": "2026-09-22T17:45:45-04:00",
-    "source": "BleepingComputer",
-    "title": "Rogue external MFA providers can steal passwords during logins",
-    "url": "https://www.bleepingcomputer.com/news/security/rogue-external-mfa-providers-can-steal-passwords-during-logins/"
   },
   {
     "date": "2026-09-16T18:14:22+00:00",
