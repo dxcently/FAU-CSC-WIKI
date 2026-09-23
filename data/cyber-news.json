@@ -18,6 +18,12 @@
     "url": "https://thehackernews.com/2026/09/windows-malware-is-built-to-let-up-to.html"
   },
   {
+    "date": "2026-09-23T14:31:22-04:00",
+    "source": "BleepingComputer",
+    "title": "Hackers start exploiting critical WordPress flaw for code execution",
+    "url": "https://www.bleepingcomputer.com/news/security/hackers-start-exploiting-critical-wordpress-flaw-for-code-execution/"
+  },
+  {
     "date": "2026-09-23T12:20:54-04:00",
     "source": "BleepingComputer",
     "title": "Malicious AI agents steal 600K credit cards, infect 100+ sites with skimmers",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "InfraTrust report warns network management systems under attack",
     "url": "https://www.bleepingcomputer.com/news/security/infratrust-report-warns-network-management-systems-under-attack/"
-  },
-  {
-    "date": "2026-09-23T10:01:11-04:00",
-    "source": "BleepingComputer",
-    "title": "How One Kubernetes YAML Can Hand Over a GCP Organization",
-    "url": "https://www.bleepingcomputer.com/news/security/how-one-kubernetes-yaml-can-hand-over-a-gcp-organization/"
   },
   {
     "date": "2026-09-16T18:14:22+00:00",
