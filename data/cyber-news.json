@@ -12,6 +12,12 @@
     "url": "https://thehackernews.com/2026/09/shinyhunters-claims-fbi-breach-says-it.html"
   },
   {
+    "date": "2026-09-23T04:20:05-04:00",
+    "source": "BleepingComputer",
+    "title": "Ryuk ransomware member sentenced to 24 months in prison",
+    "url": "https://www.bleepingcomputer.com/news/security/ryuk-ransomware-member-sentenced-to-24-months-in-prison/"
+  },
+  {
     "date": "2026-09-23T03:17:23-04:00",
     "source": "BleepingComputer",
     "title": "F5 patches BIG-IP APM zero-day flaw exploited in RCE attacks",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Rogue external MFA providers can steal passwords during logins",
     "url": "https://www.bleepingcomputer.com/news/security/rogue-external-mfa-providers-can-steal-passwords-during-logins/"
-  },
-  {
-    "date": "2026-09-22T17:40:37-04:00",
-    "source": "BleepingComputer",
-    "title": "Sweden fines Miljödata $183,000 over breach affecting 2.2 million",
-    "url": "https://www.bleepingcomputer.com/news/security/sweden-fines-milj-data-183-000-over-breach-affecting-22-million/"
   },
   {
     "date": "2026-09-16T18:14:22+00:00",
