@@ -1,21 +1,27 @@
 [
   {
-    "date": "2026-09-23T13:59:48+05:30",
+    "date": "2026-09-23T17:46:00+05:30",
     "source": "The Hacker News",
-    "title": "F5 Patches Critical BIG-IP APM Zero-Day Exploited for Unauthenticated RCE on OAuth Servers",
-    "url": "https://thehackernews.com/2026/09/f5-patches-critical-big-ip-apm-zero-day.html"
+    "title": "New cPanel Flaw Lets a Hosting Account Run Code as Root, Take Full Server Control",
+    "url": "https://thehackernews.com/2026/09/new-cpanel-flaw-lets-hosting-account_0272795595.html"
   },
   {
-    "date": "2026-09-23T13:59:24+05:30",
+    "date": "2026-09-23T17:17:19+05:30",
     "source": "The Hacker News",
-    "title": "Chinese Hackers Exploit Chrome-Windows Zero-Day Chain to Deploy CLEANGULP Malware",
-    "url": "https://thehackernews.com/2026/09/chinese-hackers-exploit-chrome-windows.html"
+    "title": "545 Hackers Tested It First. Now XRanges for AI Scores Your Security Agent",
+    "url": "https://thehackernews.com/2026/09/545-hackers-tested-it-first-now-xranges.html"
   },
   {
-    "date": "2026-09-23T12:34:40+05:30",
+    "date": "2026-09-23T17:17:13+05:30",
     "source": "The Hacker News",
-    "title": "Critical Next.js ImageResponse Flaw Can Lead to Server Code Execution via Crafted SVG Input",
-    "url": "https://thehackernews.com/2026/09/critical-nextjs-imageresponse-flaw-can.html"
+    "title": "Anthropic and OpenAI Models Still Attempt Restricted Actions in Safety Tests",
+    "url": "https://thehackernews.com/2026/09/anthropic-and-openai-models-still.html"
+  },
+  {
+    "date": "2026-09-23T08:29:53-04:00",
+    "source": "BleepingComputer",
+    "title": "Arista patches actively exploited VeloCloud Orchestrator zero-day",
+    "url": "https://www.bleepingcomputer.com/news/security/arista-patches-actively-exploited-velocloud-orchestrator-zero-day/"
   },
   {
     "date": "2026-09-23T07:18:13-04:00",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Ryuk ransomware member sentenced to 24 months in prison",
     "url": "https://www.bleepingcomputer.com/news/security/ryuk-ransomware-member-sentenced-to-24-months-in-prison/"
-  },
-  {
-    "date": "2026-09-23T03:17:23-04:00",
-    "source": "BleepingComputer",
-    "title": "F5 patches BIG-IP APM zero-day flaw exploited in RCE attacks",
-    "url": "https://www.bleepingcomputer.com/news/security/f5-warns-of-big-ip-apm-remote-code-execution-zero-day-exploited-in-attacks/"
   },
   {
     "date": "2026-09-16T18:14:22+00:00",
