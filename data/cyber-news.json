@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-09-23T11:00:09+05:30",
+    "source": "The Hacker News",
+    "title": "ShinyHunters Claims FBI Breach, Says It Stole Data on Agents and Job Applicants",
+    "url": "https://thehackernews.com/2026/09/shinyhunters-claims-fbi-breach-says-it.html"
+  },
+  {
     "date": "2026-09-22T23:59:39+05:30",
     "source": "The Hacker News",
     "title": "Check Point Warns of Management Server Zero-Day Exploited in Targeted Attacks",
@@ -10,12 +16,6 @@
     "source": "The Hacker News",
     "title": "WordPress Issues Patch for Critical Flaw That Can Enable Code Execution on Some Servers",
     "url": "https://thehackernews.com/2026/09/wordpress-issues-patch-for-critical.html"
-  },
-  {
-    "date": "2026-09-22T23:28:15+05:30",
-    "source": "The Hacker News",
-    "title": "Malicious npm Package Poses as Twilio Bug-Bounty Probe, Can Exfiltrate Credentials",
-    "url": "https://thehackernews.com/2026/09/malicious-npm-package-poses-as-twilio.html"
   },
   {
     "date": "2026-09-22T17:45:45-04:00",
