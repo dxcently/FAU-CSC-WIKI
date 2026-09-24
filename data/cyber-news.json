@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-09-24T04:14:47-04:00",
+    "source": "BleepingComputer",
+    "title": "Microsoft fixes bug that broke Windows File History backup feature",
+    "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-fixes-windows-backup-feature-broken-by-september-updates/"
+  },
+  {
     "date": "2026-09-23T23:36:30+05:30",
     "source": "The Hacker News",
     "title": "Attackers Use Malicious Terraform Providers to Deliver Go Malware via HashiCorp Registry",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "New RemControl Android banking malware targets users in Europe and Canada",
     "url": "https://www.bleepingcomputer.com/news/security/new-remcontrol-android-banking-malware-targets-users-in-europe-and-canada/"
-  },
-  {
-    "date": "2026-09-23T15:53:54-04:00",
-    "source": "BleepingComputer",
-    "title": "Check Point warns of hackers exploiting Security Gateway VPN RCE flaw",
-    "url": "https://www.bleepingcomputer.com/news/security/check-point-warns-of-hackers-exploiting-security-gateway-vpn-rce-flaw/"
   },
   {
     "date": "2026-09-16T18:14:22+00:00",
