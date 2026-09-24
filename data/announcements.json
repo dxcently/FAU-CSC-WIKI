@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-09-24T17:35:22.677000+00:00",
+    "author": "shaamad",
+    "text": "ShellHacks Reminder 🐚💻\n\nFor everyone who signed up, some key notes before we head out:\n\n🛏️ Bring a sleeping bag. We might be sleeping in classrooms 😭\n🪥 Bring your toiletries: toothbrush, toothpaste, deodorant, towel, all of it. Please, for the sake of your teammates 🙏\n\nIf you don't have a sleeping bag and can't get one, DM me. I can buy one for someone who really needs it, no questions asked.\n\n📅 Schedule: Check out all the workshops, talks and events so you can plan your weekend: https://shellhacks.net/events\n📖 Hacker Guide: Everything else you need to know (check-in, rules, what to bring): https://shellhacks.net/guide\n\nGive both a read before we go! See y'all there! 🦉",
+    "url": "https://discord.com/channels/1265737634744107008/1265738362560450580/1552735210787967117"
+  },
+  {
     "date": "2026-09-23T21:29:29.488000+00:00",
     "author": "Devon",
     "text": "They just got back to us\n\nNO BUS FOR SHELLHACKS\n\nYou're going to have to find a way down there",
@@ -52,11 +58,5 @@
     "author": "shaamad",
     "text": "📢 FAU Cyber Club — Weekly Update\n\nToday (Tuesday)\nMarcos is leading a session on digital forensics using CyberDefenders. Come ready to learn!\n\nThis Week: Get VMware Running 💻\nWe want everyone to have VMware set up on their laptop by end of week. Here's a full walkthrough in our Google Drive:\n🔗 https://docs.google.com/presentation/d/14eUxIDHD3H20GsTWKQIqdx6new3lXv1vUyHbuZfpWfY/edit\n\nThursday\nLab Stuff!\n\nLinux and CTF practice in preparation for Saturday's competition. Don't miss it.\n\n---\n\n🏟️ SFISSA Village — This Weekend\nWe have a village at SFISSA on Friday and Saturday. Great chance to rep the club and network with people from Microsoft, IBM, and more. If you can make it either day, DM me so we can coordinate.\n\nCode for anyone who didn't register yet: FAUHTF26\n\n5000 T Rex Ave, Boca Raton, FL should get you there. It is running from 8 AM - 5 PM (Friday/Saturday)\n---\n\n🔑 Lab Swipe Access\nSome members have already been approved for swipe access to the lab. If you want in, send me your Z number and I'll get you submitted for approval.\n\n---\n\n🤝 ShellHacks — FIU Hackathon\nShellHacks reached out to bring FAU Cyber Club on as a community partner. It's free, open to all skill levels, and has a sponsor fair with Microsoft, NVIDIA, and Base44. They're also working on a bus from FAU. I'm still ironing out the details with their team but sign up now — it's a great opportunity regardless.\n\n---\n\n🌟 SHPE National Convention (Shoutout)\nSome club members are heading to the SHPE 2026 National Convention. Early-bird deadlines are coming up fast. SHPE brings in 200+ companies including Fortune 500s, so the networking alone is worth it. If you're interested, travel may be covered — DM me if you plan to apply so I can get a headcount.\n\nJoin the convention groupchat: https://chat.whatsapp.com/I0WWq5bUDVLBKKSa4kDw8J\nInterest form: https://forms.gle/c7uXVWeb5Dnn54gDA\n\n---\n\n📅 Coming Soon\nBetter competition schedule, more guest speakers, a data center tour, and a lot more fun stuff on the way — stay tuned.",
     "url": "https://discord.com/channels/1265737634744107008/1265738362560450580/1549299254344949761"
-  },
-  {
-    "date": "2026-09-14T15:23:48.872000+00:00",
-    "author": "Mike",
-    "text": "I released a token saving plugin for claude code here is the repo. Feedback is appreciated. https://github.com/Nyquest-ai/nyquest-claude-mcp",
-    "url": "https://discord.com/channels/1265737634744107008/1265738362560450580/1549078223114084423"
   }
 ]
