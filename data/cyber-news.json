@@ -18,6 +18,12 @@
     "url": "https://thehackernews.com/2026/09/placeholder-third-partycom-referenced.html"
   },
   {
+    "date": "2026-09-24T16:53:35-04:00",
+    "source": "BleepingComputer",
+    "title": "MacSync malware uses public iCloud calendars to deliver new payloads",
+    "url": "https://www.bleepingcomputer.com/news/security/macsync-malware-uses-public-icloud-calendars-to-deliver-new-payloads/"
+  },
+  {
     "date": "2026-09-24T16:10:48-04:00",
     "source": "BleepingComputer",
     "title": "New Carbonato malware uses AI agents to hijack exposed Docker hosts",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Exposed GitLab project email addresses let attackers push code",
     "url": "https://www.bleepingcomputer.com/news/security/exposed-gitlab-project-email-addresses-let-attackers-push-code/"
-  },
-  {
-    "date": "2026-09-24T10:02:12-04:00",
-    "source": "BleepingComputer",
-    "title": "FedRAMP VDR & VER: Daily Scans Are Only the Beginning",
-    "url": "https://www.bleepingcomputer.com/news/security/fedramp-vdr-and-ver-daily-scans-are-only-the-beginning/"
   },
   {
     "date": "2026-09-16T18:14:22+00:00",
