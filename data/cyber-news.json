@@ -18,6 +18,12 @@
     "url": "https://thehackernews.com/2026/09/attackers-exploit-wordpress-cve-2026.html"
   },
   {
+    "date": "2026-09-24T05:38:53-04:00",
+    "source": "BleepingComputer",
+    "title": "OpenAI hacked Australian Medicare govt site, probed data providers",
+    "url": "https://www.bleepingcomputer.com/news/security/openai-hacked-australian-medicare-govt-site-probed-data-providers/"
+  },
+  {
     "date": "2026-09-24T04:14:47-04:00",
     "source": "BleepingComputer",
     "title": "Microsoft fixes bug that broke Windows File History backup feature",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Placeholder domain used in dev docs now serves ClickFix attacks",
     "url": "https://www.bleepingcomputer.com/news/security/placeholder-domain-used-in-dev-docs-now-serves-clickfix-attacks/"
-  },
-  {
-    "date": "2026-09-23T17:25:13-04:00",
-    "source": "BleepingComputer",
-    "title": "New RemControl Android banking malware targets users in Europe and Canada",
-    "url": "https://www.bleepingcomputer.com/news/security/new-remcontrol-android-banking-malware-targets-users-in-europe-and-canada/"
   },
   {
     "date": "2026-09-16T18:14:22+00:00",
