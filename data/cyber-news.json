@@ -18,6 +18,12 @@
     "url": "https://thehackernews.com/2026/09/attackers-exploit-wordpress-cve-2026.html"
   },
   {
+    "date": "2026-09-24T06:42:37-04:00",
+    "source": "BleepingComputer",
+    "title": "CISA: Ransomware gangs now exploiting critical TeamCity flaw",
+    "url": "https://www.bleepingcomputer.com/news/security/cisa-ransomware-gangs-now-exploiting-critical-teamcity-flaw/"
+  },
+  {
     "date": "2026-09-24T05:38:53-04:00",
     "source": "BleepingComputer",
     "title": "OpenAI hacked Australian Medicare govt site, probed data providers",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Microsoft fixes bug that broke Windows File History backup feature",
     "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-fixes-windows-backup-feature-broken-by-september-updates/"
-  },
-  {
-    "date": "2026-09-23T18:46:01-04:00",
-    "source": "BleepingComputer",
-    "title": "Placeholder domain used in dev docs now serves ClickFix attacks",
-    "url": "https://www.bleepingcomputer.com/news/security/placeholder-domain-used-in-dev-docs-now-serves-clickfix-attacks/"
   },
   {
     "date": "2026-09-16T18:14:22+00:00",
