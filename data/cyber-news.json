@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-09-25T15:44:02+05:30",
+    "source": "The Hacker News",
+    "title": "Roundcube Pre-Auth SQL Injection Flaw Actively Exploited in the Wild",
+    "url": "https://thehackernews.com/2026/09/roundcube-pre-auth-sql-injection-flaw.html"
+  },
+  {
     "date": "2026-09-25T10:19:22+05:30",
     "source": "The Hacker News",
     "title": "Cloudflare Fixes Flaw That Let One Container Read Another Customer's Leftover Disk Data",
@@ -16,12 +22,6 @@
     "source": "BleepingComputer",
     "title": "Hackers steal $351.6 million in Bitget crypto exchange hack",
     "url": "https://www.bleepingcomputer.com/news/security/hackers-steal-3516-million-in-bitget-crypto-exchange-hack/"
-  },
-  {
-    "date": "2026-09-24T23:40:18+05:30",
-    "source": "The Hacker News",
-    "title": "Unpatched OnePlus Flaws Let Installed Android Apps Gain Root Without Permissions",
-    "url": "https://thehackernews.com/2026/09/unpatched-oneplus-flaws-let-installed.html"
   },
   {
     "date": "2026-09-24T16:53:35-04:00",
