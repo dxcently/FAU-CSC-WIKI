@@ -18,6 +18,12 @@
     "url": "https://thehackernews.com/2026/09/the-soc-doesnt-need-to-start-over-with.html"
   },
   {
+    "date": "2026-09-25T16:57:55-04:00",
+    "source": "BleepingComputer",
+    "title": "ShinyHunters hacked Clop leak site using Grav CMS path traversal flaw",
+    "url": "https://www.bleepingcomputer.com/news/security/shinyhunters-hacked-clop-leak-site-using-grav-cms-path-traversal-flaw/"
+  },
+  {
     "date": "2026-09-25T14:13:33-04:00",
     "source": "BleepingComputer",
     "title": "Elementor WordPress flaw lets attackers create admin accounts",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "CISA warns of Sharepoint, WSO2, Adobe Commerce flaws exploited in attacks",
     "url": "https://www.bleepingcomputer.com/news/security/cisa-warns-of-sharepoint-wso2-adobe-commerce-flaws-exploited-in-attacks/"
-  },
-  {
-    "date": "2026-09-25T12:00:00-04:00",
-    "source": "BleepingComputer",
-    "title": "Anthropic rolls out up to $250 in free Claude Code credits, but only for cloud sessions",
-    "url": "https://www.bleepingcomputer.com/news/artificial-intelligence/anthropic-rolls-out-up-to-250-in-free-claude-code-credits-but-only-for-cloud-sessions/"
   },
   {
     "date": "2026-09-16T18:14:22+00:00",
