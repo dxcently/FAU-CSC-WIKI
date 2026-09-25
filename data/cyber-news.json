@@ -1,21 +1,21 @@
 [
   {
+    "date": "2026-09-25T20:14:41+05:30",
+    "source": "The Hacker News",
+    "title": "Compromised GitHub Actions Came Back Online and Resumed Executing Mini Shai-Hulud Malware",
+    "url": "https://thehackernews.com/2026/09/compromised-github-actions-came-back.html"
+  },
+  {
+    "date": "2026-09-25T18:48:06+05:30",
+    "source": "The Hacker News",
+    "title": "PamStealer macOS Malware Adds Live C2 Payload Decryption and Multi-Layer Persistence",
+    "url": "https://thehackernews.com/2026/09/pamstealer-macos-malware-adds-live-c2.html"
+  },
+  {
     "date": "2026-09-25T17:00:00+05:30",
     "source": "The Hacker News",
     "title": "The SOC Doesn't Need to Start Over with Every Alert",
     "url": "https://thehackernews.com/2026/09/the-soc-doesnt-need-to-start-over-with.html"
-  },
-  {
-    "date": "2026-09-25T16:05:55+05:30",
-    "source": "The Hacker News",
-    "title": "Bitget Says Suspected North Korean Hackers Stole $351.6M After Backend Compromise",
-    "url": "https://thehackernews.com/2026/09/bitget-says-suspected-north-korean.html"
-  },
-  {
-    "date": "2026-09-25T15:44:02+05:30",
-    "source": "The Hacker News",
-    "title": "Roundcube Pre-Auth SQL Injection Flaw Actively Exploited in the Wild",
-    "url": "https://thehackernews.com/2026/09/roundcube-pre-auth-sql-injection-flaw.html"
   },
   {
     "date": "2026-09-25T10:54:33-04:00",
