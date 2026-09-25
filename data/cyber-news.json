@@ -12,6 +12,12 @@
     "url": "https://thehackernews.com/2026/09/pamstealer-macos-malware-adds-live-c2.html"
   },
   {
+    "date": "2026-09-25T17:41:07-04:00",
+    "source": "BleepingComputer",
+    "title": "Kiteworks urges 6-hour server shutdown over potential zero-day attacks",
+    "url": "https://www.bleepingcomputer.com/news/security/kiteworks-urges-6-hour-server-shutdown-over-potential-zero-day-attacks/"
+  },
+  {
     "date": "2026-09-25T17:00:00+05:30",
     "source": "The Hacker News",
     "title": "The SOC Doesn't Need to Start Over with Every Alert",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Elementor WordPress flaw lets attackers create admin accounts",
     "url": "https://www.bleepingcomputer.com/news/security/elementor-wordpress-flaw-lets-attackers-create-admin-accounts/"
-  },
-  {
-    "date": "2026-09-25T13:24:20-04:00",
-    "source": "BleepingComputer",
-    "title": "CISA warns of Sharepoint, WSO2, Adobe Commerce flaws exploited in attacks",
-    "url": "https://www.bleepingcomputer.com/news/security/cisa-warns-of-sharepoint-wso2-adobe-commerce-flaws-exploited-in-attacks/"
   },
   {
     "date": "2026-09-16T18:14:22+00:00",
