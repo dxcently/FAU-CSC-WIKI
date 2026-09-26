@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-09-26T23:52:52+05:30",
+    "source": "The Hacker News",
+    "title": "Lunex Stealer Abuses AMD Driver to Disable Security Monitoring and Steal Browser Credentials",
+    "url": "https://thehackernews.com/2026/09/lunex-stealer-abuses-amd-driver-to.html"
+  },
+  {
     "date": "2026-09-26T17:16:40+05:30",
     "source": "The Hacker News",
     "title": "Attackers Bypass WAFs to Exploit Oracle PeopleSoft Flaw and Deploy Web Shells",
@@ -12,10 +18,10 @@
     "url": "https://thehackernews.com/2026/09/zero-trust-for-ai-agents-starts-with.html"
   },
   {
-    "date": "2026-09-26T15:25:22+05:30",
-    "source": "The Hacker News",
-    "title": "Elementor CSRF Flaw Lets Attackers Take Over Sites After Admin Clicks Crafted Link",
-    "url": "https://thehackernews.com/2026/09/elementor-csrf-flaw-lets-attackers-take.html"
+    "date": "2026-09-26T15:03:34-04:00",
+    "source": "BleepingComputer",
+    "title": "ShinyHunters uses WAF bypass trick in Oracle PeopleSoft attacks",
+    "url": "https://www.bleepingcomputer.com/news/security/shinyhunters-uses-waf-bypass-trick-in-oracle-peoplesoft-attacks/"
   },
   {
     "date": "2026-09-26T12:26:58-04:00",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Microsoft pauses KB5002907 update after Office license deactivations",
     "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-365-kb5002907-update-paused-after-office-license-deactivations/"
-  },
-  {
-    "date": "2026-09-26T10:19:46-04:00",
-    "source": "BleepingComputer",
-    "title": "GitHub Actions re-enabled with Mini Shai-Hulud payload still active",
-    "url": "https://www.bleepingcomputer.com/news/security/github-actions-re-enabled-with-mini-shai-hulud-payload-still-active/"
   },
   {
     "date": "2026-09-25T21:44:40+00:00",
