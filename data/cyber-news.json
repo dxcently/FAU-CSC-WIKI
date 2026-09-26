@@ -18,6 +18,12 @@
     "url": "https://thehackernews.com/2026/09/elementor-csrf-flaw-lets-attackers-take.html"
   },
   {
+    "date": "2026-09-26T12:26:58-04:00",
+    "source": "BleepingComputer",
+    "title": "Claude Opus 5.5 uses 95% fewer em dashes, but its answers are getting longer",
+    "url": "https://www.bleepingcomputer.com/news/artificial-intelligence/claude-opus-55-uses-95-percent-fewer-em-dashes-but-its-answers-are-getting-longer/"
+  },
+  {
     "date": "2026-09-26T11:50:38-04:00",
     "source": "BleepingComputer",
     "title": "Microsoft pauses KB5002907 update after Office license deactivations",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "GitHub Actions re-enabled with Mini Shai-Hulud payload still active",
     "url": "https://www.bleepingcomputer.com/news/security/github-actions-re-enabled-with-mini-shai-hulud-payload-still-active/"
-  },
-  {
-    "date": "2026-09-26T08:28:41-04:00",
-    "source": "BleepingComputer",
-    "title": "OpenAI's AI agents accidentally uploaded user-provided images to third-party sites",
-    "url": "https://www.bleepingcomputer.com/news/artificial-intelligence/openais-ai-agents-accidentally-uploaded-user-provided-images-to-third-party-sites/"
   },
   {
     "date": "2026-09-25T21:44:40+00:00",
