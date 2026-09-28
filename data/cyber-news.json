@@ -18,6 +18,12 @@
     "url": "https://thehackernews.com/2026/09/iam-for-ai-agent.html"
   },
   {
+    "date": "2026-09-28T16:31:16-04:00",
+    "source": "BleepingComputer",
+    "title": "Times Car confirms data breach affecting 6.6 million user accounts",
+    "url": "https://www.bleepingcomputer.com/news/security/times-car-confirms-data-breach-affecting-66-million-user-accounts/"
+  },
+  {
     "date": "2026-09-28T15:49:10-04:00",
     "source": "BleepingComputer",
     "title": "Dutch police confirm arrest in ShinyHunters hacking investigation",
@@ -34,12 +40,6 @@
     "source": "BleepingComputer",
     "title": "Over 16,000 Supabase databases expose PII, passwords, auth tokens",
     "url": "https://www.bleepingcomputer.com/news/security/misconfigured-supabase-apps-expose-data-in-over-16-000-databases/"
-  },
-  {
-    "date": "2026-09-28T11:49:27-04:00",
-    "source": "BleepingComputer",
-    "title": "JadePuffer agentic AI attacks target Azure, destroy cloud resources",
-    "url": "https://www.bleepingcomputer.com/news/security/jadepuffer-agentic-ai-attacks-target-azure-destroy-cloud-resources/"
   },
   {
     "date": "2026-09-25T21:44:40+00:00",
