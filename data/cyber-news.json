@@ -1,5 +1,17 @@
 [
   {
+    "date": "2026-09-28T14:38:21+05:30",
+    "source": "The Hacker News",
+    "title": "JADEPUFFER-Linked Attackers Used Compromised Service Principals to Delete Azure Resources",
+    "url": "https://thehackernews.com/2026/09/jadepuffer-linked-attackers-used.html"
+  },
+  {
+    "date": "2026-09-28T12:51:49+05:30",
+    "source": "The Hacker News",
+    "title": "CISA Says Attackers Are Exploiting Two Critical Citrix NetScaler Flaws Globally",
+    "url": "https://thehackernews.com/2026/09/cisa-says-attackers-are-exploiting-two.html"
+  },
+  {
     "date": "2026-09-28T05:25:29-04:00",
     "source": "BleepingComputer",
     "title": "Bitget resumes Bitcoin withdrawals after $387.5 million crypto heist",
@@ -22,18 +34,6 @@
     "source": "The Hacker News",
     "title": "Warning: Two Unpatched Citrix NetScaler RCE Zero-Days Under Active Exploitation",
     "url": "https://thehackernews.com/2026/09/warning-two-unpatched-citrix-netscaler.html"
-  },
-  {
-    "date": "2026-09-26T23:52:52+05:30",
-    "source": "The Hacker News",
-    "title": "Lunex Stealer Abuses AMD Driver to Disable Security Monitoring and Steal Browser Credentials",
-    "url": "https://thehackernews.com/2026/09/lunex-stealer-abuses-amd-driver-to.html"
-  },
-  {
-    "date": "2026-09-26T17:16:40+05:30",
-    "source": "The Hacker News",
-    "title": "Attackers Bypass WAFs to Exploit Oracle PeopleSoft Flaw and Deploy Web Shells",
-    "url": "https://thehackernews.com/2026/09/attackers-bypass-wafs-to-exploit-oracle.html"
   },
   {
     "date": "2026-09-25T21:44:40+00:00",
