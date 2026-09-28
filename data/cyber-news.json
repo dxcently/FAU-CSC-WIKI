@@ -32,7 +32,7 @@
   {
     "date": "2026-09-28T14:50:59-04:00",
     "source": "BleepingComputer",
-    "title": "Misconfigured Supabase apps expose data in over 16,000 databases",
+    "title": "Over 16,000 Supabase databases expose PII, passwords, auth tokens",
     "url": "https://www.bleepingcomputer.com/news/security/misconfigured-supabase-apps-expose-data-in-over-16-000-databases/"
   },
   {
