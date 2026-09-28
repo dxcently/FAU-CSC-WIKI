@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-09-28T19:30:53+05:30",
+    "source": "The Hacker News",
+    "title": "⚡ Weekly Recap: $387M Crypto Hack, Citrix Exploits, AI Agents Go Off-Script, and More Threats",
+    "url": "https://thehackernews.com/2026/09/weekly-recap-387m-crypto-hack-citrix.html"
+  },
+  {
     "date": "2026-09-28T17:28:00+05:30",
     "source": "The Hacker News",
     "title": "Webinar: How to Govern AI Agents, Reduce Excessive Access, and Control Shadow AI",
@@ -10,12 +16,6 @@
     "source": "The Hacker News",
     "title": "Carbonato Botnet Compromises Docker Hosts to Deploy Telegram-Controlled Hermes AI Agent",
     "url": "https://thehackernews.com/2026/09/carbonato-botnet-compromises-docker.html"
-  },
-  {
-    "date": "2026-09-28T14:38:21+05:30",
-    "source": "The Hacker News",
-    "title": "JADEPUFFER-Linked Attackers Used Compromised Service Principals to Delete Azure Resources",
-    "url": "https://thehackernews.com/2026/09/jadepuffer-linked-attackers-used.html"
   },
   {
     "date": "2026-09-28T10:00:10-04:00",
