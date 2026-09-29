@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-09-29T22:30:00+05:30",
+    "source": "The Hacker News",
+    "title": "New Spectre-v2 BTR Attack Leaks Linux Memory Despite Existing Defenses",
+    "url": "https://thehackernews.com/2026/09/new-spectre-v2-btr-attack-leaks-linux.html"
+  },
+  {
     "date": "2026-09-29T19:43:20+05:30",
     "source": "The Hacker News",
     "title": "Kiteworks Fixes Critical Flaw Found During Nine-Hour Precautionary Shutdown",
@@ -12,10 +18,10 @@
     "url": "https://thehackernews.com/2026/09/101-malicious-npm-packages-add.html"
   },
   {
-    "date": "2026-09-29T14:05:10+05:30",
-    "source": "The Hacker News",
-    "title": "Dutch Police Arrest 24-Year-Old Amsterdam Man in ShinyHunters Investigation",
-    "url": "https://thehackernews.com/2026/09/dutch-police-arrest-24-year-old.html"
+    "date": "2026-09-29T13:10:11-04:00",
+    "source": "BleepingComputer",
+    "title": "New Spectre v2 attack variant leaks Linux root password hash in minutes",
+    "url": "https://www.bleepingcomputer.com/news/security/new-spectre-v2-attack-variant-leaks-linux-root-password-hash-in-minutes/"
   },
   {
     "date": "2026-09-29T11:39:19-04:00",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Catch threats before they escalate with real-time Identity Telemetry",
     "url": "https://www.bleepingcomputer.com/news/security/catch-threats-before-they-escalate-with-real-time-identity-telemetry/"
-  },
-  {
-    "date": "2026-09-29T07:41:53-04:00",
-    "source": "BleepingComputer",
-    "title": "Vietnamese man charged in $16 million 'pig butchering' crypto scam",
-    "url": "https://www.bleepingcomputer.com/news/security/vietnamese-man-charged-in-16-million-pig-butchering-crypto-scam/"
   },
   {
     "date": "2026-09-28T15:08:57+00:00",
