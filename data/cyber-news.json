@@ -1,21 +1,21 @@
 [
   {
-    "date": "2026-09-29T22:30:00+05:30",
+    "date": "2026-09-29T23:17:01+05:30",
+    "source": "The Hacker News",
+    "title": "French Tax Data Theft Using Stolen Staff Passwords Went Undetected for Seven Weeks",
+    "url": "https://thehackernews.com/2026/09/french-tax-data-theft-using-stolen.html"
+  },
+  {
+    "date": "2026-09-29T22:50:17+05:30",
     "source": "The Hacker News",
     "title": "New Spectre-v2 BTR Attack Leaks Linux Memory Despite Existing Defenses",
     "url": "https://thehackernews.com/2026/09/new-spectre-v2-btr-attack-leaks-linux.html"
   },
   {
-    "date": "2026-09-29T19:43:20+05:30",
+    "date": "2026-09-29T22:50:08+05:30",
     "source": "The Hacker News",
-    "title": "Kiteworks Fixes Critical Flaw Found During Nine-Hour Precautionary Shutdown",
-    "url": "https://thehackernews.com/2026/09/kiteworks-fixes-critical-flaw-found.html"
-  },
-  {
-    "date": "2026-09-29T19:15:10+05:30",
-    "source": "The Hacker News",
-    "title": "101 Malicious npm Packages Add Developers' WhatsApp Accounts to Groups Without Consent",
-    "url": "https://thehackernews.com/2026/09/101-malicious-npm-packages-add.html"
+    "title": "Russia's Star Blizzard Targets 100+ Organizations With Fake Event Invites to Deliver Backdoor",
+    "url": "https://thehackernews.com/2026/09/russias-star-blizzard-targets-100.html"
   },
   {
     "date": "2026-09-29T14:09:39-04:00",
