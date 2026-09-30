@@ -1,21 +1,21 @@
 [
   {
+    "date": "2026-09-30T13:54:35+05:30",
+    "source": "The Hacker News",
+    "title": "Attackers Exploit NetScaler Flaw for Root Access, Deploy WHIPSHOT and SLAPSHOT",
+    "url": "https://thehackernews.com/2026/09/attackers-exploit-netscaler-flaw-for.html"
+  },
+  {
+    "date": "2026-09-30T13:39:28+05:30",
+    "source": "The Hacker News",
+    "title": "OpenSSL Fixes High-Severity DTLS Flaw That Can Leak Heap Memory Unencrypted",
+    "url": "https://thehackernews.com/2026/09/openssl-fixes-high-severity-dtls-flaw.html"
+  },
+  {
     "date": "2026-09-30T11:00:30+05:30",
     "source": "The Hacker News",
     "title": "Citrix NetScaler CVE-2026-88772 Exploit Details Show Pre-Auth Path to Shellcode Execution",
     "url": "https://thehackernews.com/2026/09/citrix-netscaler-cve-2026-88772-exploit.html"
-  },
-  {
-    "date": "2026-09-29T23:17:01+05:30",
-    "source": "The Hacker News",
-    "title": "French Tax Data Theft Using Stolen Staff Passwords Went Undetected for Seven Weeks",
-    "url": "https://thehackernews.com/2026/09/french-tax-data-theft-using-stolen.html"
-  },
-  {
-    "date": "2026-09-29T22:50:17+05:30",
-    "source": "The Hacker News",
-    "title": "New Spectre-v2 BTR Attack Leaks Linux Memory Despite Existing Defenses",
-    "url": "https://thehackernews.com/2026/09/new-spectre-v2-btr-attack-leaks-linux.html"
   },
   {
     "date": "2026-09-29T20:40:57-04:00",
