@@ -18,6 +18,12 @@
     "url": "https://thehackernews.com/2026/09/citrix-netscaler-cve-2026-88772-exploit.html"
   },
   {
+    "date": "2026-09-30T07:11:46-04:00",
+    "source": "BleepingComputer",
+    "title": "Bitget hacked via zero-day in third-party security products",
+    "url": "https://www.bleepingcomputer.com/news/security/bitget-hacked-via-zero-day-in-third-party-security-products/"
+  },
+  {
     "date": "2026-09-29T20:40:57-04:00",
     "source": "BleepingComputer",
     "title": "Microsoft is rolling out Linux container support to WSL",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Signal adds encypted local backup support to iOS, desktop apps",
     "url": "https://www.bleepingcomputer.com/news/security/signal-adds-encypted-local-backup-support-to-ios-desktop-apps/"
-  },
-  {
-    "date": "2026-09-29T16:59:39-04:00",
-    "source": "BleepingComputer",
-    "title": "Custom ChatGPTs push ClickFix attacks to deploy RAT malware",
-    "url": "https://www.bleepingcomputer.com/news/security/custom-chatgpts-push-clickfix-attacks-to-deploy-rat-malware/"
   },
   {
     "date": "2026-09-28T15:08:57+00:00",
