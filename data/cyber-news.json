@@ -1,21 +1,21 @@
 [
   {
+    "date": "2026-09-30T17:00:00+05:30",
+    "source": "The Hacker News",
+    "title": "AI Coding Agents Exposed 13,000 Internal Images, Including Billing Records, on GitHub",
+    "url": "https://thehackernews.com/2026/09/ai-coding-agents-exposed-13000-internal.html"
+  },
+  {
+    "date": "2026-09-30T16:15:00+05:30",
+    "source": "The Hacker News",
+    "title": "US-Focused CSuite Phishing Steals Microsoft 365 Sessions and Deploys RMM Tools for Remote Access",
+    "url": "https://thehackernews.com/2026/09/us-focused-csuite-phishing-steals.html"
+  },
+  {
     "date": "2026-09-30T13:54:35+05:30",
     "source": "The Hacker News",
     "title": "Attackers Exploit NetScaler Flaw for Root Access, Deploy WHIPSHOT and SLAPSHOT",
     "url": "https://thehackernews.com/2026/09/attackers-exploit-netscaler-flaw-for.html"
-  },
-  {
-    "date": "2026-09-30T13:39:28+05:30",
-    "source": "The Hacker News",
-    "title": "OpenSSL Fixes High-Severity DTLS Flaw That Can Leak Heap Memory Unencrypted",
-    "url": "https://thehackernews.com/2026/09/openssl-fixes-high-severity-dtls-flaw.html"
-  },
-  {
-    "date": "2026-09-30T11:00:30+05:30",
-    "source": "The Hacker News",
-    "title": "Citrix NetScaler CVE-2026-88772 Exploit Details Show Pre-Auth Path to Shellcode Execution",
-    "url": "https://thehackernews.com/2026/09/citrix-netscaler-cve-2026-88772-exploit.html"
   },
   {
     "date": "2026-09-30T07:11:46-04:00",
