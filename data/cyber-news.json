@@ -18,6 +18,12 @@
     "url": "https://thehackernews.com/2026/09/cisco-warns-of-attackers-exploiting.html"
   },
   {
+    "date": "2026-09-30T16:34:01-04:00",
+    "source": "BleepingComputer",
+    "title": "Russian state hackers use new RedFlick technique to push malware",
+    "url": "https://www.bleepingcomputer.com/news/security/russian-state-hackers-use-new-redflick-technique-to-push-malware/"
+  },
+  {
     "date": "2026-09-30T15:49:15-04:00",
     "source": "BleepingComputer",
     "title": "DIVD says Zammad zero-days enabled AI-driven network breach",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Over 543,000 valid credentials exposed in public GitHub repositories",
     "url": "https://www.bleepingcomputer.com/news/security/over-543-000-valid-credentials-exposed-in-public-github-repositories/"
-  },
-  {
-    "date": "2026-09-30T11:49:29-04:00",
-    "source": "BleepingComputer",
-    "title": "CISA warns of critical pre-auth RCE flaw in MikroTik RouterOS",
-    "url": "https://www.bleepingcomputer.com/news/security/cisa-warns-of-critical-pre-auth-rce-flaw-in-mikrotik-routeros/"
   },
   {
     "date": "2026-09-28T15:08:57+00:00",
