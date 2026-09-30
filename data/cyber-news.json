@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-09-30T11:00:30+05:30",
+    "source": "The Hacker News",
+    "title": "Citrix NetScaler CVE-2026-88772 Exploit Details Show Pre-Auth Path to Shellcode Execution",
+    "url": "https://thehackernews.com/2026/09/citrix-netscaler-cve-2026-88772-exploit.html"
+  },
+  {
     "date": "2026-09-29T23:17:01+05:30",
     "source": "The Hacker News",
     "title": "French Tax Data Theft Using Stolen Staff Passwords Went Undetected for Seven Weeks",
@@ -10,12 +16,6 @@
     "source": "The Hacker News",
     "title": "New Spectre-v2 BTR Attack Leaks Linux Memory Despite Existing Defenses",
     "url": "https://thehackernews.com/2026/09/new-spectre-v2-btr-attack-leaks-linux.html"
-  },
-  {
-    "date": "2026-09-29T22:50:08+05:30",
-    "source": "The Hacker News",
-    "title": "Russia's Star Blizzard Targets 100+ Organizations With Fake Event Invites to Deliver Backdoor",
-    "url": "https://thehackernews.com/2026/09/russias-star-blizzard-targets-100.html"
   },
   {
     "date": "2026-09-29T20:40:57-04:00",
