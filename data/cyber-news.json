@@ -18,6 +18,12 @@
     "url": "https://thehackernews.com/2026/09/us-focused-csuite-phishing-steals.html"
   },
   {
+    "date": "2026-09-30T09:37:15-04:00",
+    "source": "BleepingComputer",
+    "title": "Microsoft to block Entra ID script injection attacks starting October",
+    "url": "https://www.bleepingcomputer.com/news/security/microsoft-to-block-entra-id-script-injection-attacks-starting-october/"
+  },
+  {
     "date": "2026-09-30T08:25:10-04:00",
     "source": "BleepingComputer",
     "title": "TeamViewer urges users to patch severe flaws “as soon as possible”",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Bitget hacked via zero-day in third-party security products",
     "url": "https://www.bleepingcomputer.com/news/security/bitget-hacked-via-zero-day-in-third-party-security-products/"
-  },
-  {
-    "date": "2026-09-29T20:40:57-04:00",
-    "source": "BleepingComputer",
-    "title": "Microsoft is rolling out Linux container support to WSL",
-    "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-is-rolling-out-linux-container-support-to-wsl/"
   },
   {
     "date": "2026-09-28T15:08:57+00:00",
