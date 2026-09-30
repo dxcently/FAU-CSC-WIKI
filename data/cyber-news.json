@@ -18,6 +18,12 @@
     "url": "https://thehackernews.com/2026/09/know-your-enemy-browser-based-attack.html"
   },
   {
+    "date": "2026-09-30T11:49:29-04:00",
+    "source": "BleepingComputer",
+    "title": "CISA warns of critical pre-auth RCE flaw in MikroTik RouterOS",
+    "url": "https://www.bleepingcomputer.com/news/security/cisa-warns-of-critical-pre-auth-rce-flaw-in-mikrotik-routeros/"
+  },
+  {
     "date": "2026-09-30T10:46:40-04:00",
     "source": "BleepingComputer",
     "title": "Cisco warns of new SD-WAN zero-day exploited in attacks",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "AI's Third Wave: Coworkers Break the Security Model That Worked for Agents",
     "url": "https://www.bleepingcomputer.com/news/security/ais-third-wave-coworkers-break-the-security-model-that-worked-for-agents/"
-  },
-  {
-    "date": "2026-09-30T09:37:15-04:00",
-    "source": "BleepingComputer",
-    "title": "Microsoft to block Entra ID script injection attacks starting October",
-    "url": "https://www.bleepingcomputer.com/news/security/microsoft-to-block-entra-id-script-injection-attacks-starting-october/"
   },
   {
     "date": "2026-09-28T15:08:57+00:00",
