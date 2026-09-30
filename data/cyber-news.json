@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-09-30T17:28:00+05:30",
+    "source": "The Hacker News",
+    "title": "Know Your Enemy: Browser-Based Attack Techniques in 2026",
+    "url": "https://thehackernews.com/2026/09/know-your-enemy-browser-based-attack.html"
+  },
+  {
     "date": "2026-09-30T17:00:00+05:30",
     "source": "The Hacker News",
     "title": "AI Coding Agents Exposed 13,000 Internal Images, Including Billing Records, on GitHub",
@@ -10,12 +16,6 @@
     "source": "The Hacker News",
     "title": "US-Focused CSuite Phishing Steals Microsoft 365 Sessions and Deploys RMM Tools for Remote Access",
     "url": "https://thehackernews.com/2026/09/us-focused-csuite-phishing-steals.html"
-  },
-  {
-    "date": "2026-09-30T13:54:35+05:30",
-    "source": "The Hacker News",
-    "title": "Attackers Exploit NetScaler Flaw for Root Access, Deploy WHIPSHOT and SLAPSHOT",
-    "url": "https://thehackernews.com/2026/09/attackers-exploit-netscaler-flaw-for.html"
   },
   {
     "date": "2026-09-30T08:25:10-04:00",
