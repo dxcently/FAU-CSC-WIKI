@@ -18,6 +18,12 @@
     "url": "https://thehackernews.com/2026/09/us-focused-csuite-phishing-steals.html"
   },
   {
+    "date": "2026-09-30T10:46:40-04:00",
+    "source": "BleepingComputer",
+    "title": "Cisco warns of new SD-WAN zero-day exploited in attacks",
+    "url": "https://www.bleepingcomputer.com/news/security/cisco-warns-of-new-sd-wan-authentication-bypass-zero-day-exploited-in-attacks/"
+  },
+  {
     "date": "2026-09-30T10:01:11-04:00",
     "source": "BleepingComputer",
     "title": "AI's Third Wave: Coworkers Break the Security Model That Worked for Agents",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Microsoft to block Entra ID script injection attacks starting October",
     "url": "https://www.bleepingcomputer.com/news/security/microsoft-to-block-entra-id-script-injection-attacks-starting-october/"
-  },
-  {
-    "date": "2026-09-30T08:25:10-04:00",
-    "source": "BleepingComputer",
-    "title": "TeamViewer urges users to patch severe flaws “as soon as possible”",
-    "url": "https://www.bleepingcomputer.com/news/security/teamviewer-urges-users-to-patch-severe-flaws-as-soon-as-possible/"
   },
   {
     "date": "2026-09-28T15:08:57+00:00",
