@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-10-01T10:05:34+05:30",
+    "source": "The Hacker News",
+    "title": "Citrix NetScaler Post-Exploitation Payload Creates Superuser, Maps Web Shell to CSS-Like URLs",
+    "url": "https://thehackernews.com/2026/10/citrix-netscaler-post-exploitation.html"
+  },
+  {
     "date": "2026-09-30T22:16:29+05:30",
     "source": "The Hacker News",
     "title": "Attackers Exploit Zimbra Flaw to Deploy Web Shells and Harvest Authentication Secrets",
@@ -10,12 +16,6 @@
     "source": "The Hacker News",
     "title": "Attackers Abuse MSP360 to Deploy ScreenConnect in Dual-RMM Phishing Attacks",
     "url": "https://thehackernews.com/2026/09/attackers-abuse-msp360-to-deploy.html"
-  },
-  {
-    "date": "2026-09-30T20:54:54+05:30",
-    "source": "The Hacker News",
-    "title": "Cisco Warns of Attackers Exploiting Critical Authentication Bypass in SD-WAN Manager",
-    "url": "https://thehackernews.com/2026/09/cisco-warns-of-attackers-exploiting.html"
   },
   {
     "date": "2026-09-30T16:34:01-04:00",
