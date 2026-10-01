@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-10-01T22:10:51.132000+00:00",
+    "author": "shaamad",
+    "text": "https://fau-edu.zoom.us/j/81113971603?pwd=ZLr39FbEbbFdyYeCatJPOHZ99XZL2Y.1",
+    "url": "https://discord.com/channels/1265737634744107008/1265738362560450580/1555341251212222626"
+  },
+  {
     "date": "2026-10-01T19:28:16.780000+00:00",
     "author": "shaamad",
     "text": "📢 Club Today — Starting at 6 PM!\nHeads up: today's meeting starts at 6 PM instead of 5 due to some scheduling stuff on my end. Sorry for the short notice!\n🛡️ Still on for today: CyberPatriot Practice Images\nWe're still doing practice images; come secure some VMs with us! Bring your laptop 💻\n📊 Practice images: https://docs.google.com/spreadsheets/d/1cdVHtk4w5JDJCYy-EO2_ycr0ZqMgUyjFOVDn5Y8eGVw/edit?gid=735920429\n💿 VMware installers: https://drive.google.com/drive/folders/1Lf7qnJSXf9q1KHE8IzPvySEZRyUHutfL\n\n👉 Which images to grab:\n🐧 Linux: Age of Pirates\n🪟 Windows: Jason *or* Santa's Workshop\n\nTo load: unzip, then double-click the .vmx file (looks like a text file) — it imports straight into VMware.\n🍎 Mac users: VMware Fusion can work, but it's iffy (especially on M-series Macs), so it's best to pair up with a Windows user.\n🏢 Reminder: NCCI Data Center Tour — Next Tue, Oct 6\n📝 PLEASE FILL OUT THE FORM to lock your spot — spots are limited!\nhttps://docs.google.com/forms/d/e/1FAIpQLSc_l3btxSU0p6k9FXOoWLNUjA354A0cXY1pS4WTIWWJMlPrKg/viewform\n🪪 Government-issued ID required (student ID is NOT enough).\n🤔 Question: Do we want to do WRCCDC?\nWe've got a ton of competitions lined up, so I want your take. WRCCDC would be good practice, but we'll have 3 more shots at practice before CCDC season starts, and honestly our setup isn't ideal for it right now (VPNs, hardware, etc.).\nSo — worth doing anyway, or save our energy for the others? Drop your vote/thoughts below! 👇 If enough people are down, we'll make it happen.",
@@ -52,11 +58,5 @@
     "author": "!",
     "text": "^^",
     "url": "https://discord.com/channels/1265737634744107008/1265738362560450580/1552761156790255807"
-  },
-  {
-    "date": "2026-09-24T19:18:04.356000+00:00",
-    "author": "!",
-    "text": "https://klipy.com/gifs/there-is-1",
-    "url": "https://discord.com/channels/1265737634744107008/1265738362560450580/1552761054742974574"
   }
 ]
