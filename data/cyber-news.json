@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-10-01T11:24:41+05:30",
+    "source": "The Hacker News",
+    "title": "Apple CoreGraphics PoC Emerges as WhatsApp PDF Checks Hint at Possible Delivery Path",
+    "url": "https://thehackernews.com/2026/10/apple-coregraphics-poc-emerges-as.html"
+  },
+  {
     "date": "2026-10-01T10:51:10+05:30",
     "source": "The Hacker News",
     "title": "Bitget Confirms Third-Party Zero-Day Behind $387.5 Million Cryptocurrency Theft",
@@ -10,12 +16,6 @@
     "source": "The Hacker News",
     "title": "MetaMask Security Incident Prompts Exit of Affected Ethereum Validators",
     "url": "https://thehackernews.com/2026/10/metamask-security-incident-prompts-exit.html"
-  },
-  {
-    "date": "2026-10-01T10:05:34+05:30",
-    "source": "The Hacker News",
-    "title": "Citrix NetScaler Post-Exploitation Payload Creates Superuser, Maps Web Shell to CSS-Like URLs",
-    "url": "https://thehackernews.com/2026/10/citrix-netscaler-post-exploitation.html"
   },
   {
     "date": "2026-09-30T16:34:01-04:00",
