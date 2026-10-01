@@ -18,6 +18,12 @@
     "url": "https://thehackernews.com/2026/10/wordpress-backdoor-rebuilds-itself.html"
   },
   {
+    "date": "2026-10-01T15:32:47-04:00",
+    "source": "BleepingComputer",
+    "title": "Microsoft says threat actors are ahead in the early AI race",
+    "url": "https://www.bleepingcomputer.com/news/security/microsoft-says-threat-actors-are-ahead-in-the-early-ai-race/"
+  },
+  {
     "date": "2026-10-01T10:25:14-04:00",
     "source": "BleepingComputer",
     "title": "Police dismantle KillSec ransomware gang allegedly led by 16-year-old",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "The Day-One Hole in Zero Trust Architecture",
     "url": "https://www.bleepingcomputer.com/news/security/the-day-one-hole-in-zero-trust-architecture/"
-  },
-  {
-    "date": "2026-10-01T09:51:08-04:00",
-    "source": "BleepingComputer",
-    "title": "Kiteworks patches max severity code injection vulnerability",
-    "url": "https://www.bleepingcomputer.com/news/security/kiteworks-patches-max-severity-email-protection-gateway-code-injection-vulnerability/"
   },
   {
     "date": "2026-09-28T15:08:57+00:00",
