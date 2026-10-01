@@ -18,6 +18,12 @@
     "url": "https://thehackernews.com/2026/10/cisa-adds-exploited-cisco-catalyst-sd.html"
   },
   {
+    "date": "2026-10-01T10:25:14-04:00",
+    "source": "BleepingComputer",
+    "title": "Police dismantle KillSec ransomware gang allegedly led by 16-year-old",
+    "url": "https://www.bleepingcomputer.com/news/security/police-dismantle-killsec-ransomware-gang-allegedly-led-by-16-year-old/"
+  },
+  {
     "date": "2026-10-01T10:01:11-04:00",
     "source": "BleepingComputer",
     "title": "The Day-One Hole in Zero Trust Architecture",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Kiteworks patches max severity code injection vulnerability",
     "url": "https://www.bleepingcomputer.com/news/security/kiteworks-patches-max-severity-email-protection-gateway-code-injection-vulnerability/"
-  },
-  {
-    "date": "2026-10-01T07:14:28-04:00",
-    "source": "BleepingComputer",
-    "title": "Microsoft enables Windows settings backup by default for orgs",
-    "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-enables-windows-settings-backup-by-default-for-orgs/"
   },
   {
     "date": "2026-09-28T15:08:57+00:00",
