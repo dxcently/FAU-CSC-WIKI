@@ -18,6 +18,12 @@
     "url": "https://thehackernews.com/2026/10/android-17-advanced-protection-locks.html"
   },
   {
+    "date": "2026-10-02T12:20:05-04:00",
+    "source": "BleepingComputer",
+    "title": "GitLab warns of critical RCE vulnerability in AI Gateway service",
+    "url": "https://www.bleepingcomputer.com/news/security/gitlab-warns-of-critical-rce-vulnerability-in-ai-gateway-service/"
+  },
+  {
     "date": "2026-10-02T11:20:53-04:00",
     "source": "BleepingComputer",
     "title": "US sanctions Tren de Aragua gang members in ATM hacks crackdown",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "The EDR blind spot: 3 ways browser attacks evade endpoint telemetry",
     "url": "https://www.bleepingcomputer.com/news/security/the-edr-blind-spot-3-ways-browser-attacks-evade-endpoint-telemetry/"
-  },
-  {
-    "date": "2026-10-02T08:37:40-04:00",
-    "source": "BleepingComputer",
-    "title": "Dell asks admins to patch max severity CSM flaws as soon as possible",
-    "url": "https://www.bleepingcomputer.com/news/security/new-max-severity-dell-csm-flaws-give-hackers-admin-privileges/"
   },
   {
     "date": "2026-09-28T15:08:57+00:00",
