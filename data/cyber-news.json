@@ -18,6 +18,12 @@
     "url": "https://thehackernews.com/2026/10/android-17-advanced-protection-locks.html"
   },
   {
+    "date": "2026-10-02T10:00:10-04:00",
+    "source": "BleepingComputer",
+    "title": "The EDR blind spot: 3 ways browser attacks evade endpoint telemetry",
+    "url": "https://www.bleepingcomputer.com/news/security/the-edr-blind-spot-3-ways-browser-attacks-evade-endpoint-telemetry/"
+  },
+  {
     "date": "2026-10-02T08:37:40-04:00",
     "source": "BleepingComputer",
     "title": "Dell asks admins to patch max severity CSM flaws as soon as possible",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Microsoft’s X account hacked in crypto pump-and-dump scheme",
     "url": "https://www.bleepingcomputer.com/news/security/microsofts-x-account-hacked-in-crypto-token-pump-and-dump-scheme/"
-  },
-  {
-    "date": "2026-10-01T18:42:49-04:00",
-    "source": "BleepingComputer",
-    "title": "Fortinet warns of critical FortiMail flaw exploited in zero-day attacks",
-    "url": "https://www.bleepingcomputer.com/news/security/fortinet-warns-of-critical-fortimail-flaw-exploited-in-zero-day-attacks/"
   },
   {
     "date": "2026-09-28T15:08:57+00:00",
