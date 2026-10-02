@@ -1,5 +1,11 @@
 [
   {
+    "date": "2026-10-02T11:19:50+05:30",
+    "source": "The Hacker News",
+    "title": "Critical FortiMail Zero-Day Flaw Exploited in Attacks Allows Unauthenticated Arbitrary File Writes",
+    "url": "https://thehackernews.com/2026/10/critical-fortimail-zero-day-flaw.html"
+  },
+  {
     "date": "2026-10-01T22:25:57+05:30",
     "source": "The Hacker News",
     "title": "Police Arrest 16-Year-Old Suspected of Running KillSec, Seize Ransomware Leak Site and Servers",
@@ -10,12 +16,6 @@
     "source": "The Hacker News",
     "title": "ThreatsDay: AI-Powered Zero-Day Chain, 543K Live Secrets, Model Inspection RCE and 13 More Stories",
     "url": "https://thehackernews.com/2026/10/threatsday-ai-powered-zero-day-chain.html"
-  },
-  {
-    "date": "2026-10-01T20:07:35+05:30",
-    "source": "The Hacker News",
-    "title": "WordPress Backdoor Rebuilds Itself After Cleanup Using Files, Database, and Shared Memory",
-    "url": "https://thehackernews.com/2026/10/wordpress-backdoor-rebuilds-itself.html"
   },
   {
     "date": "2026-10-01T18:42:49-04:00",
