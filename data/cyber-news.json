@@ -6,6 +6,12 @@
     "url": "https://thehackernews.com/2026/10/the-state-of-cybersecurity-in-2026key.html"
   },
   {
+    "date": "2026-10-03T10:35:20-04:00",
+    "source": "BleepingComputer",
+    "title": "Danish university DTU breach exposes data of up to 200,000 people",
+    "url": "https://www.bleepingcomputer.com/news/security/danish-university-dtu-breach-exposes-data-of-up-to-200-000-people/"
+  },
+  {
     "date": "2026-10-02T23:03:31+05:30",
     "source": "The Hacker News",
     "title": "GitLab Patches Critical 9.9 AI Gateway Flaw Allowing Command Execution on Self-Hosted Servers",
@@ -28,12 +34,6 @@
     "source": "BleepingComputer",
     "title": "Warlock ransomware breach SharePoint in water, telecom operator attacks",
     "url": "https://www.bleepingcomputer.com/news/security/warlock-ransomware-breach-sharepoint-in-water-telecom-operator-attacks/"
-  },
-  {
-    "date": "2026-10-02T12:20:05-04:00",
-    "source": "BleepingComputer",
-    "title": "GitLab warns of critical RCE vulnerability in AI Gateway service",
-    "url": "https://www.bleepingcomputer.com/news/security/gitlab-warns-of-critical-rce-vulnerability-in-ai-gateway-service/"
   },
   {
     "date": "2026-09-28T15:08:57+00:00",
